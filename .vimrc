@@ -2,7 +2,6 @@
 "  **------------------------- Configurations ---------------------------**
 "  ************************************************************************
 
-
 set tabstop=2               " Set tab space
 set cursorline              " Highlight current line
 set hlsearch                " Highlight searched pattern
@@ -20,16 +19,26 @@ syntax on                   " Enable syntax hilighting
 filetype plugin indent on   " Detect filetype that is edited, enable indent, plugin for specific file
 
 
-
 "  ************************************************************************
 "  **------------------------- Custom Keybindings -----------------------**
 "  ************************************************************************
 
-inoremap kj <Esc>           " Map kj as ESC in Insert mode  
-map <C-S-i> :Prettier<CR>   " Prettier shortcut
-nnoremap <CR> :noh<CR><CR>  "This unsets the "last search pattern" register by hitting return
-vnoremap <silent> ;/ :call ToggleComment()<cr> " multiple line comments
+let mapleader = ","
+nmap <LEADER>ne :NERDTreeToggle<CR>
+imap kj <ESC>
+nnoremap <CR> :noh<CR>              " Undo highlight
+map <C-S-i> :Prettier<CR>           " Prettier shortcut
 
+
+"  ************************************************************************
+"  **--------------------------- Ale ------------------------------------**
+"  ************************************************************************
+
+let g:ale_completion_enabled = 1
+let b:ale_fixers = ['prettier', 'eslint']         " Fix files with prettier, and then ESLint.
+let g:ale_fix_on_save = 1
+let b:ale_linter_aliases = ['javascript', 'vue']  " Run both javascript and vue linters for vue files.
+let b:ale_linters = ['eslint', 'vls']             " Select the eslint and vls linters.
 
 
 "  ************************************************************************
@@ -42,27 +51,22 @@ let g:prettier#config#use_tabs = 'true'                     " Use tabs over spac
 let g:prettier#config#semi = 'true'                         " Print semicolons, default: true
 let g:prettier#config#single_quote = 'false'                " Single quotes over double quotes, default: false
 let g:prettier#config#bracket_spacing = 'true'              " Print spaces between brackets, default: true
-let g:prettier#config#jsx_bracket_same_line = 'true'        " Put > on the last line instead of new line, default: false
+let g:prettier#config#jsx_bracket_same_line = 'false'       " Put > on the last line instead of new line, default: false
 let g:prettier#config#arrow_parens = 'avoid'                " avoid|always  default: avoid
 let g:prettier#config#trailing_comma = 'none'               " none|es5|all  default: none
-let g:prettier#config#parser = 'flow'                       " flow|babylon|typescript|css|less|scss|json|graphql|markdown " default: babylon
+let g:prettier#config#parser = 'flow'                       " flow|babylon|typescript|css|less|scss|json|graphql|markdown  default: babylon
 let g:prettier#config#config_precedence = 'prefer-file'     " cli-override|file-override|prefer-file
-
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+autocmd FileType vue syntax sync fromstart
+autocmd BufNewFile,BufRead *.vue set ft=vue
 
 
 "  ************************************************************************
-"  **------------------------- Syntastic --------------------------------**
+"  **------------------------- Polygot ----------------------------------**
 "  ************************************************************************
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 
+let g:polyglot_disabled = ['graphql']         " Fix graphql error 
 
 
 "  ************************************************************************
@@ -88,13 +92,10 @@ colorscheme material
 
 "let g:airline_theme='material'
 let g:airline_theme='quantum'
-
-" IndentLine {{
 let g:indentLine_char = '¦'
 let g:indentLine_first_char = '¦'
 let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_setColors = 1
-" }}
 
 
 "  ************************************************************************
@@ -104,7 +105,6 @@ let g:indentLine_setColors = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif""
 set completeopt-=preview
-map <C-n> :NERDTreeToggle<CR>
 map  <C-l> :tabn<CR>
 map  <C-h> :tabp<CR>
 map ; :Files<CR>
@@ -113,16 +113,8 @@ autocmd FileType javascript set formatprg=prettier\ --stdin       " Set prettier
 autocmd FileType javascript set number                            " Set line number on specific files only
 autocmd FileType php set number
 autocmd FileType css set number
+autocmd FileType vue syntax sync fromstart
 
-
-
-function! ToggleComment()
-  if matchstr(getline(line(".")), '^\s*\/\/.*$') == ''
-    :execute "s:^://:"
-   else 
-    :execute "s:^\s*//::"
-  endif
-endfunction
 
 
 "  ************************************************************************
@@ -160,10 +152,8 @@ Plugin 'tyrannicaltoucan/vim-quantum'
 Plugin 'posva/vim-vue'
 Plugin 'kaicataldo/material.vim'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'vim-syntastic/syntastic'
-
+Plugin 'w0rp/ale'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
 
