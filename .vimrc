@@ -153,6 +153,9 @@ Plugin 'posva/vim-vue'
 Plugin 'kaicataldo/material.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'w0rp/ale'
+Plugin 'easymotion/vim-easymotion'                                               |~
+Plugin 'lfv89/vim-interestingwords'                                              |~
+Plugin 'itchyny/vim-cursorword'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
