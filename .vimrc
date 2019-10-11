@@ -17,6 +17,7 @@ set relativenumber          " Display relative line number
 set rtp+=~/.fzf             " Set Fuzzy Finder
 syntax on                   " Enable syntax hilighting
 filetype plugin indent on   " Detect filetype that is edited, enable indent, plugin for specific file
+set completeopt+=noinsert
 
 
 "  ************************************************************************
@@ -28,9 +29,10 @@ nmap <LEADER>ne :NERDTreeToggle<CR>
 imap kj <ESC>
 nnoremap <CR> :noh<CR>              " Undo highlight
 map <C-S-i> :Prettier<CR>           " Prettier shortcut
-let g:EasyMotion_leader_key = '<Leader>'
-
-
+let g:EasyMotion_leader_key = '<LEADER>'
+nnoremap <LEADER>f :Rg <C-r>=expand("<cword>")<CR>
+ 
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 "  ************************************************************************
 "  **--------------------------- Ale ------------------------------------**
@@ -41,6 +43,9 @@ let b:ale_fixers = ['prettier', 'eslint']         " Fix files with prettier, and
 let g:ale_fix_on_save = 1
 let b:ale_linter_aliases = ['javascript', 'vue']  " Run both javascript and vue linters for vue files.
 let b:ale_linters = ['eslint', 'vls']             " Select the eslint and vls linters.
+let g:ale_sign_column_always = 1
+
+
 
 
 "  ************************************************************************
@@ -75,15 +80,15 @@ let g:polyglot_disabled = ['graphql']         " Fix graphql error
 "  **------------------------- Theme ------------------------------------**
 "  ************************************************************************
 
-set background=dark
+"set background=dark
 set termguicolors         " Enable true colors support
 
 "let ayucolor="light"     " for light version of theme
-"let ayucolor="mirage"    " for mirage version of theme
+let ayucolor="mirage"    " for mirage version of theme
 "let ayucolor="dark"      " for dark version of theme
-"colorscheme ayu
+colorscheme ayu
 "colorscheme PaperColor
-colorscheme material
+"colorscheme material
 "colorscheme solarized
 
 
@@ -109,7 +114,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif""
 set completeopt-=preview
 map  <C-l> :tabn<CR>
 map  <C-h> :tabp<CR>
-map ; :Files<CR>
+map ; :GFiles<CR>
 
 autocmd FileType javascript set formatprg=prettier\ --stdin       " Set prettier for auto complete
 autocmd FileType javascript set number                            " Set line number on specific files only
@@ -131,7 +136,6 @@ call vundle#begin()
 
 " Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim' 
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'prettier/vim-prettier'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'ayu-theme/ayu-vim'
@@ -154,10 +158,11 @@ Plugin 'tyrannicaltoucan/vim-quantum'
 Plugin 'posva/vim-vue'
 Plugin 'kaicataldo/material.vim'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'w0rp/ale'
-Plugin 'easymotion/vim-easymotion'                                               |~
-Plugin 'lfv89/vim-interestingwords'                                              |~
 Plugin 'itchyny/vim-cursorword'
+Plugin 'lfv89/vim-interestingwords'
+Plugin 'zxqfl/tabnine-vim'
+Plugin 'w0rp/ale'
+Plugin 'easymotion/vim-easymotion'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
