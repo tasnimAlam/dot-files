@@ -28,6 +28,8 @@ nmap <LEADER>ne :NERDTreeToggle<CR>
 imap kj <ESC>
 nnoremap <CR> :noh<CR>              " Undo highlight
 map <C-S-i> :Prettier<CR>           " Prettier shortcut
+let g:EasyMotion_leader_key = '<Leader>'
+
 
 
 "  ************************************************************************
