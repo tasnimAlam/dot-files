@@ -20,19 +20,24 @@ filetype plugin indent on   " Detect filetype that is edited, enable indent, plu
 set completeopt+=noinsert
 
 
+
 "  ************************************************************************
 "  **------------------------- Custom Keybindings -----------------------**
 "  ************************************************************************
 
+
 let mapleader = ","
-nmap <LEADER>ne :NERDTreeToggle<CR>
-imap kj <ESC>
-nnoremap <CR> :noh<CR>              " Undo highlight
-map <C-S-i> :Prettier<CR>           " Prettier shortcut
 let g:EasyMotion_leader_key = '<LEADER>'
-nnoremap <LEADER>f :Rg <C-r>=expand("<cword>")<CR>
- 
+imap kj <ESC>
+nnoremap <silent> <Space> :nohlsearch<CR> 
+nmap <LEADER>ne :NERDTreeToggle<CR>
+map <C-S-i> :Prettier<CR>
+nnoremap <LEADER>f :Rg <C-r>=expand("<cword>")<CR><CR>
+map ; :exec finddir(".git", ".") == '.git' ? ":GFiles" : ":Files"<CR>
+
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+
 
 "  ************************************************************************
 "  **--------------------------- Ale ------------------------------------**
@@ -44,7 +49,7 @@ let g:ale_fix_on_save = 1
 let b:ale_linter_aliases = ['javascript', 'vue']  " Run both javascript and vue linters for vue files.
 let b:ale_linters = ['eslint', 'vls']             " Select the eslint and vls linters.
 let g:ale_sign_column_always = 1
-
+let g:airline#extensions#ale#enabled = 1
 
 
 
@@ -86,11 +91,11 @@ set termguicolors         " Enable true colors support
 "let ayucolor="light"     " for light version of theme
 let ayucolor="mirage"    " for mirage version of theme
 "let ayucolor="dark"      " for dark version of theme
+
 colorscheme ayu
 "colorscheme PaperColor
 "colorscheme material
-"colorscheme solarized
-
+"colorscheme solarized8
 
 
 "  ************************************************************************
@@ -102,7 +107,8 @@ let g:airline_theme='quantum'
 let g:indentLine_char = '¦'
 let g:indentLine_first_char = '¦'
 let g:indentLine_showFirstIndentLevel = 1
-let g:indentLine_setColors = 1
+let g:indentLine_setColors = 0
+let g:indentLine_color_term = 239
 
 
 "  ************************************************************************
@@ -114,7 +120,6 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif""
 set completeopt-=preview
 map  <C-l> :tabn<CR>
 map  <C-h> :tabp<CR>
-map ; :GFiles<CR>
 
 autocmd FileType javascript set formatprg=prettier\ --stdin       " Set prettier for auto complete
 autocmd FileType javascript set number                            " Set line number on specific files only
