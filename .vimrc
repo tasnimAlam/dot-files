@@ -4,7 +4,7 @@
 
 set tabstop=2               " Set tab space
 set cursorline              " Highlight current line
-set hlsearch                " Highlight searched pattern
+"set hlsearch                " Highlight searched pattern
 set shiftwidth=2            " Set shift width
 set expandtab               " Insert space when tab is pressed
 set laststatus=2            " Always display status line
@@ -32,8 +32,8 @@ imap kj <ESC>
 nnoremap <silent> <Space> :nohlsearch<CR> 
 nmap <LEADER>ne :NERDTreeToggle<CR>
 map <C-S-i> :Prettier<CR>
-nnoremap <LEADER>f :Rg <C-r>=expand("<cword>")<CR><CR>
 map ; :exec finddir(".git", ".") == '.git' ? ":GFiles" : ":Files"<CR>
+nmap <LEADER>f <Plug>(FerretAckWord)
 
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
@@ -103,7 +103,7 @@ colorscheme ayu
 "  ************************************************************************
 
 "let g:airline_theme='material'
-let g:airline_theme='quantum'
+let g:airline_theme='ayu_mirage'
 let g:indentLine_char = '¦'
 let g:indentLine_first_char = '¦'
 let g:indentLine_showFirstIndentLevel = 1
@@ -145,6 +145,7 @@ Plugin 'prettier/vim-prettier'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'ayu-theme/ayu-vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'chrisbra/NrrwRgn'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
@@ -168,6 +169,8 @@ Plugin 'lfv89/vim-interestingwords'
 Plugin 'zxqfl/tabnine-vim'
 Plugin 'w0rp/ale'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'wincent/ferret'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
