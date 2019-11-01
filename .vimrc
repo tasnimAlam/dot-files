@@ -35,6 +35,12 @@ map <C-S-i> :Prettier<CR>
 map ; :exec finddir(".git", ".") == '.git' ? ":GFiles" : ":Files"<CR>
 nmap <LEADER>f <Plug>(FerretAckWord)
 
+"Zeal Vim
+nmap <leader>z <Plug>Zeavim
+vmap <leader>z <Plug>ZVVisSelection
+nmap gz <Plug>ZVOperator
+nmap <leader><leader>z <Plug>ZVKeyDocset
+
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 
@@ -73,12 +79,6 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 autocmd FileType vue syntax sync fromstart
 autocmd BufNewFile,BufRead *.vue set ft=vue
 
-
-"  ************************************************************************
-"  **------------------------- Polygot ----------------------------------**
-"  ************************************************************************
-
-let g:polyglot_disabled = ['graphql']         " Fix graphql error 
 
 
 "  ************************************************************************
@@ -128,50 +128,43 @@ autocmd FileType css set number
 autocmd FileType vue syntax sync fromstart
 
 
-
 "  ************************************************************************
-"  **------------------------- NerdTree ---------------------------------**
+"  **------------------------- Plugins ----------------------------------**
 "  ************************************************************************
 
-" Set the runtime path to include Vundle and initialize
-" alternatively, pass a path where Vundle should install plugins
-" call vundle#begin('~/some/path/here')
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-" Let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim' 
-Plugin 'prettier/vim-prettier'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'ayu-theme/ayu-vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'chrisbra/NrrwRgn'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'Yggdroot/indentLine'
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plugin 'junegunn/fzf.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'itchyny/lightline.vim'
-Plugin 'danro/rename.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'lifepillar/vim-solarized8'
-Plugin 'tyrannicaltoucan/vim-quantum'
-Plugin 'posva/vim-vue'
-Plugin 'kaicataldo/material.vim'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'itchyny/vim-cursorword'
-Plugin 'lfv89/vim-interestingwords'
-Plugin 'zxqfl/tabnine-vim'
-Plugin 'w0rp/ale'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'wincent/ferret'
+call plug#begin('~/.vim/plugged')
 
+Plug 'prettier/vim-prettier'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'ayu-theme/ayu-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'chrisbra/NrrwRgn'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'Yggdroot/indentLine'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+Plug 'danro/rename.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'lifepillar/vim-solarized8'
+Plug 'tyrannicaltoucan/vim-quantum'
+Plug 'posva/vim-vue'
+Plug 'kaicataldo/material.vim'
+Plug 'itchyny/vim-cursorword'
+Plug 'lfv89/vim-interestingwords'
+Plug 'zxqfl/tabnine-vim'
+Plug 'w0rp/ale'
+Plug 'easymotion/vim-easymotion'
+Plug 'wincent/ferret'
+Plug 'mhinz/vim-grepper'
+Plug 'KabbAmine/zeavim.vim'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()
 
