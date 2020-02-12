@@ -18,6 +18,7 @@ set rtp+=~/.fzf             " Set Fuzzy Finder
 syntax on                   " Enable syntax hilighting
 filetype plugin indent on   " Detect filetype that is edited, enable indent, plugin for specific file
 set completeopt+=noinsert
+set regexpengine=1
 
 
 
@@ -28,12 +29,17 @@ set completeopt+=noinsert
 
 let mapleader = ","
 let g:EasyMotion_leader_key = '<LEADER>'
+let g:user_emmet_leader_key=','
+let g:vim_json_syntax_conceal = 0
 imap kj <ESC>
 nnoremap <silent> <Space> :nohlsearch<CR> 
 nmap <LEADER>ne :NERDTreeToggle<CR>
 map <C-S-i> :Prettier<CR>
 map ; :exec finddir(".git", ".") == '.git' ? ":GFiles" : ":Files"<CR>
 nmap <LEADER>f <Plug>(FerretAckWord)
+imap cll console.log()<Esc><S-f>(a
+vmap cll yocll<Esc>p
+nmap cll yiwocll<Esc>p
 
 "Zeal Vim
 nmap <leader>z <Plug>Zeavim
@@ -43,6 +49,15 @@ nmap <leader><leader>z <Plug>ZVKeyDocset
 
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
+" Fugitive Conflict Resolution
+nnoremap <leader>gd :Gvdiff<CR>
+nnoremap gdh :diffget //2<CR>
+nnoremap gdl :diffget //3<CR>
+nmap <LEADER>gs :Gstatus<CR>
+nmap <LEADER>ga :Git add -- .<CR>
+nmap <LEADER>gc :Gcommit<CR>
+nmap <LEADER>gl :0Glog --oneline<CR>
+nmap <LEADER>gp :Gpush<CR>
 
 
 "  ************************************************************************
@@ -50,7 +65,7 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 "  ************************************************************************
 
 let g:ale_completion_enabled = 1
-let b:ale_fixers = ['prettier', 'eslint']         " Fix files with prettier, and then ESLint.
+let g:ale_fixers = ['prettier', 'eslint']         " Fix files with prettier, and then ESLint.
 let g:ale_fix_on_save = 1
 let b:ale_linter_aliases = ['javascript', 'vue']  " Run both javascript and vue linters for vue files.
 let b:ale_linters = ['eslint', 'vls']             " Select the eslint and vls linters.
@@ -76,8 +91,8 @@ let g:prettier#config#parser = 'flow'                       " flow|babylon|types
 let g:prettier#config#config_precedence = 'prefer-file'     " cli-override|file-override|prefer-file
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-autocmd FileType vue syntax sync fromstart
-autocmd BufNewFile,BufRead *.vue set ft=vue
+"autocmd FileType vue syntax sync fromstart
+"autocmd BufNewFile,BufRead *.vue set ft=vue
 
 
 
@@ -85,7 +100,7 @@ autocmd BufNewFile,BufRead *.vue set ft=vue
 "  **------------------------- Theme ------------------------------------**
 "  ************************************************************************
 
-"set background=dark
+set background=dark
 set termguicolors         " Enable true colors support
 
 "let ayucolor="light"     " for light version of theme
@@ -93,6 +108,7 @@ let ayucolor="mirage"    " for mirage version of theme
 "let ayucolor="dark"      " for dark version of theme
 
 colorscheme ayu
+"colorscheme onedark
 "colorscheme PaperColor
 "colorscheme material
 "colorscheme solarized8
@@ -108,7 +124,7 @@ let g:indentLine_char = '¦'
 let g:indentLine_first_char = '¦'
 let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_setColors = 0
-let g:indentLine_color_term = 239
+"let g:indentLine_color_term = 239
 
 
 "  ************************************************************************
@@ -116,7 +132,7 @@ let g:indentLine_color_term = 239
 "  ************************************************************************
 
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif""
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif""
 set completeopt-=preview
 map  <C-l> :tabn<CR>
 map  <C-h> :tabp<CR>
@@ -140,23 +156,24 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'chrisbra/NrrwRgn'
+"Plug 'chrisbra/NrrwRgn'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'Yggdroot/indentLine'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'itchyny/lightline.vim'
 Plug 'danro/rename.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
-Plug 'lifepillar/vim-solarized8'
-Plug 'tyrannicaltoucan/vim-quantum'
-Plug 'posva/vim-vue'
-Plug 'kaicataldo/material.vim'
+"Plug 'lifepillar/vim-solarized8'
+"Plug 'tyrannicaltoucan/vim-quantum'
+"Plug 'posva/vim-vue'
+"Plug 'kaicataldo/material.vim'
 Plug 'itchyny/vim-cursorword'
 Plug 'lfv89/vim-interestingwords'
 Plug 'zxqfl/tabnine-vim'
@@ -164,7 +181,12 @@ Plug 'w0rp/ale'
 Plug 'easymotion/vim-easymotion'
 Plug 'wincent/ferret'
 Plug 'mhinz/vim-grepper'
-Plug 'KabbAmine/zeavim.vim'
+"Plug 'KabbAmine/zeavim.vim'
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+Plug 'ap/vim-css-color'
+Plug 'SirVer/ultisnips'
+Plug 'mattn/emmet-vim'
+Plug 'joshdick/onedark.vim'
+
 
 call plug#end()
-
