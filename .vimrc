@@ -103,6 +103,11 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 
 "  ************************************************************************
+"  **----------------------- File Import --------------------------------**
+"  ************************************************************************
+
+let g:deoplete_strip_file_extension = 0
+"  ************************************************************************
 "  **------------------------- Theme ------------------------------------**
 "  ************************************************************************
 
@@ -195,6 +200,8 @@ Plug 'ap/vim-css-color'
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
 Plug 'joshdick/onedark.vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 
 
 call plug#end()
