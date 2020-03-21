@@ -28,6 +28,8 @@ set regexpengine=1
 
 
 let mapleader = ","
+noremap \ ,
+noremap <LEADER>; ; 
 let g:EasyMotion_leader_key = '<LEADER>'
 let g:user_emmet_leader_key=','
 let g:vim_json_syntax_conceal = 0
