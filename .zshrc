@@ -2,16 +2,13 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/wpdev/.oh-my-zsh"
-export EDITOR="/usr/local/bin/nvim"
+export ZSH="/home/shourov/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-# 10ms for key sequences
-KEYTIMEOUT=1
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -101,24 +98,20 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias gs='git status '
-alias ga='git add '
-alias gb='git branch '
-alias gc='git commit'
-alias gd='git diff'
-alias go='git checkout '
-alias eb='cd ~/Sites/blocks/wp-content/plugins/essential-blocks; pwd'
-alias tem='cd ~/Documents/templately-frontend; pwd'
-alias .='nvim .'
-alias t='tmux'
-alias n='nvim'
-alias python='python3'
-alias ^l="clear"
-alias -s txt=nvim
- 
+alias n="nvim" 
+alias .="nvim ."
+alias t="tmux"
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools#
+export VISUAL=vim
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+
+# key bindings
 bindkey '^o' autosuggest-accept
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="$PATH:/Users/wpdev/.composer/vendor/bin"
-fpath+=${ZDOTDIR:-~}/.zsh_functions

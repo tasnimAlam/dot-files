@@ -28,6 +28,8 @@ set regexpengine=1
 
 
 let mapleader = ","
+noremap \ ,
+noremap <LEADER>; ; 
 let g:EasyMotion_leader_key = '<LEADER>'
 let g:user_emmet_leader_key=','
 let g:vim_json_syntax_conceal = 0
@@ -95,7 +97,18 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 "autocmd BufNewFile,BufRead *.vue set ft=vue
 
 
+"  ************************************************************************
+"  **------------------------- Polygot ----------------------------------**
+"  ************************************************************************
 
+"let g:polyglot_disabled = ['graphql']         " Fix graphql error 
+
+
+"  ************************************************************************
+"  **----------------------- File Import --------------------------------**
+"  ************************************************************************
+
+let g:deoplete_strip_file_extension = 0
 "  ************************************************************************
 "  **------------------------- Theme ------------------------------------**
 "  ************************************************************************
@@ -144,10 +157,10 @@ autocmd FileType css set number
 autocmd FileType vue syntax sync fromstart
 
 
-"  ************************************************************************
-"  **------------------------- Plugins ----------------------------------**
-"  ************************************************************************
 
+"  ************************************************************************
+"  **------------------------- NerdTree ---------------------------------**
+"  ************************************************************************
 
 call plug#begin('~/.vim/plugged')
 
@@ -181,12 +194,16 @@ Plug 'w0rp/ale'
 Plug 'easymotion/vim-easymotion'
 Plug 'wincent/ferret'
 Plug 'mhinz/vim-grepper'
+Plug 'KabbAmine/zeavim.vim'
+Plug 'ap/vim-css-color'
 "Plug 'KabbAmine/zeavim.vim'
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 Plug 'ap/vim-css-color'
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim'
 Plug 'joshdick/onedark.vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 
 
 call plug#end()
