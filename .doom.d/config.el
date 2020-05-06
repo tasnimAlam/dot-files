@@ -3,6 +3,7 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
+
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Tasnim Alam"
@@ -30,14 +31,17 @@
 (setq-default evil-escape-key-sequence "kj")
 (setq avy-all-windows t)
 
-;; Tide config
-(after! js2-mode
-  (set-company-backend! 'js2-mode
-    '(company-files :with company-tide company-yasnippet)))
-(add-hook 'js2-mode-hook #'setup-tide-mode)
+;; Run js2 as minor mode
+(add-hook 'js-mode-hook 'js2-minor-mode)
+
+;; Company config
 (setq company-minimum-prefix-length 1
       company-idle-delay 0.0)
 
 ;; Prettier config
  (add-hook 'js2-mode-hook 'prettier-js-mode)
  (add-hook 'web-mode-hook 'prettier-js-mode)
+ (add-hook 'typescript-mode-hook 'prettier-js-mode)
+
+;; Easymotion config
+(map! :leader "a" #'evil-avy-goto-char-timer)
