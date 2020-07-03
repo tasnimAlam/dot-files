@@ -28,21 +28,35 @@ set modifiable
 
 let mapleader = ","
 noremap \ ,
-let g:EasyMotion_leader_key = '<LEADER>'
+"let g:EasyMotion_leader_key = '<Leader>'
+map <Leader> <Plug>(easymotion-prefix)
 let g:vim_json_conceal=0
 imap kj <ESC>
-imap <LEADER>p <C-r>0
+nmap <Leader>v :vs<CR>
+imap <Leader>p <C-r>0
 nnoremap <silent> <Space> :nohlsearch<CR> 
-nmap <LEADER>ne :NERDTreeToggle<CR>
+nmap <Leader>e :NERDTreeToggle<CR>
 map <C-S-i> :Prettier<CR>
 "map <C-p> :exec finddir(".git", ".") == '.git' ? ":GFiles" : ":Files"<CR>
 map <C-p> :Files<CR>
-nmap <LEADER>f <Plug>(FerretAckWord)
+map <Leader>, :Buffers<CR>
+nmap <Leader>f <Plug>(FerretAckWord)
 imap cll console.log()<Esc><S-f>(a
 vmap cll yocll<Esc>p
 nmap cll yiwocll<Esc>p
 
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
+autocmd FileType rust map <buffer> <Leader>r :RustRun<CR>
+autocmd FileType rust nmap <buffer> <Leader>p :RustFmt<CR>
+autocmd FileType javascript map <buffer> <Leader>r :!node %:p<CR>
+
+" Which key trigger
+"nnoremap <silent> <leader> :<c-u>WhichKey  ','<CR>
+"set timeoutlen=100
 
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
@@ -50,7 +64,7 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
-nmap <LEADER>gs :Gstatus<CR>
+nmap <LEADER>gg :Gstatus<CR>
 nmap <LEADER>ga :Git add -- .<CR>
 nmap <LEADER>gc :Gcommit<CR>
 nmap <LEADER>gl :0Glog --oneline<CR>
@@ -85,9 +99,6 @@ else
   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -109,12 +120,6 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -124,22 +129,6 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying codeAction to the current line.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Introduce function text object
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
 
 " Use <TAB> for selections ranges.
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
@@ -147,14 +136,6 @@ omap af <Plug>(coc-funcobj-a)
 nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
 
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
@@ -247,8 +228,8 @@ let g:indentLine_setColors = 100
 autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif""
 set completeopt-=preview
-map  <C-l> :tabn<CR>
-map  <C-h> :tabp<CR>
+" map  <M-l> :tabn<CR>
+" map  <M-h> :tabp<CR>
 
 autocmd FileType javascript set formatprg=prettier\ --stdin       " Set prettier for auto complete
 autocmd FileType javascript set number                            " Set line number on specific files only
@@ -276,6 +257,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 "Plug 'lifepillar/vim-solarized8'
@@ -284,7 +267,7 @@ Plug 'kaicataldo/material.vim'
 Plug 'itchyny/vim-cursorword'
 Plug 'lfv89/vim-interestingwords'
 "Plug 'zxqfl/tabnine-vim'
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 Plug 'easymotion/vim-easymotion'
 Plug 'wincent/ferret'
 Plug 'mhinz/vim-grepper'
@@ -299,5 +282,10 @@ Plug 'unblevable/quick-scope'
 "Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 "Plug 'junegunn/goyo.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'psliwka/vim-smoothie'
+"Plug 'psliwka/vim-smoothie'
+Plug 'junegunn/goyo.vim'
+"Plug 'ryanoasis/vim-devicons'
+"Plug 'liuchengxu/vim-which-key'
+"Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'rust-lang/rust.vim'
 call plug#end()
