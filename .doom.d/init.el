@@ -19,10 +19,10 @@
        ;;japanese
 
        :completion
-       company           ; the ultimate code completion backend
+       company         ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       ivy               ; a search engine for love and life
+       (ivy +fuzzy)               ; a search engine for love and life
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -32,7 +32,7 @@
        ;;fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
-       ;;indent-guides     ; highlighted indent columns
+       indent-guides     ; highlighted indent columns
        modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink the current line after jumping
        ;;neotree           ; a project drawer, like NERDTree for vim
@@ -46,13 +46,13 @@
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        window-select     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
-       ;;zen               ; distraction-free coding or writing
+       zen               ; distraction-free coding or writing
 
        :editor
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
-       ;;(format +onsave)  ; automated prettiness
+       ;; (format +onsave)  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim
        ;;multiple-cursors  ; editing in many places at once
@@ -85,13 +85,13 @@
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        ;;direnv
        ;;docker
-       ;;editorconfig      ; let someone else argue about tabs vs spaces
+       editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
        lookup              ; navigate your code and its documentation
-       ;;lsp
-       ;;macos             ; MacOS-specific commands
+       lsp
+       macos             ; MacOS-specific commands
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
@@ -126,7 +126,8 @@
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ;
        ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
-       javascript        ; all(hope(abandon(ye(who(enter(here))))))
+       ;; (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
+       javascript          ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        ;;latex             ; writing papers in Emacs has never been so fun
@@ -140,7 +141,7 @@
        ;;ocaml             ; an objective camel
        org               ; organize your plain life in plain text
        ;;perl              ; write code no one else can comprehend
-       php               ; perl's insecure younger brother
+       (php +lsp)               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
        ;;python            ; beautiful is better than ugly
@@ -149,27 +150,27 @@
        ;;rest              ; Emacs as a REST client
        ;;rst               ; ReST in peace
        ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
-       ;;scala             ; java, but good
-       ;;scheme            ; a fully conniving family of lisps
-       sh                ; she sells {ba,z,fi}sh shells on the C xor
-       ;;sml
-       ;;solidity          ; do you need a blockchain? No.
-       ;;swift             ; who asked for emoji variables?
-       ;;terra             ; Earth and Moon in alignment for performance.
-       web               ; the tubes
+       (rust +lsp)             ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+      ;;scala             ; java, but good
+      ;;scheme            ; a fully conniving family of lisps
+      sh                ; she sells {ba,z,fi}sh shells on the C xor
+      ;;sml
+      ;;solidity          ; do you need a blockchain? No.
+      ;;swift             ; who asked for emoji variables?
+      ;;terra             ; Earth and Moon in alignment for performance.
+      web               ; the tubes
 
-       :email
-       ;;(mu4e +gmail)
-       ;;notmuch
-       ;;(wanderlust +gmail)
+      :email
+      ;; (mu4e +gmail)
+      ;;notmuch
+      ;;(wanderlust +gmail)
 
-       :app
-       ;;calendar
-       ;;irc               ; how neckbeards socialize
-       ;;(rss +org)        ; emacs as an RSS reader
-       ;;twitter           ; twitter client https://twitter.com/vnought
+      :app
+      ;;calendar
+      ;;irc               ; how neckbeards socialize
+      ;;(rss +org)        ; emacs as an RSS reader
+      ;;twitter           ; twitter client https://twitter.com/vnought
 
-       :config
-       ;;literate
-       (default +bindings +smartparens))
+      :config
+      ;;literate
+      (default +bindings +smartparens))

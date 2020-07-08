@@ -46,3 +46,6 @@
 ;; our package manager can't deal with; see raxod502/straight.el#279)
 ;(package! builtin-package :recipe (:branch "develop"))
 (package! prettier-js)
+;;(package! company-tabnine)
+(package! exec-path-from-shell)
+(package! yaml-mode)
