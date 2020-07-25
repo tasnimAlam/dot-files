@@ -19,7 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Monaco" :size 16))
+(setq doom-font (font-spec :family "Fira Code" :size 16))
+;; (setq doom-font (font-spec :family "Monaco" :size 16))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -37,6 +38,8 @@
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
+(add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
+
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -58,10 +61,15 @@
 
 ;; Open in home directory
 (setq default-directory "~/")
-(setq blink-cursor-mode 0)
+;; (setq blink-cursor-mode 0)
 
 (custom-set-variables
- '(initial-frame-alist (quote ((fullscreen . maximized)))))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(initial-frame-alist '((fullscreen . maximized)))
+ '(package-selected-packages '(slack alert tide)))
 (setq-default evil-escape-key-sequence "kj")
 (setq avy-all-windows t)
 
@@ -72,7 +80,7 @@
 ;;       :n 'M-k' #'org-metaup))
 
 ;; aligns annotation to the right hand side
-(setq company-tooltip-align-annotations t)
+;; (setq company-tooltip-align-annotations t)
 
 ;; tabnine config
 ;; (setq +lsp-company-backend '(company-lsp :with company-tabnine :separate))
@@ -80,13 +88,11 @@
 ;;   (setq company-idle-delay 0
 ;;         company-show-numbers t))
 
-;; Run js2 as minor mode
-(add-hook 'js-mode-hook 'js2-minor-mode)
-
 ;; Prettier config
  (add-hook 'js2-mode-hook 'prettier-js-mode)
  (add-hook 'web-mode-hook 'prettier-js-mode)
  (add-hook 'typescript-mode-hook 'prettier-js-mode)
+ (add-hook 'json-mode-hook 'prettier-js-mode)
 
 ;; Easymotion config
 (map! :leader "a" #'evil-avy-goto-char-timer)
@@ -97,11 +103,30 @@
   (setq company-idle-delay 0)                         ; decrease delay before autocompletion popup shows
   (setq company-echo-delay 0)                          ; remove annoying blinking
   (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+  (setq company-tooltip-align-annotations t)
   (global-company-mode t))
 
-(setq-default typescript-indent-level 2)
+;; Typescript config
+(setq typescript-indent-level 2)
 
 ;; Config rust developement
 (setq rustic-lsp-server 'rust-analyzer)
 
-(setq-default flycheck-disabled-checkers '(css-stylelint))
+;; (setq-default flycheck-disabled-checkers '(css-stylelint))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+(setq evil-ex-search-case 'sensitive)
+
+;; Yarn config
+(map! :after js2-mode
+      :map js2-mode-map
+      :localleader
+      :prefix ("y" . "yarn")
+      "i" #'yarn-install)
+
+
