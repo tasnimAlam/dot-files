@@ -6,7 +6,7 @@ set shortmess+=c
 set signcolumn=yes          " Always show the signcolumn, otherwise it would shift the text each time
 set tabstop=2               " Set tab space
 set cursorline              " Highlight current line
-"set hlsearch                " Highlight searched pattern
+set hlsearch                " Highlight searched pattern
 set shiftwidth=2            " Set shift width
 set expandtab               " Insert space when tab is pressed
 set laststatus=2            " Always display status line
@@ -22,37 +22,70 @@ filetype plugin indent on   " Detect filetype that is edited, enable indent, plu
 set completeopt+=noinsert
 set regexpengine=1
 set modifiable
+set inccommand=nosplit
 
 
 "------------------------- Custom Keybindings -----------------------
 
 let mapleader = ","
 noremap \ ,
-"let g:EasyMotion_leader_key = '<Leader>'
 map <Leader> <Plug>(easymotion-prefix)
-let g:vim_json_conceal=0
-imap kj <ESC>
 nmap <Leader>v :vs<CR>
 imap <Leader>p <C-r>0
-nnoremap <silent> <Space> :nohlsearch<CR> 
-nmap <Leader>e :NERDTreeToggle<CR>
-map <C-S-i> :Prettier<CR>
-"map <C-p> :exec finddir(".git", ".") == '.git' ? ":GFiles" : ":Files"<CR>
-map <C-p> :Files<CR>
 map <Leader>, :Buffers<CR>
 nmap <Leader>f <Plug>(FerretAckWord)
+
+nmap <Leader>e :Fern . -drawer -toggle<CR>
+
+" Use git files inside git repo
+map <expr> <C-p> fugitive#head() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
+map <C-S-i> :Prettier<CR>
+nnoremap <silent> <Space> :nohlsearch<CR> 
 imap cll console.log()<Esc><S-f>(a
 vmap cll yocll<Esc>p
 nmap cll yiwocll<Esc>p
+imap kj <ESC>
 
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+let g:vim_json_conceal=0
+
+" Tab management
+map <leader>tn :tabnext<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove 
+
+" Save buffers
+nmap <Leader>w :w!<cr>
+nmap <Leader>bd :bd<CR>
+
+" Move between windows
+function! WinMove(key)
+    let t:curwin = winnr()
+    exec "wincmd ".a:key
+    if (t:curwin == winnr())
+        if (match(a:key,'[jk]'))
+            wincmd v
+        else
+            wincmd s
+        endif
+        exec "wincmd ".a:key
+    endif
+endfunction
+
+nnoremap <silent> <C-h> :call WinMove('h')<CR>
+nnoremap <silent> <C-j> :call WinMove('j')<CR>
+nnoremap <silent> <C-k> :call WinMove('k')<CR>
+nnoremap <silent> <C-l> :call WinMove('l')<CR>
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
 
 autocmd FileType rust map <buffer> <Leader>r :RustRun<CR>
 autocmd FileType rust nmap <buffer> <Leader>p :RustFmt<CR>
 autocmd FileType javascript map <buffer> <Leader>r :!node %:p<CR>
+
+let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
 
 " Which key trigger
 "nnoremap <silent> <leader> :<c-u>WhichKey  ','<CR>
@@ -68,7 +101,7 @@ nmap <LEADER>gg :Gstatus<CR>
 nmap <LEADER>ga :Git add -- .<CR>
 nmap <LEADER>gc :Gcommit<CR>
 nmap <LEADER>gl :0Glog --oneline<CR>
-nmap <LEADER>gp :Git push<CR>
+nmap <LEADER>pp :Gpush<CR>
 nmap <LEADER>gb :Git branch<CR>
 
 
@@ -196,20 +229,22 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 "  ------------------------- Theme ------------------------------------
 
-"set background=dark
+set background=dark
 "set background=light
 set termguicolors         " Enable true colors support
 
 "let ayucolor="light"     " for light version of theme
-let ayucolor="mirage"    " for mirage version of theme
+"let ayucolor="mirage"    " for mirage version of theme
 "let ayucolor="dark"      " for dark version of theme
 
 "let g:material_theme_style = 'lighter'
-colorscheme ayu
+"colorscheme ayu
 "colorscheme onedark
 "colorscheme PaperColor
 "colorscheme material
 "colorscheme solarized8
+let g:gruvbox_material_background = 'hard'
+colorscheme gruvbox-material
 
 
 "  ------------------------- Airline ----------------------------------
@@ -223,21 +258,6 @@ let g:indentLine_setColors = 100
 "let g:indentLine_color_term = 239
 
 
-"  ------------------------- NerdTree ---------------------------------
-
-autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif""
-set completeopt-=preview
-" map  <M-l> :tabn<CR>
-" map  <M-h> :tabp<CR>
-
-autocmd FileType javascript set formatprg=prettier\ --stdin       " Set prettier for auto complete
-autocmd FileType javascript set number                            " Set line number on specific files only
-autocmd FileType php set number
-autocmd FileType css set number
-"autocmd FileType vue syntax sync fromstart
-
-
 "  ------------------------- Plugins ----------------------------------
 
 
@@ -246,7 +266,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'prettier/vim-prettier'
 "Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'pangloss/vim-javascript'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -282,10 +302,13 @@ Plug 'unblevable/quick-scope'
 "Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 "Plug 'junegunn/goyo.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'psliwka/vim-smoothie'
 Plug 'junegunn/goyo.vim'
 "Plug 'ryanoasis/vim-devicons'
 "Plug 'liuchengxu/vim-which-key'
 "Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'rust-lang/rust.vim'
+Plug 'mcchrish/nnn.vim'
+Plug 'lambdalisue/fern.vim'
+" Plug 'justinmk/vim-dirvish'
+Plug 'sainnhe/gruvbox-material'
 call plug#end()
