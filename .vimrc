@@ -101,7 +101,7 @@ nmap <LEADER>gg :Gstatus<CR>
 nmap <LEADER>ga :Git add -- .<CR>
 nmap <LEADER>gc :Gcommit<CR>
 nmap <LEADER>gl :0Glog --oneline<CR>
-nmap <LEADER>pp :Gpush<CR>
+nnoremap <Leader>pp :Dispatch! git push<cr>
 nmap <LEADER>gb :Git branch<CR>
 
 
@@ -243,14 +243,14 @@ set termguicolors         " Enable true colors support
 "colorscheme PaperColor
 "colorscheme material
 "colorscheme solarized8
-let g:gruvbox_material_background = 'hard'
-colorscheme gruvbox-material
-
+"let g:gruvbox_material_background = 'hard'
+"colorscheme gruvbox-material
+colorscheme gruvbox
 
 "  ------------------------- Airline ----------------------------------
 
-"let g:airline_theme='material'
-let g:airline_theme='ayu_mirage'
+let g:airline_theme='gruvbox'
+" let g:airline_theme='ayu_mirage'
 let g:indentLine_char = '¦'
 let g:indentLine_first_char = '¦'
 let g:indentLine_showFirstIndentLevel = 1
@@ -279,6 +279,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-dispatch'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 "Plug 'lifepillar/vim-solarized8'
@@ -310,5 +311,9 @@ Plug 'rust-lang/rust.vim'
 Plug 'mcchrish/nnn.vim'
 Plug 'lambdalisue/fern.vim'
 " Plug 'justinmk/vim-dirvish'
-Plug 'sainnhe/gruvbox-material'
+"Plug 'sainnhe/gruvbox-material'
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 call plug#end()
