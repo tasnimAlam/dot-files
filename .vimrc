@@ -22,7 +22,10 @@ filetype plugin indent on   " Detect filetype that is edited, enable indent, plu
 set completeopt+=noinsert
 set regexpengine=1
 set modifiable
-set inccommand=nosplit
+if has("nvim")
+    set inccommand=nosplit
+endif
+set updatetime=100
 
 
 "------------------------- Custom Keybindings -----------------------
@@ -30,6 +33,7 @@ set inccommand=nosplit
 let mapleader = ","
 noremap \ ,
 map <Leader> <Plug>(easymotion-prefix)
+
 nmap <Leader>v :vs<CR>
 imap <Leader>p <C-r>0
 map <Leader>, :Buffers<CR>
@@ -76,21 +80,15 @@ nnoremap <silent> <C-h> :call WinMove('h')<CR>
 nnoremap <silent> <C-j> :call WinMove('j')<CR>
 nnoremap <silent> <C-k> :call WinMove('k')<CR>
 nnoremap <silent> <C-l> :call WinMove('l')<CR>
-" nnoremap <C-J> <C-W><C-J>
-" nnoremap <C-K> <C-W><C-K>
-" nnoremap <C-L> <C-W><C-L>
-" nnoremap <C-H> <C-W><C-H>
 
 autocmd FileType rust map <buffer> <Leader>r :RustRun<CR>
 autocmd FileType rust nmap <buffer> <Leader>p :RustFmt<CR>
-autocmd FileType javascript map <buffer> <Leader>r :!node %:p<CR>
 
 let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
 
-" Which key trigger
-"nnoremap <silent> <leader> :<c-u>WhichKey  ','<CR>
-"set timeoutlen=100
-
+" Fzf config
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8}}
+let $FZF_DEFAULT_OPTS='--reverse'
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 " Fugitive Conflict Resolution
@@ -99,10 +97,12 @@ nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
 nmap <LEADER>gg :Gstatus<CR>
 nmap <LEADER>ga :Git add -- .<CR>
-nmap <LEADER>gc :Gcommit<CR>
+nmap <LEADER>gc :Commits<CR>
 nmap <LEADER>gl :0Glog --oneline<CR>
 nnoremap <Leader>pp :Dispatch! git push<cr>
 nmap <LEADER>gb :Git branch<CR>
+nmap <LEADER>gf :GitGutterFold<CR>
+nmap <LEADER>/ :BLines<CR>
 
 
 
@@ -238,13 +238,6 @@ set termguicolors         " Enable true colors support
 "let ayucolor="dark"      " for dark version of theme
 
 "let g:material_theme_style = 'lighter'
-"colorscheme ayu
-"colorscheme onedark
-"colorscheme PaperColor
-"colorscheme material
-"colorscheme solarized8
-"let g:gruvbox_material_background = 'hard'
-"colorscheme gruvbox-material
 colorscheme gruvbox
 
 "  ------------------------- Airline ----------------------------------
@@ -255,7 +248,6 @@ let g:indentLine_char = '¦'
 let g:indentLine_first_char = '¦'
 let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_setColors = 100
-"let g:indentLine_color_term = 239
 
 
 "  ------------------------- Plugins ----------------------------------
@@ -264,9 +256,7 @@ let g:indentLine_setColors = 100
 call plug#begin('~/.vim/plugged')
 
 Plug 'prettier/vim-prettier'
-"Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
-" Plug 'scrooloose/nerdtree'
 Plug 'pangloss/vim-javascript'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -282,38 +272,23 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-dispatch'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
-"Plug 'lifepillar/vim-solarized8'
-"Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'kaicataldo/material.vim'
 Plug 'itchyny/vim-cursorword'
 Plug 'lfv89/vim-interestingwords'
-"Plug 'zxqfl/tabnine-vim'
-"Plug 'w0rp/ale'
 Plug 'easymotion/vim-easymotion'
 Plug 'wincent/ferret'
 Plug 'mhinz/vim-grepper'
-"Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-"Plug 'ap/vim-css-color'
-"Plug 'SirVer/ultisnips'
-"Plug 'joshdick/onedark.vim'
 Plug 'mattn/emmet-vim'
-"Plug 'ludovicchabant/vim-gutentags'
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 Plug 'unblevable/quick-scope'  
-"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-"Plug 'junegunn/goyo.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/goyo.vim'
-"Plug 'ryanoasis/vim-devicons'
-"Plug 'liuchengxu/vim-which-key'
-"Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'rust-lang/rust.vim'
 Plug 'mcchrish/nnn.vim'
 Plug 'lambdalisue/fern.vim'
-" Plug 'justinmk/vim-dirvish'
-"Plug 'sainnhe/gruvbox-material'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'justinmk/vim-sneak'
 
 call plug#end()
