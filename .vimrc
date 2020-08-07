@@ -34,13 +34,12 @@ let mapleader = ","
 noremap \ ,
 map <Leader> <Plug>(easymotion-prefix)
 
-nmap <Leader>v :vs<CR>
 imap <Leader>p <C-r>0
 map <Leader>, :Buffers<CR>
 nmap <Leader>f <Plug>(FerretAckWord)
 
 nmap <Leader>e :Fern . -drawer -toggle<CR>
-
+nnoremap <Leader>vr :source $MYVIMRC<CR>
 " Use git files inside git repo
 map <expr> <C-p> fugitive#head() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
 map <C-S-i> :Prettier<CR>
@@ -104,6 +103,8 @@ nmap <LEADER>gb :Git branch<CR>
 nmap <LEADER>gf :GitGutterFold<CR>
 nmap <LEADER>/ :BLines<CR>
 
+nmap <Leader>ct :ContextToggle<CR>
+let g:context_enabled = 0
 
 
 
@@ -290,5 +291,6 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'justinmk/vim-sneak'
+Plug 'wellle/context.vim'
 
 call plug#end()
