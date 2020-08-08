@@ -25,7 +25,6 @@ set modifiable
 if has("nvim")
     set inccommand=nosplit
 endif
-set updatetime=100
 
 
 "------------------------- Custom Keybindings -----------------------
@@ -90,6 +89,7 @@ let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8}}
 let $FZF_DEFAULT_OPTS='--reverse'
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
+
 " Fugitive Conflict Resolution
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap gdh :diffget //2<CR>
@@ -102,6 +102,7 @@ nnoremap <Leader>pp :Dispatch! git push<cr>
 nmap <LEADER>gb :Git branch<CR>
 nmap <LEADER>gf :GitGutterFold<CR>
 nmap <LEADER>/ :BLines<CR>
+nmap <Leader>y :Clap yanks<CR>
 
 nmap <Leader>ct :ContextToggle<CR>
 let g:context_enabled = 0
@@ -193,19 +194,6 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-
-
-"  --------------------------- Ale ------------------------------------
-
-let g:ale_completion_enabled = 1
-let g:ale_fixers = ['prettier', 'eslint']         " Fix files with prettier, and then ESLint.
-let g:ale_fix_on_save = 0
-let b:ale_linter_aliases = ['javascript', 'vue']  " Run both javascript and vue linters for vue files.
-let b:ale_linters = ['eslint', 'vls']             " Select the eslint and vls linters.
-let g:ale_sign_column_always = 1
-let g:airline#extensions#ale#enabled = 1
-
 
 
 "  ------------------------- Prettier ---------------------------------
