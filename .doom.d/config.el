@@ -25,8 +25,9 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-one)
 ;; (setq doom-theme 'doom-one-light)
+(setq doom-theme 'doom-gruvbox)
 
 (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
   (doom-themes-treemacs-config)
@@ -107,7 +108,7 @@
   (global-company-mode t))
 
 ;; Typescript config
-(setq typescript-indent-level 2)
+;; (setq typescript-indent-level 2)
 
 ;; Config rust developement
 (setq rustic-lsp-server 'rust-analyzer)
@@ -128,5 +129,4 @@
       :localleader
       :prefix ("y" . "yarn")
       "i" #'yarn-install)
-
 
