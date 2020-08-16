@@ -32,13 +32,12 @@ endif
 let mapleader = ","
 noremap \ ,
 map <Leader> <Plug>(easymotion-prefix)
-
 imap <Leader>p <C-r>0
 map <Leader>, :Buffers<CR>
 nmap <Leader>f <Plug>(FerretAckWord)
-
 nmap <Leader>e :Fern . -drawer -toggle<CR>
 nnoremap <Leader>vr :source $MYVIMRC<CR>
+
 " Use git files inside git repo
 map <expr> <C-p> fugitive#head() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
 map <C-S-i> :Prettier<CR>
@@ -48,7 +47,10 @@ vmap cll yocll<Esc>p
 nmap cll yiwocll<Esc>p
 imap kj <ESC>
 
+
+let g:move_key_modifier = 'A'
 let g:vim_json_conceal=0
+let g:Hexokinase_highlighters = ['foregroundfull']
 
 " Tab management
 map <leader>tn :tabnext<cr>
@@ -102,7 +104,6 @@ nnoremap <Leader>pp :Dispatch! git push<cr>
 nmap <LEADER>gb :Git branch<CR>
 nmap <LEADER>gf :GitGutterFold<CR>
 nmap <LEADER>/ :BLines<CR>
-nmap <Leader>y :Clap yanks<CR>
 
 nmap <Leader>ct :ContextToggle<CR>
 let g:context_enabled = 0
@@ -271,7 +272,6 @@ Plug 'mattn/emmet-vim'
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 Plug 'unblevable/quick-scope'  
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'junegunn/goyo.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'mcchrish/nnn.vim'
 Plug 'lambdalisue/fern.vim'
@@ -280,5 +280,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'justinmk/vim-sneak'
 Plug 'wellle/context.vim'
+Plug 'matze/vim-move'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 call plug#end()
