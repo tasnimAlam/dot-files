@@ -2,13 +2,16 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/shourov/.oh-my-zsh"
+export ZSH="/Users/wpdev/.oh-my-zsh"
+export EDITOR="/usr/local/bin/nvim"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
+# 10ms for key sequences
+KEYTIMEOUT=1
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -66,6 +69,7 @@ plugins=(
   git
   git-open
   zsh-autosuggestions
+  yarn
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -98,20 +102,44 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias n="nvim" 
-alias .="nvim ."
-alias t="tmux"
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools#
-export VISUAL=vim
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-
-# key bindings
+alias gs='git status '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias go='git checkout '
+alias eb='cd ~/Sites/blocks/wp-content/plugins/essential-blocks; pwd'
+alias pl='cd ~/Sites/wp/wp-content/plugins;pwd'
+alias tem='cd ~/Documents/templately-frontend; pwd'
+alias .='nvim .'
+alias t='tmux'
+alias n='nvim'
+alias nn='nnn'
+alias python='python3'
+alias ^l="clear"
+alias -s txt=nvim
+alias vr="source ~/.vimrc"
+alias dot="cd ~/Documents/dot-files;pwd"
+alias cat="bat"
+alias ll="exa"
+ 
 bindkey '^o' autosuggest-accept
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="$PATH:/Users/wpdev/.composer/vendor/bin"
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.emacs.d/bin:$PATH"
+
+# nnn config
+export NNN_PLUG='f:fzopen;u:getplugs;t:preview_tui;v:_viu $nnn;'
+export NNN_BMS='d:~/Documents;h:~/;D:~/Downloads/;e:~/Sites/blocks/wp-content/plugins/essential-blocks;p:~/Sites/wp/wp-content/plugins/;t:~/Documents/templately-frontend/;s:~/Documents/svn-repo/rating-block/;'
+export NNN_COLORS="2136"
+export NNN_FIFO="/tmp/nnn.fifo"
+export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
+
+export PATH="/usr/local/sbin:$PATH"
+export PATH="$PATH:node_modules/.bin"
+eval "$(zoxide init zsh)"
