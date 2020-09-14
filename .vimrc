@@ -46,6 +46,8 @@ imap cll console.log()<Esc><S-f>(a
 vmap cll yocll<Esc>p
 nmap cll yiwocll<Esc>p
 imap kj <ESC>
+nmap <Leader>w :w<CR>
+nmap <Leader>q :q!<CR>
 
 
 let g:move_key_modifier = 'A'
@@ -107,7 +109,6 @@ nmap <LEADER>/ :BLines<CR>
 
 nmap <Leader>ct :ContextToggle<CR>
 let g:context_enabled = 0
-
 
 
 " ---------------------- CoC ----------------------------
@@ -282,5 +283,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'wellle/context.vim'
 Plug 'matze/vim-move'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'stsewd/fzf-checkout.vim'
+
 
 call plug#end()
