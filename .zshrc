@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/wpdev/.oh-my-zsh"
+export ZSH="/home/shourov/.oh-my-zsh"
 export EDITOR="/usr/local/bin/nvim"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -142,4 +142,3 @@ export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$PATH:node_modules/.bin"
-eval "$(zoxide init zsh)"
