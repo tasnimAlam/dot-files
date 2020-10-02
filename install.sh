@@ -68,3 +68,5 @@ if [ "$response" = "y" ]; then
     fi
     echo "copied doom config"
 fi
+
+rm -rf $HOME/.my-dotfiles
