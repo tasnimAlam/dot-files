@@ -1,6 +1,10 @@
 REPO="https://github.com/tasnimAlam/dot-files"
 DOTDIR=$HOME/.my-dotfiles/
 
+if [ -d $HOME/.my-dotfiles ]; then
+   rm -r $HOME/.my-dotfiles/
+fi
+
 git clone $REPO $DOTDIR
 
 cd $DOTDIR
