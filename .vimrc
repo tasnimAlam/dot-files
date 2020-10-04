@@ -86,13 +86,12 @@ nnoremap <silent> <C-l> :call WinMove('l')<CR>
 autocmd FileType rust map <buffer> <Leader>r :RustRun<CR>
 autocmd FileType rust nmap <buffer> <Leader>p :RustFmt<CR>
 
-let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
+let g:nnn#layout = { 'window': {'xoffset': 0.9, 'width': 0.4, 'height': 0.8, 'highlight': 'Debug' } }
 
 " Fzf config
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8}}
 let $FZF_DEFAULT_OPTS='--reverse'
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
-
 
 " Fugitive Conflict Resolution
 nnoremap <leader>gd :Gvdiff<CR>
