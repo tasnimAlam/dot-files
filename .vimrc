@@ -86,7 +86,7 @@ nnoremap <silent> <C-l> :call WinMove('l')<CR>
 autocmd FileType rust map <buffer> <Leader>r :RustRun<CR>
 autocmd FileType rust nmap <buffer> <Leader>p :RustFmt<CR>
 
-let g:nnn#layout = { 'window': {'xoffset': 0.9, 'width': 0.4, 'height': 0.8, 'highlight': 'Debug' } }
+let g:nnn#layout = { 'window': {'width': 0.8, 'height': 0.8, 'highlight': 'Debug' } }
 
 " Fzf config
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8}}
@@ -108,6 +108,18 @@ nmap <LEADER>/ :BLines<CR>
 
 nmap <Leader>ct :ContextToggle<CR>
 let g:context_enabled = 0
+
+" Fern config
+function! s:init_fern() abort
+  nnoremap <buffer> <C-h> <C-w>h
+  nnoremap <buffer> <C-l> <C-w>l
+endfunction
+
+augroup fern-custom
+  autocmd! *
+  autocmd FileType fern call s:init_fern()
+augroup END
+
 
 
 " ---------------------- CoC ----------------------------
