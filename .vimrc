@@ -100,7 +100,7 @@ nnoremap gdl :diffget //3<CR>
 nmap <LEADER>gg :Gstatus<CR>
 nmap <LEADER>ga :Git add -- .<CR>
 nmap <LEADER>gc :Commits<CR>
-nmap <LEADER>gl :0Glog --oneline<CR>
+nmap <LEADER>bc :BCommits<CR>
 nnoremap <Leader>pp :Dispatch! git push<cr>
 nmap <LEADER>gb :Git branch<CR>
 nmap <LEADER>gf :GitGutterFold<CR>
@@ -287,6 +287,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rust-lang/rust.vim'
 Plug 'mcchrish/nnn.vim'
 Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern-git-status.vim'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -295,6 +296,7 @@ Plug 'wellle/context.vim'
 Plug 'matze/vim-move'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'stsewd/fzf-checkout.vim'
+Plug 'AndrewRadev/splitjoin.vim'
 
 
 call plug#end()
