@@ -9,6 +9,15 @@ else
     echo "deleted $HOME/.zshrc"
 fi
 
+# remove or restore tmux
+if [ -f $HOME/.tmux.conf-backup ]; then
+    mv $HOME/.tmux.conf-backup $HOME/.tmux.conf
+    echo "restored $HOME/.tmux.conf"
+else
+    rm $HOME/.zshrc-test
+    echo "deleted $HOME/.zshrc"
+fi
+
 
 # remove or restore vimrc
 if [ -f $HOME/.vimrc-backup ]; then

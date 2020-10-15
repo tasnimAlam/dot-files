@@ -45,6 +45,20 @@ if [ "$response" = "y" ]; then
     echo "copied vimrc"
 fi
 
+# tmux file
+echo  "Install tmux file ? ( y / n )"
+read -r response
+
+if [ "$response" = "y" ]; then
+    if [ -f $HOME/.tmux.conf ]; then
+        mv $HOME/.tmux.conf $HOME/.tmux.conf-backup
+        cp .tmux.conf $HOME/.tmux.conf
+    else
+        cp .tmux.conf $HOME/.tmux.conf
+    fi
+    echo "copied tmux config"
+fi
+
 # kitty config
 echo  "Install kitty config ? ( y / n )"
 read -r response
