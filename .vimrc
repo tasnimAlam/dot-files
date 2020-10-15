@@ -13,7 +13,11 @@ set laststatus=2            " Always display status line
 set noswapfile              " Do not create swap file
 set noshowmode              " Hide '-- INSERT --' from status line
 set encoding=utf-8          " Set file encoding
-set clipboard=unnamedplus   " Access system clipboard
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed     "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
 set number                  " Display line number
 set relativenumber          " Display relative line number
 set rtp+=~/.fzf             " Set Fuzzy Finder
@@ -124,7 +128,6 @@ augroup END
 
 " ---------------------- CoC ----------------------------
 " Use tab for trigger completion with characters ahead and navigate.
-
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
