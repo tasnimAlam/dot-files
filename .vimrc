@@ -300,6 +300,7 @@ Plug 'matze/vim-move'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'tommcdo/vim-exchange'
 
 
 call plug#end()
