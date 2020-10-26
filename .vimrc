@@ -101,14 +101,14 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
-nmap <LEADER>gg :Gstatus<CR>
-nmap <LEADER>ga :Git add -- .<CR>
-nmap <LEADER>gc :Commits<CR>
-nmap <LEADER>bc :BCommits<CR>
+nmap <Leader>gg :Gstatus<CR>
+nmap <Leader>ga :Git add -- .<CR>
+nmap <Leader>gc :Commits<CR>
+nmap <Leader>bc :BCommits<CR>
 nnoremap <Leader>pp :Dispatch! git push<cr>
-nmap <LEADER>gb :Git branch<CR>
-nmap <LEADER>gf :GitGutterFold<CR>
-nmap <LEADER>/ :BLines<CR>
+nmap <Leader>gb :Git branch<CR>
+nmap <Leader>gf :GitGutterFold<CR>
+nmap <Leader>/ :BLines<CR>
 
 nmap <Leader>ct :ContextToggle<CR>
 let g:context_enabled = 0
