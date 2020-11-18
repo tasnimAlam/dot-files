@@ -13,6 +13,9 @@ set laststatus=2            " Always display status line
 set noswapfile              " Do not create swap file
 set noshowmode              " Hide '-- INSERT --' from status line
 set encoding=utf-8          " Set file encoding
+set foldmethod=syntax
+set foldlevel=20
+set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
 if system('uname -s') == "Darwin\n"
   set clipboard=unnamed     "OSX
 else
@@ -26,6 +29,7 @@ filetype plugin indent on   " Detect filetype that is edited, enable indent, plu
 set completeopt+=noinsert
 set regexpengine=1
 set modifiable
+set timeoutlen=500          " Set timeout length to 500 ms
 if has("nvim")
     set inccommand=nosplit
 endif
@@ -41,6 +45,7 @@ map <Leader>, :Buffers<CR>
 nmap <Leader>f <Plug>(FerretAckWord)
 nmap <Leader>e :Fern . -drawer -toggle<CR>
 nnoremap <Leader>vr :source $MYVIMRC<CR>
+nmap <Leader>o :on<CR>
 
 " Use git files inside git repo
 map <expr> <C-p> fugitive#head() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
