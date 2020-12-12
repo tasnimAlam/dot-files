@@ -1,6 +1,4 @@
 ### Prerequisites
-
-Install the following packages
 - git
 
 ### Installation
