@@ -7,8 +7,8 @@ super + Return
 	kitty
 
 # program launcher
-super + @space
-	dmenu_run
+super + @space 
+  dmenu_run
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -119,3 +119,4 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+ 
