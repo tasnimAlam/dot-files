@@ -46,6 +46,12 @@ nmap <Leader>f <Plug>(FerretAckWord)
 nmap <Leader>e :Fern . -drawer -toggle<CR>
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 nmap <Leader>o :on<CR>
+imap <C-Return> <CR><CR><C-o>k<Tab>
+nmap <buffer> X <Plug>(fern-action-remove)  
+
+" let g:better_escape_interval = 200
+let g:better_escape_shortcut = 'kj'
+
 
 " Use git files inside git repo
 map <expr> <C-p> fugitive#head() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
@@ -54,7 +60,7 @@ nnoremap <silent> <Space> :nohlsearch<CR>
 imap cll console.log()<Esc><S-f>(a
 vmap cll yocll<Esc>p
 nmap cll yiwocll<Esc>p
-imap kj <ESC>
+" imap kj <ESC>
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q!<CR>
 
@@ -95,10 +101,10 @@ nnoremap <silent> <C-l> :call WinMove('l')<CR>
 autocmd FileType rust map <buffer> <Leader>r :RustRun<CR>
 autocmd FileType rust nmap <buffer> <Leader>p :RustFmt<CR>
 
-let g:nnn#layout = { 'window': {'width': 0.8, 'height': 0.8, 'highlight': 'Debug' } }
+let g:nnn#layout = { 'window': {'width': 0.9, 'height': 0.9, 'highlight': 'Debug' } }
 
 " Fzf config
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8}}
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9}}
 let $FZF_DEFAULT_OPTS='--reverse'
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
@@ -106,14 +112,14 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
-nmap <Leader>gg :Gstatus<CR>
-nmap <Leader>ga :Git add -- .<CR>
-nmap <Leader>gc :Commits<CR>
-nmap <Leader>bc :BCommits<CR>
+nmap <LEADER>gg :Gstatus<CR>
+nmap <LEADER>ga :Git add -- .<CR>
+nmap <LEADER>gc :Commits<CR>
+nmap <LEADER>bc :BCommits<CR>
 nnoremap <Leader>pp :Dispatch! git push<cr>
-nmap <Leader>gb :Git branch<CR>
-nmap <Leader>gf :GitGutterFold<CR>
-nmap <Leader>/ :BLines<CR>
+nmap <LEADER>gb :Git branch<CR>
+nmap <LEADER>gf :GitGutterFold<CR>
+nmap <LEADER>/ :BLines<CR>
 
 nmap <Leader>ct :ContextToggle<CR>
 let g:context_enabled = 0
@@ -129,6 +135,31 @@ augroup fern-custom
   autocmd FileType fern call s:init_fern()
 augroup END
 
+" Fold config
+nnoremap <silent> <leader>zj :<c-u>call RepeatCmd('call NextClosedFold("j")')<cr>
+nnoremap <silent> <leader>zk :<c-u>call RepeatCmd('call NextClosedFold("k")')<cr>
+
+function! NextClosedFold(dir)
+    let cmd = 'norm!z' . a:dir
+    let view = winsaveview()
+    let [l0, l, open] = [0, view.lnum, 1]
+    while l != l0 && open
+        exe cmd
+        let [l0, l] = [l, line('.')]
+        let open = foldclosed(l) < 0
+    endwhile
+    if open
+        call winrestview(view)
+    endif
+endfunction
+
+function! RepeatCmd(cmd) range abort
+    let n = v:count < 1 ? 1 : v:count
+    while n > 0
+        exe a:cmd
+        let n -= 1
+    endwhile
+endfunction
 
 
 " ---------------------- CoC ----------------------------
@@ -305,6 +336,8 @@ Plug 'matze/vim-move'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'tommcdo/vim-exchange'
+Plug 'jdhao/better-escape.vim'
 
 
 call plug#end()
