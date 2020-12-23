@@ -29,17 +29,18 @@ filetype plugin indent on   " Detect filetype that is edited, enable indent, plu
 set completeopt+=noinsert
 set regexpengine=1
 set modifiable
-set timeoutlen=500          " Set timeout length to 500 ms
+"set timeoutlen=200          " Set timeout length to 200 ms
 if has("nvim")
     set inccommand=nosplit
 endif
+set notimeout
+set ttimeout
 
 
 "------------------------- Custom Keybindings -----------------------
 
 let mapleader = ","
 noremap \ ,
-map <Leader> <Plug>(easymotion-prefix)
 imap <Leader>p <C-r>0
 map <Leader>, :Buffers<CR>
 nmap <Leader>f <Plug>(FerretAckWord)
@@ -48,6 +49,11 @@ nnoremap <Leader>vr :source $MYVIMRC<CR>
 nmap <Leader>o :on<CR>
 imap <C-Return> <CR><CR><C-o>k<Tab>
 nmap <buffer> X <Plug>(fern-action-remove)  
+
+" Easymotion config
+map <Leader> <Plug>(easymotion-prefix)
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
 
 " let g:better_escape_interval = 200
 let g:better_escape_shortcut = 'kj'
