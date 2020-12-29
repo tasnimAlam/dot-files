@@ -67,8 +67,6 @@ KEYTIMEOUT=1
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  git-open
-  zsh-autosuggestions
   yarn
 )
 
@@ -108,7 +106,8 @@ alias gb='git branch '
 alias gc='git commit'
 alias gd='git diff'
 alias go='git checkout '
-alias eb='cd ~/Sites/blocks/wp-content/plugins/essential-blocks; pwd'
+# alias eb='cd ~/Sites/blocks/wp-content/plugins/essential-blocks; pwd'
+alias eb='cd /srv/http/wp/wp-content/plugins/essential-blocks; pwd'
 alias pl='cd ~/Sites/wp/wp-content/plugins;pwd'
 alias tem='cd ~/Documents/templately-frontend; pwd'
 alias .='nvim .'
@@ -122,6 +121,9 @@ alias vr="source ~/.vimrc"
 alias dot="cd ~/Documents/dot-files;pwd"
 alias cat="bat"
 alias ll="exa"
+alias bs="nvim .config/bspwm/bspwmrc"
+alias pl="nvim .config/polybar/config"
+alias kb="nvim .config/sxhkd/sxhkdrc"
  
 bindkey '^o' autosuggest-accept
 
@@ -142,3 +144,8 @@ export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$PATH:node_modules/.bin"
+
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+export PAGER=most
