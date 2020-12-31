@@ -42,35 +42,29 @@ set ttimeout
 let mapleader = ","
 noremap \ ,
 imap <Leader>p <C-r>0
-map <Leader>, :Buffers<CR>
 nmap <Leader>f <Plug>(FerretAckWord)
-nmap <Leader>e :Fern . -drawer -toggle<CR>
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 nmap <Leader>o :on<CR>
-imap <C-Return> <CR><CR><C-o>k<Tab>
-nmap <buffer> X <Plug>(fern-action-remove)  
+nmap <Leader>w :w<CR>
+nmap <Leader>q :q!<CR>
+
 
 " Easymotion config
 map <Leader> <Plug>(easymotion-prefix)
-map <Leader>L <Plug>(easymotion-bd-jk)
 nmap <Leader>L <Plug>(easymotion-overwin-line)
-
-" let g:better_escape_interval = 200
-let g:better_escape_shortcut = 'kj'
 
 
 " Use git files inside git repo
 map <expr> <C-p> fugitive#head() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
 map <C-S-i> :Prettier<CR>
 nnoremap <silent> <Space> :nohlsearch<CR> 
+
+" console log shortcut
 imap cll console.log()<Esc><S-f>(a
 vmap cll yocll<Esc>p
 nmap cll yiwocll<Esc>p
-" imap kj <ESC>
-nmap <Leader>w :w<CR>
-nmap <Leader>q :q!<CR>
 
-
+let g:better_escape_shortcut = 'kj'
 let g:move_key_modifier = 'A'
 let g:vim_json_conceal=0
 let g:Hexokinase_highlighters = ['foregroundfull']
@@ -81,7 +75,8 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
 
-" Save buffers
+" Manage buffers
+map <Leader>, :Buffers<CR>
 nmap <Leader>w :w!<cr>
 nmap <Leader>bd :bd<CR>
 
@@ -118,19 +113,21 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
-nmap <LEADER>gg :Gstatus<CR>
-nmap <LEADER>ga :Git add -- .<CR>
-nmap <LEADER>gc :Commits<CR>
-nmap <LEADER>bc :BCommits<CR>
+nmap <Leader>gg :Gstatus<CR>
+nmap <Leader>ga :Git add -- .<CR>
+nmap <Leader>gc :Commits<CR>
+nmap <Leader>bc :BCommits<CR>
 nnoremap <Leader>pp :Dispatch! git push<cr>
-nmap <LEADER>gb :Git branch<CR>
-nmap <LEADER>gf :GitGutterFold<CR>
-nmap <LEADER>/ :BLines<CR>
+nmap <Leader>gb :Git branch<CR>
+nmap <Leader>gf :GitGutterFold<CR>
+nmap <Leader>/ :BLines<CR>
 
 nmap <Leader>ct :ContextToggle<CR>
 let g:context_enabled = 0
 
 " Fern config
+nmap <Leader>e :Fern . -drawer -toggle<CR>
+nmap <buffer> X <Plug>(fern-action-remove)  
 function! s:init_fern() abort
   nnoremap <buffer> <C-h> <C-w>h
   nnoremap <buffer> <C-l> <C-w>l
@@ -277,14 +274,8 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 "  ------------------------- Theme ------------------------------------
 
 set background=dark
-"set background=light
 set termguicolors         " Enable true colors support
-
-"let ayucolor="light"     " for light version of theme
 "let ayucolor="mirage"    " for mirage version of theme
-"let ayucolor="dark"      " for dark version of theme
-
-"let g:material_theme_style = 'lighter'
 colorscheme gruvbox
 
 "  ------------------------- Airline ----------------------------------
@@ -340,7 +331,6 @@ Plug 'justinmk/vim-sneak'
 Plug 'wellle/context.vim'
 Plug 'matze/vim-move'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-Plug 'stsewd/fzf-checkout.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'jdhao/better-escape.vim'
