@@ -9,7 +9,7 @@ super + Return
 # program launcher
 super + @space 
   rofi -show drun -show-icons
- 
+  
 # open browser
 super + b
   chromium
