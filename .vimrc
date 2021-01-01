@@ -53,6 +53,8 @@ nmap <Leader>q :q!<CR>
 map <Leader> <Plug>(easymotion-prefix)
 nmap <Leader>L <Plug>(easymotion-overwin-line)
 
+" Undo config
+nnoremap <Leader>u :UndotreeToggle<CR>
 
 " Use git files inside git repo
 map <expr> <C-p> fugitive#head() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
@@ -310,7 +312,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-dispatch'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
-Plug 'kaicataldo/material.vim'
+" Plug 'kaicataldo/material.vim'
 Plug 'itchyny/vim-cursorword'
 Plug 'lfv89/vim-interestingwords'
 Plug 'easymotion/vim-easymotion'
@@ -320,7 +322,7 @@ Plug 'mattn/emmet-vim'
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 Plug 'unblevable/quick-scope'  
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'rust-lang/rust.vim'
+" Plug 'rust-lang/rust.vim'
 Plug 'mcchrish/nnn.vim'
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-git-status.vim'
@@ -328,12 +330,12 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'justinmk/vim-sneak'
-Plug 'wellle/context.vim'
+" Plug 'wellle/context.vim'
 Plug 'matze/vim-move'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'jdhao/better-escape.vim'
-
+Plug 'mbbill/undotree'
 
 call plug#end()
