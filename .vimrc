@@ -53,8 +53,6 @@ nmap <Leader>q :q!<CR>
 map <Leader> <Plug>(easymotion-prefix)
 nmap <Leader>L <Plug>(easymotion-overwin-line)
 
-" Undo config
-nnoremap <Leader>u :UndotreeToggle<CR>
 
 " Use git files inside git repo
 map <expr> <C-p> fugitive#head() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
@@ -104,10 +102,10 @@ nnoremap <silent> <C-l> :call WinMove('l')<CR>
 autocmd FileType rust map <buffer> <Leader>r :RustRun<CR>
 autocmd FileType rust nmap <buffer> <Leader>p :RustFmt<CR>
 
-let g:nnn#layout = { 'window': {'width': 0.9, 'height': 0.9, 'highlight': 'Debug' } }
+let g:nnn#layout = { 'window': {'width': 1, 'height': 1, 'highlight': 'Debug' } }
 
 " Fzf config
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9}}
+let g:fzf_layout = { 'window': { 'width': 1, 'height': 1}}
 let $FZF_DEFAULT_OPTS='--reverse'
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
@@ -117,7 +115,8 @@ nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
 nmap <Leader>gg :Gstatus<CR>
 nmap <Leader>ga :Git add -- .<CR>
-nmap <Leader>gc :Commits<CR>
+" nmap <Leader>gc :Commits<CR>
+nmap <Leader>gc :GV<CR>
 nmap <Leader>bc :BCommits<CR>
 nnoremap <Leader>pp :Dispatch! git push<cr>
 nmap <Leader>gb :Git branch<CR>
@@ -303,6 +302,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'Yggdroot/indentLine'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/gv.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -312,7 +312,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-dispatch'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
-" Plug 'kaicataldo/material.vim'
+Plug 'kaicataldo/material.vim'
 Plug 'itchyny/vim-cursorword'
 Plug 'lfv89/vim-interestingwords'
 Plug 'easymotion/vim-easymotion'
@@ -322,20 +322,19 @@ Plug 'mattn/emmet-vim'
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 Plug 'unblevable/quick-scope'  
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 Plug 'mcchrish/nnn.vim'
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'justinmk/vim-sneak'
-" Plug 'wellle/context.vim'
+Plug 'wellle/context.vim'
 Plug 'matze/vim-move'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'jdhao/better-escape.vim'
-Plug 'mbbill/undotree'
+
 
 call plug#end()
