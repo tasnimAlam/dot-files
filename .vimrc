@@ -29,12 +29,13 @@ filetype plugin indent on   " Detect filetype that is edited, enable indent, plu
 set completeopt+=noinsert
 set regexpengine=1
 set modifiable
-"set timeoutlen=200          " Set timeout length to 200 ms
 if has("nvim")
     set inccommand=nosplit
 endif
+" set timeoutlen=200          " Set timeout length to 200 ms
 set notimeout
 set ttimeout
+set scrolloff=8
 
 
 "------------------------- Custom Keybindings -----------------------
@@ -56,7 +57,6 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 
 " Use git files inside git repo
 map <expr> <C-p> fugitive#head() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
-map <C-S-i> :Prettier<CR>
 nnoremap <silent> <Space> :nohlsearch<CR> 
 
 " console log shortcut
@@ -69,6 +69,13 @@ let g:move_key_modifier = 'A'
 let g:vim_json_conceal=0
 let g:Hexokinase_highlighters = ['foregroundfull']
 
+" Which key
+" let g:mapleader = "\<Space>"
+" let g:maplocalleader = '\<Space>'
+" nnoremap <silent> <leader>      :<c-u>WhichKey ','<CR>
+" nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+
+
 " Tab management
 map <leader>tn :tabnext<cr>
 map <leader>to :tabonly<cr>
@@ -79,6 +86,8 @@ map <leader>tm :tabmove
 map <Leader>, :Buffers<CR>
 nmap <Leader>w :w!<cr>
 nmap <Leader>bd :bd<CR>
+command! BufCurOnly execute '%bdelete|edit#|bdelete#'
+nnoremap <Leader>bc :BufCurOnly <CR>
 
 " Move between windows
 function! WinMove(key)
@@ -99,8 +108,8 @@ nnoremap <silent> <C-j> :call WinMove('j')<CR>
 nnoremap <silent> <C-k> :call WinMove('k')<CR>
 nnoremap <silent> <C-l> :call WinMove('l')<CR>
 
-autocmd FileType rust map <buffer> <Leader>r :RustRun<CR>
-autocmd FileType rust nmap <buffer> <Leader>p :RustFmt<CR>
+" autocmd FileType rust map <buffer> <Leader>r :RustRun<CR>
+" autocmd FileType rust nmap <buffer> <Leader>p :RustFmt<CR>
 
 let g:nnn#layout = { 'window': {'width': 1, 'height': 1, 'highlight': 'Debug' } }
 
@@ -115,9 +124,9 @@ nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
 nmap <Leader>gg :Gstatus<CR>
 nmap <Leader>ga :Git add -- .<CR>
-" nmap <Leader>gc :Commits<CR>
+nmap <Leader>gc :Commits<CR>
 nmap <Leader>gc :GV<CR>
-nmap <Leader>bc :BCommits<CR>
+" nmap <Leader>bc :BCommits<CR>
 nnoremap <Leader>pp :Dispatch! git push<cr>
 nmap <Leader>gb :Git branch<CR>
 nmap <Leader>gf :GitGutterFold<CR>
@@ -267,7 +276,7 @@ let g:prettier#config#trailing_comma = 'none'               " none|es5|all  defa
 let g:prettier#config#parser = 'flow'                       " flow|babylon|typescript|css|less|scss|json|graphql|markdown  default: babylon
 let g:prettier#config#config_precedence = 'prefer-file'     " cli-override|file-override|prefer-file
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 "autocmd FileType vue syntax sync fromstart
 "autocmd BufNewFile,BufRead *.vue set ft=vue
 
@@ -335,6 +344,5 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'jdhao/better-escape.vim'
-
 
 call plug#end()
