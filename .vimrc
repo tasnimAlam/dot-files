@@ -64,6 +64,10 @@ imap cll console.log()<Esc><S-f>(a
 vmap cll yocll<Esc>p
 nmap cll yiwocll<Esc>p
 
+" Custom commands
+command! RemoveComments execute 'g/^\/\|\*/d'
+command! BufCurOnly execute '%bdelete|edit#|normal `"'
+
 let g:better_escape_shortcut = 'kj'
 let g:move_key_modifier = 'A'
 let g:vim_json_conceal=0
@@ -86,7 +90,6 @@ map <leader>tm :tabmove
 map <Leader>, :Buffers<CR>
 nmap <Leader>w :w!<cr>
 nmap <Leader>bd :bd<CR>
-command! BufCurOnly execute '%bdelete|edit#|bdelete#'
 nnoremap <Leader>bc :BufCurOnly <CR>
 
 " Move between windows
@@ -123,6 +126,7 @@ nnoremap <leader>gd :Gvdiff<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
 nmap <Leader>gg :Gstatus<CR>
+" nmap <Leader>gg :Gstatus <bar> :on <CR>
 nmap <Leader>ga :Git add -- .<CR>
 nmap <Leader>gc :Commits<CR>
 nmap <Leader>gc :GV<CR>
@@ -344,5 +348,6 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'jdhao/better-escape.vim'
+Plug 'honza/vim-snippets'
 
 call plug#end()
