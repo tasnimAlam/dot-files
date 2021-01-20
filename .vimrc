@@ -122,7 +122,7 @@ let $FZF_DEFAULT_OPTS='--reverse'
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 " Fugitive Conflict Resolution
-nnoremap <leader>gd :Gvdiff<CR>
+" nnoremap <leader>gd :Gvdiff<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
 nmap <Leader>gg :Gstatus<CR>
@@ -349,5 +349,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'jdhao/better-escape.vim'
 Plug 'honza/vim-snippets'
+Plug 'kevinhwang91/nvim-bqf'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
 
 call plug#end()
