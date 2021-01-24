@@ -3,7 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/shourov/.oh-my-zsh"
-export EDITOR="/usr/local/bin/nvim"
+export EDITOR="/usr/bin/nvim"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -68,6 +68,7 @@ KEYTIMEOUT=1
 plugins=(
   git
   yarn
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -149,3 +150,8 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 export PAGER=most
+
+NPM_PACKAGES="$HOME/.npm-packages"
+export PATH="$PATH:$NPM_PACKAGES/bin"
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+
