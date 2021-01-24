@@ -79,7 +79,6 @@ let g:Hexokinase_highlighters = ['foregroundfull']
 " nnoremap <silent> <leader>      :<c-u>WhichKey ','<CR>
 " nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
-
 " Tab management
 map <leader>tn :tabnext<cr>
 map <leader>to :tabonly<cr>
@@ -135,9 +134,6 @@ nnoremap <Leader>pp :Dispatch! git push<cr>
 nmap <Leader>gb :Git branch<CR>
 nmap <Leader>gf :GitGutterFold<CR>
 nmap <Leader>/ :BLines<CR>
-
-nmap <Leader>ct :ContextToggle<CR>
-let g:context_enabled = 0
 
 " Fern config
 nmap <Leader>e :Fern . -drawer -toggle<CR>
@@ -342,7 +338,6 @@ Plug 'lambdalisue/fern-git-status.vim'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'wellle/context.vim'
 Plug 'matze/vim-move'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'AndrewRadev/splitjoin.vim'
