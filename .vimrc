@@ -345,6 +345,8 @@ Plug 'tommcdo/vim-exchange'
 Plug 'jdhao/better-escape.vim'
 Plug 'honza/vim-snippets'
 Plug 'kevinhwang91/nvim-bqf'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
+if has("nvim")
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
+endif
 
 call plug#end()
