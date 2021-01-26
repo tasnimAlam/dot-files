@@ -13,7 +13,8 @@ set laststatus=2            " Always display status line
 set noswapfile              " Do not create swap file
 set noshowmode              " Hide '-- INSERT --' from status line
 set encoding=utf-8          " Set file encoding
-set foldmethod=syntax
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 set foldlevel=20
 set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
 if system('uname -s') == "Darwin\n"
@@ -43,11 +44,14 @@ set scrolloff=8
 let mapleader = ","
 noremap \ ,
 imap <Leader>p <C-r>0
-nmap <Leader>f <Plug>(FerretAckWord)
+nmap <Leader>F <Plug>(FerretAckWord)
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 nmap <Leader>o :on<CR>
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q!<CR>
+nmap <Leader>f :Rg<CR>
+nnoremap <silent><Leader>1 :source ~/.vimrc \| :PlugInstall<CR>
+nnoremap <silent><Leader>2 :source ~/.vimrc \| :PlugUpdate<CR>
 
 
 " Easymotion config
