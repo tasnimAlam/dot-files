@@ -2,8 +2,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/shourov/.oh-my-zsh"
-export EDITOR="/usr/bin/nvim"
+export ZSH="/Users/wpdev/.oh-my-zsh"
+# export EDITOR="/usr/local/bin/nvim"
+export EDITOR=nvim
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -67,8 +68,9 @@ KEYTIMEOUT=1
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  yarn
+  git-open
   zsh-autosuggestions
+  yarn
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -107,11 +109,10 @@ alias gb='git branch '
 alias gc='git commit'
 alias gd='git diff'
 alias go='git checkout '
-# alias eb='cd ~/Sites/blocks/wp-content/plugins/essential-blocks; pwd'
-alias eb='cd /srv/http/wp/wp-content/plugins/essential-blocks; pwd'
+alias eb='cd ~/Sites/blocks/wp-content/plugins/essential-blocks; pwd'
 alias pl='cd ~/Sites/wp/wp-content/plugins;pwd'
 alias tem='cd ~/Documents/templately-frontend; pwd'
-alias .='nvim .'
+# alias .='nvim .'
 alias t='tmux'
 alias n='nvim'
 alias nn='nnn'
@@ -121,10 +122,8 @@ alias -s txt=nvim
 alias vr="source ~/.vimrc"
 alias dot="cd ~/Documents/dot-files;pwd"
 alias cat="bat"
-alias ll="exa"
-alias bs="nvim .config/bspwm/bspwmrc"
-alias pl="nvim .config/polybar/config"
-alias kb="nvim .config/sxhkd/sxhkdrc"
+alias ll="exa -1 --icons --group-directories-first"
+alias lst="ll -s time"
  
 bindkey '^o' autosuggest-accept
 
@@ -138,20 +137,20 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 
 # nnn config
 export NNN_PLUG='f:fzopen;u:getplugs;t:preview_tui;v:_viu $nnn;'
-export NNN_BMS='d:~/Documents;h:~/;D:~/Downloads/;e:~/Sites/blocks/wp-content/plugins/essential-blocks;p:~/Sites/wp/wp-content/plugins/;t:~/Documents/templately-frontend/;s:~/Documents/svn-repo/rating-block/;'
+export NNN_BMS='d:~/Documents;h:~/;D:~/Downloads/;e:~/Sites/blocks/wp-content/plugins/essential-blocks;p:~/Sites/wp/wp-content/plugins/;t:~/Documents/templately-frontend/;s:~/Documents/svn-repo/;'
 export NNN_COLORS="2136"
 export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$PATH:node_modules/.bin"
+export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
+export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
+export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
 
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
-export PAGER=most
+eval "$(zoxide init zsh)"
 
-NPM_PACKAGES="$HOME/.npm-packages"
-export PATH="$PATH:$NPM_PACKAGES/bin"
-export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
-
+# nvim config
+# export NVM_DIR="$HOME/.nvm"
+#   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+#   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
