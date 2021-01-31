@@ -118,6 +118,7 @@ nnoremap <silent> <C-l> :call WinMove('l')<CR>
 " autocmd FileType rust nmap <buffer> <Leader>p :RustFmt<CR>
 
 let g:nnn#layout = { 'window': {'width': 1, 'height': 1, 'highlight': 'Debug' } }
+let g:nnn#replace_netrw=1
 
 " Fzf config
 let g:fzf_layout = { 'window': { 'width': 1, 'height': 1}}
