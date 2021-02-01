@@ -82,7 +82,7 @@ super + {grave,Tab}
 	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
-super + {o,i}
+super + {o,n}
 	bspc wm -h off; \
 	bspc node {older,newer} -f; \
 	bspc wm -h on
@@ -126,7 +126,15 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
- 
+
+# shutdown and restart shortcut
+
+super + ctrl + s
+  shutdown now
+
+super + ctrl + r
+  shutdown -r now 
+  
 # volume control shortcuts
 {XF86AudioRaiseVolume,XF86AudioLowerVolume}
   pactl set-sink-volume 0 {+5%,-5%}
