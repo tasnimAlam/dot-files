@@ -1,0 +1,26 @@
+ + Enter     = kitty
+ + Space     = rofi
+ + b         = chromium
+ + ESC       = reload sxhkd
+ + Alt + q/r = quit/reload sxhkd
+ + w         = close 
+ + m         = maximize layout 
+ + f         = fullscreen
+ + g         = swap current and biggest window
+ + h/j/k/l   = change focus
+ + h/j/k/l   = change focus
+ + p/b/,/.   = focus parent, brother, first, last
+ + c/C       = focus next, Previous window
+ + u/i       = focus previous, next desktop
+ + tab       = focus last desktop
+ + o/n       = focus older, newer node
+ + 1-8       = focus 1 - 8 desktop
+
+ + Ctrl + h/j/k/l       = preselect position
+ + Ctrl + 1-9           = preselect ratio
+ + Ctrl + Space         = cancel preselect position for node
+ + Ctrl + Shift + Space = cancel preselect position for desktop
+
+ + Alt + h/j/k/l         = resize window outward
+ + Alt + Shift + h/j/k/l = resize window inward
+ + Arrows                = move floating window
