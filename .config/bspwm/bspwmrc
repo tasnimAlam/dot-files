@@ -3,6 +3,10 @@
 # pgrep -x sxhkd > /dev/null || sxhkd &
 sxhkd &
 
+feh --bg-fill ~/Downloads/white_wall_with_white_door_hd_minimalist-1920x1080.jpg &
+
+picom --config ~/.config/picom/picom.conf &
+
 $HOME/.config/polybar/launch.sh
 
 bspc monitor -d  1 2 3 4 5 6 7 8 
@@ -20,3 +24,4 @@ bspc rule -a Emacs state=tiled
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
 bspc rule -a Screenkey manage=off
+
