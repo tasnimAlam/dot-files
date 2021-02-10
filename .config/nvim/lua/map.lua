@@ -3,13 +3,12 @@ local map = vim.api.nvim_set_keymap
 map('n', ',', '', {})
 vim.g.mapleader = ','
 
-map('!', '\', ',', '{}')
 map('n', '<Leader>o', ':on<CR>', {})
 map('n', '<Leader>w', ':w<CR>', {})
 map('n', '<Leader>q', ':q!<CR>', {})
 map('n', '<Leader>f', ':Rg<CR>', {})
-map('nn', '<silent><Leader>1', ':source ~/.vimrc \| :PlugInstall<CR>', {})
-map('nn', '<silent><Leader>2', ':source ~/.vimrc \| :PlugUpdate<CR>', {})
+map('n', '<Leader>1', ':source ~/.vimrc | :PlugInstall<CR>', { silent = true })
+map('n', '<Leader>2', ':source ~/.vimrc | :PlugUpdate<CR>', { silent = true })
 
 -- Tab management
 map('n', '<Leader>tn', ':tabnext<CR>', {})
@@ -27,9 +26,17 @@ map('n', '<Leader>bc', '%bdelete|edit#|normal `"', {})
 map('n', '<Leader>gg', ':Gstatus<CR>', {})
 map('n', '<Leader>ga', ':Git add -- .<CR>', {})
 map('n', '<Leader>gc', ':GV<CR>', {})
-map('nn', '<Leader>pp', ':Dispatch! git push<CR>', {})
+map('n', '<Leader>pp', ':Dispatch! git push<CR>', {})
 map('n', '<Leader>gf', ':GitGutterFold<CR>', {})
 map('n', '<Leader>gb', ':Git branch<CR>', {})
 map('n', '<Leader>/', ':BLines<CR>', {})
-map('nn', '<Leader>gdh', ':diffget //2 <CR>', {})
-map('nn', '<Leader>gdl', ':diffget //3 <CR>', {})
+map('n', '<Leader>gdh', ':diffget //2 <CR>', {})
+map('n', '<Leader>gdl', ':diffget //3 <CR>', {})
+
+-- Console log shortcut
+map('i', 'cll', 'console.log()<ESC><S-f>(a', {})
+map('v', 'cll', 'yocll<ESC>p', {})
+map('n', 'cll', 'yiwocll<ESC>p', {})
+
+-- Window movement
+

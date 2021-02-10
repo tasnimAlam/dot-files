@@ -1,6 +1,7 @@
 local o = vim.o
 local wo = vim.wo 
 local bo = vim.bo 
+local has = vim.fn.has
 
 -- global options 
 o.swapfile = false 
@@ -16,6 +17,14 @@ o.regexpengine = 1
 o.timeout = true
 o.ttimeout = true
 o.scrolloff = 8
+o.termguicolors = true
+o.background = 'dark'
+o.completeopt = 'noinsert'
+if has('mac') == 1 then
+  o.clipboard = 'unnamedplus'
+elseif has('unix') == 1 then
+  o.clipboard = 'unnamed'
+end
 
 -- buffer options
 bo.tabstop = 2
