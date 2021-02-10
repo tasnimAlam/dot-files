@@ -123,10 +123,3 @@
 
 (setq evil-ex-search-case 'sensitive)
 
-;; Yarn config
-(map! :after js2-mode
-      :map js2-mode-map
-      :localleader
-      :prefix ("y" . "yarn")
-      "i" #'yarn-install)
-
