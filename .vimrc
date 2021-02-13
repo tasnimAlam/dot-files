@@ -144,9 +144,8 @@ nmap <Leader>/ :BLines<CR>
 " Nvim tree config
 nnoremap<Leader>e :NvimTreeToggle<CR>
 let g:nvim_tree_bindings = {
- \ 'edit': ['o', 'l'],
+ \ 'edit': ['<CR>', 'o', 'l'],
  \ 'cd': 'e',
- \ 'dir_up': 'h',
  \ }
 
 " Fold config
