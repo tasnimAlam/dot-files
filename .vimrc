@@ -37,6 +37,7 @@ endif
 set notimeout
 set ttimeout
 set scrolloff=8
+set showtabline=1
 
 
 "------------------------- Custom Keybindings -----------------------
@@ -140,18 +141,13 @@ nmap <Leader>gb :Git branch<CR>
 nmap <Leader>gf :GitGutterFold<CR>
 nmap <Leader>/ :BLines<CR>
 
-" Fern config
-nmap <Leader>e :Fern . -drawer -toggle<CR>
-nmap <buffer> X <Plug>(fern-action-remove)  
-function! s:init_fern() abort
-  nnoremap <buffer> <C-h> <C-w>h
-  nnoremap <buffer> <C-l> <C-w>l
-endfunction
-
-augroup fern-custom
-  autocmd! *
-  autocmd FileType fern call s:init_fern()
-augroup END
+" Nvim tree config
+nnoremap<Leader>e :NvimTreeToggle<CR>
+let g:nvim_tree_bindings = {
+ \ 'edit': ['o', 'l'],
+ \ 'cd': 'e',
+ \ 'dir_up': 'h',
+ \ }
 
 " Fold config
 nnoremap <silent> <leader>zj :<c-u>call RepeatCmd('call NextClosedFold("j")')<cr>
@@ -338,8 +334,6 @@ Plug 'unblevable/quick-scope'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rust-lang/rust.vim'
 Plug 'mcchrish/nnn.vim'
-Plug 'lambdalisue/fern.vim'
-Plug 'lambdalisue/fern-git-status.vim'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -352,6 +346,8 @@ Plug 'honza/vim-snippets'
 Plug 'kevinhwang91/nvim-bqf'
 if has("nvim")
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
+  Plug 'kyazdani42/nvim-web-devicons' " for file icons
+  Plug 'kyazdani42/nvim-tree.lua'
 endif
 
 call plug#end()
