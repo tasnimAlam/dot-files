@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	kitty
+	kitty 
 
 # program launcher
 super + @space 
@@ -114,6 +114,9 @@ super + ctrl + shift + space
 #
 # move/resize
 #
+# Move current window to a pre-selected space
+super + shift + {d,a}
+    bspc node @/ -C {forward,backward}
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
@@ -127,17 +130,21 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# shutdown and restart shortcut
-
-super + ctrl + s
-  shutdown now
-
-super + ctrl + r
-  shutdown -r now 
-  
 # volume control shortcuts
 {XF86AudioRaiseVolume,XF86AudioLowerVolume}
   pactl set-sink-volume 0 {+5%,-5%}
   
 XF86AudioMute
   pactl set-sink-mute 0 toggle 
+  
+# shutdown and restart shortcut
+super + ctrl + s
+  shutdown now
+
+super + ctrl + r
+  shutdown -r now 
+
+# Lock screen
+super + shift + x
+    betterlockscreen --lock blur  
+    
