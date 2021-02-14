@@ -33,7 +33,6 @@ set modifiable
 if has("nvim")
     set inccommand=nosplit
 endif
-" set timeoutlen=200          " Set timeout length to 200 ms
 set notimeout
 set ttimeout
 set scrolloff=8
@@ -78,12 +77,6 @@ let g:move_key_modifier = 'A'
 let g:vim_json_conceal=0
 let g:Hexokinase_highlighters = ['foregroundfull']
 
-" Which key
-" let g:mapleader = "\<Space>"
-" let g:maplocalleader = '\<Space>'
-" nnoremap <silent> <leader>      :<c-u>WhichKey ','<CR>
-" nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
-
 " Tab management
 map <leader>tn :tabnext<cr>
 map <leader>to :tabonly<cr>
@@ -127,15 +120,12 @@ let $FZF_DEFAULT_OPTS='--reverse'
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 " Fugitive Conflict Resolution
-" nnoremap <leader>gd :Gvdiff<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
 nmap <Leader>gg :Gstatus<CR>
-" nmap <Leader>gg :Gstatus <bar> :on <CR>
 nmap <Leader>ga :Git add -- .<CR>
 nmap <Leader>gc :Commits<CR>
 nmap <Leader>gc :GV<CR>
-" nmap <Leader>bc :BCommits<CR>
 nnoremap <Leader>pp :Dispatch! git push<cr>
 nmap <Leader>gb :Git branch<CR>
 nmap <Leader>gf :GitGutterFold<CR>
@@ -342,8 +332,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'jdhao/better-escape.vim'
 Plug 'honza/vim-snippets'
-Plug 'kevinhwang91/nvim-bqf'
 if has("nvim")
+  Plug 'kevinhwang91/nvim-bqf'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'kyazdani42/nvim-tree.lua'
