@@ -108,6 +108,7 @@ nnoremap <silent> <C-j> :call WinMove('j')<CR>
 nnoremap <silent> <C-k> :call WinMove('k')<CR>
 nnoremap <silent> <C-l> :call WinMove('l')<CR>
 
+" Rust development config
 " autocmd FileType rust map <buffer> <Leader>r :RustRun<CR>
 " autocmd FileType rust nmap <buffer> <Leader>p :RustFmt<CR>
 
@@ -275,13 +276,11 @@ let g:prettier#autoformat = 0
 
 set background=dark
 set termguicolors         " Enable true colors support
-"let ayucolor="mirage"    " for mirage version of theme
 colorscheme gruvbox
 
 "  ------------------------- Airline ----------------------------------
 
 let g:airline_theme='gruvbox'
-" let g:airline_theme='ayu_mirage'
 let g:indentLine_char = '¦'
 let g:indentLine_first_char = '¦'
 let g:indentLine_showFirstIndentLevel = 1
@@ -294,7 +293,6 @@ let g:indentLine_setColors = 100
 call plug#begin('~/.vim/plugged')
 
 Plug 'prettier/vim-prettier'
-Plug 'ayu-theme/ayu-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -311,7 +309,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-dispatch'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
-Plug 'kaicataldo/material.vim'
 Plug 'itchyny/vim-cursorword'
 Plug 'lfv89/vim-interestingwords'
 Plug 'easymotion/vim-easymotion'
