@@ -21,6 +21,12 @@
  + Ctrl + Space         = cancel preselect position for node
  + Ctrl + Shift + Space = cancel preselect position for desktop
 
+ + Ctrl + s  = shutdown 
+ + Ctrl + r  = restart 
+
+ + Shift + x   = lockscreen 
+ + Shift + d/a = move window forward, backward 
+
  + Alt + h/j/k/l         = resize window outward
  + Alt + Shift + h/j/k/l = resize window inward
  + Arrows                = move floating window
