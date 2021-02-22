@@ -108,7 +108,7 @@ alias ga='git add '
 alias gb='git branch '
 alias gc='git commit'
 alias gd='git diff'
-alias go='git checkout '
+# alias go='git checkout '
 alias eb='cd ~/Sites/blocks/wp-content/plugins/essential-blocks; pwd'
 alias pl='cd ~/Sites/wp/wp-content/plugins;pwd'
 alias tem='cd ~/Documents/templately-frontend; pwd'
@@ -147,6 +147,9 @@ export PATH="$PATH:node_modules/.bin"
 export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
 export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
 export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
+
+# man pager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 eval "$(zoxide init zsh)"
 
