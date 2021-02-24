@@ -3,7 +3,7 @@
 # pgrep -x sxhkd > /dev/null || sxhkd &
 sxhkd &
 
-feh --bg-fill ~/Downloads/white_wall_with_white_door_hd_minimalist-1920x1080.jpg &
+feh --bg-fill ~/Downloads/blur_colorful_gradient_4k_hd_abstract-1920x1080.jpg &
 
 picom --config ~/.config/picom/picom.conf &
 
@@ -19,9 +19,10 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 bspc config top_padding 28
 
-bspc rule -a Zathura state=fullscreen
-bspc rule -a Emacs state=tiled
+bspc rule -a Zathura desktop='^7' state=tiledstate=fullscreen
+bspc rule -a Emacs desktop='^3'state=tiled follow=on
 bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Zoom desktop='^8' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
 bspc rule -a Screenkey manage=off
 
