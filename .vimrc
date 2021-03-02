@@ -24,7 +24,6 @@ else
 endif
 set number                  " Display line number
 set relativenumber          " Display relative line number
-set rtp+=~/.fzf             " Set Fuzzy Finder
 syntax on                   " Enable syntax hilighting
 filetype plugin indent on   " Detect filetype that is edited, enable indent, plugin for specific file
 set completeopt+=noinsert
@@ -49,7 +48,6 @@ nnoremap <Leader>vr :source $MYVIMRC<CR>
 nmap <Leader>o :on<CR>
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q!<CR>
-nmap <Leader>f :Rg<CR>
 nnoremap <silent><Leader>1 :source ~/.vimrc \| :PlugInstall<CR>
 nnoremap <silent><Leader>2 :source ~/.vimrc \| :PlugUpdate<CR>
 
@@ -60,7 +58,7 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 
 
 " Use git files inside git repo
-map <expr> <C-p> fugitive#head() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
+" map <expr> <C-p> fugitive#head() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
 nnoremap <silent> <Space> :nohlsearch<CR> 
 
 " console log shortcut
@@ -84,7 +82,7 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
 
 " Manage buffers
-map <Leader>, :Buffers<CR>
+" map <Leader>, :Buffers<CR>
 nmap <Leader>w :w!<cr>
 nmap <Leader>bd :bd<CR>
 nnoremap <Leader>bc :BufCurOnly <CR>
@@ -165,6 +163,12 @@ function! RepeatCmd(cmd) range abort
     endwhile
 endfunction
 
+
+" ---------------------- Telescope ----------------------------
+nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <Leader>f <cmd>Telescope live_grep<cr>
+nnoremap <Leader>, <cmd>Telescope buffers<cr>
+nnoremap <Leader>h <cmd>Telescope help_tags<cr>
 
 " ---------------------- CoC ----------------------------
 " Use tab for trigger completion with characters ahead and navigate.
@@ -297,8 +301,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'Yggdroot/indentLine'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
@@ -334,6 +336,9 @@ if has("nvim")
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
 endif
 
 call plug#end()
