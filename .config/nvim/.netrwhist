@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/shourov/Documents/Dotfiles/Vim/nvim'
+let g:netrw_dirhist_3='/home/shourov/.config/nvim/plugin'
+let g:netrw_dirhist_2='/home/shourov/Documents/Dotfiles/Vim/nvim'
+let g:netrw_dirhist_1='/home/shourov/.config/nvim/lua'
