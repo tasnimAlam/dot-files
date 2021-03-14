@@ -50,6 +50,7 @@ nmap <Leader>o :on<CR>
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q!<CR>
 nmap <Leader>f :Rg<CR>
+nmap <Leader>v :vs<CR>
 nnoremap <silent><Leader>1 :source ~/.vimrc \| :PlugInstall<CR>
 nnoremap <silent><Leader>2 :source ~/.vimrc \| :PlugUpdate<CR>
 
@@ -333,11 +334,12 @@ Plug 'tommcdo/vim-exchange'
 Plug 'jdhao/better-escape.vim'
 Plug 'honza/vim-snippets'
 Plug 'alvan/vim-closetag'
+Plug 'andymass/vim-matchup'
 if has("nvim")
   Plug 'kevinhwang91/nvim-bqf'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'tjdevries/nlua.nvim'
 endif
-
 call plug#end()
