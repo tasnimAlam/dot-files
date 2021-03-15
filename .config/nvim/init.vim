@@ -1,28 +1,18 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath=&runtimepath
-source ~/.vimrc
+" source ~/.vimrc
 
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
-  },
-  indent = {
-    enable = true
-  },
-  rainbow = {
-    enable = true,
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
-    },
-  },
-}
-EOF
+source $HOME/.config/nvim/general/keybindings.vim        
+source $HOME/.config/nvim/general/settings.vim        
+source $HOME/.config/nvim/general/theme.vim        
+source $HOME/.config/nvim/general/functions.vim        
+source $HOME/.config/nvim/vim-plug/plugins.vim       
+source $HOME/.config/nvim/vim-plug/airline.vim        
+source $HOME/.config/nvim/vim-plug/auto-close-tag.vim        
+source $HOME/.config/nvim/vim-plug/coc.vim        
+source $HOME/.config/nvim/vim-plug/plugins.vim   
+source $HOME/.config/nvim/vim-plug/prettier.vim 
+source $HOME/.config/nvim/vim-plug/treesitter.vim 
+
+
+
