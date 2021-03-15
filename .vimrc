@@ -19,6 +19,7 @@ set foldlevel=20
 set foldtext=v:folddashes.substitute(getline(v:foldstart),'/\\*\\\|\\*/\\\|{{{\\d\\=','','g')
 if system('uname -s') == "Darwin\n"
   set clipboard=unnamed     "OSX
+  set rtp+=/usr/local/opt/fzf
 else
   set clipboard=unnamedplus "Linux
 endif
