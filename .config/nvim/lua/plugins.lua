@@ -10,6 +10,7 @@ return require('packer').startup(function()
   use {'wbthomason/packer.nvim', opt = true}
   use 'mhartington/formatter.nvim'
   use 'editorconfig/editorconfig-vim'
+  use 'rafcamlet/nvim-luapad'
   -- use 'lukas-reineke/format.nvim'
   use 'prettier/vim-prettier'
   use 'pangloss/vim-javascript'
