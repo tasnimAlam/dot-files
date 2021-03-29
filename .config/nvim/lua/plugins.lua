@@ -10,8 +10,6 @@ return require('packer').startup(function()
   use {'wbthomason/packer.nvim', opt = true}
   use 'mhartington/formatter.nvim'
   use 'editorconfig/editorconfig-vim'
-  use 'rafcamlet/nvim-luapad'
-  -- use 'lukas-reineke/format.nvim'
   use 'prettier/vim-prettier'
   use 'pangloss/vim-javascript'
   use 'yuezk/vim-js'
@@ -57,4 +55,5 @@ return require('packer').startup(function()
     'nvim-telescope/telescope.nvim',
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
   }    
+  use 'phaazon/hop.nvim'
 end)

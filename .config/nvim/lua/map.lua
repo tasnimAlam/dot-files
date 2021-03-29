@@ -1,7 +1,6 @@
 local utils = require('utils')
 local map = vim.api.nvim_set_keymap
 
-
 map('n', ',', '', {})
 vim.g.mapleader = ','
 
@@ -49,10 +48,7 @@ map('v', 'cll', 'yocll<ESC>p', {})
 map('n', 'cll', 'yiwocll<ESC>p', {})
 
 -- Window movement
-map('n', '<C-l>', '<cmd>lua vim.api.nvim_command(require("utils").move_window("l"))<CR>',{ noremap = true })
-map('n', '<C-h>', '<cmd>lua vim.api.nvim_command(require("utils").move_window("h"))<CR>',{ noremap = true })
-map('n', '<C-j>', '<cmd>lua vim.api.nvim_command(require("utils").move_window("j"))<CR>',{ noremap = true })
-map('n', '<C-k>', '<cmd>lua vim.api.nvim_command(require("utils").move_window("k"))<CR>',{ noremap = true })
--- map('n', '<C-l>', ':lua vim.api.nvim_command(util.move_window("j"))<CR>',{  noremap = true })
--- map('n', '<C-k>', 'lua vim.api.nvim_command(util.window_move("k"))',{ noremap = true })
--- map('n', '<C-l>', 'vim.api.nvim_command(util.window_move("l"))',{ silent = true, noremap = true })
+map('n', '<C-l>', '<cmd>lua require("utils").move_window("l")<CR>',{ noremap = true })
+map('n', '<C-h>', '<cmd>lua require("utils").move_window("h")<CR>',{ noremap = true })
+map('n', '<C-j>', '<cmd>lua require("utils").move_window("j")<CR>',{ noremap = true })
+map('n', '<C-k>', '<cmd>lua require("utils").move_window("k")<CR>',{ noremap = true })
