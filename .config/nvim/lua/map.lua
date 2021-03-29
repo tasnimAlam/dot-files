@@ -17,6 +17,10 @@ map('n', '<Space>', ':nohlsearch<CR>', {})
 -- Fern config
 map('n', '<Leader>e', ':NvimTreeToggle<CR>', {})
 
+-- Hop config
+map('n', '<Leader>s', ':HopChar2<CR>', {})
+map('n', '<Leader>l', ':HopLine<CR>', {})
+
 -- Tab management
 map('n', '<Leader>tn', ':tabnext<CR>', {})
 map('n', '<Leader>to', ':tabonly<CR>', {})
@@ -50,5 +54,3 @@ map('n', 'cll', 'yiwocll<ESC>p', {})
 -- Window movement
 map('n', '<C-l>', '<cmd>lua require("utils").move_window("l")<CR>',{ noremap = true })
 map('n', '<C-h>', '<cmd>lua require("utils").move_window("h")<CR>',{ noremap = true })
-map('n', '<C-j>', '<cmd>lua require("utils").move_window("j")<CR>',{ noremap = true })
-map('n', '<C-k>', '<cmd>lua require("utils").move_window("k")<CR>',{ noremap = true })

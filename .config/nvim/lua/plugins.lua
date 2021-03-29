@@ -29,7 +29,6 @@ return require('packer').startup(function()
   use 'jiangmiao/auto-pairs'
   use 'itchyny/vim-cursorword'
   use 'lfv89/vim-interestingwords'
-  use 'easymotion/vim-easymotion'
   use 'wincent/ferret'
   use 'mhinz/vim-grepper'
   use 'mattn/emmet-vim'
