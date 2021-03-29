@@ -45,8 +45,9 @@ Plug 'andymass/vim-matchup'
 if has("nvim")
   Plug 'kevinhwang91/nvim-bqf'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
-  Plug 'kyazdani42/nvim-web-devicons' " for file icons
+  Plug 'kyazdani42/nvim-web-devicons' 
   Plug 'kyazdani42/nvim-tree.lua'
   Plug 'tjdevries/nlua.nvim'
+  Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 endif
 call plug#end()

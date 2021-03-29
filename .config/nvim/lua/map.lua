@@ -49,7 +49,7 @@ map('v', 'cll', 'yocll<ESC>p', {})
 map('n', 'cll', 'yiwocll<ESC>p', {})
 
 -- Window movement
-map('n', '<C-l>', ':lua vim.api.nvim_command(require("utils").move_window("l"))<CR>',{ noremap = true })
+map('n', '<C-l>', '<cmd>lua vim.api.nvim_command(require("utils").move_window("l"))<CR>',{ noremap = true })
 map('n', '<C-h>', ':lua vim.api.nvim_command(require("utils").move_window("h"))<CR>',{ noremap = true })
 map('n', '<C-j>', ':lua vim.api.nvim_command(require("utils").move_window("j"))<CR>',{ noremap = true })
 map('n', '<C-k>', ':lua vim.api.nvim_command(require("utils").move_window("k"))<CR>',{ noremap = true })

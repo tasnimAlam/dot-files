@@ -36,10 +36,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/shourov/.local/share/nvim/site/pack/packer/start/auto-pairs"
   },
-  ["ayu-vim"] = {
-    loaded = true,
-    path = "/home/shourov/.local/share/nvim/site/pack/packer/start/ayu-vim"
-  },
   ["better-escape.vim"] = {
     loaded = true,
     path = "/home/shourov/.local/share/nvim/site/pack/packer/start/better-escape.vim"
@@ -56,6 +52,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/shourov/.local/share/nvim/site/pack/packer/start/ferret"
   },
+  ["format.nvim"] = {
+    loaded = true,
+    path = "/home/shourov/.local/share/nvim/site/pack/packer/start/format.nvim"
+  },
   fzf = {
     loaded = true,
     path = "/home/shourov/.local/share/nvim/site/pack/packer/start/fzf"
@@ -71,6 +71,10 @@ _G.packer_plugins = {
   ["gv.vim"] = {
     loaded = true,
     path = "/home/shourov/.local/share/nvim/site/pack/packer/start/gv.vim"
+  },
+  kommentary = {
+    loaded = true,
+    path = "/home/shourov/.local/share/nvim/site/pack/packer/start/kommentary"
   },
   ["lightline.vim"] = {
     loaded = true,
@@ -101,6 +105,14 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/shourov/.local/share/nvim/site/pack/packer/opt/packer.nvim"
   },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/home/shourov/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+  },
+  ["popup.nvim"] = {
+    loaded = true,
+    path = "/home/shourov/.local/share/nvim/site/pack/packer/start/popup.nvim"
+  },
   ["quick-scope"] = {
     loaded = true,
     path = "/home/shourov/.local/share/nvim/site/pack/packer/start/quick-scope"
@@ -112,6 +124,10 @@ _G.packer_plugins = {
   ["splitjoin.vim"] = {
     loaded = true,
     path = "/home/shourov/.local/share/nvim/site/pack/packer/start/splitjoin.vim"
+  },
+  ["telescope.nvim"] = {
+    loaded = true,
+    path = "/home/shourov/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
   ["vim-airline"] = {
     loaded = true,

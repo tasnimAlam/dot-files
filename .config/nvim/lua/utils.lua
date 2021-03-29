@@ -2,7 +2,6 @@ local cmd = vim.cmd
 local call = vim.api.nvim_call_function
 local ex_command = vim.api.nvim_command
 
-
 -- function M.create_augroup(aucmds, name)
 --   cmd('augroup ', .. name)
 --   cmd('autocmd!')
