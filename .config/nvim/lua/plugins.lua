@@ -34,7 +34,7 @@ return require('packer').startup(function()
   use 'mattn/emmet-vim'
   use {'kristijanhusak/vim-js-file-import', run = 'npm install'} 
   use 'unblevable/quick-scope'  
-  use {'neoclide/coc.nvim', run = 'npm install'} 
+  -- use {'neoclide/coc.nvim', run = 'npm install'} 
   use 'rust-lang/rust.vim'
   use 'mcchrish/nnn.vim'
   use 'morhetz/gruvbox'
@@ -55,4 +55,6 @@ return require('packer').startup(function()
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
   }    
   use 'phaazon/hop.nvim'
+	use 'neovim/nvim-lspconfig'
+	use 'glepnir/galaxyline.nvim'
 end)
