@@ -21,6 +21,11 @@ map('n', '<Leader>e', ':NvimTreeToggle<CR>', {})
 map('n', '<Leader>s', ':HopChar2<CR>', {})
 map('n', '<Leader>l', ':HopLine<CR>', {})
 
+-- Auto completion config
+map('i', '<Tab>', 'pumvisible() ? "<C-n>" : "<Tab>"', { expr = true })
+map('i', '<S-Tab>', 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true })
+map('i', '<CR>', 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true })
+
 -- Tab management
 map('n', '<Leader>tn', ':tabnext<CR>', {})
 map('n', '<Leader>to', ':tabonly<CR>', {})
