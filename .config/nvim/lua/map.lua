@@ -30,6 +30,7 @@ map('i', '<CR>', 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true })
 map('n', '<Leader>ff', '<cmd>lua require("telescope.builtin").find_files()<CR>', { noremap = true })
 map('n', '<Leader>g', '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true })
 map('n', '<Leader>h', '<cmd>lua require("telescope.builtin").help_tags()<CR>', { noremap = true })
+map('n', '<Leader>fp', '<cmd>lua require("telescope").extensions.project.project{}<CR>', { noremap = true, silent = true })
 
 -- Tab management
 map('n', '<Leader>tn', ':tabnext<CR>', {})

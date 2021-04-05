@@ -58,4 +58,5 @@ return require('packer').startup(function()
   use 'phaazon/hop.nvim'
 	use 'neovim/nvim-lspconfig'
 	use 'glepnir/galaxyline.nvim'
+	use 'nvim-telescope/telescope-project.nvim'
 end)
