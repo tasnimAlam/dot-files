@@ -17,11 +17,9 @@ return require('packer').startup(function()
   use {'junegunn/fzf',  run = './install --all' }
   use 'junegunn/fzf.vim'
   use 'junegunn/gv.vim'
-  use 'itchyny/lightline.vim'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary'
-  use 'b3nj5m1n/kommentary'
   use 'tpope/vim-repeat'
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-dispatch'
@@ -29,17 +27,12 @@ return require('packer').startup(function()
   use 'jiangmiao/auto-pairs'
   use 'itchyny/vim-cursorword'
   use 'lfv89/vim-interestingwords'
-  use 'wincent/ferret'
-  use 'mhinz/vim-grepper'
   use 'mattn/emmet-vim'
   use {'kristijanhusak/vim-js-file-import', run = 'npm install'} 
   use 'unblevable/quick-scope'  
-  -- use {'neoclide/coc.nvim', run = 'npm install'} 
   use 'rust-lang/rust.vim'
   use 'mcchrish/nnn.vim'
   use 'morhetz/gruvbox'
-  use 'vim-airline/vim-airline'
-  use 'vim-airline/vim-airline-themes'
   use 'matze/vim-move'
   use {'rrethy/vim-hexokinase', run = 'make hexokinase'} 
   use 'AndrewRadev/splitjoin.vim'
