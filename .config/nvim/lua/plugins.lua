@@ -26,7 +26,7 @@ return require('packer').startup(function()
   use 'airblade/vim-gitgutter'
   use 'jiangmiao/auto-pairs'
   use 'itchyny/vim-cursorword'
-  use 'lfv89/vim-interestingwords'
+  -- use 'lfv89/vim-interestingwords'
   use 'mattn/emmet-vim'
   use {'kristijanhusak/vim-js-file-import', run = 'npm install'} 
   use 'unblevable/quick-scope'  

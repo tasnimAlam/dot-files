@@ -12,7 +12,7 @@ map('n', '<Leader>f', ':Rg<CR>', {})
 map('n', '<Leader>vr', ':source ~/.vimrc<CR>', { noremap = true})
 map('n', '<Leader>1', ':PaqInstall<CR>', { silent = true , noremap = true})
 map('n', '<Leader>2', ':PaqUpdate<CR>', { silent = true, noremap = true })
-map('n', '<Space>', ':nohlsearch<CR>', {})
+map('n', '<S-h>', ':set invhlsearch<CR>', {})
 
 -- Fern config
 map('n', '<Leader>e', ':NvimTreeToggle<CR>', {})
