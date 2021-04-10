@@ -22,6 +22,7 @@ background-alt = #444
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #ffb52a
+; primary = #2196F3
 secondary = #e60053
 alert = #bd2c40
 
@@ -194,7 +195,7 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-label = %percentage_used%%
+label = %gb_used%
 
 [module/wlan]
 type = internal/network
