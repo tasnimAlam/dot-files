@@ -7,6 +7,9 @@ feh --bg-fill ~/Downloads/blur_colorful_gradient_4k_hd_abstract-1920x1080.jpg &
 
 picom --config ~/.config/picom/picom.conf &
 
+# make right menu key super
+xmodmap -e "keycode 135=Super_R"
+
 $HOME/.config/polybar/launch.sh
 
 bspc monitor -d  1 2 3 4 
