@@ -17,6 +17,10 @@ map('n', '<S-h>', ':set invhlsearch<CR>', {})
 -- Fern config
 map('n', '<Leader>e', ':NvimTreeToggle<CR>', {})
 
+-- Packer config
+map('n', '<Leader>1', ':PackerInstall<CR>', {})
+map('n', '<Leader>2', ':PackerUpdate<CR>', {})
+
 -- Hop config
 map('n', '<Leader>s', ':HopChar1<CR>', {})
 map('n', '<Leader>l', ':HopLine<CR>', {})
