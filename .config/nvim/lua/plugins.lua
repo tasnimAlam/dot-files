@@ -52,4 +52,5 @@ return require('packer').startup(function()
 	use 'neovim/nvim-lspconfig'
 	use 'glepnir/galaxyline.nvim'
 	use 'nvim-telescope/telescope-project.nvim'
+	use { 'neoclide/coc.nvim' , branch = 'release'} 
 end)
