@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/wpdev/.oh-my-zsh"
+export ZSH="/home/shourov/.oh-my-zsh"
 # export EDITOR="/usr/local/bin/nvim"
 export EDITOR=nvim
 
@@ -68,9 +68,8 @@ KEYTIMEOUT=1
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  git-open
-  zsh-autosuggestions
   yarn
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -119,11 +118,12 @@ alias nn='nnn'
 alias python='python3'
 alias ^l="clear"
 alias -s txt=nvim
-alias vr="source ~/.vimrc"
+# alias vr="source ~/.vimrc"
 alias dot="cd ~/Documents/dot-files;pwd"
 alias cat="bat"
 alias ll="exa -1 --icons --group-directories-first"
 alias lst="ll -s time"
+alias xc="xclip -sel c <"
  
 bindkey '^o' autosuggest-accept
 
@@ -151,8 +151,8 @@ export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
 # man pager
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-eval "$(zoxide init zsh)"
-
+# npm path
+export PATH=~/.npm-global/bin:$PATH
 # nvim config
 # export NVM_DIR="$HOME/.nvm"
 #   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
