@@ -5,6 +5,10 @@ vim.cmd [[packadd packer.nvim]]
 -- Only if your version of Neovim doesn't have https://github.com/neovim/neovim/pull/12632 merged
 -- vim._update_package_paths()
 
+require 'packer'.init {
+  package_root = os.getenv('HOME') .. '/.local/share/nvim/site/pack',
+}
+ 
 return require('packer').startup(function()
   -- Packer can manage itself as an optional plugin
   use {'wbthomason/packer.nvim', opt = true}

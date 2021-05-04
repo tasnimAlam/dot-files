@@ -76,8 +76,8 @@ let g:nnn#layout = { 'window': {'width': 1, 'height': 1, 'highlight': 'Debug' } 
 let g:nnn#replace_netrw=1
 
 " Fzf config
-let g:fzf_layout = { 'window': { 'width': 1, 'height': 1}}
-let $FZF_DEFAULT_OPTS='--reverse'
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8}}
+let $FZF_DEFAULT_OPTS=''
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 " Fugitive Conflict Resolution
