@@ -1,8 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+eval $(/opt/homebrew/bin/brew shellenv)
 # Path to your oh-my-zsh installation.
-export ZSH="/home/shourov/.oh-my-zsh"
+# export ZSH="/home/shourov/.oh-my-zsh"
+export ZSH="/Users/tasnim/.oh-my-zsh"
 # export EDITOR="/usr/local/bin/nvim"
 export EDITOR=nvim
 
@@ -111,6 +112,7 @@ alias gd='git diff'
 alias eb='cd ~/Sites/blocks/wp-content/plugins/essential-blocks; pwd'
 alias pl='cd ~/Sites/wp/wp-content/plugins;pwd'
 alias tem='cd ~/Documents/templately-frontend; pwd'
+alias ui='cd ~/Projects/ui2; pwd'
 # alias .='nvim .'
 alias t='tmux'
 alias n='nvim'
@@ -119,7 +121,7 @@ alias python='python3'
 alias ^l="clear"
 alias -s txt=nvim
 # alias vr="source ~/.vimrc"
-alias dot="cd ~/Documents/dot-files;pwd"
+alias dot="cd ~/Projects/dot-files;pwd"
 alias cat="bat"
 alias ll="exa -1 --icons --group-directories-first"
 alias lst="ll -s time"
@@ -127,8 +129,8 @@ alias xc="xclip -sel c <"
  
 bindkey '^o' autosuggest-accept
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="$PATH:/Users/wpdev/.composer/vendor/bin"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
@@ -144,6 +146,8 @@ export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$PATH:node_modules/.bin"
+# export PATH="~/.emacs.d/bin"
+
 export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
 export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
 export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
@@ -157,3 +161,4 @@ export PATH=~/.npm-global/bin:$PATH
 # export NVM_DIR="$HOME/.nvm"
 #   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 #   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+export PATH=$PATH:~/.composer/vendor/bin
