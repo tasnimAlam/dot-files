@@ -50,5 +50,4 @@ if has("nvim")
   Plug 'tjdevries/nlua.nvim'
   Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 endif
-Plug 'codota/tabnine-vim'
 call plug#end()

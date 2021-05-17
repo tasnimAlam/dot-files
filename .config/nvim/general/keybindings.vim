@@ -12,6 +12,7 @@ nmap <Leader>f :Rg<CR>
 nmap <Leader>v :vs<CR>
 nnoremap <silent><Leader>1 :source ~/.vimrc \| :PlugInstall<CR>
 nnoremap <silent><Leader>2 :source ~/.vimrc \| :PlugUpdate<CR>
+nnoremap <Leader>h :set invhls<CR>
 
 
 " Easymotion config
@@ -72,7 +73,7 @@ nnoremap <silent> <C-l> :call WinMove('l')<CR>
 " autocmd FileType rust map <buffer> <Leader>r :RustRun<CR>
 " autocmd FileType rust nmap <buffer> <Leader>p :RustFmt<CR>
 
-let g:nnn#layout = { 'window': {'width': 1, 'height': 1, 'highlight': 'Debug' } }
+let g:nnn#layout = { 'window': {'width': 0.8, 'height': 0.8, 'highlight': 'Debug' } }
 let g:nnn#replace_netrw=1
 
 " Fzf config
