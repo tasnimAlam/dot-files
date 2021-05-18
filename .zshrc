@@ -110,7 +110,7 @@ alias gc='git commit'
 alias gd='git diff'
 # alias go='git checkout '
 alias eb='cd ~/Sites/blocks/wp-content/plugins/essential-blocks; pwd'
-alias pl='cd ~/Sites/wp/wp-content/plugins;pwd'
+alias pl='cd ~/Sites/blocks/wp-content/plugins;pwd'
 alias tem='cd ~/Documents/templately-frontend; pwd'
 alias ui='cd ~/Projects/ui2; pwd'
 # alias .='nvim .'
@@ -126,6 +126,7 @@ alias cat="bat"
 alias ll="exa -1 --icons --group-directories-first"
 alias lst="ll -s time"
 alias xc="xclip -sel c <"
+alias brew="arch -arm64 brew"
  
 bindkey '^o' autosuggest-accept
 
@@ -146,6 +147,7 @@ export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$PATH:node_modules/.bin"
+# export PATH="$PATH:/opt/homebrew/opt"
 # export PATH="~/.emacs.d/bin"
 
 export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
@@ -162,3 +164,4 @@ export PATH=~/.npm-global/bin:$PATH
 #   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 #   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 export PATH=$PATH:~/.composer/vendor/bin
+export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
