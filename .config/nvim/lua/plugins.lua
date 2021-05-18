@@ -35,7 +35,7 @@ return require('packer').startup(function()
   use {'kristijanhusak/vim-js-file-import', run = 'npm install'} 
   use 'unblevable/quick-scope'  
   use 'rust-lang/rust.vim'
-  use 'mcchrish/nnn.vim'
+  -- use 'mcchrish/nnn.vim'
   use 'morhetz/gruvbox'
   use 'matze/vim-move'
   use {'rrethy/vim-hexokinase', run = 'make hexokinase'} 
@@ -57,4 +57,5 @@ return require('packer').startup(function()
 	use 'glepnir/galaxyline.nvim'
 	use 'nvim-telescope/telescope-project.nvim'
 	use { 'neoclide/coc.nvim' , branch = 'release'} 
+	use { 'voldikss/vim-floaterm' }
 end)
