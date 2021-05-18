@@ -13,6 +13,4 @@ source $HOME/.config/nvim/vim-plug/coc.vim
 source $HOME/.config/nvim/vim-plug/plugins.vim   
 source $HOME/.config/nvim/vim-plug/prettier.vim 
 source $HOME/.config/nvim/vim-plug/treesitter.vim 
-
-
-
+source $HOME/.config/nvim/vim-plug/nvim-tree.vim 
