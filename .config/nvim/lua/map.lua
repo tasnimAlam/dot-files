@@ -34,7 +34,7 @@ map('i', '<CR>', 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true })
 -- Telescope config
 map('n', '<Leader>ff', '<cmd>lua require("telescope.builtin").find_files()<CR>', { noremap = true })
 map('n', '<Leader>g', '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true })
-map('n', '<Leader>h', '<cmd>lua require("telescope.builtin").help_tags()<CR>', { noremap = true })
+map('n', '<Leader>h', '<cmd>set invhls<CR>', {})
 map('n', '<Leader>fp', '<cmd>lua require("telescope").extensions.project.project{}<CR>', { noremap = true, silent = true })
 
 -- Tab management
@@ -44,7 +44,7 @@ map('n', '<Leader>tc', ':tabclose<CR>', {})
 map('n', '<Leader>tm', ':tabmove<CR>', {})
 
 -- Buffer management
-map('n', '<Space><Space>', ':Buffers<CR>', {})
+map('n', '<Leader>,', ':Buffers<CR>', {})
 map('n', '<Leader>w', ':w!<CR>', {})
 map('n', '<Leader>bd', ':bd<CR>', {})
 map('n', '<Leader>bc', '<cmd>%bdelete|edit#|normal `"`<CR>', { noremap = true})
