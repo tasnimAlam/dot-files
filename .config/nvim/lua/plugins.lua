@@ -30,12 +30,10 @@ return require('packer').startup(function()
   use 'airblade/vim-gitgutter'
   use 'jiangmiao/auto-pairs'
   use 'itchyny/vim-cursorword'
-  -- use 'lfv89/vim-interestingwords'
   use 'mattn/emmet-vim'
   use {'kristijanhusak/vim-js-file-import', run = 'npm install'} 
   use 'unblevable/quick-scope'  
   use 'rust-lang/rust.vim'
-  -- use 'mcchrish/nnn.vim'
   use 'morhetz/gruvbox'
   use 'matze/vim-move'
   use {'rrethy/vim-hexokinase', run = 'make hexokinase'} 
