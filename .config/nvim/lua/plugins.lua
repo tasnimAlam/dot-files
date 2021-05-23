@@ -56,4 +56,6 @@ return require('packer').startup(function()
 	use 'nvim-telescope/telescope-project.nvim'
 	use { 'neoclide/coc.nvim' , branch = 'release'} 
 	use { 'voldikss/vim-floaterm' }
+	use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
+	use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 end)
