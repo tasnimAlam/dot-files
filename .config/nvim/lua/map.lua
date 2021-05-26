@@ -48,6 +48,9 @@ map('n', '<Leader>,', ':Buffers<CR>', {})
 map('n', '<Leader>w', ':w!<CR>', {})
 map('n', '<Leader>bd', ':bd<CR>', {})
 map('n', '<Leader>bc', '<cmd>%bdelete|edit#|normal `"`<CR>', { noremap = true})
+map('n', '[b', ':BufferLineCyclePrev<CR>', { silent = true})
+map('n', ']b', ':BufferLineCycleNext<CR>', { silent = true})
+map('n', 'gb', ':BufferLinePick<CR>', { silent = true})
 
 -- Git Confit 
 map('n', '<Leader>gg', ':Gstatus<CR>', {})
