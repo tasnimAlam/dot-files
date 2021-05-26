@@ -17,20 +17,20 @@ gl.short_line_list = {
 -- VistaPlugin = extension.vista_nearest
 
 local colors = {
-    bg = '#282c34',
-    line_bg = '#353644',
-    fg = '#8FBCBB',
-    fg_green = '#65a380',
+    bg = '#282828',
+    line_bg = '#3c3836',
+    fg = '#fbf1c7',
+    fg_green = '#8ec07c',
 
     yellow = '#fabd2f',
     cyan = '#008080',
-    darkblue = '#081633',
-    green = '#afd700',
-    orange = '#FF8800',
-    purple = '#5d4d7a',
-    magenta = '#c678dd',
-    blue = '#51afef';
-    red = '#ec5f67'
+    darkblue = '#076678',
+    green = '#b8bb26',
+    orange = '#d65d0e',
+    purple = '#d3869b',
+    magenta = '#d3869b',
+    blue = '#83af98';
+    red = '#cc241d'
 }
 
 local function lsp_status(status)
@@ -288,7 +288,8 @@ gls.right[5] = {
     provider = 'LinePercent',
     separator = ' ',
     separator_highlight = {colors.line_bg,colors.line_bg},
-    highlight = {colors.cyan,colors.darkblue,'bold'},
+    -- highlight = {colors.cyan,colors.darkblue,'bold'},
+    highlight = {colors.fg,colors.line_bg,'bold'},
   }
 }
 

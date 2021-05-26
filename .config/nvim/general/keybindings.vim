@@ -84,12 +84,12 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 " Fugitive Conflict Resolution
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
-nmap <Leader>gg :Gstatus<CR>
+" nmap <Leader>gg :Gstatus<CR>
 nmap <Leader>ga :Git add -- .<CR>
-nmap <Leader>gc :Commits<CR>
+" nmap <Leader>gc :Commits<CR>
 nmap <Leader>gc :GV<CR>
-nnoremap <Leader>pp :Dispatch! git push<cr>
-nmap <Leader>gb :Git branch<CR>
+" nnoremap <Leader>pp :Dispatch! git push<cr>
+" nmap <Leader>gb :Git branch<CR>
 nmap <Leader>gf :GitGutterFold<CR>
 nmap <Leader>/ :BLines<CR>
 
