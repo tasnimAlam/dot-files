@@ -63,6 +63,12 @@ map('n', '<Leader>/', ':BLines<CR>', {})
 map('n', '<Leader>gu', ':diffget //2 <CR>', { noremap = true})
 map('n', '<Leader>gl', ':diffget //3 <CR>', { noremap = true})
 map('n', '<C-p>', 'fugitive#head() != "" ? ":GFiles --cached --others --exclude-standard<CR>": ":Files<CR>"', { expr = true })
+-- TODO: make it lua function
+vim.api.nvim_exec( 
+	[[
+		let g:nremap = {'=': '<TAB>'} 
+	]], true
+)
 
 -- Console log shortcut
 map('i', 'cll', 'console.log()<ESC><S-f>(a', {})
