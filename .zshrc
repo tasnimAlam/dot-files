@@ -1,3 +1,4 @@
+# zmodload zsh/zprof # top of your .zshrc file
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 eval $(/opt/homebrew/bin/brew shellenv)
@@ -128,8 +129,10 @@ alias ll="exa -1 --icons --group-directories-first"
 alias lst="ll -s time"
 alias xc="xclip -sel c <"
 alias brew="arch -arm64 brew"
+alias px="lua ~/webpx.lua"
  
 bindkey '^o' autosuggest-accept
+
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -141,10 +144,11 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 
 # nnn config
 export NNN_PLUG='f:fzopen;u:getplugs;t:preview_tui;v:_viu $nnn;'
-export NNN_BMS='d:~/Documents;h:~/;D:~/Downloads/;e:~/Sites/blocks/wp-content/plugins/essential-blocks;p:~/Sites/wp/wp-content/plugins/;t:~/Documents/templately-frontend/;s:~/Documents/svn-repo/;'
+export NNN_BMS='D:~/Documents;h:~/;d:~/Downloads/;e:~/Sites/blocks/wp-content/plugins/essential-blocks;p:~/Projects;t:~/Documents/templately-frontend/;s:~/Documents/svn-repo/;'
 export NNN_COLORS="2136"
 export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
+# export NNN_FCOLORS='b8bb26fb4934fabd2f8ec07c'
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$PATH:node_modules/.bin"
@@ -166,3 +170,11 @@ export PATH=~/.npm-global/bin:$PATH
 #   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 export PATH=$PATH:~/.composer/vendor/bin
 export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
+
+# fix slow loading
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
+# zprof # bottom of .zshrc
