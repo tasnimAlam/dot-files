@@ -59,4 +59,5 @@ return require('packer').startup(function()
 	use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
 	use 'sindrets/diffview.nvim'
 	use 'stsewd/fzf-checkout.vim'
+	use 'nvim-treesitter/nvim-treesitter-textobjects'
 end)

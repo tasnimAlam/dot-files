@@ -37,7 +37,7 @@ bo.modifiable = true
 -- window options
 wo.signcolumn = 'yes' 
 wo.cursorline = true
-wo.foldexpr = vim.fn['nvim_treesitter#foldexpr']()
+vim.cmd[[set foldexpr=nvim_treesitter#foldexpr()]]
 wo.foldmethod = 'expr'
 wo.number = true
 wo.relativenumber = true

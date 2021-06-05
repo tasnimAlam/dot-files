@@ -83,6 +83,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/tasnim/.local/share/nvim/site/pack/packer/start/coc.nvim"
   },
+  ["diffview.nvim"] = {
+    loaded = true,
+    path = "/Users/tasnim/.local/share/nvim/site/pack/packer/start/diffview.nvim"
+  },
   ["editorconfig-vim"] = {
     loaded = true,
     path = "/Users/tasnim/.local/share/nvim/site/pack/packer/start/editorconfig-vim"
@@ -98,6 +102,10 @@ _G.packer_plugins = {
   fzf = {
     loaded = true,
     path = "/Users/tasnim/.local/share/nvim/site/pack/packer/start/fzf"
+  },
+  ["fzf-checkout.vim"] = {
+    loaded = true,
+    path = "/Users/tasnim/.local/share/nvim/site/pack/packer/start/fzf-checkout.vim"
   },
   ["fzf.vim"] = {
     loaded = true,
@@ -122,6 +130,10 @@ _G.packer_plugins = {
   ["nvim-bqf"] = {
     loaded = true,
     path = "/Users/tasnim/.local/share/nvim/site/pack/packer/start/nvim-bqf"
+  },
+  ["nvim-bufferline.lua"] = {
+    loaded = true,
+    path = "/Users/tasnim/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
