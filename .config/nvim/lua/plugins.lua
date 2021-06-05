@@ -60,4 +60,5 @@ return require('packer').startup(function()
 	use 'sindrets/diffview.nvim'
 	use 'stsewd/fzf-checkout.vim'
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
+	use 'nvim-treesitter/nvim-treesitter-angular'
 end)
