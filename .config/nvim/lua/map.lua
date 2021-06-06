@@ -23,7 +23,7 @@ map('n', '<Leader>1', ':PackerInstall<CR>', {})
 map('n', '<Leader>2', ':PackerUpdate<CR>', {})
 
 -- Hop config
-map('n', '<Leader>s', ':HopChar1<CR>', {})
+map('n', '<Leader>s', ':HopChar2<CR>', {})
 map('n', '<Leader>l', ':HopLine<CR>', {})
 
 -- Auto completion config
