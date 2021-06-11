@@ -6,13 +6,10 @@ vim.g.mapleader = ","
 
 map("i", "<Leader>p", "<C-r>0", {})
 map("n", "<Leader>o", ":on<CR>", {})
-map("n", "<Leader>w", ":w<CR>", {})
+map("n", "<Leader>w", ":w!<CR>", {})
 map("n", "<Leader>q", ":q!<CR>", {})
 map("n", "<Leader>g", ":Rg<CR>", {})
 map("n", "<Leader>n", ":FloatermNew! nnn<CR>", {})
-map("n", "<Leader>vr", ":source ~/.vimrc<CR>", {noremap = true})
-map("n", "<Leader>1", ":PaqInstall<CR>", {silent = true, noremap = true})
-map("n", "<Leader>2", ":PaqUpdate<CR>", {silent = true, noremap = true})
 map("n", "<S-h>", ":set invhlsearch<CR>", {})
 map("n", "<Leader>p", ":CocCommand prettier.formatFile<CR>", {})
 
@@ -23,8 +20,9 @@ map("n", "<Leader>u", ":UndotreeToggle | :UndotreeFocus<CR>", {})
 map("n", "<Leader>e", ":NvimTreeToggle<CR>", {})
 
 -- Packer config
-map("n", "<Leader>1", ":PackerInstall<CR>", {})
-map("n", "<Leader>2", ":PackerUpdate<CR>", {})
+map("n", "<Leader>1", ":PackerInstall<CR>", {silent = true, noremap = true})
+map("n", "<Leader>2", ":PackerUpdate<CR>", {silent = true, noremap = true})
+map("n", "<Leader>3", ":PackerClean<CR>", {silent = true, noremap = true})
 
 -- Hop config
 map("n", "<Leader>s", ":HopChar2<CR>", {})
@@ -55,7 +53,6 @@ map("n", "<Leader>tm", ":tabmove<CR>", {})
 -- Buffer management
 -- map('n', '<Leader>,', ':Buffers<CR>', {})
 map("n", "<Leader>,", "<C-^>", {})
-map("n", "<Leader>w", ":w!<CR>", {})
 map("n", "<Leader>bd", ":bd<CR>", {})
 map("n", "<Leader>bc", '<cmd>%bdelete|edit#|normal `"`<CR>', {noremap = true})
 map("n", "[b", ":BufferLineCyclePrev<CR>", {silent = true})
