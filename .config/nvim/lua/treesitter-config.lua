@@ -1,14 +1,14 @@
-require'nvim-treesitter.configs'.setup {
+require "nvim-treesitter.configs".setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "c" },  -- list of language that will be disabled
+    enable = true, -- false will disable the whole extension
+    disable = {"c"} -- list of language that will be disabled
   },
   indent = {
     enable = true
   },
   rainbow = {
-    enable = true,
+    enable = true
   },
   incremental_selection = {
     enable = true,
@@ -16,8 +16,8 @@ require'nvim-treesitter.configs'.setup {
       init_selection = "gnn",
       node_incremental = "grn",
       scope_incremental = "grc",
-      node_decremental = "grm",
-    },
+      node_decremental = "grm"
+    }
   },
   textobjects = {
     select = {
@@ -28,33 +28,33 @@ require'nvim-treesitter.configs'.setup {
         ["if"] = "@function.inner",
         ["ac"] = "@class.outer",
         ["ic"] = "@class.inner",
-        ["al"] = "@loop.inner",
-      },
+        ["al"] = "@loop.inner"
+      }
     },
-		swap = {
+    swap = {
       enable = true,
       swap_next = {
-        ["<leader>a"] = "@parameter.inner",
+        ["<leader>a"] = "@parameter.inner"
       },
       swap_previous = {
-        ["<leader>A"] = "@parameter.inner",
-      },
+        ["<leader>A"] = "@parameter.inner"
+      }
     },
-		 move = {
+    move = {
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
-        ["]m"] = "@function.outer",
+        ["]m"] = "@function.outer"
       },
       goto_next_end = {
-        ["]M"] = "@function.outer",
+        ["]M"] = "@function.outer"
       },
       goto_previous_start = {
-        ["[m"] = "@function.outer",
+        ["[m"] = "@function.outer"
       },
       goto_previous_end = {
-        ["[M"] = "@function.outer",
-      },
-    },
-  },
+        ["[M"] = "@function.outer"
+      }
+    }
+  }
 }
