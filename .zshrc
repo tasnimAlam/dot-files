@@ -70,7 +70,6 @@ KEYTIMEOUT=1
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  yarn
   zsh-autosuggestions
 )
 
@@ -102,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zrc="nvim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias gs='git status '
 alias ga='git add '
@@ -110,12 +109,10 @@ alias gb='git branch '
 alias gc='git commit'
 alias gcm='git commit -m'
 alias gd='git diff'
-# alias go='git checkout '
 alias eb='cd ~/Sites/blocks/wp-content/plugins/essential-blocks; pwd'
 alias pl='cd ~/Sites/blocks/wp-content/plugins;pwd'
 alias tem='cd ~/Documents/templately-frontend; pwd'
 alias ui='cd ~/Projects/ui2; pwd'
-# alias .='nvim .'
 alias t='tmux'
 alias n='nvim'
 alias nn='nnn'
@@ -130,7 +127,9 @@ alias lst="ll -s time"
 alias xc="xclip -sel c <"
 alias brew="arch -arm64 brew"
 alias px="lua ~/webpx.lua"
+alias z="zoxide"
  
+# bindkey -M viins 'kj' vi-cmd-mode
 bindkey '^o' autosuggest-accept
 
 
@@ -148,7 +147,6 @@ export NNN_BMS='D:~/Documents;h:~/;d:~/Downloads/;e:~/Sites/blocks/wp-content/pl
 export NNN_COLORS="2136"
 export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
-# export NNN_FCOLORS='b8bb26fb4934fabd2f8ec07c'
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$PATH:node_modules/.bin"
@@ -170,6 +168,7 @@ export PATH=~/.npm-global/bin:$PATH
 #   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 export PATH=$PATH:~/.composer/vendor/bin
 export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
+eval "$(zoxide init zsh)"
 
 # fix slow loading
 autoload -Uz compinit
