@@ -41,3 +41,6 @@ vim.cmd [[set foldexpr=nvim_treesitter#foldexpr()]]
 wo.foldmethod = "expr"
 wo.number = true
 wo.relativenumber = true
+
+-- gutentag settings
+vim.cmd[[let g:gutentags_file_list_command = 'rg --files']]

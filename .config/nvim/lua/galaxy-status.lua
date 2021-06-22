@@ -309,26 +309,9 @@ gls.right[5] = {
     provider = "LinePercent",
     separator = " ",
     separator_highlight = {colors.line_bg, colors.line_bg},
-    -- highlight = {colors.cyan,colors.darkblue,'bold'},
     highlight = {colors.fg, colors.line_bg, "bold"}
   }
 }
-
--- gls.right[4] = {
---   ScrollBar = {
---     provider = 'ScrollBar',
---     highlight = {colors.blue,colors.purple},
---   }
--- }
---
--- gls.right[3] = {
---   Vista = {
---     provider = VistaPlugin,
---     separator = ' ',
---     separator_highlight = {colors.bg,colors.line_bg},
---     highlight = {colors.fg,colors.line_bg,'bold'},
---   }
--- }
 
 gls.short_line_left[1] = {
   BufferType = {

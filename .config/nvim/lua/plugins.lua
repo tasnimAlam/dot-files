@@ -15,7 +15,6 @@ return require("packer").startup(
     use {"wbthomason/packer.nvim", opt = true}
     use "mhartington/formatter.nvim"
     use "editorconfig/editorconfig-vim"
-    -- use 'prettier/vim-prettier'
     use "pangloss/vim-javascript"
     use "yuezk/vim-js"
     use "maxmellon/vim-jsx-pretty"
@@ -64,5 +63,6 @@ return require("packer").startup(
     use "nvim-treesitter/nvim-treesitter-angular"
     use "ludovicchabant/vim-gutentags"
     use "mbbill/undotree"
+    use "ggandor/lightspeed.nvim"
   end
 )
