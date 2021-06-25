@@ -71,6 +71,7 @@ KEYTIMEOUT=1
 plugins=(
   git
   zsh-autosuggestions
+  fzf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -121,6 +122,9 @@ alias xc="xclip -sel c <"
 alias brew="arch -arm64 brew"
 alias px="lua ~/webpx.lua"
 alias z="zoxide"
+alias tn="tmux new -s"
+alias ta="tmux attach -t"
+alias tk="tmux kill-session -t"
  
 # bindkey -M viins 'kj' vi-cmd-mode
 bindkey '^o' autosuggest-accept
