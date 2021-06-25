@@ -137,7 +137,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 
 # nnn config
-export NNN_PLUG="f:fzopen;u:getplugs;t:preview_tui;v:_viu $nnn;"
+export NNN_PLUG="f:fzopen;u:getplugs;t:preview_tui;v:_viu $nnn;j:autojump;"
 export NNN_BMS="h:~/;d:~/Downloads/;w:~/Projects/sports-cloud-webapp;u:~/Projects/ui2/;r:~/Projects/rust-projects/rust_test/;"
 export NNN_COLORS="2136"
 export NNN_FIFO="/tmp/nnn.fifo"
