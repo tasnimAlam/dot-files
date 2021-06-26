@@ -1,11 +1,13 @@
+require('plugins')
 require('globals')
 require('treesitter-config')
 require('settings')
 require('map')
-require('plugins')
 require('theme')
 require('lsp-config')
 require('rust-config')
 require('galaxy-status')
 require('bufferline-config')
 require('format-code');
+require('gitsign-config');
+require('diffview-config');

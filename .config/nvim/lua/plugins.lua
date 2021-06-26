@@ -23,16 +23,15 @@ return require("packer").startup(
     use "junegunn/gv.vim"
     use "tpope/vim-fugitive"
     use "tpope/vim-surround"
-    use "tpope/vim-commentary"
+    use "b3nj5m1n/kommentary"
     use "tpope/vim-repeat"
     use "tpope/vim-unimpaired"
     use "tpope/vim-dispatch"
-    use "airblade/vim-gitgutter"
     use "jiangmiao/auto-pairs"
     use "itchyny/vim-cursorword"
     use "mattn/emmet-vim"
     use {"kristijanhusak/vim-js-file-import", run = "npm install"}
-    use "unblevable/quick-scope"
+    -- use "unblevable/quick-scope"
     use "rust-lang/rust.vim"
     use "morhetz/gruvbox"
     use "matze/vim-move"
@@ -64,5 +63,8 @@ return require("packer").startup(
     use "ludovicchabant/vim-gutentags"
     use "mbbill/undotree"
     use "ggandor/lightspeed.nvim"
+    use "stevearc/aerial.nvim"
+    use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
+    use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
   end
 )
