@@ -66,5 +66,6 @@ return require("packer").startup(
     use "stevearc/aerial.nvim"
     use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
     use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
+    use "JoosepAlviste/nvim-ts-context-commentstring"
   end
 )
