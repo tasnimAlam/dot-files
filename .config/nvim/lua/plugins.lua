@@ -10,62 +10,73 @@ require "packer".init {
 }
 
 return require("packer").startup(
-  function()
-    -- Packer can manage itself as an optional plugin
-    use {"wbthomason/packer.nvim", opt = true}
-    use "mhartington/formatter.nvim"
-    use "editorconfig/editorconfig-vim"
-    use "pangloss/vim-javascript"
-    use "yuezk/vim-js"
-    use "maxmellon/vim-jsx-pretty"
-    use {"junegunn/fzf", run = "./install --all"}
-    use "junegunn/fzf.vim"
-    use "junegunn/gv.vim"
-    use "tpope/vim-fugitive"
-    use "tpope/vim-surround"
-    use "b3nj5m1n/kommentary"
-    use "tpope/vim-repeat"
-    use "tpope/vim-unimpaired"
-    use "tpope/vim-dispatch"
-    use "jiangmiao/auto-pairs"
-    use "itchyny/vim-cursorword"
-    use "mattn/emmet-vim"
-    use {"kristijanhusak/vim-js-file-import", run = "npm install"}
-    -- use "unblevable/quick-scope"
-    use "rust-lang/rust.vim"
-    use "morhetz/gruvbox"
-    use "matze/vim-move"
-    use {"rrethy/vim-hexokinase", run = "make hexokinase"}
-    use "AndrewRadev/splitjoin.vim"
-    use "tommcdo/vim-exchange"
-    use "jdhao/better-escape.vim"
-    use "honza/vim-snippets"
-    use "kevinhwang91/nvim-bqf"
-    use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-    use "kyazdani42/nvim-tree.lua"
-    use "kyazdani42/nvim-web-devicons"
-    use {
-      "nvim-telescope/telescope.nvim",
-      requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
+  {
+    function()
+      -- Packer can manage itself as an optional plugin
+      use {"wbthomason/packer.nvim", opt = true}
+      use "mhartington/formatter.nvim"
+      use "editorconfig/editorconfig-vim"
+      use {"pangloss/vim-javascript"}
+      use {"yuezk/vim-js"}
+      use {"maxmellon/vim-jsx-pretty"}
+      use {"junegunn/fzf", run = "./install --all"}
+      -- use {"junegunn/fzf.vim"}
+      use {"junegunn/gv.vim"}
+      use {"tpope/vim-fugitive"}
+      use "tpope/vim-surround"
+      use "b3nj5m1n/kommentary"
+      use "tpope/vim-repeat"
+      use "tpope/vim-unimpaired"
+      use {"tpope/vim-dispatch"}
+      use "jiangmiao/auto-pairs"
+      use "itchyny/vim-cursorword"
+      use "mattn/emmet-vim"
+      use {"kristijanhusak/vim-js-file-import", run = "npm install"}
+      -- use "unblevable/quick-scope"
+      use {"rust-lang/rust.vim"}
+      use "morhetz/gruvbox"
+      use "matze/vim-move"
+      use {"rrethy/vim-hexokinase", run = "make hexokinase"}
+      use "AndrewRadev/splitjoin.vim"
+      use "tommcdo/vim-exchange"
+      use {"jdhao/better-escape.vim"}
+      use "honza/vim-snippets"
+      use {"kevinhwang91/nvim-bqf"}
+      use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+      use {"kyazdani42/nvim-tree.lua"}
+      use "kyazdani42/nvim-web-devicons"
+      use {
+        "nvim-telescope/telescope.nvim",
+        requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
+      }
+      use "nvim-telescope/telescope-fzy-native.nvim"
+      use {"phaazon/hop.nvim"}
+      use "neovim/nvim-lspconfig"
+      use "glepnir/galaxyline.nvim"
+      use "nvim-telescope/telescope-project.nvim"
+      use {"neoclide/coc.nvim", branch = "release"}
+      use "voldikss/vim-floaterm"
+      use {"akinsho/nvim-bufferline.lua", requires = "kyazdani42/nvim-web-devicons"}
+      use {"sindrets/diffview.nvim"}
+      use {"stsewd/fzf-checkout.vim"}
+      use "nvim-treesitter/nvim-treesitter-textobjects"
+      use {"nvim-treesitter/nvim-treesitter-angular"}
+      use "ludovicchabant/vim-gutentags"
+      use "mbbill/undotree"
+      use "ggandor/lightspeed.nvim"
+      use "stevearc/aerial.nvim"
+      use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
+      use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
+      use "JoosepAlviste/nvim-ts-context-commentstring"
+    end,
+    config = {
+      display = {
+        open_fn = require("packer.util").float
+      },
+      profile = {
+        enable = true,
+        threshold = 1 -- the amount in ms that a plugins load time must be over for it to be included in the profile
+      }
     }
-    use "nvim-telescope/telescope-fzy-native.nvim"
-    use "phaazon/hop.nvim"
-    use "neovim/nvim-lspconfig"
-    use "glepnir/galaxyline.nvim"
-    use "nvim-telescope/telescope-project.nvim"
-    use {"neoclide/coc.nvim", branch = "release"}
-    use "voldikss/vim-floaterm"
-    use {"akinsho/nvim-bufferline.lua", requires = "kyazdani42/nvim-web-devicons"}
-    use "sindrets/diffview.nvim"
-    use "stsewd/fzf-checkout.vim"
-    use "nvim-treesitter/nvim-treesitter-textobjects"
-    use "nvim-treesitter/nvim-treesitter-angular"
-    use "ludovicchabant/vim-gutentags"
-    use "mbbill/undotree"
-    use "ggandor/lightspeed.nvim"
-    use "stevearc/aerial.nvim"
-    use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
-    use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
-    use "JoosepAlviste/nvim-ts-context-commentstring"
-  end
+  }
 )
