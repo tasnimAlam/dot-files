@@ -17,26 +17,26 @@ return require("packer").startup(
       use "mhartington/formatter.nvim"
       use "editorconfig/editorconfig-vim"
       use {"pangloss/vim-javascript"}
-      use {"yuezk/vim-js"}
-      use {"maxmellon/vim-jsx-pretty"}
+      use {"yuezk/vim-js", ft = {"js", "jsx", "ts", "tsx"}}
+      use {"maxmellon/vim-jsx-pretty", ft = {"js", "jsx", "ts", "tsx"}}
       use {"junegunn/fzf", run = "./install --all"}
-      -- use {"junegunn/fzf.vim"}
-      use {"junegunn/gv.vim"}
-      use {"tpope/vim-fugitive"}
+      use {"junegunn/fzf.vim"}
+      use {"junegunn/gv.vim", cmd = {"GV"}}
+      use {"tpope/vim-fugitive", event = "BufEnter", cmd = {"Git", "Gstatus", "Gblame", "Gpush", "Gpull"}}
       use "tpope/vim-surround"
       use "b3nj5m1n/kommentary"
       use "tpope/vim-repeat"
       use "tpope/vim-unimpaired"
-      use {"tpope/vim-dispatch"}
+      use {"tpope/vim-dispatch", cmd = {"Dispatch", "Make", "Focus", "Start"}}
       use "jiangmiao/auto-pairs"
       use "itchyny/vim-cursorword"
       use "mattn/emmet-vim"
-      use {"kristijanhusak/vim-js-file-import", run = "npm install"}
+      use {"kristijanhusak/vim-js-file-import", run = "npm install", ft = {"js", "jsx", "ts", "tsx"}}
       -- use "unblevable/quick-scope"
-      use {"rust-lang/rust.vim"}
+      use {"rust-lang/rust.vim", ft = {"rs"}}
       use "morhetz/gruvbox"
       use "matze/vim-move"
-      use {"rrethy/vim-hexokinase", run = "make hexokinase"}
+      use {"rrethy/vim-hexokinase", run = "make hexokinase", ft = {"css", "scss"}}
       use "AndrewRadev/splitjoin.vim"
       use "tommcdo/vim-exchange"
       use {"jdhao/better-escape.vim"}
@@ -47,10 +47,10 @@ return require("packer").startup(
       use "kyazdani42/nvim-web-devicons"
       use {
         "nvim-telescope/telescope.nvim",
-        requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
+        requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}, cmd = "Telescope"}
       }
       use "nvim-telescope/telescope-fzy-native.nvim"
-      use {"phaazon/hop.nvim"}
+      use {"phaazon/hop.nvim", event = "BufRead"}
       use "neovim/nvim-lspconfig"
       use "glepnir/galaxyline.nvim"
       use "nvim-telescope/telescope-project.nvim"
@@ -60,14 +60,14 @@ return require("packer").startup(
       use {"sindrets/diffview.nvim"}
       use {"stsewd/fzf-checkout.vim"}
       use "nvim-treesitter/nvim-treesitter-textobjects"
-      use {"nvim-treesitter/nvim-treesitter-angular"}
+      use {"nvim-treesitter/nvim-treesitter-angular", ft = {"ts", "tsx", "html"}}
       use "ludovicchabant/vim-gutentags"
-      use "mbbill/undotree"
+      use {"mbbill/undotree", cmd = "UndotreeToggle"}
       use "ggandor/lightspeed.nvim"
       use "stevearc/aerial.nvim"
-      use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
+      use {"lukas-reineke/indent-blankline.nvim", branch = "lua", event = "BufRead"}
       use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
-      use "JoosepAlviste/nvim-ts-context-commentstring"
+      use {"JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead", ft = {"js", "jsx", "ts", "tsx"}}
     end,
     config = {
       display = {
