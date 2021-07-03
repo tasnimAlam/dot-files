@@ -65,7 +65,7 @@ return require("packer").startup(
       use {"mbbill/undotree", cmd = "UndotreeToggle"}
       use "ggandor/lightspeed.nvim"
       use "stevearc/aerial.nvim"
-      use {"lukas-reineke/indent-blankline.nvim", branch = "lua", event = "BufRead"}
+      use {"lukas-reineke/indent-blankline.nvim", event = "BufRead"}
       use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
       use {"JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead", ft = {"js", "jsx", "ts", "tsx"}}
     end,
