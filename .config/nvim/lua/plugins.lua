@@ -14,9 +14,9 @@ return require("packer").startup(
     function()
       -- Packer can manage itself as an optional plugin
       use {"wbthomason/packer.nvim", opt = true}
-      use "mhartington/formatter.nvim"
+      use {"mhartington/formatter.nvim"}
       use "editorconfig/editorconfig-vim"
-      use {"pangloss/vim-javascript"}
+      use {"pangloss/vim-javascript", ft = {"js", "jsx", "ts", "tsx"}}
       use {"yuezk/vim-js", ft = {"js", "jsx", "ts", "tsx"}}
       use {"maxmellon/vim-jsx-pretty", ft = {"js", "jsx", "ts", "tsx"}}
       use {"junegunn/fzf", run = "./install --all"}
@@ -29,15 +29,15 @@ return require("packer").startup(
       use "tpope/vim-unimpaired"
       use {"tpope/vim-dispatch", cmd = {"Dispatch", "Make", "Focus", "Start"}}
       use "jiangmiao/auto-pairs"
-      use "itchyny/vim-cursorword"
+      -- use "itchyny/vim-cursorword"
       use "mattn/emmet-vim"
       use {"kristijanhusak/vim-js-file-import", run = "npm install", ft = {"js", "jsx", "ts", "tsx"}}
       -- use "unblevable/quick-scope"
-      use {"rust-lang/rust.vim", ft = {"rs"}}
+      use {"rust-lang/rust.vim", ft = {"rust"}}
       use "morhetz/gruvbox"
       use "matze/vim-move"
       use {"rrethy/vim-hexokinase", run = "make hexokinase", ft = {"css", "scss"}}
-      use "AndrewRadev/splitjoin.vim"
+      use {"AndrewRadev/splitjoin.vim", cmd = {"SplitjoinJoin", "SplitjoinSplit"}}
       use "tommcdo/vim-exchange"
       use {"jdhao/better-escape.vim"}
       use "honza/vim-snippets"
@@ -64,10 +64,11 @@ return require("packer").startup(
       use "ludovicchabant/vim-gutentags"
       use {"mbbill/undotree", cmd = "UndotreeToggle"}
       use "ggandor/lightspeed.nvim"
-      use "stevearc/aerial.nvim"
+      -- use "stevearc/aerial.nvim"
       use {"lukas-reineke/indent-blankline.nvim", event = "BufRead"}
       use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
-      use {"JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead", ft = {"js", "jsx", "ts", "tsx"}}
+      use {"JoosepAlviste/nvim-ts-context-commentstring", ft = {"js", "jsx", "ts", "tsx"}}
+			use "mhinz/vim-startify"
     end,
     config = {
       display = {

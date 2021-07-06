@@ -28,6 +28,7 @@ map("n", "<Leader>gd", ":DiffviewOpen<CR>", {})
 map("n", "<Leader>1", ":PackerInstall<CR>", {silent = true, noremap = true})
 map("n", "<Leader>2", ":PackerUpdate<CR>", {silent = true, noremap = true})
 map("n", "<Leader>3", ":PackerClean<CR>", {silent = true, noremap = true})
+map("n", "<Leader>4", ":PackerCompile<CR>", {silent = true, noremap = true})
 
 -- Hop config
 map("n", "<Leader>s", ":HopChar2<CR>", {})

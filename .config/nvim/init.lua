@@ -12,4 +12,4 @@ require("format-code")
 require("gitsign-config")
 require("diffview-config")
 require("kommentary-config")
-
+require("startify-config")
