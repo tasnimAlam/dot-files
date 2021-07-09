@@ -29,14 +29,13 @@ return require("packer").startup(
       use "tpope/vim-unimpaired"
       use {"tpope/vim-dispatch", cmd = {"Dispatch", "Make", "Focus", "Start"}}
       use "jiangmiao/auto-pairs"
-      -- use "itchyny/vim-cursorword"
       use "mattn/emmet-vim"
       use {"kristijanhusak/vim-js-file-import", run = "npm install", ft = {"js", "jsx", "ts", "tsx"}}
       -- use "unblevable/quick-scope"
-      use {"rust-lang/rust.vim", ft = {"rust"}}
+      use {"rust-lang/rust.vim", ft = {"rs"}}
       use "morhetz/gruvbox"
       use "matze/vim-move"
-      use {"rrethy/vim-hexokinase", run = "make hexokinase", ft = {"css", "scss"}}
+      use {"rrethy/vim-hexokinase", run = "make hexokinase"}
       use {"AndrewRadev/splitjoin.vim", cmd = {"SplitjoinJoin", "SplitjoinSplit"}}
       use "tommcdo/vim-exchange"
       use {"jdhao/better-escape.vim"}
@@ -68,7 +67,9 @@ return require("packer").startup(
       use {"lukas-reineke/indent-blankline.nvim", event = "BufRead"}
       use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
       use {"JoosepAlviste/nvim-ts-context-commentstring", ft = {"js", "jsx", "ts", "tsx"}}
-			use "mhinz/vim-startify"
+      use "mhinz/vim-startify"
+      -- use {"camspiers/snap"}
+      use "projekt0n/github-nvim-theme"
     end,
     config = {
       display = {
