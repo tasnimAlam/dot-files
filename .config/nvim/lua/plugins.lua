@@ -30,8 +30,6 @@ return require("packer").startup(
       use {"tpope/vim-dispatch", cmd = {"Dispatch", "Make", "Focus", "Start"}}
       use "jiangmiao/auto-pairs"
       use "mattn/emmet-vim"
-      use {"kristijanhusak/vim-js-file-import", run = "npm install", ft = {"js", "jsx", "ts", "tsx"}}
-      -- use "unblevable/quick-scope"
       use {"rust-lang/rust.vim", ft = {"rs"}}
       use "morhetz/gruvbox"
       use "matze/vim-move"
@@ -49,7 +47,6 @@ return require("packer").startup(
         requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}, cmd = "Telescope"}
       }
       use "nvim-telescope/telescope-fzy-native.nvim"
-      use {"phaazon/hop.nvim", event = "BufRead"}
       use "neovim/nvim-lspconfig"
       use "glepnir/galaxyline.nvim"
       use "nvim-telescope/telescope-project.nvim"
@@ -59,17 +56,21 @@ return require("packer").startup(
       use {"sindrets/diffview.nvim"}
       use {"stsewd/fzf-checkout.vim"}
       use "nvim-treesitter/nvim-treesitter-textobjects"
-      use {"nvim-treesitter/nvim-treesitter-angular", ft = {"ts", "tsx", "html"}}
+      use {"nvim-treesitter/nvim-treesitter-angular"}
       use "ludovicchabant/vim-gutentags"
+      use {"kristijanhusak/vim-js-file-import", run = "npm install"}
       use {"mbbill/undotree", cmd = "UndotreeToggle"}
       use "ggandor/lightspeed.nvim"
       -- use "stevearc/aerial.nvim"
       use {"lukas-reineke/indent-blankline.nvim", event = "BufRead"}
-      use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
+      -- use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
+      use {"airblade/vim-gitgutter"}
       use {"JoosepAlviste/nvim-ts-context-commentstring", ft = {"js", "jsx", "ts", "tsx"}}
       use "mhinz/vim-startify"
       -- use {"camspiers/snap"}
       use "projekt0n/github-nvim-theme"
+      use "navarasu/onedark.nvim"
+      use {"akinsho/nvim-toggleterm.lua"}
     end,
     config = {
       display = {

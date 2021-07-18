@@ -21,6 +21,7 @@ o.termguicolors = true
 o.background = "dark"
 o.completeopt = "noinsert"
 o.tabstop = 2
+o.hidden = true
 if has("mac") == 1 then
   o.clipboard = "unnamedplus"
 elseif has("unix") == 1 then

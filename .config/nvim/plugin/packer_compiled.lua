@@ -117,10 +117,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/tasnim/.local/share/nvim/site/pack/packer/start/github-nvim-theme"
   },
-  ["gitsigns.nvim"] = {
-    loaded = true,
-    path = "/Users/tasnim/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
-  },
   gruvbox = {
     loaded = true,
     path = "/Users/tasnim/.local/share/nvim/site/pack/packer/start/gruvbox"
@@ -130,11 +126,6 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/Users/tasnim/.local/share/nvim/site/pack/packer/opt/gv.vim"
-  },
-  ["hop.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/tasnim/.local/share/nvim/site/pack/packer/opt/hop.nvim"
   },
   ["indent-blankline.nvim"] = {
     loaded = false,
@@ -170,9 +161,8 @@ _G.packer_plugins = {
     path = "/Users/tasnim/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["nvim-treesitter-angular"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/tasnim/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-angular"
+    loaded = true,
+    path = "/Users/tasnim/.local/share/nvim/site/pack/packer/start/nvim-treesitter-angular"
   },
   ["nvim-treesitter-textobjects"] = {
     loaded = true,
@@ -186,6 +176,10 @@ _G.packer_plugins = {
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/Users/tasnim/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+  },
+  ["onedark.nvim"] = {
+    loaded = true,
+    path = "/Users/tasnim/.local/share/nvim/site/pack/packer/start/onedark.nvim"
   },
   ["packer.nvim"] = {
     loaded = false,
@@ -249,6 +243,10 @@ _G.packer_plugins = {
     needs_bufread = true,
     path = "/Users/tasnim/.local/share/nvim/site/pack/packer/opt/vim-fugitive"
   },
+  ["vim-gitgutter"] = {
+    loaded = true,
+    path = "/Users/tasnim/.local/share/nvim/site/pack/packer/start/vim-gitgutter"
+  },
   ["vim-gutentags"] = {
     loaded = true,
     path = "/Users/tasnim/.local/share/nvim/site/pack/packer/start/vim-gutentags"
@@ -268,9 +266,8 @@ _G.packer_plugins = {
     path = "/Users/tasnim/.local/share/nvim/site/pack/packer/opt/vim-js"
   },
   ["vim-js-file-import"] = {
-    loaded = false,
-    needs_bufread = true,
-    path = "/Users/tasnim/.local/share/nvim/site/pack/packer/opt/vim-js-file-import"
+    loaded = true,
+    path = "/Users/tasnim/.local/share/nvim/site/pack/packer/start/vim-js-file-import"
   },
   ["vim-jsx-pretty"] = {
     loaded = false,
@@ -307,42 +304,38 @@ time([[Defining packer_plugins]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-vim.cmd [[command! -nargs=* -range -bang -complete=file SplitjoinSplit lua require("packer.load")({'splitjoin.vim'}, { cmd = "SplitjoinSplit", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file Gpush lua require("packer.load")({'vim-fugitive'}, { cmd = "Gpush", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file Gpull lua require("packer.load")({'vim-fugitive'}, { cmd = "Gpull", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file SplitjoinJoin lua require("packer.load")({'splitjoin.vim'}, { cmd = "SplitjoinJoin", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file SplitjoinSplit lua require("packer.load")({'splitjoin.vim'}, { cmd = "SplitjoinSplit", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Dispatch lua require("packer.load")({'vim-dispatch'}, { cmd = "Dispatch", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Make lua require("packer.load")({'vim-dispatch'}, { cmd = "Make", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file Focus lua require("packer.load")({'vim-dispatch'}, { cmd = "Focus", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file Start lua require("packer.load")({'vim-dispatch'}, { cmd = "Start", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file GV lua require("packer.load")({'gv.vim'}, { cmd = "GV", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file Start lua require("packer.load")({'vim-dispatch'}, { cmd = "Start", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file Focus lua require("packer.load")({'vim-dispatch'}, { cmd = "Focus", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file UndotreeToggle lua require("packer.load")({'undotree'}, { cmd = "UndotreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Git lua require("packer.load")({'vim-fugitive'}, { cmd = "Git", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Gstatus lua require("packer.load")({'vim-fugitive'}, { cmd = "Gstatus", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Gblame lua require("packer.load")({'vim-fugitive'}, { cmd = "Gblame", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file Gpush lua require("packer.load")({'vim-fugitive'}, { cmd = "Gpush", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file Gpull lua require("packer.load")({'vim-fugitive'}, { cmd = "Gpull", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType tsx ++once lua require("packer.load")({'vim-javascript', 'vim-js', 'vim-js-file-import', 'vim-jsx-pretty', 'nvim-treesitter-angular', 'nvim-ts-context-commentstring'}, { ft = "tsx" }, _G.packer_plugins)]]
-vim.cmd [[au FileType html ++once lua require("packer.load")({'nvim-treesitter-angular'}, { ft = "html" }, _G.packer_plugins)]]
-vim.cmd [[au FileType js ++once lua require("packer.load")({'vim-javascript', 'vim-js', 'vim-js-file-import', 'vim-jsx-pretty', 'nvim-ts-context-commentstring'}, { ft = "js" }, _G.packer_plugins)]]
-vim.cmd [[au FileType jsx ++once lua require("packer.load")({'vim-javascript', 'vim-js', 'vim-js-file-import', 'vim-jsx-pretty', 'nvim-ts-context-commentstring'}, { ft = "jsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType js ++once lua require("packer.load")({'vim-javascript', 'vim-js', 'vim-jsx-pretty', 'nvim-ts-context-commentstring'}, { ft = "js" }, _G.packer_plugins)]]
+vim.cmd [[au FileType tsx ++once lua require("packer.load")({'vim-javascript', 'vim-js', 'vim-jsx-pretty', 'nvim-ts-context-commentstring'}, { ft = "tsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType jsx ++once lua require("packer.load")({'vim-javascript', 'vim-js', 'vim-jsx-pretty', 'nvim-ts-context-commentstring'}, { ft = "jsx" }, _G.packer_plugins)]]
 vim.cmd [[au FileType rs ++once lua require("packer.load")({'rust.vim'}, { ft = "rs" }, _G.packer_plugins)]]
-vim.cmd [[au FileType ts ++once lua require("packer.load")({'vim-javascript', 'vim-js', 'vim-js-file-import', 'vim-jsx-pretty', 'nvim-treesitter-angular', 'nvim-ts-context-commentstring'}, { ft = "ts" }, _G.packer_plugins)]]
+vim.cmd [[au FileType ts ++once lua require("packer.load")({'vim-javascript', 'vim-js', 'vim-jsx-pretty', 'nvim-ts-context-commentstring'}, { ft = "ts" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'indent-blankline.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au BufEnter * ++once lua require("packer.load")({'vim-fugitive'}, { event = "BufEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'hop.nvim', 'indent-blankline.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
-time([[Sourcing ftdetect script at: /Users/tasnim/.local/share/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim]], true)
-vim.cmd [[source /Users/tasnim/.local/share/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim]]
-time([[Sourcing ftdetect script at: /Users/tasnim/.local/share/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim]], false)
 time([[Sourcing ftdetect script at: /Users/tasnim/.local/share/nvim/site/pack/packer/opt/vim-javascript/ftdetect/flow.vim]], true)
 vim.cmd [[source /Users/tasnim/.local/share/nvim/site/pack/packer/opt/vim-javascript/ftdetect/flow.vim]]
 time([[Sourcing ftdetect script at: /Users/tasnim/.local/share/nvim/site/pack/packer/opt/vim-javascript/ftdetect/flow.vim]], false)
@@ -352,6 +345,9 @@ time([[Sourcing ftdetect script at: /Users/tasnim/.local/share/nvim/site/pack/pa
 time([[Sourcing ftdetect script at: /Users/tasnim/.local/share/nvim/site/pack/packer/opt/vim-js/ftdetect/javascript.vim]], true)
 vim.cmd [[source /Users/tasnim/.local/share/nvim/site/pack/packer/opt/vim-js/ftdetect/javascript.vim]]
 time([[Sourcing ftdetect script at: /Users/tasnim/.local/share/nvim/site/pack/packer/opt/vim-js/ftdetect/javascript.vim]], false)
+time([[Sourcing ftdetect script at: /Users/tasnim/.local/share/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim]], true)
+vim.cmd [[source /Users/tasnim/.local/share/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim]]
+time([[Sourcing ftdetect script at: /Users/tasnim/.local/share/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles(1) end
 
