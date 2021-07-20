@@ -18,7 +18,7 @@ map("n", "<Leader>p", ":CocCommand prettier.formatFile<CR>", {})
 -- Undotree config
 map("n", "<Leader>u", ":UndotreeToggle | :UndotreeFocus<CR>", {})
 
--- Fern config
+-- Nvim tree config
 map("n", "<Leader>e", ":NvimTreeToggle<CR>", {})
 
 -- Diffview config
@@ -31,8 +31,8 @@ map("n", "<Leader>3", ":PackerClean<CR>", {silent = true, noremap = true})
 map("n", "<Leader>4", ":PackerCompile<CR>", {silent = true, noremap = true})
 
 -- Hop config
-map("n", "<Leader>s", ":HopChar2<CR>", {})
-map("n", "<Leader>l", ":HopLine<CR>", {})
+--[[ map("n", "<Leader>s", ":HopChar2<CR>", {})
+map("n", "<Leader>l", ":HopLine<CR>", {}) ]]
 
 -- Auto completion config
 map("i", "<Tab>", 'pumvisible() ? "<C-n>" : "<Tab>"', {expr = true})
@@ -42,7 +42,6 @@ map("i", "<CR>", 'pumvisible() ? "<C-y>" : "<CR>"', {expr = true})
 -- Telescope config
 map("n", "<Leader>ff", '<cmd>lua require("telescope.builtin").find_files()<CR>', {noremap = true})
 -- map('n', '<Leader>g', '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true })
-map("n", "<Leader>h", "<cmd>set invhls<CR>", {})
 map(
   "n",
   "<Leader>fp",
@@ -51,10 +50,10 @@ map(
 )
 
 -- Tab management
-map("n", "<Leader>tn", ":tabnext<CR>", {})
+--[[ map("n", "<Leader>tn", ":tabnext<CR>", {})
 map("n", "<Leader>to", ":tabonly<CR>", {})
 map("n", "<Leader>tc", ":tabclose<CR>", {})
-map("n", "<Leader>tm", ":tabmove<CR>", {})
+map("n", "<Leader>tm", ":tabmove<CR>", {}) ]]
 
 -- Buffer management
 -- map('n', '<Leader>,', ':Buffers<CR>', {})
@@ -68,7 +67,7 @@ map("n", "g>", ":BufferLineMoveNext<CR>", {silent = true})
 map("n", "g<", ":BufferLineMovePrev<CR>", {silent = true})
 
 -- Git Confit
-map("n", "<Leader>gg", ":Gstatus<CR>", {})
+map("n", "<Leader>gg", ":Gstatus<CR> | :on<CR>", {})
 map("n", "<Leader>ga", ":Git add -- .<CR>", {})
 map("n", "<Leader>gc", ":GV<CR>", {})
 map("n", "<Leader>gf", ":GitGutterFold<CR>", {})
