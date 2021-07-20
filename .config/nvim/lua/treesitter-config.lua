@@ -70,3 +70,5 @@ require "nvim-treesitter.configs".setup {
     }
   }
 }
+
+vim.cmd [[set foldexpr=nvim_treesitter#foldexpr()]]
