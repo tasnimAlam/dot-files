@@ -2,6 +2,7 @@ local o = vim.o
 local wo = vim.wo
 local bo = vim.bo
 local has = vim.fn.has
+local g = vim.g
 
 -- global options
 o.swapfile = false
@@ -45,3 +46,15 @@ wo.relativenumber = true
 
 -- gutentag settings
 vim.cmd[[let g:gutentags_file_list_command = 'rg --files']]
+
+-- disable builtin vim plugins
+g.loaded_gzip = 0
+g.loaded_tar = 0
+g.loaded_tarPlugin = 0
+g.loaded_zipPlugin = 0
+g.loaded_2html_plugin = 0
+g.loaded_netrw = 0
+g.loaded_netrwPlugin = 0
+g.loaded_matchit = 0
+g.loaded_matchparen = 0
+g.loaded_spec = 0

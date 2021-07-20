@@ -66,7 +66,8 @@ return require("packer").startup(
       -- use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
       use {"airblade/vim-gitgutter"}
       use {"JoosepAlviste/nvim-ts-context-commentstring", ft = {"js", "jsx", "ts", "tsx"}}
-      use "mhinz/vim-startify"
+      -- use {"glepnir/dashboard-nvim"}
+      -- use "mhinz/vim-startify"
       -- use {"camspiers/snap"}
       use "projekt0n/github-nvim-theme"
       use "navarasu/onedark.nvim"
