@@ -36,29 +36,28 @@ return require("packer").startup(
       use {"rrethy/vim-hexokinase", run = "make hexokinase"}
       use {"AndrewRadev/splitjoin.vim", cmd = {"SplitjoinJoin", "SplitjoinSplit"}}
       use "tommcdo/vim-exchange"
-      use {"jdhao/better-escape.vim"}
+      use {"jdhao/better-escape.vim", event = "InsertEnter"}
       use "honza/vim-snippets"
       use {"kevinhwang91/nvim-bqf"}
       use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-      use {"kyazdani42/nvim-tree.lua"}
+      use {"kyazdani42/nvim-tree.lua", cmd = {"NvimTreeToggle"}}
       use "kyazdani42/nvim-web-devicons"
       use {
         "nvim-telescope/telescope.nvim",
         requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}, cmd = "Telescope"}
       }
-      use "nvim-telescope/telescope-fzy-native.nvim"
       use "neovim/nvim-lspconfig"
       use "glepnir/galaxyline.nvim"
-      use "nvim-telescope/telescope-project.nvim"
+      use {"nvim-telescope/telescope-project.nvim"}
       use {"neoclide/coc.nvim", branch = "release"}
       use "voldikss/vim-floaterm"
       use {"akinsho/nvim-bufferline.lua", requires = "kyazdani42/nvim-web-devicons"}
       use {"sindrets/diffview.nvim"}
-      use {"stsewd/fzf-checkout.vim"}
+      use {"stsewd/fzf-checkout.vim", cmd = {"GBranches"}}
       use "nvim-treesitter/nvim-treesitter-textobjects"
       use {"nvim-treesitter/nvim-treesitter-angular"}
       use "ludovicchabant/vim-gutentags"
-      use {"kristijanhusak/vim-js-file-import", run = "npm install"}
+      use {"kristijanhusak/vim-js-file-import", run = "npm install", ft = {"js", "jsx", "ts", "tsx"}}
       use {"mbbill/undotree", cmd = "UndotreeToggle"}
       use "ggandor/lightspeed.nvim"
       -- use "stevearc/aerial.nvim"
