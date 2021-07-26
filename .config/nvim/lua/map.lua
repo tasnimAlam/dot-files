@@ -30,9 +30,11 @@ map("n", "<Leader>2", ":PackerUpdate<CR>", {silent = true, noremap = true})
 map("n", "<Leader>3", ":PackerClean<CR>", {silent = true, noremap = true})
 map("n", "<Leader>4", ":PackerCompile<CR>", {silent = true, noremap = true})
 
--- Hop config
---[[ map("n", "<Leader>s", ":HopChar2<CR>", {})
-map("n", "<Leader>l", ":HopLine<CR>", {}) ]]
+-- Vim move config
+map("n", "∆", ":m .+1<CR>", {silent = true, noremap = true})
+map("n", "˚", ":m .-2<CR>", {silent = true, noremap = true})
+map("v", "˚", ":m '<-2<CR>gv=gv", {silent = true, noremap = true})
+map("v", "∆", ":m '>+1<CR>gv=gv", {silent = true, noremap = true})
 
 -- Auto completion config
 map("i", "<Tab>", 'pumvisible() ? "<C-n>" : "<Tab>"', {expr = true})
@@ -41,19 +43,12 @@ map("i", "<CR>", 'pumvisible() ? "<C-y>" : "<CR>"', {expr = true})
 
 -- Telescope config
 map("n", "<Leader>ff", '<cmd>lua require("telescope.builtin").find_files()<CR>', {noremap = true})
--- map('n', '<Leader>g', '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true })
 map(
   "n",
   "<Leader>fp",
   '<cmd>lua require("telescope").extensions.project.project{}<CR>',
   {noremap = true, silent = true}
 )
-
--- Tab management
---[[ map("n", "<Leader>tn", ":tabnext<CR>", {})
-map("n", "<Leader>to", ":tabonly<CR>", {})
-map("n", "<Leader>tc", ":tabclose<CR>", {})
-map("n", "<Leader>tm", ":tabmove<CR>", {}) ]]
 
 -- Buffer management
 -- map('n', '<Leader>,', ':Buffers<CR>', {})
