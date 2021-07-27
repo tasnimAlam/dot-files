@@ -51,7 +51,6 @@ map(
 )
 
 -- Buffer management
--- map('n', '<Leader>,', ':Buffers<CR>', {})
 map("n", "<Leader>,", "<C-^>", {})
 map("n", "<Leader>bd", ":bd<CR>", {})
 map("n", "<Leader>bc", '<cmd>%bdelete|edit#|normal `"`<CR>', {noremap = true})
@@ -78,9 +77,7 @@ map(
   {expr = true}
 )
 -- TODO: make it lua function
-vim.api.nvim_exec([[
-		let g:nremap = {'=': '<TAB>'} 
-	]], true)
+vim.api.nvim_exec([[ let g:nremap = {'=': '<TAB>'} ]], true)
 
 -- Console log shortcut
 map("i", "cll", "console.log()<ESC><S-f>(a", {})
