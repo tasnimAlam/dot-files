@@ -14,6 +14,17 @@ map("n", "<Leader>cc", ":copen<CR>", {})
 map("n", "<Leader>n", ":FloatermNew! nnn<CR>", {})
 map("n", "<S-h>", ":set invhlsearch<CR>", {})
 map("n", "<Leader>p", ":CocCommand prettier.formatFile<CR>", {})
+map("n", "<S-y>", "y$", {})
+
+-- Keep it center
+map("n", "n", "nzzzv", {})
+map("n", "<S-n>", "Nzzzv", {})
+
+-- Undo break points
+map("i", ",", ",<C-g>u", {})
+map("i", ".", ".<C-g>u", {})
+map("i", "!", "!<C-g>u", {})
+map("i", "?", "?<C-g>u", {})
 
 -- Undotree config
 map("n", "<Leader>u", ":UndotreeToggle | :UndotreeFocus<CR>", {})
