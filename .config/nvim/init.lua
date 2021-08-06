@@ -17,8 +17,7 @@ async =
       require("diffview-config")
       require("kommentary-config")
       require("toggleterm-config")
-			require("tabout-config")
-
+      require("tabout-config")
       async:close()
     end
   )
@@ -27,4 +26,3 @@ async:send()
 
 -- gutentag settings
 vim.cmd [[let g:gutentags_file_list_command = 'rg --files']]
-
