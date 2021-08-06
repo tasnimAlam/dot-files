@@ -15,6 +15,8 @@ map("n", "<Leader>n", ":FloatermNew! nnn<CR>", {})
 map("n", "<S-h>", ":set invhlsearch<CR>", {})
 map("n", "<Leader>p", ":CocCommand prettier.formatFile<CR>", {})
 map("n", "<S-y>", "y$", {})
+map("i", "<C-a>", "<C-o>0", {})
+map("i", "<C-e>", "<C-o>$", {})
 
 -- Keep it center
 map("n", "n", "nzzzv", {})
