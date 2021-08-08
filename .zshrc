@@ -125,6 +125,8 @@ alias z="zoxide"
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
 alias tk="tmux kill-session -t"
+alias ys="yarn start"
+alias yb="yarn build"
  
 # bindkey -M viins 'kj' vi-cmd-mode
 bindkey '^o' autosuggest-accept
@@ -135,6 +137,7 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
+export PATH="$HOME/Projects/scripts:$PATH"
 
 # nnn config
 export NNN_PLUG="f:fzopen;u:getplugs;t:preview_tui;v:_viu $nnn;j:autojump;"
@@ -165,4 +168,8 @@ for dump in ~/.zcompdump(N.mh+24); do
   compinit
 done
 compinit -C
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# starship init
+eval "$(starship init zsh)"
 # zprof # bottom of .zshrc
