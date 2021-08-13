@@ -29,3 +29,6 @@ set -x NNN_FCOLORS "c1e2272e006033f7c6d6abc4"
 
 # Zoxide init
 zoxide init fish | source
+
+# Starship init
+starship init fish | source
