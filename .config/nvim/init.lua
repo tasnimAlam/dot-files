@@ -18,6 +18,8 @@ async =
       require("kommentary-config")
       require("toggleterm-config")
       require("tabout-config")
+      require("refactoring-config")
+      require("neoclip-config")
       async:close()
     end
   )

@@ -10,7 +10,7 @@ map("n", "<Leader>w", ":w!<CR>", {})
 map("n", "<Leader>q", ":q!<CR>", {})
 map("n", "<Leader>rw", ":Rg <C-R><C-W><CR>", {})
 map("n", "<Leader>rg", ":Rg<CR>", {})
-map("n", "<Leader>cc", ":copen<CR>", {})
+-- map("n", "<Leader>cc", ":copen<CR>", {})
 map("n", "<Leader>n", ":FloatermNew! nnn<CR>", {})
 map("n", "<S-h>", ":set invhlsearch<CR>", {})
 map("n", "<Leader>p", ":CocCommand prettier.formatFile<CR>", {})
@@ -21,6 +21,12 @@ map("i", "<C-e>", "<C-o>$", {})
 -- Keep it center
 map("n", "n", "nzzzv", {})
 map("n", "<S-n>", "Nzzzv", {})
+
+-- Toggle boolean
+map("n", "<Leader>t", ":ToggleAlternate<CR>", {})
+
+-- Clipboard
+map("n", "<Leader>cc", ":lua require('telescope').extensions.neoclip.default()<CR>", {})
 
 -- Undo break points
 map("i", ",", ",<C-g>u", {})

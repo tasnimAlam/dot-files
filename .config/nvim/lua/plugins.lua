@@ -50,6 +50,8 @@ return require("packer").startup(
       use "glepnir/galaxyline.nvim"
       use {"nvim-telescope/telescope-project.nvim"}
       use {"neoclide/coc.nvim", branch = "release"}
+      --[[ use {"ms-jpq/coq_nvim", branch = "coq"}
+      use {"ms-jpq/coq.artifacts", branch = "artifacts"} ]]
       use "voldikss/vim-floaterm"
       use {"akinsho/nvim-bufferline.lua", requires = "kyazdani42/nvim-web-devicons"}
       use {"sindrets/diffview.nvim"}
@@ -70,6 +72,15 @@ return require("packer").startup(
       use "navarasu/onedark.nvim"
       use {"akinsho/nvim-toggleterm.lua"}
       use {"abecodes/tabout.nvim"}
+      use {"rmagatti/alternate-toggler"}
+      use {
+        "ThePrimeagen/refactoring.nvim",
+        requires = {
+          {"nvim-lua/plenary.nvim"},
+          {"nvim-treesitter/nvim-treesitter"}
+        }
+      }
+      use {"AckslD/nvim-neoclip.lua"}
     end,
     config = {
       display = {
