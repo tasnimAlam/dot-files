@@ -41,6 +41,7 @@ wo.cursorline = true
 wo.foldmethod = "expr"
 wo.number = true
 wo.relativenumber = true
+wo.colorcolumn = "80"
 
 -- disable built in plugins
 local disabled_built_ins = {
