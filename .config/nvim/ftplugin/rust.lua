@@ -1,7 +1,6 @@
 vim.api.nvim_exec(
   [[
 		autocmd BufWinEnter,WinEnter term://* startinsert
-		autocmd FileType rust nmap <buffer> <Leader>p :RustFmt<CR>	
 		autocmd FileType rust map <buffer> <Leader>r :!cargo run<CR>
 		autocmd FileType rust map <buffer> <Leader>b :!cargo build<CR>
 		autocmd FileType rust map <buffer> <Leader>t :!cargo test<CR>

@@ -1,8 +1,8 @@
 local utils = require("utils")
 local map = vim.api.nvim_set_keymap
 
-map("n", ",", "", {})
 vim.g.mapleader = ","
+map("n", ",", "", {})
 
 map("i", "<Leader>p", "<C-r>0", {})
 map("n", "<Leader>o", ":on<CR>", {})
@@ -13,7 +13,7 @@ map("n", "<Leader>rg", ":Rg<CR>", {})
 -- map("n", "<Leader>cc", ":copen<CR>", {})
 map("n", "<Leader>n", ":FloatermNew! nnn<CR>", {})
 map("n", "<S-h>", ":set invhlsearch<CR>", {})
-map("n", "<Leader>p", ":CocCommand prettier.formatFile<CR>", {})
+map("n", "<Leader>p", ":call CocAction('format')<CR>", {})
 map("n", "<S-y>", "y$", {})
 map("i", "<C-a>", "<C-o>0", {})
 map("i", "<C-e>", "<C-o>$", {})
