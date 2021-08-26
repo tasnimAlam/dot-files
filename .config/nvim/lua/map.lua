@@ -100,7 +100,7 @@ vim.api.nvim_exec([[ let g:nremap = {'=': '<TAB>'} ]], true)
 
 -- Console log shortcut
 map("i", "cll", "console.log()<ESC><S-f>(a", {})
-map("v", "cll", "yocll<ESC>p", {})
+map("v", "cll", "S(iconsole.log<ESC>", {})
 map("n", "cll", "yiwocll<ESC>p", {})
 
 -- Window movement
