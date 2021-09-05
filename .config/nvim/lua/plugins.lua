@@ -81,6 +81,7 @@ return require("packer").startup(
         }
       }
       use {"AckslD/nvim-neoclip.lua"}
+      use {"ellisonleao/glow.nvim", run = "GlowInstall"}
     end,
     config = {
       display = {

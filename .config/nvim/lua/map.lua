@@ -80,7 +80,7 @@ map("n", "g>", ":BufferLineMoveNext<CR>", {silent = true})
 map("n", "g<", ":BufferLineMovePrev<CR>", {silent = true})
 
 -- Git Confit
-map("n", "<Leader>gg", ":Gstatus<CR> | :on<CR>", {})
+map("n", "<Leader>gg", ":Git<CR> | :on<CR>", {})
 map("n", "<Leader>ga", ":Git add -- .<CR>", {})
 map("n", "<Leader>gc", ":GV<CR>", {})
 map("n", "<Leader>gf", ":GitGutterFold<CR>", {})
