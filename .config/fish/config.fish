@@ -2,7 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 set -gx EDITOR nvim
-bind -M insert \t accept-autosuggestion
+set fish_key_bindings fish_user_key_bindings
 
 # Fzf config
 set fzf_preview_file_cmd cat
@@ -11,9 +11,15 @@ set fzf_fd_opts --hidden --exclude=.git
 
 # Set path 
 set PATH $PATH ~/bin/
+set PATH $PATH /opt/homebrew/bin/
+set PATH $PATH /opt/homebrew/sbin/
 set PATH $PATH /usr/local/bin/
 set PATH $PATH /usr/local/sbin/
-set PATH $PATH /opt/homebrew/bin/
+set PATH $PATH ~/Projects/scripts/
+set PATH $PATH ~/.emacs.d/bin/
+set PATH $PATH ~/.cargo/bin
+set PATH $PATH ~/.yarn/bin
+set PATH $PATH ~/.config/yarn/global/node_modules/.bin
 
 # NodeJS path
 set PATH $PATH /opt/homebrew/opt/node@14/bin
@@ -32,3 +38,4 @@ zoxide init fish | source
 
 # Starship init
 starship init fish | source
+fish_add_path /opt/homebrew/bin
