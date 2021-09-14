@@ -54,7 +54,7 @@ return require("packer").startup(
       use {"ms-jpq/coq.artifacts", branch = "artifacts"} ]]
       use "voldikss/vim-floaterm"
       use {"akinsho/nvim-bufferline.lua", requires = "kyazdani42/nvim-web-devicons"}
-      use {"sindrets/diffview.nvim"}
+      -- use {"sindrets/diffview.nvim"}
       use {"stsewd/fzf-checkout.vim", cmd = {"GBranches"}}
       use "nvim-treesitter/nvim-treesitter-textobjects"
       use {"nvim-treesitter/nvim-treesitter-angular"}

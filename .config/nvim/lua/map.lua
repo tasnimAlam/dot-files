@@ -80,15 +80,14 @@ map("n", "g>", ":BufferLineMoveNext<CR>", {silent = true})
 map("n", "g<", ":BufferLineMovePrev<CR>", {silent = true})
 
 -- Git Confit
-map("n", "<Leader>gg", ":Git<CR> | :on<CR>", {})
-map("n", "<Leader>ga", ":Git add -- .<CR>", {})
+map("n", "<Leader>g", ":FloatermNew --width=1.0 --height=1.0 --autoclose=2 lazygit<CR>", {})
+-- map("n", "<Leader>gg", ":Git<CR> | :on<CR>", {})
+-- map("n", "<Leader>ga", ":Git add -- .<CR>", {})
 map("n", "<Leader>gc", ":GV<CR>", {})
-map("n", "<Leader>gf", ":GitGutterFold<CR>", {})
-map("n", "<Leader>pp", ":Dispatch! git push<CR>", {noremap = true})
+-- map("n", "<Leader>gf", ":GitGutterFold<CR>", {})
+-- map("n", "<Leader>pp", ":Dispatch! git push<CR>", {noremap = true})
 map("n", "<Leader>gb", ":GBranches<CR>", {})
 map("n", "<Leader>/", ":BLines<CR>", {})
-map("n", "<Leader>gu", ":diffget //2 <CR>", {noremap = true})
-map("n", "<Leader>gl", ":diffget //3 <CR>", {noremap = true})
 map(
   "n",
   "<C-p>",

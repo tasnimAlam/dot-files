@@ -14,7 +14,6 @@ async =
       require("galaxy-status")
       require("bufferline-config")
       require("format-code")
-      require("diffview-config")
       require("kommentary-config")
       require("toggleterm-config")
       require("tabout-config")
