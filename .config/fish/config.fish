@@ -19,6 +19,7 @@ set PATH $PATH ~/Projects/scripts/
 set PATH $PATH ~/.emacs.d/bin/
 set PATH $PATH ~/.cargo/bin
 set PATH $PATH ~/.yarn/bin
+set PATH $PATH ~/.local/bin
 set PATH $PATH ~/.config/yarn/global/node_modules/.bin
 
 # NodeJS path
