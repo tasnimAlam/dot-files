@@ -3,6 +3,7 @@ if status is-interactive
 end
 set -gx EDITOR nvim
 set fish_key_bindings fish_user_key_bindings
+set -U fish_greeting ""
 
 # Fzf config
 set fzf_preview_file_cmd cat
@@ -28,7 +29,7 @@ set PATH $PATH ~/.npm-global/bin
 set PATH $PATH ~/.composer/vendor/bin
 
 # NNN config
-set -x NNN_PLUG "f:fzopen;u:getplugs;t:preview_tui;v:_viu $nnn;j:autojump;"
+set -x NNN_PLUG "f:fzplug;u:getplugs;p:preview_tui;j:autojump;k:pskill;d:dragdrop;"
 set -x NNN_BMS "h:~/;d:~/Downloads/;w:~/Projects/sports-cloud-webapp;u:~/Projects/ui2/;r:~/Projects/rust-projects/rust_test/;"
 set -x NNN_COLORS "2136"
 set -x NNN_FIFO "/tmp/nnn.fifo"
