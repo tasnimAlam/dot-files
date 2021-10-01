@@ -8,7 +8,6 @@ async =
       require("globals")
       require("treesitter-config")
       require("settings")
-      require("map")
       -- require("lsp-config")
       require("rust-config")
       require("galaxy-status")
@@ -19,6 +18,7 @@ async =
       require("tabout-config")
       require("refactoring-config")
       require("neoclip-config")
+      require("map")
       async:close()
     end
   )

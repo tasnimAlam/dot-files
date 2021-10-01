@@ -40,8 +40,14 @@ return require("packer").startup(
       use "honza/vim-snippets"
       use {"kevinhwang91/nvim-bqf"}
       use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-      use {"kyazdani42/nvim-tree.lua", cmd = {"NvimTreeToggle"}}
-      use "kyazdani42/nvim-web-devicons"
+      use {
+        "kyazdani42/nvim-tree.lua",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+          require "nvim-tree".setup {}
+        end
+      }
+      use {"kyazdani42/nvim-web-devicons"}
       use {
         "nvim-telescope/telescope.nvim",
         requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}, cmd = "Telescope"}
