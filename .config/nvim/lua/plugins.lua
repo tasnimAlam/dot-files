@@ -70,8 +70,14 @@ return require("packer").startup(
       use "ggandor/lightspeed.nvim"
       -- use "stevearc/aerial.nvim"
       use {"lukas-reineke/indent-blankline.nvim", event = "BufRead"}
-      -- use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}
-      use {"airblade/vim-gitgutter"}
+      use {
+        "lewis6991/gitsigns.nvim",
+        requires = {"nvim-lua/plenary.nvim"},
+        config = function()
+          require("gitsigns").setup()
+        end
+      }
+      -- use {"airblade/vim-gitgutter"}
       use {"JoosepAlviste/nvim-ts-context-commentstring", ft = {"js", "jsx", "ts", "tsx"}}
       -- use {"camspiers/snap"}
       use "projekt0n/github-nvim-theme"
