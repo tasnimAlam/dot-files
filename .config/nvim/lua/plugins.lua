@@ -24,7 +24,13 @@ return require("packer").startup(
       use {"junegunn/gv.vim", cmd = {"GV"}}
       use {"tpope/vim-fugitive", event = "BufEnter", cmd = {"Git", "Gstatus", "Gblame", "Gpush", "Gpull"}}
       use "tpope/vim-surround"
-      use "b3nj5m1n/kommentary"
+      -- use "b3nj5m1n/kommentary"
+      use {
+        "numToStr/Comment.nvim",
+        config = function()
+          require("Comment").setup()
+        end
+      }
       use "tpope/vim-repeat"
       use "tpope/vim-unimpaired"
       use {"tpope/vim-dispatch", cmd = {"Dispatch", "Make", "Focus", "Start"}}
@@ -36,7 +42,17 @@ return require("packer").startup(
       use {"rrethy/vim-hexokinase", run = "make hexokinase"}
       use {"AndrewRadev/splitjoin.vim", cmd = {"SplitjoinJoin", "SplitjoinSplit"}}
       use "tommcdo/vim-exchange"
-      use {"jdhao/better-escape.vim", event = "InsertEnter"}
+      use {
+        "max397574/better-escape.nvim",
+        config = function()
+          require("better_escape").setup {
+            mapping = {"kj"},
+            timeout = vim.o.timeoutlen,
+            clear_empty_lines = false,
+            keys = "<Esc>"
+          }
+        end
+      }
       use "honza/vim-snippets"
       use {"kevinhwang91/nvim-bqf"}
       use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}

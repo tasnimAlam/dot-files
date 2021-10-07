@@ -5,7 +5,6 @@ local set_globals = function(globals)
 end
 
 local global_settings = {
-  better_escape_shortcut = "kj",
   move_key_modifier = "A",
   vim_json_conceal = 0
 }

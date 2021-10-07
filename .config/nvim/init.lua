@@ -13,7 +13,7 @@ async =
       require("galaxy-status")
       require("bufferline-config")
       require("format-code")
-      require("kommentary-config")
+      -- require("kommentary-config")
       require("toggleterm-config")
       require("tabout-config")
       require("refactoring-config")
