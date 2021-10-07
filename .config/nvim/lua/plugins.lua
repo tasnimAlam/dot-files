@@ -95,6 +95,12 @@ return require("packer").startup(
       use {"AckslD/nvim-neoclip.lua"}
       use {"ellisonleao/glow.nvim", run = "GlowInstall"}
       use {"gelguy/wilder.nvim", run = "UpdateRemotePlugins"}
+      use {
+        "luukvbaal/nnn.nvim",
+        config = function()
+          require("nnn").setup()
+        end
+      }
     end,
     config = {
       display = {
