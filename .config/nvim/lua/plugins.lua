@@ -28,7 +28,16 @@ return require("packer").startup(
       use {
         "numToStr/Comment.nvim",
         config = function()
-          require("Comment").setup()
+          require("Comment").setup(
+            {
+              toggler = {
+                block = "gBc"
+              },
+              opleader = {
+                block = "gB"
+              }
+            }
+          )
         end
       }
       use "tpope/vim-repeat"

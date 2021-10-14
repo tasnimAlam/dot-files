@@ -76,6 +76,7 @@ map("n", "<Leader>bc", '<cmd>%bdelete|edit#|normal `"`<CR>', {noremap = true})
 map("n", "[b", ":BufferLineCyclePrev<CR>", {silent = true})
 map("n", "]b", ":BufferLineCycleNext<CR>", {silent = true})
 map("n", "gb", ":BufferLinePick<CR>", {silent = true})
+map("n", "bc", ":BufferLinePickClose<CR>", {silent = true})
 map("n", "g>", ":BufferLineMoveNext<CR>", {silent = true})
 map("n", "g<", ":BufferLineMovePrev<CR>", {silent = true})
 

@@ -22,6 +22,7 @@ o.background = "dark"
 o.completeopt = "noinsert"
 o.tabstop = 2
 o.hidden = true
+o.timeoutlen = 300
 o.mouse = "a"
 if has("mac") == 1 then
   o.clipboard = "unnamedplus"
