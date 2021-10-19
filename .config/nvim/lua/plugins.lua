@@ -77,10 +77,19 @@ return require("packer").startup(
         "nvim-telescope/telescope.nvim",
         requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}, cmd = "Telescope"}
       }
+
       use "neovim/nvim-lspconfig"
+      use "hrsh7th/cmp-nvim-lsp"
+      use "hrsh7th/cmp-buffer"
+      use "hrsh7th/nvim-cmp"
+      use "hrsh7th/cmp-vsnip"
+      use "hrsh7th/vim-vsnip"
+      use "onsails/lspkind-nvim"
+      use {"tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp"}
+
       use "glepnir/galaxyline.nvim"
       use {"nvim-telescope/telescope-project.nvim"}
-      use {"neoclide/coc.nvim", branch = "release"}
+      -- use {"neoclide/coc.nvim", branch = "release"}
       --[[ use {"ms-jpq/coq_nvim", branch = "coq"}
       use {"ms-jpq/coq.artifacts", branch = "artifacts"} ]]
       use "voldikss/vim-floaterm"

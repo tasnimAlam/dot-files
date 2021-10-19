@@ -8,7 +8,8 @@ async =
       require("globals")
       require("treesitter-config")
       require("settings")
-      -- require("lsp-config")
+      require("lsp-config")
+      require("cmp-config")
       require("rust-config")
       require("galaxy-status")
       require("bufferline-config")
@@ -19,6 +20,11 @@ async =
       require("refactoring-config")
       require("neoclip-config")
       require("map")
+      require "cmp".setup {
+        sources = {
+          {name = "cmp_tabnine"}
+        }
+      }
       async:close()
     end
   )
