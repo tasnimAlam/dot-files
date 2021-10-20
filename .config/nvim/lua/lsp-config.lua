@@ -68,3 +68,11 @@ local servers = {"pyright", "rust_analyzer", "tsserver", "angularls", "bashls", 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {on_attach = on_attach}
 end
+
+ -- Use sign instead of letter
+local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
+
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
+end
