@@ -102,7 +102,7 @@ return require("packer").startup(
       use {"kristijanhusak/vim-js-file-import", run = "npm install", ft = {"js", "jsx", "ts", "tsx"}}
       use {"mbbill/undotree", cmd = "UndotreeToggle"}
       use "ggandor/lightspeed.nvim"
-      -- use "stevearc/aerial.nvim"
+      use "stevearc/aerial.nvim"
       use {"lukas-reineke/indent-blankline.nvim", event = "BufRead"}
       use {
         "lewis6991/gitsigns.nvim",
