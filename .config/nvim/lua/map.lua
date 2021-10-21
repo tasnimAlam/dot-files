@@ -25,6 +25,9 @@ map("n", "<S-n>", "Nzzzv", {})
 -- Toggle boolean
 map("n", "<Leader>t", ":ToggleAlternate<CR>", {})
 
+-- Trouble config
+map("n", "<Leader>xx", "<cmd>TroubleToggle<cr>", {silent = true, noremap = true})
+
 -- Clipboard
 map("n", "<Leader>cc", ":lua require('telescope').extensions.neoclip.default()<CR>", {})
 

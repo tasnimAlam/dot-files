@@ -68,7 +68,16 @@ return require("packer").startup(
         requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}, cmd = "Telescope"}
       }
       use "neovim/nvim-lspconfig"
+      use "jose-elias-alvarez/nvim-lsp-ts-utils"
+      use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+          require("trouble").setup {}
+        end
+      }
       use "simrat39/rust-tools.nvim"
+
       use {
         "hrsh7th/nvim-cmp",
         requires = {
