@@ -1,5 +1,6 @@
 require("tabout").setup {
   tabkey = "<Tab>", -- key to trigger tabout
+  backwards_tabkey = "<S-Tab>",
   act_as_tab = true, -- shift content if tab out is not possible
   completion = true, -- if the tabkey is used in a completion pum
   tabouts = {

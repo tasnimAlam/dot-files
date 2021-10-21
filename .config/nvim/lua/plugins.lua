@@ -111,7 +111,7 @@ return require("packer").startup(
       use "projekt0n/github-nvim-theme"
       use "navarasu/onedark.nvim"
       use {"akinsho/nvim-toggleterm.lua"}
-      use {"abecodes/tabout.nvim"}
+      use {"abecodes/tabout.nvim", wants = {"nvim-treesitter"}, after = {"nvim-cmp"}}
       use {"rmagatti/alternate-toggler"}
       use {
         "ThePrimeagen/refactoring.nvim",
