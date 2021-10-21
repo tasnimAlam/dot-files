@@ -68,6 +68,7 @@ return require("packer").startup(
         requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}, cmd = "Telescope"}
       }
       use "neovim/nvim-lspconfig"
+      use "simrat39/rust-tools.nvim"
       use {
         "hrsh7th/nvim-cmp",
         requires = {
@@ -80,6 +81,8 @@ return require("packer").startup(
           "hrsh7th/cmp-calc"
         }
       }
+      use {"L3MON4D3/LuaSnip"}
+      use "hrsh7th/vim-vsnip"
       use {
         "tzachar/cmp-tabnine",
         run = "./install.sh",
@@ -111,7 +114,7 @@ return require("packer").startup(
       use "projekt0n/github-nvim-theme"
       use "navarasu/onedark.nvim"
       use {"akinsho/nvim-toggleterm.lua"}
-      use {"abecodes/tabout.nvim", wants = {"nvim-treesitter"}, after = {"nvim-cmp"}}
+      use {"abecodes/tabout.nvim"}
       use {"rmagatti/alternate-toggler"}
       use {
         "ThePrimeagen/refactoring.nvim",

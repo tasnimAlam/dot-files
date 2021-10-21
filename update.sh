@@ -6,5 +6,8 @@ base_dir="${HOME}/.config/"
 
 # Copy files from config directory
 for folder in ${config_folders[@]};do
-  cp -r $base_dir$folder ./.config/
+  if [ -d $base_dir$folder ]
+  then
+    cp -r $base_dir$folder ./.config/
+  fi
 done;
