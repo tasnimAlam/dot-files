@@ -24,20 +24,10 @@ return require("packer").startup(
       use {"junegunn/gv.vim", cmd = {"GV"}}
       use {"tpope/vim-fugitive", event = "BufEnter", cmd = {"Git", "Gstatus", "Gblame", "Gpush", "Gpull"}}
       use "tpope/vim-surround"
-      -- use "b3nj5m1n/kommentary"
       use {
         "numToStr/Comment.nvim",
         config = function()
-          require("Comment").setup(
-            {
-              toggler = {
-                block = "gBc"
-              },
-              opleader = {
-                block = "gB"
-              }
-            }
-          )
+          require("Comment").setup({toggler = {block = "gBc"}, opleader = {block = "gB"}})
         end
       }
       use "tpope/vim-repeat"
@@ -77,29 +67,35 @@ return require("packer").startup(
         "nvim-telescope/telescope.nvim",
         requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}, cmd = "Telescope"}
       }
-
       use "neovim/nvim-lspconfig"
-      use "hrsh7th/cmp-nvim-lsp"
-      use "hrsh7th/cmp-buffer"
-      use "hrsh7th/nvim-cmp"
-      use "hrsh7th/cmp-vsnip"
-      use "hrsh7th/vim-vsnip"
+      use {
+        "hrsh7th/nvim-cmp",
+        requires = {
+          "hrsh7th/cmp-buffer",
+          "hrsh7th/cmp-nvim-lsp",
+          "quangnguyen30192/cmp-nvim-ultisnips",
+          "hrsh7th/cmp-nvim-lua",
+          "octaltree/cmp-look",
+          "hrsh7th/cmp-path",
+          "hrsh7th/cmp-calc"
+        }
+      }
+      use {
+        "tzachar/cmp-tabnine",
+        run = "./install.sh",
+        requires = "hrsh7th/nvim-cmp"
+      }
       use "onsails/lspkind-nvim"
-      use {"tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp"}
 
       use "glepnir/galaxyline.nvim"
       use {"nvim-telescope/telescope-project.nvim"}
-      -- use {"neoclide/coc.nvim", branch = "release"}
-      --[[ use {"ms-jpq/coq_nvim", branch = "coq"}
-      use {"ms-jpq/coq.artifacts", branch = "artifacts"} ]]
       use "voldikss/vim-floaterm"
       use {"akinsho/nvim-bufferline.lua", requires = "kyazdani42/nvim-web-devicons"}
-      -- use {"sindrets/diffview.nvim"}
       use {"stsewd/fzf-checkout.vim", cmd = {"GBranches"}}
       use "nvim-treesitter/nvim-treesitter-textobjects"
       use {"nvim-treesitter/nvim-treesitter-angular"}
       use "ludovicchabant/vim-gutentags"
-      use {"kristijanhusak/vim-js-file-import", run = "npm install", ft = {"js", "jsx", "ts", "tsx"}}
+      -- use {"kristijanhusak/vim-js-file-import", run = "npm install", ft = {"js", "jsx", "ts", "tsx"}}
       use {"mbbill/undotree", cmd = "UndotreeToggle"}
       use "ggandor/lightspeed.nvim"
       use "stevearc/aerial.nvim"
@@ -111,9 +107,7 @@ return require("packer").startup(
           require("gitsigns").setup()
         end
       }
-      -- use {"airblade/vim-gitgutter"}
       use {"JoosepAlviste/nvim-ts-context-commentstring", ft = {"js", "jsx", "ts", "tsx"}}
-      -- use {"camspiers/snap"}
       use "projekt0n/github-nvim-theme"
       use "navarasu/onedark.nvim"
       use {"akinsho/nvim-toggleterm.lua"}
