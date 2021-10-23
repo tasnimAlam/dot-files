@@ -77,20 +77,22 @@ return require("packer").startup(
         end
       }
       use "simrat39/rust-tools.nvim"
+      -- use {"L3MON4D3/LuaSnip"}
       use {
         "hrsh7th/nvim-cmp",
         requires = {
           "hrsh7th/cmp-buffer",
           "hrsh7th/cmp-nvim-lsp",
-          "quangnguyen30192/cmp-nvim-ultisnips",
           "hrsh7th/cmp-nvim-lua",
-          "octaltree/cmp-look",
           "hrsh7th/cmp-path",
-          "hrsh7th/cmp-calc"
+          "hrsh7th/cmp-calc",
+          "octaltree/cmp-look"
         }
       }
-      use {"L3MON4D3/LuaSnip"}
-      -- use "hrsh7th/vim-vsnip"
+      -- use {"saadparwaiz1/cmp_luasnip"}
+      use "hrsh7th/vim-vsnip"
+      use "hrsh7th/cmp-vsnip"
+      use "rafamadriz/friendly-snippets"
       use {
         "tzachar/cmp-tabnine",
         run = "./install.sh",
