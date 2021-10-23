@@ -10,10 +10,9 @@ map("n", "<Leader>w", ":w!<CR>", {})
 map("n", "<Leader>q", ":q!<CR>", {})
 map("n", "<Leader>rw", ":Rg <C-R><C-W><CR>", {})
 map("n", "<Leader>rg", ":Rg<CR>", {})
--- map("n", "<Leader>cc", ":copen<CR>", {})
+map("n", "<Leader>p", "<Cmd>Format<CR>", {})
 map("n", "<Leader>n", ":FloatermNew! nnn<CR>", {})
-map("n", "<S-h>", ":set invhlsearch<CR>", {})
--- map("n", "<Leader>p", ":call CocAction('format')<CR>", {})
+map("n", "<S-h>", ":noh<CR>", {})
 map("n", "<S-y>", "y$", {})
 map("i", "<C-a>", "<C-o>0", {})
 map("i", "<C-e>", "<C-o>$", {})
@@ -100,7 +99,7 @@ map(
   {expr = true}
 )
 -- TODO: make it lua function
-vim.api.nvim_exec([[ let g:nremap = {'=': '<TAB>'} ]], true)
+-- vim.api.nvim_exec([[ let g:nremap = {'=': '<TAB>'} ]], true)
 
 -- Console log shortcut
 map("i", "cll", "console.log()<ESC><S-f>(a", {})
