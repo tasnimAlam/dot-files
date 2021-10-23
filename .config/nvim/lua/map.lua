@@ -26,7 +26,7 @@ map("n", "<S-n>", "Nzzzv", {})
 map("n", "<Leader>t", ":ToggleAlternate<CR>", {})
 
 -- Trouble config
-map("n", "<Leader>xx", "<cmd>TroubleToggle<cr>", {silent = true, noremap = true})
+map("n", "<Leader>xx", "<cmd>TroubleToggle<CR>", {silent = true, noremap = true})
 
 -- Clipboard
 map("n", "<Leader>cc", ":lua require('telescope').extensions.neoclip.default()<CR>", {})
@@ -43,14 +43,11 @@ map("n", "<Leader>u", ":UndotreeToggle | :UndotreeFocus<CR>", {})
 -- Nvim tree config
 map("n", "<Leader>e", ":NvimTreeToggle<CR>", {})
 
--- Diffview config
-map("n", "<Leader>gd", ":DiffviewOpen<CR>", {})
-
 -- Packer config
 map("n", "<Leader>1", ":PackerInstall<CR>", {silent = true, noremap = true})
 map("n", "<Leader>2", ":PackerUpdate<CR>", {silent = true, noremap = true})
 map("n", "<Leader>3", ":PackerClean<CR>", {silent = true, noremap = true})
-map("n", "<Leader>4", ":PackerCompile<CR>", {silent = true, noremap = true})
+map("n", "<Leader>4", ":PackerSync<CR>", {silent = true, noremap = true})
 
 -- Vim move config
 map("n", "∆", ":m .+1<CR>", {silent = true, noremap = true})
@@ -90,7 +87,7 @@ map("n", "<Leader>g", ":FloatermNew --width=1.0 --height=1.0 --autoclose=2 lazyg
 map("n", "<Leader>gc", ":GV<CR>", {})
 -- map("n", "<Leader>gf", ":GitGutterFold<CR>", {})
 -- map("n", "<Leader>pp", ":Dispatch! git push<CR>", {noremap = true})
-map("n", "<Leader>gb", ":GBranches<CR>", {})
+-- map("n", "<Leader>gb", ":GBranches<CR>", {})
 map("n", "<Leader>/", ":BLines<CR>", {})
 map(
   "n",

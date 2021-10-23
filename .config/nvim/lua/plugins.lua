@@ -16,12 +16,12 @@ return require("packer").startup(
       use {"wbthomason/packer.nvim", opt = true}
       use {"mhartington/formatter.nvim"}
       use "editorconfig/editorconfig-vim"
-      use {"pangloss/vim-javascript", ft = {"js", "jsx", "ts", "tsx"}}
-      use {"yuezk/vim-js", ft = {"js", "jsx", "ts", "tsx"}}
+      -- use {"pangloss/vim-javascript", ft = {"js", "jsx", "ts", "tsx"}}
+      -- use {"yuezk/vim-js", ft = {"js", "jsx", "ts", "tsx"}}
       use {"maxmellon/vim-jsx-pretty", ft = {"js", "jsx", "ts", "tsx"}}
       use {"junegunn/fzf", run = "./install --all"}
       use {"junegunn/fzf.vim"}
-      use {"junegunn/gv.vim", cmd = {"GV"}}
+      -- use {"junegunn/gv.vim", cmd = {"GV"}}
       use {"tpope/vim-fugitive", event = "BufEnter", cmd = {"Git", "Gstatus", "Gblame", "Gpush", "Gpull"}}
       use "tpope/vim-surround"
       use {
@@ -35,7 +35,7 @@ return require("packer").startup(
       use {"tpope/vim-dispatch", cmd = {"Dispatch", "Make", "Focus", "Start"}}
       use "jiangmiao/auto-pairs"
       use "mattn/emmet-vim"
-      use {"rust-lang/rust.vim", ft = {"rs"}}
+      -- use {"rust-lang/rust.vim", ft = {"rs"}}
       use "morhetz/gruvbox"
       use "matze/vim-move"
       use {"rrethy/vim-hexokinase", run = "make hexokinase"}
@@ -52,7 +52,7 @@ return require("packer").startup(
           }
         end
       }
-      use "honza/vim-snippets"
+      -- use "honza/vim-snippets"
       use {"kevinhwang91/nvim-bqf"}
       use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
       use {
@@ -77,7 +77,6 @@ return require("packer").startup(
         end
       }
       use "simrat39/rust-tools.nvim"
-
       use {
         "hrsh7th/nvim-cmp",
         requires = {
@@ -91,19 +90,18 @@ return require("packer").startup(
         }
       }
       use {"L3MON4D3/LuaSnip"}
-      use "hrsh7th/vim-vsnip"
+      -- use "hrsh7th/vim-vsnip"
       use {
         "tzachar/cmp-tabnine",
         run = "./install.sh",
         requires = "hrsh7th/nvim-cmp"
       }
       use "onsails/lspkind-nvim"
-
       use "glepnir/galaxyline.nvim"
       use {"nvim-telescope/telescope-project.nvim"}
       use "voldikss/vim-floaterm"
       use {"akinsho/nvim-bufferline.lua", requires = "kyazdani42/nvim-web-devicons"}
-      use {"stsewd/fzf-checkout.vim", cmd = {"GBranches"}}
+      -- use {"stsewd/fzf-checkout.vim", cmd = {"GBranches"}}
       use "nvim-treesitter/nvim-treesitter-textobjects"
       use {"nvim-treesitter/nvim-treesitter-angular"}
       use "ludovicchabant/vim-gutentags"
@@ -120,7 +118,7 @@ return require("packer").startup(
         end
       }
       use {"JoosepAlviste/nvim-ts-context-commentstring", ft = {"js", "jsx", "ts", "tsx"}}
-      use "projekt0n/github-nvim-theme"
+      -- use "projekt0n/github-nvim-theme"
       use "navarasu/onedark.nvim"
       use {"akinsho/nvim-toggleterm.lua"}
       use {"abecodes/tabout.nvim"}
@@ -135,12 +133,12 @@ return require("packer").startup(
       use {"AckslD/nvim-neoclip.lua"}
       use {"ellisonleao/glow.nvim", run = "GlowInstall"}
       use {"gelguy/wilder.nvim", run = "UpdateRemotePlugins"}
-      use {
-        "luukvbaal/nnn.nvim",
-        config = function()
-          require("nnn").setup()
-        end
-      }
+      -- use {
+      --   "luukvbaal/nnn.nvim",
+      --   config = function()
+      --     require("nnn").setup()
+      --   end
+      -- }
     end,
     config = {
       display = {
