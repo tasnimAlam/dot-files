@@ -97,7 +97,14 @@ return require("packer").startup(
         requires = "hrsh7th/nvim-cmp"
       }
       use "onsails/lspkind-nvim"
-      use "glepnir/galaxyline.nvim"
+      -- use "glepnir/galaxyline.nvim"
+      use {
+        "nvim-lualine/lualine.nvim",
+        requires = {"kyazdani42/nvim-web-devicons", opt = true},
+        config = function()
+          require("lualine").setup()
+        end
+      }
       use {"nvim-telescope/telescope-project.nvim"}
       use "voldikss/vim-floaterm"
       use {"akinsho/nvim-bufferline.lua", requires = "kyazdani42/nvim-web-devicons"}

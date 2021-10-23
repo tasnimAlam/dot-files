@@ -11,7 +11,6 @@ async =
       require("lsp-config")
       require("cmp-config")
       require("rust-config")
-      require("galaxy-status")
       require("bufferline-config")
       require("format-code")
       require("toggleterm-config")
