@@ -13,7 +13,7 @@ map("n", "<Leader>rg", ":Rg<CR>", {})
 -- map("n", "<Leader>cc", ":copen<CR>", {})
 map("n", "<Leader>n", ":FloatermNew! nnn<CR>", {})
 map("n", "<S-h>", ":set invhlsearch<CR>", {})
-map("n", "<Leader>p", ":call CocAction('format')<CR>", {})
+-- map("n", "<Leader>p", ":call CocAction('format')<CR>", {})
 map("n", "<S-y>", "y$", {})
 map("i", "<C-a>", "<C-o>0", {})
 map("i", "<C-e>", "<C-o>$", {})
@@ -21,10 +21,8 @@ map("i", "<C-e>", "<C-o>$", {})
 -- Snippet config
 map("i", "<C-j>", "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'", {expr = true})
 map("s", "<C-j>", "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'", {expr = true})
-
 map("i", "<C-l>", "vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'", {expr = true})
 map("s", "<C-l>", "vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'", {expr = true})
-
 map("i", "<Tab>", "vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'", {expr = true})
 map("s", "<Tab>", "vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'", {expr = true})
 map("i", "<S-Tab>", "vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'", {expr = true})
@@ -94,12 +92,6 @@ map("n", "g<", ":BufferLineMovePrev<CR>", {silent = true})
 
 -- Git Confit
 map("n", "<Leader>g", ":FloatermNew --width=1.0 --height=1.0 --autoclose=2 lazygit<CR>", {})
--- map("n", "<Leader>gg", ":Git<CR> | :on<CR>", {})
--- map("n", "<Leader>ga", ":Git add -- .<CR>", {})
-map("n", "<Leader>gc", ":GV<CR>", {})
--- map("n", "<Leader>gf", ":GitGutterFold<CR>", {})
--- map("n", "<Leader>pp", ":Dispatch! git push<CR>", {noremap = true})
--- map("n", "<Leader>gb", ":GBranches<CR>", {})
 map("n", "<Leader>/", ":BLines<CR>", {})
 map(
   "n",
