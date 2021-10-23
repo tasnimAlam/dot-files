@@ -38,8 +38,8 @@ cmp.setup(
       ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), {"i", "s"})
     },
     sources = {
-      {name = "nvim_lsp"},
       {name = "vsnip"},
+      {name = "nvim_lsp"},
       {name = "cmp_tabnine"},
       {name = "buffer"},
       {name = "path"}
