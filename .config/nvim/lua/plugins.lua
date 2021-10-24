@@ -127,6 +127,7 @@ return require("packer").startup(
       use {"AckslD/nvim-neoclip.lua"}
       use {"ellisonleao/glow.nvim", run = "GlowInstall"}
       use {"gelguy/wilder.nvim", run = "UpdateRemotePlugins"}
+			use "windwp/nvim-ts-autotag"
     end,
     config = {
       display = {
