@@ -20,7 +20,8 @@ require("formatter").setup(
     filetype = {
       lua = {luaFormat},
       typescript = {prettierdFormat},
-      javascript = {prettierdFormat}
+      javascript = {prettierdFormat},
+      html = {prettierdFormat}
     }
   }
 )
