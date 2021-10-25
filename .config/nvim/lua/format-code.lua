@@ -21,7 +21,9 @@ require("formatter").setup(
       lua = {luaFormat},
       typescript = {prettierdFormat},
       javascript = {prettierdFormat},
-      html = {prettierdFormat}
+      html = {prettierdFormat},
+      css = {prettierdFormat},
+      scss = {prettierdFormat}
     }
   }
 )
