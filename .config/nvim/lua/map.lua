@@ -85,11 +85,11 @@ map("n", "<Leader>bc", '<cmd>%bdelete|edit#|normal `"`<CR>', {noremap = true})
 map("n", "[b", ":BufferLineCyclePrev<CR>", {silent = true})
 map("n", "]b", ":BufferLineCycleNext<CR>", {silent = true})
 map("n", "gb", ":BufferLinePick<CR>", {silent = true})
-map("n", "bc", ":BufferLinePickClose<CR>", {silent = true})
+-- map("n", "bc", ":BufferLinePickClose<CR>", {silent = true})
 map("n", "g>", ":BufferLineMoveNext<CR>", {silent = true})
 map("n", "g<", ":BufferLineMovePrev<CR>", {silent = true})
 
--- Git Confit
+-- Git Config
 map("n", "<Leader>g", ":FloatermNew --width=1.0 --height=1.0 --autoclose=2 lazygit<CR>", {})
 map("n", "<Leader>/", ":BLines<CR>", {})
 map(
