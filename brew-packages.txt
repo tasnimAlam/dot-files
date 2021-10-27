@@ -27,6 +27,7 @@ ripgrep
 rm-improved
 rust-analyzer
 sd
+shfmt
 sqlite
 starship
 tmux

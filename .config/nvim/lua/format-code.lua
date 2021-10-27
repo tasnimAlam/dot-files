@@ -14,6 +14,22 @@ local prettierdFormat = function()
   }
 end
 
+local shellFormat = function()
+  return {
+    exe = "shfmt",
+    args = {"-i", 2},
+    stdin = true
+  }
+end
+
+local rustFormat = function()
+  return {
+    exe = "rustfmt",
+    args = {"--emit=stdout"},
+    stdin = true
+  }
+end
+
 require("formatter").setup(
   {
     logging = false,
@@ -21,9 +37,12 @@ require("formatter").setup(
       lua = {luaFormat},
       typescript = {prettierdFormat},
       javascript = {prettierdFormat},
+      markdown = {prettierdFormat},
       html = {prettierdFormat},
       css = {prettierdFormat},
-      scss = {prettierdFormat}
+      scss = {prettierdFormat},
+      sh = {shellFormat},
+      rust = {rustFormat}
     }
   }
 )

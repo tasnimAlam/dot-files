@@ -13,7 +13,6 @@ return require("packer").startup(
       -- Packer can manage itself as an optional plugin
       use {"wbthomason/packer.nvim", opt = true}
       use {"mhartington/formatter.nvim"}
-      use "editorconfig/editorconfig-vim"
       use {"maxmellon/vim-jsx-pretty", ft = {"js", "jsx", "ts", "tsx"}}
       use {"junegunn/fzf", run = "./install --all"}
       use {"junegunn/fzf.vim"}
