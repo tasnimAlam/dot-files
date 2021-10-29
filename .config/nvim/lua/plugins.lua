@@ -12,7 +12,12 @@ return require("packer").startup(
     function()
       -- Packer can manage itself as an optional plugin
       use {"wbthomason/packer.nvim", opt = true}
-      use {"mhartington/formatter.nvim"}
+      use {
+        "mhartington/formatter.nvim"
+        -- config = function()
+        --   require "format-code"
+        -- end
+      }
       use {"maxmellon/vim-jsx-pretty", ft = {"js", "jsx", "ts", "tsx"}}
       use {"junegunn/fzf", run = "./install --all"}
       use {"junegunn/fzf.vim"}
@@ -44,7 +49,13 @@ return require("packer").startup(
         end
       }
       use {"kevinhwang91/nvim-bqf"}
-      use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+      use {
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+        -- config = function()
+        --   require "treesitter-config"
+        -- end
+      }
       use {
         "kyazdani42/nvim-tree.lua",
         requires = "kyazdani42/nvim-web-devicons",
@@ -58,6 +69,12 @@ return require("packer").startup(
         requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}, cmd = "Telescope"}
       }
       use "neovim/nvim-lspconfig"
+      use {
+        "tami5/lspsaga.nvim",
+        config = function()
+          require "lsp-saga-config"
+        end
+      }
       use "jose-elias-alvarez/nvim-lsp-ts-utils"
       use {
         "folke/trouble.nvim",
@@ -76,7 +93,10 @@ return require("packer").startup(
           "hrsh7th/cmp-path",
           "hrsh7th/cmp-calc",
           "octaltree/cmp-look"
-        }
+        },
+        config = function()
+          require "cmp-config"
+        end
       }
       use "hrsh7th/vim-vsnip"
       use "hrsh7th/cmp-vsnip"
@@ -113,15 +133,28 @@ return require("packer").startup(
       }
       use {"JoosepAlviste/nvim-ts-context-commentstring", ft = {"js", "jsx", "ts", "tsx"}}
       use "navarasu/onedark.nvim"
-      use {"akinsho/nvim-toggleterm.lua"}
-      use {"abecodes/tabout.nvim"}
+      use {
+        "akinsho/nvim-toggleterm.lua"
+        -- config = function()
+        --   require "toggleterm-config"
+        -- end
+      }
+      use {
+        "abecodes/tabout.nvim",
+        -- config = function()
+        --   require "tabout-config"
+        -- end
+      }
       use {"rmagatti/alternate-toggler"}
       use {
         "ThePrimeagen/refactoring.nvim",
         requires = {
           {"nvim-lua/plenary.nvim"},
           {"nvim-treesitter/nvim-treesitter"}
-        }
+        },
+        config = function()
+          require "refactoring-config"
+        end
       }
       use {"AckslD/nvim-neoclip.lua"}
       use {"ellisonleao/glow.nvim", run = "GlowInstall"}
