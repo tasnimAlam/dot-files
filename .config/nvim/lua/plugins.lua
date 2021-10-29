@@ -51,7 +51,7 @@ return require("packer").startup(
       use {"kevinhwang91/nvim-bqf"}
       use {
         "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate",
+        run = ":TSUpdate"
         -- config = function()
         --   require "treesitter-config"
         -- end
@@ -141,9 +141,9 @@ return require("packer").startup(
       }
       use {
         "abecodes/tabout.nvim",
-        -- config = function()
-        --   require "tabout-config"
-        -- end
+        config = function()
+          require "tabout-config"
+        end
       }
       use {"rmagatti/alternate-toggler"}
       use {
