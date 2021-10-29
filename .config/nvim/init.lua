@@ -27,4 +27,8 @@ async:send()
 -- gutentag settings
 vim.cmd [[let g:gutentags_file_list_command = 'rg --files']]
 
+-- wilder settings
 vim.cmd [[call wilder#setup({'modes': [':', '/', '?']})]]
+
+-- hexokinase settings
+vim.cmd [[ let g:Hexokinase_highlighters = ['backgroundfull'] ]]
