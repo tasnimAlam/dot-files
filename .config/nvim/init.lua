@@ -10,7 +10,6 @@ async =
       require("settings")
       require("lsp-config")
       require("cmp-config")
-      require("rust-config")
       require("bufferline-config")
       require("format-code")
       require("toggleterm-config")
