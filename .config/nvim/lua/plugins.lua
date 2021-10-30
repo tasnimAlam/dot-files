@@ -75,7 +75,6 @@ return require("packer").startup(
           require "lsp-saga-config"
         end
       }
-      use "jose-elias-alvarez/nvim-lsp-ts-utils"
       use {
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
