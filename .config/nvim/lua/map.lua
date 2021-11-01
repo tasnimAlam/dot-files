@@ -115,6 +115,21 @@ map("i", "cll", "console.log()<ESC><S-f>(a", {})
 map("v", "cll", "S(iconsole.log<ESC>", {})
 map("n", "cll", "yiwocll<ESC>p", {})
 
+-- Refactoring config
+map(
+  "v",
+  "<Leader>re",
+  "<Cmd>lua require('refactoring').refactor('Extract Function')<CR>",
+  {noremap = true, silent = true, expr = false}
+)
+map(
+  "v",
+  "<Leader>rf",
+  "<Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>",
+  {noremap = true, silent = true, expr = false}
+)
+map("v", "<Leader>rt", [[ <Esc><Cmd>lua M.refactors()<CR>]], {noremap = true, silent = true, expr = false})
+
 -- Window movement
 map("n", "<C-l>", '<cmd>lua require("utils").move_window("l")<CR>', {noremap = true})
 map("n", "<C-h>", '<cmd>lua require("utils").move_window("h")<CR>', {noremap = true})

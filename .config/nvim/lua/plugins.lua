@@ -12,12 +12,7 @@ return require("packer").startup(
     function()
       -- Packer can manage itself as an optional plugin
       use {"wbthomason/packer.nvim", opt = true}
-      use {
-        "mhartington/formatter.nvim"
-        -- config = function()
-        --   require "format-code"
-        -- end
-      }
+      use {"mhartington/formatter.nvim"}
       use {"maxmellon/vim-jsx-pretty", ft = {"js", "jsx", "ts", "tsx"}}
       use {"junegunn/fzf", run = "./install --all"}
       use {"junegunn/fzf.vim"}
@@ -49,13 +44,7 @@ return require("packer").startup(
         end
       }
       use {"kevinhwang91/nvim-bqf"}
-      use {
-        "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate"
-        -- config = function()
-        --   require "treesitter-config"
-        -- end
-      }
+      use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
       use {
         "kyazdani42/nvim-tree.lua",
         requires = "kyazdani42/nvim-web-devicons",
@@ -150,10 +139,7 @@ return require("packer").startup(
         requires = {
           {"nvim-lua/plenary.nvim"},
           {"nvim-treesitter/nvim-treesitter"}
-        },
-        config = function()
-          require "refactoring-config"
-        end
+        }
       }
       use {"AckslD/nvim-neoclip.lua"}
       use {"ellisonleao/glow.nvim", run = "GlowInstall"}
