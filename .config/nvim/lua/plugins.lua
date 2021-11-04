@@ -145,6 +145,12 @@ return require("packer").startup(
       use {"ellisonleao/glow.nvim", run = "GlowInstall"}
       use {"gelguy/wilder.nvim", run = "UpdateRemotePlugins"}
       use "windwp/nvim-ts-autotag"
+      use {
+        "ThePrimeagen/harpoon",
+        requires = {
+          {"nvim-lua/plenary.nvim"}
+        }
+      }
     end,
     config = {
       display = {

@@ -16,6 +16,7 @@ map("n", "<S-h>", ":noh<CR>", {})
 map("n", "<S-y>", "y$", {})
 map("i", "<C-a>", "<C-o>0", {})
 map("i", "<C-e>", "<C-o>$", {})
+map("n", "<Leader>a", "<cmd>call aerial#fzf()<CR>", {silent = true, noremap = true})
 
 -- Snippet config
 map("i", "<C-j>", "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'", {expr = true})
@@ -53,11 +54,10 @@ map("n", "<Leader>u", ":UndotreeToggle | :UndotreeFocus<CR>", {})
 map("n", "<Leader>e", ":NvimTreeToggle<CR>", {})
 
 -- Packer config
-map("n", "pi", ":PackerInstall<CR>", {silent = true, noremap = true})
-map("n", "pu", ":PackerUpdate<CR>", {silent = true, noremap = true})
-map("n", "ps", ":PackerSync<CR>", {silent = true, noremap = true})
+map("n", "Pi", ":PackerInstall<CR>", {silent = true, noremap = true})
+map("n", "Pu", ":PackerUpdate<CR>", {silent = true, noremap = true})
+map("n", "Ps", ":PackerSync<CR>", {silent = true, noremap = true})
 -- map("n", "<Leader>3", ":PackerClean<CR>", {silent = true, noremap = true})
--- map("n", "<Leader>4", ":PackerSync<CR>", {silent = true, noremap = true})
 
 -- Vim move config
 map("n", "∆", ":m .+1<CR>", {silent = true, noremap = true})
@@ -110,6 +110,13 @@ map(
 )
 -- TODO: make it lua function
 -- vim.api.nvim_exec([[ let g:nremap = {'=': '<TAB>'} ]], true)
+
+-- Harpoon config
+map("n", "<Leader>M", "<cmd>lua require('harpoon.mark').add_file()<CR>", {noremap = true})
+map("n", "<Leader>m", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", {noremap = true})
+map("n", "<Leader>j", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", {noremap = true})
+map("n", "<Leader>k", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", {noremap = true})
+map("n", "<Leader>l", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", {noremap = true})
 
 -- Console log shortcut
 map("i", "cll", "console.log()<ESC><S-f>(a", {})
