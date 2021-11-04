@@ -53,8 +53,9 @@ map("n", "<Leader>u", ":UndotreeToggle | :UndotreeFocus<CR>", {})
 map("n", "<Leader>e", ":NvimTreeToggle<CR>", {})
 
 -- Packer config
--- map("n", "<Leader>1", ":PackerInstall<CR>", {silent = true, noremap = true})
--- map("n", "<Leader>2", ":PackerUpdate<CR>", {silent = true, noremap = true})
+map("n", "pi", ":PackerInstall<CR>", {silent = true, noremap = true})
+map("n", "pu", ":PackerUpdate<CR>", {silent = true, noremap = true})
+map("n", "ps", ":PackerSync<CR>", {silent = true, noremap = true})
 -- map("n", "<Leader>3", ":PackerClean<CR>", {silent = true, noremap = true})
 -- map("n", "<Leader>4", ":PackerSync<CR>", {silent = true, noremap = true})
 
