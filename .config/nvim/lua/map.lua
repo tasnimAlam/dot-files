@@ -114,9 +114,9 @@ map(
 -- Harpoon config
 map("n", "<Leader>M", "<cmd>lua require('harpoon.mark').add_file()<CR>", {noremap = true})
 map("n", "<Leader>m", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", {noremap = true})
-map("n", "<Leader>j", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", {noremap = true})
-map("n", "<Leader>k", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", {noremap = true})
-map("n", "<Leader>l", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", {noremap = true})
+map("n", "<C-j>", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", {noremap = true})
+map("n", "<C-k>", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", {noremap = true})
+map("n", "<C-l>", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", {noremap = true})
 
 -- Console log shortcut
 map("i", "cll", "console.log()<ESC><S-f>(a", {})
@@ -139,5 +139,5 @@ map(
 map("v", "<Leader>rt", [[ <Esc><Cmd>lua M.refactors()<CR>]], {noremap = true, silent = true, expr = false})
 
 -- Window movement
-map("n", "<C-l>", '<cmd>lua require("utils").move_window("l")<CR>', {noremap = true})
-map("n", "<C-h>", '<cmd>lua require("utils").move_window("h")<CR>', {noremap = true})
+map("n", "<C-S-l>", '<cmd>lua require("utils").move_window("l")<CR>', {noremap = true})
+map("n", "<C-S-h>", '<cmd>lua require("utils").move_window("h")<CR>', {noremap = true})
