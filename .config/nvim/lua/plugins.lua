@@ -99,7 +99,13 @@ return require("packer").startup(
         "nvim-lualine/lualine.nvim",
         requires = {"kyazdani42/nvim-web-devicons", opt = true},
         config = function()
-          require("lualine").setup()
+          require("lualine").setup(
+            {
+              options = {
+                theme = "tokyonight"
+              }
+            }
+          )
         end
       }
       use {"nvim-telescope/telescope-project.nvim"}
@@ -151,6 +157,7 @@ return require("packer").startup(
           {"nvim-lua/plenary.nvim"}
         }
       }
+      use {"folke/tokyonight.nvim"}
     end,
     config = {
       display = {

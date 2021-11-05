@@ -9,4 +9,7 @@ vim.cmd("colorscheme gruvbox") ]]
   }
 ) ]]
 -- vim.g.onedark_style = "cool"
-require("onedark").setup()
+
+vim.cmd [[colorscheme tokyonight]]
+vim.g.tokyonight_style = "storm"
+-- require("onedark").setup()
