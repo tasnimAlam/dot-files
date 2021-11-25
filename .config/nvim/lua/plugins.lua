@@ -158,6 +158,14 @@ return require("packer").startup(
         }
       }
       use {"folke/tokyonight.nvim"}
+      use {"kevinhwang91/nvim-hlslens"}
+      use {"RRethy/vim-illuminate"}
+      use {
+        "ldelossa/calltree.nvim",
+        config = function()
+          require("calltree").setup({})
+        end
+      }
     end,
     config = {
       display = {

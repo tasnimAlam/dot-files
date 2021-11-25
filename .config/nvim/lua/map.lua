@@ -16,7 +16,6 @@ map("n", "<S-h>", ":noh<CR>", {})
 map("n", "<S-y>", "y$", {})
 map("i", "<C-a>", "<C-o>0", {})
 map("i", "<C-e>", "<C-o>$", {})
-map("n", "<Leader>a", "<cmd>call aerial#fzf()<CR>", {silent = true, noremap = true})
 
 -- Snippet config
 map("i", "<C-j>", "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'", {expr = true})
@@ -54,9 +53,9 @@ map("n", "<Leader>u", ":UndotreeToggle | :UndotreeFocus<CR>", {})
 map("n", "<Leader>e", ":NvimTreeToggle<CR>", {})
 
 -- Packer config
-map("n", "Pi", ":PackerInstall<CR>", {silent = true, noremap = true})
-map("n", "Pu", ":PackerUpdate<CR>", {silent = true, noremap = true})
-map("n", "Ps", ":PackerSync<CR>", {silent = true, noremap = true})
+map("n", "<Leader>Pi", ":PackerInstall<CR>", {silent = true, noremap = true})
+map("n", "<Leader>Pu", ":PackerUpdate<CR>", {silent = true, noremap = true})
+map("n", "<Leader>Ps", ":PackerSync<CR>", {silent = true, noremap = true})
 -- map("n", "<Leader>3", ":PackerClean<CR>", {silent = true, noremap = true})
 
 -- Vim move config
@@ -86,6 +85,9 @@ map("n", "<Leader>bc", '<cmd>%bdelete|edit#|normal `"`<CR>', {noremap = true})
 map("n", "[b", ":BufferLineCyclePrev<CR>", {silent = true})
 map("n", "]b", ":BufferLineCycleNext<CR>", {silent = true})
 map("n", "gb", ":BufferLinePick<CR>", {silent = true})
+map("n", "gx", ":BufferLinePickCloke<CR>", {silent = true})
+map("n", "b<", ":BufferLineCloseLeft<CR>", {silent = true})
+map("n", "b>", ":BufferLineCloseRight<CR>", {silent = true})
 -- map("n", "bc", ":BufferLinePickClose<CR>", {silent = true})
 map("n", "g>", ":BufferLineMoveNext<CR>", {silent = true})
 map("n", "g<", ":BufferLineMovePrev<CR>", {silent = true})

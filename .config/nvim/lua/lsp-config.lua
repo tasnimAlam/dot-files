@@ -1,5 +1,6 @@
 local nvim_lsp = require("lspconfig")
 local aerial = require("aerial")
+local illuminate = require("illuminate")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
@@ -16,7 +17,7 @@ local on_attach = function(client, bufnr)
 
   -- Aerial config
   aerial.on_attach(client)
-  -- vim.api.nvim_buf_set_keymap(0, "n", "<leader>a", "<cmd>AerialToggle!<CR>", {})
+  vim.api.nvim_buf_set_keymap(0, "n", "<leader>a", "<cmd>AerialToggle<CR>", {})
   vim.api.nvim_buf_set_keymap(0, "n", "{", "<cmd>AerialPrev<CR>", {})
   vim.api.nvim_buf_set_keymap(0, "n", "}", "<cmd>AerialNext<CR>", {})
   vim.api.nvim_buf_set_keymap(0, "n", "[[", "<cmd>AerialPrevUp<CR>", {})
@@ -71,9 +72,7 @@ local servers = {
   "pyright",
   "rust_analyzer",
   "tsserver",
-  -- "angularls",
   "bashls",
-  "zeta_note",
   "tailwindcss"
 }
 for _, lsp in ipairs(servers) do

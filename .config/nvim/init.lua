@@ -14,7 +14,7 @@ async =
       require("format-code")
       require("toggleterm-config")
       require("tabout-config")
-      require("refactoring-config")
+      -- require("refactoring-config")
       require("neoclip-config")
       require("map")
       async:close()
