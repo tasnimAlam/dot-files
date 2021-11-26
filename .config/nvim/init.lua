@@ -31,3 +31,14 @@ vim.cmd [[call wilder#setup({'modes': [':', '/', '?']})]]
 
 -- hexokinase settings
 vim.cmd [[ let g:Hexokinase_highlighters = ['backgroundfull'] ]]
+
+-- format on save
+vim.api.nvim_exec(
+  [[
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePost *.js,*.ts,*.html,*.rs,*.lua FormatWrite
+augroup END
+]],
+  true
+)
