@@ -56,7 +56,6 @@ map("n", "<Leader>e", ":NvimTreeToggle<CR>", {})
 map("n", "<Leader>Pi", ":PackerInstall<CR>", {silent = true, noremap = true})
 map("n", "<Leader>Pu", ":PackerUpdate<CR>", {silent = true, noremap = true})
 map("n", "<Leader>Ps", ":PackerSync<CR>", {silent = true, noremap = true})
--- map("n", "<Leader>3", ":PackerClean<CR>", {silent = true, noremap = true})
 
 -- Vim move config
 map("n", "∆", ":m .+1<CR>", {silent = true, noremap = true})
@@ -88,18 +87,8 @@ map("n", "gb", ":BufferLinePick<CR>", {silent = true})
 map("n", "gx", ":BufferLinePickCloke<CR>", {silent = true})
 map("n", "d<", ":BufferLineCloseLeft<CR>", {silent = true})
 map("n", "d>", ":BufferLineCloseRight<CR>", {silent = true})
--- map("n", "bc", ":BufferLinePickClose<CR>", {silent = true})
 map("n", "g>", ":BufferLineMoveNext<CR>", {silent = true})
 map("n", "g<", ":BufferLineMovePrev<CR>", {silent = true})
-map("n", "<Leader>1", "<Cmd>BufferLineGoToBuffer1<CR>", {silent = true})
-map("n", "<Leader>2", "<Cmd>BufferLineGoToBuffer2<CR>", {silent = true})
-map("n", "<Leader>3", "<Cmd>BufferLineGoToBuffer3<CR>", {silent = true})
-map("n", "<Leader>4", "<Cmd>BufferLineGoToBuffer4<CR>", {silent = true})
-map("n", "<Leader>5", "<Cmd>BufferLineGoToBuffer5<CR>", {silent = true})
-map("n", "<Leader>6", "<Cmd>BufferLineGoToBuffer6<CR>", {silent = true})
-map("n", "<Leader>7", "<Cmd>BufferLineGoToBuffer7<CR>", {silent = true})
-map("n", "<Leader>8", "<Cmd>BufferLineGoToBuffer8<CR>", {silent = true})
-map("n", "<Leader>9", "<Cmd>BufferLineGoToBuffer9<CR>", {silent = true})
 
 -- Git Config
 map("n", "<Leader>g", ":FloatermNew --width=1.0 --height=1.0 --autoclose=2 lazygit<CR>", {})
@@ -110,8 +99,6 @@ map(
   'fugitive#head() != "" ? ":GFiles --cached --others --exclude-standard<CR>": ":Files<CR>"',
   {expr = true}
 )
--- TODO: make it lua function
--- vim.api.nvim_exec([[ let g:nremap = {'=': '<TAB>'} ]], true)
 
 -- Harpoon config
 map("n", "<Leader>M", "<cmd>lua require('harpoon.mark').add_file()<CR>", {noremap = true})

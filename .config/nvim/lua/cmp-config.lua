@@ -15,7 +15,7 @@ cmp.setup(
           maxwidth = 50,
           menu = ({
             buffer = "[Buffer]",
-						vsnip = "[SNIP]",
+            vsnip = "[SNIP]",
             nvim_lsp = "[LSP]",
             cmp_tabnine = "[TN]",
             nvim_lua = "[Lua]"

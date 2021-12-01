@@ -72,6 +72,8 @@ return require("packer").startup(
         end
       }
       use "simrat39/rust-tools.nvim"
+
+      -- Completion
       use {
         "hrsh7th/nvim-cmp",
         requires = {
@@ -87,13 +89,24 @@ return require("packer").startup(
         end
       }
       use "hrsh7th/vim-vsnip"
-      use "hrsh7th/cmp-vsnip"
       use "rafamadriz/friendly-snippets"
       use {
         "tzachar/cmp-tabnine",
         run = "./install.sh",
         requires = "hrsh7th/nvim-cmp"
       }
+      use {
+        "hrsh7th/cmp-vsnip",
+        after = "nvim-cmp",
+        requires = {
+          "hrsh7th/vim-vsnip",
+          {
+            "rafamadriz/friendly-snippets",
+            after = "cmp-vsnip"
+          }
+        }
+      }
+
       use "onsails/lspkind-nvim"
       use {
         "nvim-lualine/lualine.nvim",
@@ -127,12 +140,7 @@ return require("packer").startup(
       }
       use {"JoosepAlviste/nvim-ts-context-commentstring", ft = {"js", "jsx", "ts", "tsx"}}
       use "navarasu/onedark.nvim"
-      use {
-        "akinsho/nvim-toggleterm.lua"
-        -- config = function()
-        --   require "toggleterm-config"
-        -- end
-      }
+      use {"akinsho/nvim-toggleterm.lua"}
       use {
         "abecodes/tabout.nvim",
         config = function()
