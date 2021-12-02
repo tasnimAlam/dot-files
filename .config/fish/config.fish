@@ -28,7 +28,7 @@ set PATH $PATH ~/.composer/vendor/bin
 
 # NNN config
 set --export NNN_FIFO "/tmp/nnn.fifo"
-set -x NNN_PLUG "f:fzopen;u:getplugs;p:preview-tui;m:mailattach;w:wordcount;c:copy2bin;k:pskill;j:autojump;e:-!sudo -E nvim $nnn*"
+set -x NNN_PLUG "f:fzopen;u:upload;p:preview-tui;m:mailattach;w:wordcount;c:x2sel;k:pskill;j:autojump;e:-!sudo -E nvim $nnn*"
 set -x NNN_BMS "h:~/;d:~/Downloads/;w:~/Projects/sports-cloud-webapp;u:~/Projects/ui2/;r:~/Projects/rust-projects/rust_test/;"
 set -x NNN_COLORS "2136"
 set -x NNN_FCOLORS "c1e2272e006033f7c6d6abc4"

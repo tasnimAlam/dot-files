@@ -125,11 +125,11 @@ return require("packer").startup(
       use "voldikss/vim-floaterm"
       use {"akinsho/nvim-bufferline.lua", requires = "kyazdani42/nvim-web-devicons"}
       use "nvim-treesitter/nvim-treesitter-textobjects"
+      use {"RRethy/nvim-treesitter-textsubjects"}
       use {"nvim-treesitter/nvim-treesitter-angular"}
       use "ludovicchabant/vim-gutentags"
       use {"mbbill/undotree", cmd = "UndotreeToggle"}
       use "ggandor/lightspeed.nvim"
-      use "stevearc/aerial.nvim"
       use {"lukas-reineke/indent-blankline.nvim", event = "BufRead"}
       use {
         "lewis6991/gitsigns.nvim",
