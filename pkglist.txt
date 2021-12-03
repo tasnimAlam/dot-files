@@ -8,6 +8,7 @@ bspwm
 chromium
 fd
 firefox
+fnm
 fzf
 go
 htop
@@ -25,6 +26,7 @@ polybar
 qbittorrent
 ripgrep
 rofi
+shfmt
 slack
 smartmontools
 st
