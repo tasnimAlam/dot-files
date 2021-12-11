@@ -174,6 +174,7 @@ return require("packer").startup(
           require("calltree").setup({})
         end
       }
+      use "sQVe/sort.nvim"
     end,
     config = {
       display = {

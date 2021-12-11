@@ -1,5 +1,0 @@
-{
-  "rust-analyzer.inlayHints.enable": false,
-  "coc.preferences.formatOnSaveFiletypes": ["rust"],
-  "eslint.enable": true
-}
