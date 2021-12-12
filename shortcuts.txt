@@ -8,7 +8,6 @@
  + f         = fullscreen
  + g         = swap current and biggest window
  + h/j/k/l   = change focus
- + h/j/k/l   = change focus
  + p/b/,/.   = focus parent, brother, first, last
  + c/C       = focus next, Previous window
  + u/i       = focus previous, next desktop

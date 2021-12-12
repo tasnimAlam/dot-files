@@ -12,14 +12,14 @@ xmodmap -e "keycode 135=Super_R"
 
 $HOME/.config/polybar/launch.sh
 
-bspc monitor -d  1 2 3 4 
- 
-bspc config border_width         0
-bspc config window_gap           6 
+bspc monitor -d 1 2 3 4
 
-bspc config split_ratio          0.52
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+bspc config border_width 0
+bspc config window_gap 6
+
+bspc config split_ratio 0.52
+bspc config borderless_monocle true
+bspc config gapless_monocle true
 bspc config top_padding 28
 
 bspc rule -a Zathura desktop=^3 state=tiled follow=on
@@ -30,3 +30,8 @@ bspc rule -a Zoom desktop='^4' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
 bspc rule -a Screenkey manage=off
 
+# Delete desktop when all client are disconnected
+$HOME/.config/bspwm/delete-desktop.sh
+
+# Gracefull delete
+$HOME/.config/bspwm/graceful-delete.sh
