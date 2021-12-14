@@ -14,8 +14,8 @@ return require("packer").startup(
       use {"wbthomason/packer.nvim", opt = true}
       use {"mhartington/formatter.nvim"}
       use {"maxmellon/vim-jsx-pretty", ft = {"js", "jsx", "ts", "tsx"}}
-      use {"junegunn/fzf", run = "./install --all"}
-      use {"junegunn/fzf.vim"}
+      -- use {"junegunn/fzf", run = "./install --all"}
+      -- use {"junegunn/fzf.vim"}
       use {"tpope/vim-fugitive", event = "BufEnter", cmd = {"Git", "Gstatus", "Gblame", "Gpush", "Gpull"}}
       use "tpope/vim-surround"
       use {
@@ -57,6 +57,8 @@ return require("packer").startup(
         "nvim-telescope/telescope.nvim",
         requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}, cmd = "Telescope"}
       }
+      use {"nvim-telescope/telescope-project.nvim"}
+      use {"nvim-telescope/telescope-media-files.nvim"}
       use "neovim/nvim-lspconfig"
       use {
         "tami5/lspsaga.nvim",
@@ -121,7 +123,6 @@ return require("packer").startup(
           )
         end
       }
-      use {"nvim-telescope/telescope-project.nvim"}
       use "voldikss/vim-floaterm"
       use {"akinsho/nvim-bufferline.lua", requires = "kyazdani42/nvim-web-devicons"}
       use "nvim-treesitter/nvim-treesitter-textobjects"

@@ -68,7 +68,9 @@ map("i", "<S-Tab>", 'pumvisible() ? "<C-p>" : "<S-Tab>"', {expr = true})
 map("i", "<CR>", 'pumvisible() ? "<C-y>" : "<CR>"', {expr = true})
 
 -- Telescope config
-map("n", "<Leader>ff", '<cmd>lua require("telescope.builtin").find_files()<CR>', {noremap = true})
+map("n", "<Space><Space>", '<cmd>lua require("telescope.builtin").find_files()<CR>', {noremap = true})
+map("n", "<Leader>rg", '<cmd>lua require("telescope.builtin").live_grep()<CR>', {noremap = true})
+map("n", "<Leader>/", "<cmd>Telescope current_buffer_fuzzy_find <CR>", {})
 map(
   "n",
   "<Leader>fp",
@@ -91,13 +93,15 @@ map("n", "g<", ":BufferLineMovePrev<CR>", {silent = true})
 
 -- Git Config
 map("n", "<Leader>g", ":FloatermNew --width=1.0 --height=1.0 --autoclose=2 lazygit<CR>", {})
-map("n", "<Leader>/", ":BLines<CR>", {})
-map(
-  "n",
-  "<C-p>",
-  'fugitive#head() != "" ? ":GFiles --cached --others --exclude-standard<CR>": ":Files<CR>"',
-  {expr = true}
-)
+map("n", "<Leader>cb", ":Telescope git_branches<CR>", {})
+-- map("n", "<Leader>/", ":BLines<CR>", {})
+-- map("n", "<Leader>/", ":BLines<CR>", {})
+-- map(
+--   "n",
+--   "<C-p>",
+--   'fugitive#head() != "" ? ":GFiles --cached --others --exclude-standard<CR>": ":Files<CR>"',
+--   {expr = true}
+-- )
 
 -- Harpoon config
 map("n", "<Leader>M", "<cmd>lua require('harpoon.mark').add_file()<CR>", {noremap = true})
