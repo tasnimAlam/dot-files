@@ -1,5 +1,8 @@
 local actions = require("telescope.actions")
 
+require "telescope".load_extension("project")
+require "telescope".load_extension("media_files")
+
 require("telescope").setup {
   defaults = {
     mappings = {
@@ -17,6 +20,3 @@ require("telescope").setup {
     media_files = {}
   }
 }
-
-require "telescope".load_extension("project")
-require "telescope".load_extension("media_files")

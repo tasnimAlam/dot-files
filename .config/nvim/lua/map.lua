@@ -73,8 +73,14 @@ map("n", "<Leader>rg", '<cmd>lua require("telescope.builtin").live_grep()<CR>', 
 map("n", "<Leader>/", "<cmd>Telescope current_buffer_fuzzy_find <CR>", {})
 map(
   "n",
-  "<Leader>fp",
+  "<C-p>",
   '<cmd>lua require("telescope").extensions.project.project{}<CR>',
+  {noremap = true, silent = true}
+)
+map(
+  "n",
+  "<Leader>fm",
+  '<cmd>lua require("telescope").extensions.media_files.media_files()<CR>',
   {noremap = true, silent = true}
 )
 
