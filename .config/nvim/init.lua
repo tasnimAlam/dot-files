@@ -29,7 +29,7 @@ pcall(require, "custom")
 local core_modules = {
   "core.settings",
   -- "core.globals",
-  "core.autocmds",
+  -- "core.autocmds",
   "core.keymap",
   "core.plugins",
   "core.theme"

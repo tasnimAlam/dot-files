@@ -14,7 +14,6 @@ return require("packer").startup(
       use {"wbthomason/packer.nvim", opt = true}
       use {
         "mhartington/formatter.nvim",
-        cmd = "Format",
         config = function()
           require "plugins.formatter"
         end
@@ -177,8 +176,17 @@ return require("packer").startup(
       use "windwp/nvim-ts-autotag"
       use "nathom/filetype.nvim"
       -- use {"ThePrimeagen/harpoon", require = "nvim-lua/plenary.nvim"}
+      --     use "lewis6991/impatient.nvim"
+      use {
+        "goolord/alpha-nvim",
+        requires = {"kyazdani42/nvim-web-devicons"},
+        config = function()
+          require "plugins.alpha"
+        end
+      }
     end,
     config = {
+      --      compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
       display = {
         open_fn = require("packer.util").float
       },
