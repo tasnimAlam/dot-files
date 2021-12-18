@@ -14,13 +14,14 @@ return require("packer").startup(
       use {"wbthomason/packer.nvim", opt = true}
       use {
         "mhartington/formatter.nvim",
+        cmd = "Format",
         config = function()
           require "plugins.formatter"
         end
       }
       use {"maxmellon/vim-jsx-pretty", ft = {"js", "jsx", "ts", "tsx"}}
-      use {"junegunn/fzf", run = "./install --all"}
-      use {"junegunn/fzf.vim"}
+      -- use {"junegunn/fzf", run = "./install --all"}
+      -- use {"junegunn/fzf.vim"}
       -- use {"tpope/vim-fugitive", event = "BufEnter", cmd = {"Git", "Gstatus", "Gblame", "Gpush", "Gpull"}}
       use "tpope/vim-surround"
       use {
@@ -174,6 +175,7 @@ return require("packer").startup(
       -- use {"ellisonleao/glow.nvim", run = "GlowInstall"}
       use {"gelguy/wilder.nvim", run = "UpdateRemotePlugins"}
       use "windwp/nvim-ts-autotag"
+      use "nathom/filetype.nvim"
       -- use {"ThePrimeagen/harpoon", require = "nvim-lua/plenary.nvim"}
     end,
     config = {
