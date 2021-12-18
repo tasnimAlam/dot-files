@@ -91,7 +91,15 @@ map("n", "d<", ":BufferLineCloseLeft<CR>", {silent = true})
 map("n", "g>", ":BufferLineMoveNext<CR>", {silent = true})
 map("n", "g<", ":BufferLineMovePrev<CR>", {silent = true})
 
--- Git Config
+-- Harpoon config
+map("n", "<Leader>M", "<cmd>lua require('harpoon.mark').add_file()<CR>", {noremap = true})
+map("n", "<Leader>m", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", {noremap = true})
+map("n", "<Leader>1", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", {noremap = true})
+map("n", "<Leader>2", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", {noremap = true})
+map("n", "<Leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", {noremap = true})
+map("n", "<Leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", {noremap = true})
+
+-- Git config
 map("n", "<Leader>g", ":FloatermNew --width=1.0 --height=1.0 --autoclose=2 lazygit<CR>", {})
 map("n", "<Leader>/", ":BLines<CR>", {})
 -- TODO: make it lua function

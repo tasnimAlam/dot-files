@@ -150,12 +150,7 @@ return require("packer").startup(
       }
       use {"JoosepAlviste/nvim-ts-context-commentstring", ft = {"js", "jsx", "ts", "tsx"}}
       use "navarasu/onedark.nvim"
-      use {
-        "folke/tokyonight.nvim",
-        after = {
-          "lukas-reineke/indent-blankline.nvim"
-        }
-      }
+      use {"folke/tokyonight.nvim"}
       use {
         "akinsho/nvim-toggleterm.lua",
         config = function()
@@ -180,6 +175,12 @@ return require("packer").startup(
         config = function()
           require "plugins.refactoring"
         end
+      }
+      use {
+        "ThePrimeagen/harpoon",
+        requires = {
+          {"nvim-lua/plenary.nvim"}
+        }
       }
       use {
         "AckslD/nvim-neoclip.lua",
