@@ -116,7 +116,13 @@ return require("packer").startup(
         "nvim-lualine/lualine.nvim",
         requires = {"kyazdani42/nvim-web-devicons", opt = true},
         config = function()
-          require("lualine").setup()
+          require("lualine").setup(
+            {
+              options = {
+                theme = "tokyonight"
+              }
+            }
+          )
         end
       }
       use {"nvim-telescope/telescope-project.nvim"}
@@ -134,18 +140,7 @@ return require("packer").startup(
       use {"mbbill/undotree", cmd = "UndotreeToggle"}
       use "ggandor/lightspeed.nvim"
       use "stevearc/aerial.nvim"
-      use {
-        "lukas-reineke/indent-blankline.nvim",
-        event = "BufRead",
-        config = function()
-          require("indent_blankline").setup(
-            {
-              show_current_context = true,
-              show_current_context_start = true
-            }
-          )
-        end
-      }
+      use {"lukas-reineke/indent-blankline.nvim", event = "BufRead"}
       use {
         "lewis6991/gitsigns.nvim",
         requires = {"nvim-lua/plenary.nvim"},
@@ -155,6 +150,12 @@ return require("packer").startup(
       }
       use {"JoosepAlviste/nvim-ts-context-commentstring", ft = {"js", "jsx", "ts", "tsx"}}
       use "navarasu/onedark.nvim"
+      use {
+        "folke/tokyonight.nvim",
+        after = {
+          "lukas-reineke/indent-blankline.nvim"
+        }
+      }
       use {
         "akinsho/nvim-toggleterm.lua",
         config = function()
@@ -166,8 +167,8 @@ return require("packer").startup(
         config = function()
           require "plugins.tabout"
         end,
-        wants = {"nvim-treesitter"}, 
-        after = {"nvim-cmp"} 
+        wants = {"nvim-treesitter"},
+        after = {"nvim-cmp"}
       }
       use {"rmagatti/alternate-toggler"}
       use {
