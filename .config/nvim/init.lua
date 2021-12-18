@@ -3,42 +3,15 @@ async =
   vim.loop.new_async(
   vim.schedule_wrap(
     function()
-      require("plugins")
-      require("theme")
-      require("globals")
-      require("treesitter-config")
-      require("settings")
-      require("lsp-config")
-      require("cmp-config")
-      require("bufferline-config")
-      require("format-code")
-      require("toggleterm-config")
-      require("tabout-config")
-      -- require("refactoring-config")
-      require("neoclip-config")
-      require("map")
+      require("core.autocmds")
+      require("core.globals")
+      require("core.keymap")
+      require("core.plugins")
+      require("core.settings")
+      require("core.theme")
       async:close()
     end
   )
 )
 async:send()
 
--- gutentag settings
-vim.cmd [[let g:gutentags_file_list_command = 'rg --files']]
-
--- wilder settings
-vim.cmd [[call wilder#setup({'modes': [':', '/', '?']})]]
-
--- hexokinase settings
-vim.cmd [[ let g:Hexokinase_highlighters = ['backgroundfull'] ]]
-
--- format on save
-vim.api.nvim_exec(
-  [[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost *.js,*.ts,*.html,*.rs,*.lua,*.scss,*.css FormatWrite
-augroup END
-]],
-  true
-)

@@ -1,11 +1,4 @@
 require "nvim-treesitter.configs".setup {
-  -- textsubjects = {
-  --   enable = true,
-  --   keymaps = {
-  --     ["."] = "textsubjects-smart",
-  --     [";"] = "textsubjects-container-outer"
-  --   }
-  -- },
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   autotag = {
     enable = true
@@ -44,10 +37,10 @@ require "nvim-treesitter.configs".setup {
     swap = {
       enable = true,
       swap_next = {
-        ["<leader>s"] = "@parameter.inner"
+        ["<leader>a"] = "@parameter.inner"
       },
       swap_previous = {
-        ["<leader>S"] = "@parameter.inner"
+        ["<leader>A"] = "@parameter.inner"
       }
     },
     move = {

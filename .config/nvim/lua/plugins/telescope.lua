@@ -15,8 +15,7 @@ require("telescope").setup {
       }
     }
   },
-  extensions = {
-    project = {},
-    media_files = {}
-  }
+  extensions = {}
 }
+
+require "telescope".load_extension("project")

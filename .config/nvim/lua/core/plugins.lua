@@ -12,10 +12,15 @@ return require("packer").startup(
     function()
       -- Packer can manage itself as an optional plugin
       use {"wbthomason/packer.nvim", opt = true}
-      use {"mhartington/formatter.nvim"}
+      use {
+        "mhartington/formatter.nvim",
+        config = function()
+          require "plugins.formatter"
+        end
+      }
       use {"maxmellon/vim-jsx-pretty", ft = {"js", "jsx", "ts", "tsx"}}
-      -- use {"junegunn/fzf", run = "./install --all"}
-      -- use {"junegunn/fzf.vim"}
+      use {"junegunn/fzf", run = "./install --all"}
+      use {"junegunn/fzf.vim"}
       use {"tpope/vim-fugitive", event = "BufEnter", cmd = {"Git", "Gstatus", "Gblame", "Gpush", "Gpull"}}
       use "tpope/vim-surround"
       use {
@@ -44,7 +49,13 @@ return require("packer").startup(
         end
       }
       use {"kevinhwang91/nvim-bqf"}
-      use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+      use {
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+        config = function()
+          require "plugins.treesitter"
+        end
+      }
       use {
         "kyazdani42/nvim-tree.lua",
         requires = "kyazdani42/nvim-web-devicons",
@@ -57,15 +68,19 @@ return require("packer").startup(
         "nvim-telescope/telescope.nvim",
         requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}, cmd = "Telescope"}
       }
-      use {"nvim-telescope/telescope-project.nvim"}
-      use {"nvim-telescope/telescope-media-files.nvim"}
-      use "neovim/nvim-lspconfig"
+      use {
+        "neovim/nvim-lspconfig",
+        config = function()
+          require "plugins.lsp"
+        end
+      }
       use {
         "tami5/lspsaga.nvim",
         config = function()
-          require "lsp-saga-config"
+          require "plugins.lspsaga"
         end
       }
+      use "jose-elias-alvarez/nvim-lsp-ts-utils"
       use {
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
@@ -74,8 +89,6 @@ return require("packer").startup(
         end
       }
       use "simrat39/rust-tools.nvim"
-
-      -- Completion
       use {
         "hrsh7th/nvim-cmp",
         requires = {
@@ -87,51 +100,52 @@ return require("packer").startup(
           "octaltree/cmp-look"
         },
         config = function()
-          require "cmp-config"
+          require "plugins.cmp"
         end
       }
       use "hrsh7th/vim-vsnip"
+      use "hrsh7th/cmp-vsnip"
       use "rafamadriz/friendly-snippets"
       use {
         "tzachar/cmp-tabnine",
         run = "./install.sh",
         requires = "hrsh7th/nvim-cmp"
       }
-      use {
-        "hrsh7th/cmp-vsnip",
-        after = "nvim-cmp",
-        requires = {
-          "hrsh7th/vim-vsnip",
-          {
-            "rafamadriz/friendly-snippets",
-            after = "cmp-vsnip"
-          }
-        }
-      }
-
       use "onsails/lspkind-nvim"
       use {
         "nvim-lualine/lualine.nvim",
         requires = {"kyazdani42/nvim-web-devicons", opt = true},
         config = function()
-          require("lualine").setup(
-            {
-              options = {
-                theme = "tokyonight"
-              }
-            }
-          )
+          require("lualine").setup()
         end
       }
+      use {"nvim-telescope/telescope-project.nvim"}
       use "voldikss/vim-floaterm"
-      use {"akinsho/nvim-bufferline.lua", requires = "kyazdani42/nvim-web-devicons"}
+      use {
+        "akinsho/nvim-bufferline.lua",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+          require("bufferline").setup {}
+        end
+      }
       use "nvim-treesitter/nvim-treesitter-textobjects"
-      use {"RRethy/nvim-treesitter-textsubjects"}
       use {"nvim-treesitter/nvim-treesitter-angular"}
       use "ludovicchabant/vim-gutentags"
       use {"mbbill/undotree", cmd = "UndotreeToggle"}
       use "ggandor/lightspeed.nvim"
-      use {"lukas-reineke/indent-blankline.nvim", event = "BufRead"}
+      use "stevearc/aerial.nvim"
+      use {
+        "lukas-reineke/indent-blankline.nvim",
+        event = "BufRead",
+        config = function()
+          require("indent_blankline").setup(
+            {
+              show_current_context = true,
+              show_current_context_start = true
+            }
+          )
+        end
+      }
       use {
         "lewis6991/gitsigns.nvim",
         requires = {"nvim-lua/plenary.nvim"},
@@ -141,12 +155,19 @@ return require("packer").startup(
       }
       use {"JoosepAlviste/nvim-ts-context-commentstring", ft = {"js", "jsx", "ts", "tsx"}}
       use "navarasu/onedark.nvim"
-      use {"akinsho/nvim-toggleterm.lua"}
+      use {
+        "akinsho/nvim-toggleterm.lua",
+        config = function()
+          require "plugins.toggleterm"
+        end
+      }
       use {
         "abecodes/tabout.nvim",
         config = function()
-          require "tabout-config"
-        end
+          require "plugins.tabout"
+        end,
+        wants = {"nvim-treesitter"}, 
+        after = {"nvim-cmp"} 
       }
       use {"rmagatti/alternate-toggler"}
       use {
@@ -154,28 +175,20 @@ return require("packer").startup(
         requires = {
           {"nvim-lua/plenary.nvim"},
           {"nvim-treesitter/nvim-treesitter"}
-        }
+        },
+        config = function()
+          require "plugins.refactoring"
+        end
       }
-      use {"AckslD/nvim-neoclip.lua"}
+      use {
+        "AckslD/nvim-neoclip.lua",
+        config = function()
+          require "plugins.neoclip"
+        end
+      }
       use {"ellisonleao/glow.nvim", run = "GlowInstall"}
       use {"gelguy/wilder.nvim", run = "UpdateRemotePlugins"}
       use "windwp/nvim-ts-autotag"
-      use {
-        "ThePrimeagen/harpoon",
-        requires = {
-          {"nvim-lua/plenary.nvim"}
-        }
-      }
-      use {"folke/tokyonight.nvim"}
-      use {"kevinhwang91/nvim-hlslens"}
-      use {"RRethy/vim-illuminate"}
-      use {
-        "ldelossa/calltree.nvim",
-        config = function()
-          require("calltree").setup({})
-        end
-      }
-      use "sQVe/sort.nvim"
     end,
     config = {
       display = {

@@ -1,6 +1,8 @@
 --[[ vim.cmd("syntax on")
 vim.o.background = "dark"
 vim.cmd("colorscheme gruvbox") ]]
+
+
 --[[ require("github-theme").setup(
   {
     themeStyle = "dark",
@@ -8,8 +10,7 @@ vim.cmd("colorscheme gruvbox") ]]
     darkFloat = true
   }
 ) ]]
--- vim.g.onedark_style = "cool"
 
-vim.cmd [[ colorscheme tokyonight ]]
-vim.g.tokyonight_style = "storm"
--- require("onedark").setup()
+vim.g.onedark_style = "cool"
+require("onedark").setup()
+vim.cmd("colorscheme onedark")
