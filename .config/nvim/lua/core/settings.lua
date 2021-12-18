@@ -24,6 +24,7 @@ o.tabstop = 2
 o.hidden = true
 o.timeoutlen = 2000
 o.ttimeoutlen = 100
+o.lazyredraw = true
 o.mouse = "a"
 if has("mac") == 1 then
   o.clipboard = "unnamedplus"
@@ -45,29 +46,3 @@ wo.foldmethod = "expr"
 wo.number = true
 wo.relativenumber = true
 wo.colorcolumn = "80"
-
--- disable built in plugins
-local disabled_built_ins = {
-  "netrw",
-  "netrwPlugin",
-  "netrwSettings",
-  "netrwFileHandlers",
-  "gzip",
-  "zip",
-  "zipPlugin",
-  "tar",
-  "tarPlugin",
-  "getscript",
-  "getscriptPlugin",
-  "vimball",
-  "vimballPlugin",
-  "2html_plugin",
-  "logipat",
-  "rrhelper",
-  "spellfile_plugin",
-  "matchit"
-}
-
-for _, plugin in pairs(disabled_built_ins) do
-  vim.g["loaded_" .. plugin] = 1
-end

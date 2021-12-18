@@ -21,7 +21,7 @@ return require("packer").startup(
       use {"maxmellon/vim-jsx-pretty", ft = {"js", "jsx", "ts", "tsx"}}
       use {"junegunn/fzf", run = "./install --all"}
       use {"junegunn/fzf.vim"}
-      use {"tpope/vim-fugitive", event = "BufEnter", cmd = {"Git", "Gstatus", "Gblame", "Gpush", "Gpull"}}
+      -- use {"tpope/vim-fugitive", event = "BufEnter", cmd = {"Git", "Gstatus", "Gblame", "Gpush", "Gpull"}}
       use "tpope/vim-surround"
       use {
         "numToStr/Comment.nvim",
@@ -33,7 +33,7 @@ return require("packer").startup(
       use "tpope/vim-unimpaired"
       use "jiangmiao/auto-pairs"
       use "mattn/emmet-vim"
-      use "morhetz/gruvbox"
+      -- use "morhetz/gruvbox"
       use "matze/vim-move"
       use {"rrethy/vim-hexokinase", run = "make hexokinase"}
       use "tommcdo/vim-exchange"
@@ -136,10 +136,9 @@ return require("packer").startup(
       }
       use "nvim-treesitter/nvim-treesitter-textobjects"
       use {"nvim-treesitter/nvim-treesitter-angular"}
-      use "ludovicchabant/vim-gutentags"
+      -- use "ludovicchabant/vim-gutentags"
       use {"mbbill/undotree", cmd = "UndotreeToggle"}
       use "ggandor/lightspeed.nvim"
-      use "stevearc/aerial.nvim"
       use {"lukas-reineke/indent-blankline.nvim", event = "BufRead"}
       use {
         "lewis6991/gitsigns.nvim",
@@ -149,7 +148,7 @@ return require("packer").startup(
         end
       }
       use {"JoosepAlviste/nvim-ts-context-commentstring", ft = {"js", "jsx", "ts", "tsx"}}
-      use "navarasu/onedark.nvim"
+      -- use "navarasu/onedark.nvim"
       use {"folke/tokyonight.nvim"}
       use {
         "akinsho/nvim-toggleterm.lua",
@@ -167,30 +166,15 @@ return require("packer").startup(
       }
       use {"rmagatti/alternate-toggler"}
       use {
-        "ThePrimeagen/refactoring.nvim",
-        requires = {
-          {"nvim-lua/plenary.nvim"},
-          {"nvim-treesitter/nvim-treesitter"}
-        },
-        config = function()
-          require "plugins.refactoring"
-        end
-      }
-      use {
-        "ThePrimeagen/harpoon",
-        requires = {
-          {"nvim-lua/plenary.nvim"}
-        }
-      }
-      use {
         "AckslD/nvim-neoclip.lua",
         config = function()
           require "plugins.neoclip"
         end
       }
-      use {"ellisonleao/glow.nvim", run = "GlowInstall"}
+      -- use {"ellisonleao/glow.nvim", run = "GlowInstall"}
       use {"gelguy/wilder.nvim", run = "UpdateRemotePlugins"}
       use "windwp/nvim-ts-autotag"
+      -- use {"ThePrimeagen/harpoon", require = "nvim-lua/plenary.nvim"}
     end,
     config = {
       display = {

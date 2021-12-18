@@ -1,5 +1,4 @@
 local nvim_lsp = require("lspconfig")
-local aerial = require("aerial")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
@@ -13,14 +12,6 @@ local on_attach = function(client, bufnr)
   end
 
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-  -- Aerial config
-  aerial.on_attach(client)
-  vim.api.nvim_buf_set_keymap(0, "n", "<leader>a", "<cmd>AerialToggle!<CR>", {})
-  vim.api.nvim_buf_set_keymap(0, "n", "{", "<cmd>AerialPrev<CR>", {})
-  vim.api.nvim_buf_set_keymap(0, "n", "}", "<cmd>AerialNext<CR>", {})
-  vim.api.nvim_buf_set_keymap(0, "n", "[[", "<cmd>AerialPrevUp<CR>", {})
-  vim.api.nvim_buf_set_keymap(0, "n", "]]", "<cmd>AerialNextUp<CR>", {})
 
   -- Mappings.
   local opts = {noremap = true, silent = true}
