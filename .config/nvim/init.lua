@@ -29,7 +29,7 @@ pcall(require, "custom")
 local core_modules = {
   "core.settings",
   -- "core.globals",
-  -- "core.autocmds",
+  "core.autocmds",
   "core.keymap",
   "core.plugins",
   "core.theme"
@@ -41,20 +41,3 @@ for _, module in ipairs(core_modules) do
     error("Error loading " .. module .. "\n\n" .. err)
   end
 end
-
--- local async
--- async =
---   vim.loop.new_async(
---   vim.schedule_wrap(
---     function()
---       -- require("core.autocmds")
---       require("core.globals")
---       require("core.keymap")
---       require("core.plugins")
---       require("core.settings")
---       require("core.theme")
---       async:close()
---     end
---   )
--- )
--- async:send()

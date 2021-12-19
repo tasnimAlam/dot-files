@@ -30,6 +30,14 @@ local rustFormat = function()
   }
 end
 
+local pythonFormat = function()
+  return {
+    exe = "black",
+    args = {"-"},
+    stdin = true
+  }
+end
+
 require("formatter").setup(
   {
     logging = false,
@@ -42,7 +50,8 @@ require("formatter").setup(
       css = {prettierdFormat},
       scss = {prettierdFormat},
       sh = {shellFormat},
-      rust = {rustFormat}
+      rust = {rustFormat},
+      python = {pythonFormat}
     }
   }
 )
