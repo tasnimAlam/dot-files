@@ -77,7 +77,12 @@ map(
   '<cmd>lua require("telescope").extensions.media_files.media_files()<CR>',
   {noremap = true, silent = true}
 )
-map("n", "<leader>/", '<cmd>lua require("telescope").current_buffer_fuzzy_find', {noremap = true, silent = true})
+map(
+  "n",
+  "<leader>/",
+  '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>',
+  {noremap = true, silent = true}
+)
 
 -- Buffer management
 map("n", "<Leader>,", "<C-^>", {})
