@@ -184,6 +184,8 @@ return require("packer").startup(
           require "plugins.alpha"
         end
       }
+      use {"APZelos/blamer.nvim"}
+      use {"mfussenegger/nvim-treehopper"}
     end,
     config = {
       --      compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",

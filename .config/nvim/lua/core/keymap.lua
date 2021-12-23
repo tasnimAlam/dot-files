@@ -34,6 +34,9 @@ map("n", "<Leader>t", ":ToggleAlternate<CR>", {})
 -- Trouble config
 map("n", "<Leader>d", "<cmd>TroubleToggle<CR>", {silent = true, noremap = true})
 
+-- Treehooper config
+map("n", "<Leader>v", "<cmd>lua require('tsht').nodes()<CR>", {silent = true, noremap = true})
+
 -- Clipboard
 map("n", "<Leader>cc", ":lua require('telescope').extensions.neoclip.default()<CR>", {})
 
