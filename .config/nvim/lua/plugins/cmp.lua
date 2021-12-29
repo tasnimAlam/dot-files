@@ -65,7 +65,26 @@ cmp.setup(
       {name = "nvim_lsp"},
       {name = "cmp_tabnine"},
       {name = "buffer"},
-      {name = "path"}
+      {name = "path"},
+      {name = "cmdline"}
+    }
+  }
+)
+
+cmp.setup.cmdline(
+  ":",
+  {
+    sources = {
+      {name = "cmdline"}
+    }
+  }
+)
+
+cmp.setup.cmdline(
+  "/",
+  {
+    sources = {
+      {name = "buffer"}
     }
   }
 )
