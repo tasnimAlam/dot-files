@@ -71,8 +71,8 @@ map("i", "<CR>", 'pumvisible() ? "<C-y>" : "<CR>"', {expr = true})
 
 -- Telescope config
 map("n", "<space><space>", '<cmd>lua require("telescope.builtin").find_files({ hidden = true})<CR>', {noremap = true})
-map("n", "rg", '<cmd>lua require("telescope.builtin").live_grep()<CR>', {noremap = true})
-map("n", "rw", '<cmd>lua require("telescope.builtin").grep_string()<CR><C-R><C-W>', {noremap = true})
+map("n", "<Leader>rg", '<cmd>lua require("telescope.builtin").live_grep()<CR>', {noremap = true})
+map("n", "<Leader>rw", '<cmd>lua require("telescope.builtin").grep_string()<CR><C-R><C-W>', {noremap = true})
 map("n", "<C-p>", '<cmd>lua require("telescope").extensions.project.project{}<CR>', {noremap = true, silent = true})
 map(
   "n",
