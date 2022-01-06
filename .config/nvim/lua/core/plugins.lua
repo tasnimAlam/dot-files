@@ -21,7 +21,6 @@ return require("packer").startup(
       use {"maxmellon/vim-jsx-pretty", ft = {"js", "jsx", "ts", "tsx"}}
       -- use {"junegunn/fzf", run = "./install --all"}
       -- use {"junegunn/fzf.vim"}
-      -- use {"tpope/vim-fugitive", event = "BufEnter", cmd = {"Git", "Gstatus", "Gblame", "Gpush", "Gpull"}}
       use "tpope/vim-surround"
       use {
         "numToStr/Comment.nvim",
@@ -40,12 +39,7 @@ return require("packer").startup(
       use {
         "max397574/better-escape.nvim",
         config = function()
-          require("better_escape").setup {
-            mapping = {"kj"},
-            timeout = vim.o.timeoutlen,
-            clear_empty_lines = false,
-            keys = "<Esc>"
-          }
+          require("plugins.better-escape")
         end
       }
       use {"kevinhwang91/nvim-bqf"}
@@ -117,13 +111,7 @@ return require("packer").startup(
         "nvim-lualine/lualine.nvim",
         requires = {"kyazdani42/nvim-web-devicons", opt = true},
         config = function()
-          require("lualine").setup(
-            {
-              options = {
-                theme = "tokyonight"
-              }
-            }
-          )
+          require("plugins.lualine")
         end
       }
       use {"nvim-telescope/telescope-project.nvim"}
@@ -137,7 +125,6 @@ return require("packer").startup(
       }
       use "nvim-treesitter/nvim-treesitter-textobjects"
       use {"nvim-treesitter/nvim-treesitter-angular"}
-      -- use "ludovicchabant/vim-gutentags"
       use {"mbbill/undotree", cmd = "UndotreeToggle"}
       use "ggandor/lightspeed.nvim"
       use {"lukas-reineke/indent-blankline.nvim", event = "BufRead"}
@@ -172,7 +159,6 @@ return require("packer").startup(
           require "plugins.neoclip"
         end
       }
-      -- use {"ellisonleao/glow.nvim", run = "GlowInstall"}
       use {"gelguy/wilder.nvim", run = "UpdateRemotePlugins"}
       use "windwp/nvim-ts-autotag"
       use "nathom/filetype.nvim"
