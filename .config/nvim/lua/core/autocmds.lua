@@ -7,12 +7,12 @@ vim.g.did_load_filetypes = 1
 vim.cmd [[call wilder#setup({'modes': [':', '/', '?']})]]
 
 -- format on save
-vim.api.nvim_exec(
-  [[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost *.js,*.ts,*.html,*.py,*.rs,*.lua,*.scss,*.css FormatWrite
-augroup END
-]],
-  true
-)
+-- vim.api.nvim_exec(
+--   [[
+-- augroup FormatAutogroup
+--   autocmd!
+--   autocmd BufWritePost *.js,*.ts,*.html,*.py,*.rs,*.lua,*.scss,*.css FormatWrite
+-- augroup END
+-- ]],
+--   true
+-- )

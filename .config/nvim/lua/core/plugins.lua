@@ -4,7 +4,7 @@
 vim.cmd [[packadd packer.nvim]]
 
 require "packer".init {
-  package_root = os.getenv("HOME") .. "/.local/share/nvim/site/pack"
+ 	  package_root = os.getenv("HOME") .. "/.local/share/nvim/site/pack"
 }
 
 return require("packer").startup(
@@ -30,18 +30,19 @@ return require("packer").startup(
       use "jose-elias-alvarez/nvim-lsp-ts-utils"
       use "simrat39/rust-tools.nvim"
       use {
-        "mhartington/formatter.nvim",
-        config = function()
-          require "plugins.formatter"
-        end
-      }
-      use {
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
         config = function()
           require("trouble").setup {}
         end
       }
+
+      -- Formatter
+      use {"jose-elias-alvarez/null-ls.nvim", 
+				config= function ()
+					require("plugins.null-ls")
+				end
+			}
 
       -- Comments
       use {

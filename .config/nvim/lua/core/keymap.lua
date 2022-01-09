@@ -3,26 +3,42 @@ local map = vim.api.nvim_set_keymap
 
 vim.g.mapleader = ","
 map("n", ",", "", {})
-
-map("i", "<Leader>p", "<C-r>0", {})
 map("n", "<Leader>o", ":on<CR>", {})
 map("n", "<Leader>w", ":w!<CR>", {})
 map("n", "<Leader>q", ":q!<CR>", {})
-map("n", "<Leader>p", "<Cmd>Format<CR>", {})
+map("n", "<Leader>p", "<cmd>lua vim.lsp.buf.formatting()<CR>", {})
 map("n", "<Leader>n", ":FloatermNew! nnn<CR>", {})
 map("n", "<S-h>", ":noh<CR>", {})
 map("i", "<C-a>", "<C-o>0", {})
 map("i", "<C-e>", "<C-o>$", {})
 
+-- Lsp mapping
+map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", {})
+map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", {})
+map("n", "K", "<cmd>Lspsaga hover_doc<cr>", {})
+map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", {})
+map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", {})
+map("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", {})
+map("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", {})
+map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", {})
+map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", {})
+map("n", "<space>rn", "<cmd>Lspsaga rename<CR>", {})
+map("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", {})
+map("n", "<space>gr", "<cmd>lua vim.lsp.buf.references()<CR>", {})
+map("n", "<space>e", "<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>", {})
+map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", {})
+map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", {})
+map("n", "<space>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", {})
+
 -- Snippet config
-map("i", "<C-j>", "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'", {expr = true})
-map("s", "<C-j>", "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'", {expr = true})
-map("i", "<C-l>", "vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'", {expr = true})
-map("s", "<C-l>", "vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'", {expr = true})
-map("i", "<Tab>", "vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'", {expr = true})
-map("s", "<Tab>", "vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'", {expr = true})
-map("i", "<S-Tab>", "vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'", {expr = true})
-map("s", "<S-Tab>", "vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'", {expr = true})
+map("i", "<C-j>", "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'", { expr = true })
+map("s", "<C-j>", "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'", { expr = true })
+map("i", "<C-l>", "vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'", { expr = true })
+map("s", "<C-l>", "vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'", { expr = true })
+map("i", "<Tab>", "vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'", { expr = true })
+map("s", "<Tab>", "vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'", { expr = true })
+map("i", "<S-Tab>", "vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'", { expr = true })
+map("s", "<S-Tab>", "vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'", { expr = true })
 
 -- Keep it center
 map("n", "n", "nzzzv", {})
@@ -32,10 +48,10 @@ map("n", "<S-n>", "Nzzzv", {})
 map("n", "<Leader>t", ":ToggleAlternate<CR>", {})
 
 -- Trouble config
-map("n", "<Leader>d", "<cmd>TroubleToggle<CR>", {silent = true, noremap = true})
+map("n", "<Leader>d", "<cmd>TroubleToggle<CR>", { silent = true, noremap = true })
 
 -- Treehooper config
-map("n", "<Leader>v", "<cmd>lua require('tsht').nodes()<CR>", {silent = true, noremap = true})
+map("n", "<Leader>v", "<cmd>lua require('tsht').nodes()<CR>", { silent = true, noremap = true })
 
 -- Clipboard
 map("n", "<Leader>cc", ":lua require('telescope').extensions.neoclip.default()<CR>", {})
@@ -53,52 +69,52 @@ map("n", "<Leader>u", ":UndotreeToggle | :UndotreeFocus<CR>", {})
 map("n", "<leader>e", ":NvimTreeToggle<CR>", {})
 
 -- Packer config
-map("n", "<Leader>1", ":PackerInstall<CR>", {silent = true, noremap = true})
-map("n", "<Leader>2", ":PackerUpdate<CR>", {silent = true, noremap = true})
-map("n", "<Leader>3", ":PackerClean<CR>", {silent = true, noremap = true})
-map("n", "<Leader>4", ":PackerSync<CR>", {silent = true, noremap = true})
+map("n", "<Leader>1", ":PackerInstall<CR>", { silent = true, noremap = true })
+map("n", "<Leader>2", ":PackerUpdate<CR>", { silent = true, noremap = true })
+map("n", "<Leader>3", ":PackerClean<CR>", { silent = true, noremap = true })
+map("n", "<Leader>4", ":PackerSync<CR>", { silent = true, noremap = true })
 
 -- Vim move config
-map("n", "∆", ":m .+1<CR>", {silent = true, noremap = true})
-map("n", "˚", ":m .-2<CR>", {silent = true, noremap = true})
-map("v", "˚", ":m '<-2<CR>gv=gv", {silent = true, noremap = true})
-map("v", "∆", ":m '>+1<CR>gv=gv", {silent = true, noremap = true})
+map("n", "∆", ":m .+1<CR>", { silent = true, noremap = true })
+map("n", "˚", ":m .-2<CR>", { silent = true, noremap = true })
+map("v", "˚", ":m '<-2<CR>gv=gv", { silent = true, noremap = true })
+map("v", "∆", ":m '>+1<CR>gv=gv", { silent = true, noremap = true })
 
 -- Auto completion config
-map("i", "<Tab>", 'pumvisible() ? "<C-n>" : "<Tab>"', {expr = true})
-map("i", "<S-Tab>", 'pumvisible() ? "<C-p>" : "<S-Tab>"', {expr = true})
-map("i", "<CR>", 'pumvisible() ? "<C-y>" : "<CR>"', {expr = true})
+map("i", "<Tab>", 'pumvisible() ? "<C-n>" : "<Tab>"', { expr = true })
+map("i", "<S-Tab>", 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true })
+map("i", "<CR>", 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true })
 
 -- Telescope config
-map("n", "<space><space>", '<cmd>lua require("telescope.builtin").find_files({ hidden = true})<CR>', {noremap = true})
-map("n", "<Leader>rg", '<cmd>lua require("telescope.builtin").live_grep()<CR>', {noremap = true})
-map("n", "<Leader>rw", '<cmd>lua require("telescope.builtin").grep_string()<CR><C-R><C-W>', {noremap = true})
-map("n", "<C-p>", '<cmd>lua require("telescope").extensions.project.project{}<CR>', {noremap = true, silent = true})
+map("n", "<space><space>", '<cmd>lua require("telescope.builtin").find_files({ hidden = true})<CR>', { noremap = true })
+map("n", "<Leader>rg", '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true })
+map("n", "<Leader>rw", '<cmd>lua require("telescope.builtin").grep_string()<CR><C-R><C-W>', { noremap = true })
+map("n", "<C-p>", '<cmd>lua require("telescope").extensions.project.project{}<CR>', { noremap = true, silent = true })
 map(
-  "n",
-  "<Leader>fm",
-  '<cmd>lua require("telescope").extensions.media_files.media_files()<CR>',
-  {noremap = true, silent = true}
+	"n",
+	"<Leader>fm",
+	'<cmd>lua require("telescope").extensions.media_files.media_files()<CR>',
+	{ noremap = true, silent = true }
 )
 map(
-  "n",
-  "<leader>/",
-  '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>',
-  {noremap = true, silent = true}
+	"n",
+	"<leader>/",
+	'<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>',
+	{ noremap = true, silent = true }
 )
 
 -- Buffer management
 map("n", "<Leader>,", "<C-^>", {})
 map("n", "<Leader>x", ":bd!<CR>", {})
-map("n", "<Leader>bc", '<cmd>%bdelete|edit#|normal `"`<CR>', {noremap = true})
-map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", {silent = true})
-map("n", "<Tab>", ":BufferLineCycleNext<CR>", {silent = true})
-map("n", "gb", ":BufferLinePick<CR>", {silent = true})
-map("n", "d>", ":BufferLineCloseRight<CR>", {silent = true})
-map("n", "d<", ":BufferLineCloseLeft<CR>", {silent = true})
+map("n", "<Leader>bc", '<cmd>%bdelete|edit#|normal `"`<CR>', { noremap = true })
+map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true })
+map("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true })
+map("n", "gb", ":BufferLinePick<CR>", { silent = true })
+map("n", "d>", ":BufferLineCloseRight<CR>", { silent = true })
+map("n", "d<", ":BufferLineCloseLeft<CR>", { silent = true })
 -- map("n", "bc", ":BufferLinePickClose<CR>", {silent = true})
-map("n", "g>", ":BufferLineMoveNext<CR>", {silent = true})
-map("n", "g<", ":BufferLineMovePrev<CR>", {silent = true})
+map("n", "g>", ":BufferLineMoveNext<CR>", { silent = true })
+map("n", "g<", ":BufferLineMovePrev<CR>", { silent = true })
 
 -- Harpoon config
 -- map("n", "<Leader>M", "<cmd>lua require('harpoon.mark').add_file()<CR>", {noremap = true})
@@ -120,5 +136,5 @@ map("v", "cll", "S(iconsole.log<ESC>", {})
 map("n", "cll", "yiwocll<ESC>p", {})
 
 -- Window movement
-map("n", "<C-l>", '<cmd>lua require("core.utils").move_window("l")<CR>', {noremap = true})
-map("n", "<C-h>", '<cmd>lua require("core.utils").move_window("h")<CR>', {noremap = true})
+map("n", "<C-l>", '<cmd>lua require("core.utils").move_window("l")<CR>', { noremap = true })
+map("n", "<C-h>", '<cmd>lua require("core.utils").move_window("h")<CR>', { noremap = true })
