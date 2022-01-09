@@ -12,56 +12,8 @@ return require("packer").startup(
     function()
       -- Packer can manage itself as an optional plugin
       use {"wbthomason/packer.nvim", opt = true}
-      use {
-        "mhartington/formatter.nvim",
-        config = function()
-          require "plugins.formatter"
-        end
-      }
-      use {"maxmellon/vim-jsx-pretty", ft = {"js", "jsx", "ts", "tsx"}}
-      -- use {"junegunn/fzf", run = "./install --all"}
-      -- use {"junegunn/fzf.vim"}
-      use "tpope/vim-surround"
-      use {
-        "numToStr/Comment.nvim",
-        config = function()
-          require("Comment").setup({toggler = {block = "gBc"}, opleader = {block = "gB"}})
-        end
-      }
-      use "tpope/vim-repeat"
-      use "tpope/vim-unimpaired"
-      use "jiangmiao/auto-pairs"
-      use "mattn/emmet-vim"
-      -- use "morhetz/gruvbox"
-      use "matze/vim-move"
-      use {"rrethy/vim-hexokinase", run = "make hexokinase"}
-      use "tommcdo/vim-exchange"
-      use {
-        "max397574/better-escape.nvim",
-        config = function()
-          require("plugins.better-escape")
-        end
-      }
-      use {"kevinhwang91/nvim-bqf"}
-      use {
-        "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate",
-        config = function()
-          require "plugins.treesitter"
-        end
-      }
-      use {
-        "kyazdani42/nvim-tree.lua",
-        requires = "kyazdani42/nvim-web-devicons",
-        config = function()
-          require "nvim-tree".setup {}
-        end
-      }
-      use {"kyazdani42/nvim-web-devicons"}
-      use {
-        "nvim-telescope/telescope.nvim",
-        requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}, cmd = "Telescope"}
-      }
+
+      -- Lsp
       use {
         "neovim/nvim-lspconfig",
         config = function()
@@ -74,7 +26,15 @@ return require("packer").startup(
           require "plugins.lspsaga"
         end
       }
+      use "onsails/lspkind-nvim"
       use "jose-elias-alvarez/nvim-lsp-ts-utils"
+      use "simrat39/rust-tools.nvim"
+      use {
+        "mhartington/formatter.nvim",
+        config = function()
+          require "plugins.formatter"
+        end
+      }
       use {
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
@@ -82,7 +42,16 @@ return require("packer").startup(
           require("trouble").setup {}
         end
       }
-      use "simrat39/rust-tools.nvim"
+
+      -- Comments
+      use {
+        "numToStr/Comment.nvim",
+        config = function()
+          require("Comment").setup({toggler = {block = "gBc"}, opleader = {block = "gB"}})
+        end
+      }
+
+      -- Autocomplete
       use {
         "hrsh7th/nvim-cmp",
         requires = {
@@ -98,15 +67,26 @@ return require("packer").startup(
           require "plugins.cmp"
         end
       }
-      use "hrsh7th/vim-vsnip"
-      use "hrsh7th/cmp-vsnip"
-      use "rafamadriz/friendly-snippets"
       use {
         "tzachar/cmp-tabnine",
         run = "./install.sh",
         requires = "hrsh7th/nvim-cmp"
       }
-      use "onsails/lspkind-nvim"
+
+      -- Treeesitter
+      use {
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+        config = function()
+          require "plugins.treesitter"
+        end
+      }
+      use "nvim-treesitter/nvim-treesitter-textobjects"
+      use {"nvim-treesitter/nvim-treesitter-angular"}
+      use "windwp/nvim-ts-autotag"
+      use {"maxmellon/vim-jsx-pretty", ft = {"js", "jsx", "ts", "tsx"}}
+
+      -- Status line and bufferline
       use {
         "nvim-lualine/lualine.nvim",
         requires = {"kyazdani42/nvim-web-devicons", opt = true},
@@ -114,8 +94,6 @@ return require("packer").startup(
           require("plugins.lualine")
         end
       }
-      use {"nvim-telescope/telescope-project.nvim"}
-      use "voldikss/vim-floaterm"
       use {
         "akinsho/nvim-bufferline.lua",
         requires = "kyazdani42/nvim-web-devicons",
@@ -123,10 +101,31 @@ return require("packer").startup(
           require("bufferline").setup {}
         end
       }
-      use "nvim-treesitter/nvim-treesitter-textobjects"
-      use {"nvim-treesitter/nvim-treesitter-angular"}
+
+      -- NvimTree
+      use {
+        "kyazdani42/nvim-tree.lua",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+          require "nvim-tree".setup {}
+        end
+      }
+
+      -- Icons
+      use {"kyazdani42/nvim-web-devicons"}
+
+      -- Telescope
+      use {
+        "nvim-telescope/telescope.nvim",
+        requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}, cmd = "Telescope"}
+      }
+      use {"nvim-telescope/telescope-project.nvim"}
+
+      -- Snippets
+      use "hrsh7th/vim-vsnip"
+      use "hrsh7th/cmp-vsnip"
+      use "rafamadriz/friendly-snippets"
       use {"mbbill/undotree", cmd = "UndotreeToggle"}
-      use "ggandor/lightspeed.nvim"
       use {"lukas-reineke/indent-blankline.nvim", event = "BufRead"}
       use {
         "lewis6991/gitsigns.nvim",
@@ -136,12 +135,41 @@ return require("packer").startup(
         end
       }
       use {"JoosepAlviste/nvim-ts-context-commentstring", ft = {"js", "jsx", "ts", "tsx"}}
-      -- use "navarasu/onedark.nvim"
+
+      -- Theme
       use {"folke/tokyonight.nvim"}
+      -- use "morhetz/gruvbox"
+      -- use "navarasu/onedark.nvim"
+      use "rebelot/kanagawa.nvim"
+
+      -- Terminal
       use {
         "akinsho/nvim-toggleterm.lua",
         config = function()
           require "plugins.toggleterm"
+        end
+      }
+      use "voldikss/vim-floaterm"
+
+      -- Navigation and search
+      use "ggandor/lightspeed.nvim"
+      use {"mfussenegger/nvim-treehopper"}
+      use {"gelguy/wilder.nvim", run = "UpdateRemotePlugins"}
+
+      -- Dashboard
+      use {
+        "goolord/alpha-nvim",
+        requires = {"kyazdani42/nvim-web-devicons"},
+        config = function()
+          require "plugins.alpha"
+        end
+      }
+
+      -- Helper
+      use {
+        "max397574/better-escape.nvim",
+        config = function()
+          require("plugins.better-escape")
         end
       }
       use {
@@ -159,21 +187,17 @@ return require("packer").startup(
           require "plugins.neoclip"
         end
       }
-      use {"gelguy/wilder.nvim", run = "UpdateRemotePlugins"}
-      use "windwp/nvim-ts-autotag"
       use "nathom/filetype.nvim"
-      -- use {"ThePrimeagen/harpoon", require = "nvim-lua/plenary.nvim"}
-      --     use "lewis6991/impatient.nvim"
-      use {
-        "goolord/alpha-nvim",
-        requires = {"kyazdani42/nvim-web-devicons"},
-        config = function()
-          require "plugins.alpha"
-        end
-      }
+      use "tpope/vim-surround"
+      use "tpope/vim-repeat"
+      use "tpope/vim-unimpaired"
+      use "jiangmiao/auto-pairs"
+      use "mattn/emmet-vim"
+      use "matze/vim-move"
+      use {"rrethy/vim-hexokinase", run = "make hexokinase"}
+      use "tommcdo/vim-exchange"
+      use {"kevinhwang91/nvim-bqf"}
       use {"APZelos/blamer.nvim"}
-      use {"mfussenegger/nvim-treehopper"}
-      use "rebelot/kanagawa.nvim"
     end,
     config = {
       --      compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
