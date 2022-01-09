@@ -4,15 +4,11 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 local on_attach = function(client, bufnr)
-
 	-- Disable tsserver formatting so that null-ls can format
-	if client.name == "tsserver" then 
-		client.resolved_capabilities.document_formatting= false
+	if client.name == "tsserver" then
+		client.resolved_capabilities.document_formatting = false
 	end
-	
-	local function buf_set_keymap(...)
-		vim.api.nvim_buf_set_keymap(bufnr, ...)
-	end
+
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
@@ -38,7 +34,7 @@ end
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
-local servers = { "pyright", "rust_analyzer", "tsserver", "angularls", "bashls", "zeta_note" }
+local servers = { "angularls", "bashls", "pyright", "rust_analyzer", "tsserver", "zeta_note" }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = on_attach,
