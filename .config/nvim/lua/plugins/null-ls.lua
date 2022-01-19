@@ -7,6 +7,7 @@ local sources = {
 	formatting.shfmt,
 	formatting.rustfmt,
 	formatting.stylua,
+	formatting.black,
 }
 
 local on_attach = function(client)
