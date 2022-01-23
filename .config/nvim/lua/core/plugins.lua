@@ -200,6 +200,12 @@ return require("packer").startup({
 		use("tommcdo/vim-exchange")
 		use({ "kevinhwang91/nvim-bqf" })
 		use({ "APZelos/blamer.nvim" })
+		use({
+			"beauwilliams/focus.nvim",
+			config = function()
+				require("plugins.focus")
+			end,
+		})
 	end,
 	config = {
 		--      compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",

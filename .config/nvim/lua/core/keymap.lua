@@ -136,5 +136,19 @@ map("v", "cll", "S(iconsole.log<ESC>", {})
 map("n", "cll", "yiwocll<ESC>p", {})
 
 -- Window movement
-map("n", "<C-l>", '<cmd>lua require("core.utils").move_window("l")<CR>', { noremap = true })
-map("n", "<C-h>", '<cmd>lua require("core.utils").move_window("h")<CR>', { noremap = true })
+-- map("n", "<C-l>", '<cmd>lua require("core.utils").move_window("l")<CR>', { noremap = true })
+-- map("n", "<C-h>", '<cmd>lua require("core.utils").move_window("h")<CR>', { noremap = true })
+
+-- Window focus
+local focusmap = function(direction)
+	vim.api.nvim_set_keymap(
+		"n",
+		"<C-" .. direction .. ">",
+		":lua require'focus'.split_command('" .. direction .. "')<CR>",
+		{ silent = true }
+	)
+end
+focusmap("h")
+focusmap("j")
+focusmap("k")
+focusmap("l")
