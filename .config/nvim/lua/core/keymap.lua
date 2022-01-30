@@ -25,7 +25,7 @@ map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_fol
 map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", {})
 map("n", "<space>rn", "<cmd>Lspsaga rename<CR>", {})
 map("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", {})
-map("n", "<space>e", "<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>", {})
+map("n", "<space>e", "<cmd>Lspsaga show_line_diagnostics<CR>", {})
 map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", {})
 map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", {})
 map("n", "<space>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", {})
@@ -126,6 +126,8 @@ map("n", "g<", ":BufferLineMovePrev<CR>", { silent = true })
 
 -- Git config
 map("n", "<Leader>g", ":FloatermNew --width=1.0 --height=1.0 --autoclose=2 lazygit<CR>", {})
+map("n", "]c", "<cmd>Gitsigns next_hunk<CR>", {})
+map("n", "[c", "<cmd>Gitsigns prev_hunk<CR>", {})
 -- map("n", "<Leader>/", ":BLines<CR>", {})
 -- TODO: make it lua function
 -- vim.api.nvim_exec([[ let g:nremap = {'=': '<TAB>'} ]], true)
