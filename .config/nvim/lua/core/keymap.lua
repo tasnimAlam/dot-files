@@ -15,7 +15,7 @@ map("i", "<C-e>", "<C-o>$", {})
 -- Lsp mapping
 map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", {})
 map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", {})
-map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", {})
+map("n", "gr", "<cmd>TroubleToggle lsp_references<CR>", {})
 map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", {})
 map("n", "K", "<cmd>Lspsaga hover_doc<cr>", {})
 map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", {})
@@ -48,7 +48,7 @@ map("n", "<S-n>", "Nzzzv", {})
 map("n", "<Leader>t", ":ToggleAlternate<CR>", {})
 
 -- Trouble config
-map("n", "<Leader>d", "<cmd>TroubleToggle<CR>", { silent = true, noremap = true })
+map("n", "<Leader>d", "<cmd>TroubleToggle document_diagnostics<CR>", { silent = true, noremap = true })
 
 -- Treehooper config
 map("n", "<Leader>v", "<cmd>lua require('tsht').nodes()<CR>", { silent = true, noremap = true })
