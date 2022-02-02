@@ -1,4 +1,5 @@
 local o = vim.o
+local g = vim.g
 local wo = vim.wo
 local bo = vim.bo
 local has = vim.fn.has
@@ -27,9 +28,9 @@ o.ttimeoutlen = 100
 o.lazyredraw = true
 o.mouse = "a"
 if has("mac") == 1 then
-  o.clipboard = "unnamedplus"
+	o.clipboard = "unnamedplus"
 elseif has("unix") == 1 then
-  o.clipboard = "unnamed"
+	o.clipboard = "unnamed"
 end
 
 -- buffer options
@@ -46,3 +47,6 @@ wo.foldmethod = "expr"
 wo.number = true
 wo.relativenumber = true
 wo.colorcolumn = "80"
+
+-- plugin options
+g.blamer_enabled = 1
