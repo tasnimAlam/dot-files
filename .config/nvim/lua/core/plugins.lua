@@ -32,7 +32,7 @@ return require("packer").startup({
 			"folke/trouble.nvim",
 			requires = "kyazdani42/nvim-web-devicons",
 			config = function()
-				require("trouble").setup({})
+				require("plugins.trouble")
 			end,
 		})
 
@@ -48,7 +48,7 @@ return require("packer").startup({
 		use({
 			"numToStr/Comment.nvim",
 			config = function()
-				require("Comment").setup({ toggler = { block = "gBc" }, opleader = { block = "gB" } })
+				require("plugins.comment")
 			end,
 		})
 
@@ -99,7 +99,7 @@ return require("packer").startup({
 			"akinsho/nvim-bufferline.lua",
 			requires = "kyazdani42/nvim-web-devicons",
 			config = function()
-				require("bufferline").setup({})
+				require("plugins.bufferline")
 			end,
 		})
 
@@ -133,7 +133,7 @@ return require("packer").startup({
 			"lewis6991/gitsigns.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
 			config = function()
-				require("gitsigns").setup()
+				require("plugins.gitsigns")
 			end,
 		})
 		use({ "JoosepAlviste/nvim-ts-context-commentstring", ft = { "js", "jsx", "ts", "tsx" } })
