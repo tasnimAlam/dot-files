@@ -1,5 +1,4 @@
 local o = vim.o
-local g = vim.g
 local wo = vim.wo
 local bo = vim.bo
 local has = vim.fn.has
@@ -47,6 +46,3 @@ wo.foldmethod = "expr"
 wo.number = true
 wo.relativenumber = true
 wo.colorcolumn = "80"
-
--- plugin options
-g.blamer_enabled = 1
