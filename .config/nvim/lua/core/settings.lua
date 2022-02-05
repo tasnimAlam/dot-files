@@ -29,7 +29,7 @@ o.mouse = "a"
 if has("mac") == 1 then
 	o.clipboard = "unnamedplus"
 elseif has("unix") == 1 then
-	o.clipboard = "unnamed"
+	o.clipboard = "unnamedplus"
 end
 
 -- buffer options
