@@ -29,3 +29,4 @@
  + Alt + h/j/k/l         = resize window outward
  + Alt + Shift + h/j/k/l = resize window inward
  + Arrows                = move floating window
+ + Alt + Space           = change bangla/english keyboard
