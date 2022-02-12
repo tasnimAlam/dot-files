@@ -11,6 +11,7 @@ map("n", "<Leader>n", ":FloatermNew! nnn<CR>", {})
 map("n", "<S-h>", ":noh<CR>", {})
 map("i", "<C-a>", "<C-o>0", {})
 map("i", "<C-e>", "<C-o>$", {})
+map("n", "<C-n>", "<cmd>FloatermNew<CR>", {})
 
 -- Lsp mapping
 map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", {})
@@ -49,6 +50,11 @@ map("n", "<Leader>t", ":ToggleAlternate<CR>", {})
 
 -- Trouble config
 map("n", "<Leader>d", "<cmd>TroubleToggle document_diagnostics<CR>", { silent = true, noremap = true })
+
+-- Yabs config
+map("n", "<Leader>rr", "<cmd>YabsDefaultTask<CR>", { noremap = true })
+map("n", "<Leader>rb", "<cmd>YabsTask build<CR>", { noremap = true })
+map("n", "<Leader>rp", "<cmd>YabsTask run<CR>", { noremap = true })
 
 -- Treehooper config
 map("n", "<Leader>v", "<cmd>lua require('tsht').nodes()<CR>", { silent = true, noremap = true })
@@ -90,6 +96,12 @@ map("n", "<space><space>", '<cmd>lua require("telescope.builtin").find_files({ h
 map("n", "<Leader>rg", '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true })
 map("n", "<Leader>rw", '<cmd>lua require("telescope.builtin").grep_string()<CR><C-R><C-W>', { noremap = true })
 map("n", "<C-p>", '<cmd>lua require("telescope").extensions.project.project{}<CR>', { noremap = true, silent = true })
+map(
+	"n",
+	"<Leader>rf",
+	'<cmd>lua require("telescope.builtin").oldfiles({hidden = true})<CR>',
+	{ noremap = true, silent = true }
+)
 map(
 	"n",
 	"<Leader>fm",
@@ -137,20 +149,26 @@ map("i", "cll", "console.log()<ESC><S-f>(a", {})
 map("v", "cll", "S(iconsole.log<ESC>", {})
 map("n", "cll", "yiwocll<ESC>p", {})
 
+-- Pounce config
+map("n", "s", "<cmd>Pounce<CR>", {})
+map("v", "s", "<cmd>Pounce<CR>", {})
+map("n", "S", "<cmd>PounceRepeat<CR>", {})
+map("o", "gs", "<cmd>Pounce<CR>", {})
+
 -- Window movement
--- map("n", "<C-l>", '<cmd>lua require("core.utils").move_window("l")<CR>', { noremap = true })
--- map("n", "<C-h>", '<cmd>lua require("core.utils").move_window("h")<CR>', { noremap = true })
+map("n", "<C-l>", '<cmd>lua require("core.utils").move_window("l")<CR>', { noremap = true })
+map("n", "<C-h>", '<cmd>lua require("core.utils").move_window("h")<CR>', { noremap = true })
 
 -- Window focus
-local focusmap = function(direction)
-	vim.api.nvim_set_keymap(
-		"n",
-		"<C-" .. direction .. ">",
-		":lua require'focus'.split_command('" .. direction .. "')<CR>",
-		{ silent = true }
-	)
-end
-focusmap("h")
-focusmap("j")
-focusmap("k")
-focusmap("l")
+-- local focusmap = function(direction)
+-- 	vim.api.nvim_set_keymap(
+-- 		"n",
+-- 		"<C-" .. direction .. ">",
+-- 		":lua require'focus'.split_command('" .. direction .. "')<CR>",
+-- 		{ silent = true }
+-- 	)
+-- end
+-- focusmap("h")
+-- focusmap("j")
+-- focusmap("k")
+-- focusmap("l")

@@ -154,7 +154,7 @@ return require("packer").startup({
 		use("voldikss/vim-floaterm")
 
 		-- Navigation and search
-		use("ggandor/lightspeed.nvim")
+		-- use("ggandor/lightspeed.nvim")
 		use({ "mfussenegger/nvim-treehopper" })
 		use({ "gelguy/wilder.nvim", run = "UpdateRemotePlugins" })
 
@@ -201,9 +201,23 @@ return require("packer").startup({
 		use({ "kevinhwang91/nvim-bqf" })
 		use({ "APZelos/blamer.nvim" })
 		use({
-			"beauwilliams/focus.nvim",
+			"rlane/pounce.nvim",
 			config = function()
-				require("plugins.focus")
+				require("plugins.pounce")
+			end,
+		})
+		-- use({
+		-- 	"CRAG666/code_runner.nvim",
+		-- 	requires = "nvim-lua/plenary.nvim",
+		-- 	config = function()
+		-- 		require("plugins.code_runner")
+		-- 	end,
+		-- })
+		use({
+			"pianocomposer321/yabs.nvim",
+			requires = { "nvim-lua/plenary.nvim" },
+			config = function()
+				require("plugins.yabs")
 			end,
 		})
 	end,
