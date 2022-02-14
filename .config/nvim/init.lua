@@ -30,7 +30,10 @@ for _, plugin in pairs(disabled_built_ins) do
 	vim.g["loaded_" .. plugin] = 1
 end
 
-pcall(require, "custom")
+--Defer loading shada until after startup_
+vim.opt.shadafile = "NONE"
+
+-- pcall(require, "custom")
 
 local core_modules = {
 	"core.settings",

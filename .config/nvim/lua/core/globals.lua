@@ -8,6 +8,7 @@ local global_settings = {
 	move_key_modifier = "A",
 	vim_json_conceal = 0,
 	blamer_enabled = 1,
+	python3_host_prog = "/usr/share/nvim/runtime/autoload/provider/python3.vim",
 }
 
 set_globals(global_settings)
