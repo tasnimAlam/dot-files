@@ -27,7 +27,7 @@ return require("packer").startup({
 		})
 		use("onsails/lspkind-nvim")
 		use("jose-elias-alvarez/nvim-lsp-ts-utils")
-		use("simrat39/rust-tools.nvim")
+		use({ "simrat39/rust-tools.nvim", ft = { "rs" } })
 		use({
 			"folke/trouble.nvim",
 			requires = "kyazdani42/nvim-web-devicons",
@@ -206,6 +206,7 @@ return require("packer").startup({
 				require("plugins.pounce")
 			end,
 		})
+		use("lewis6991/impatient.nvim")
 		-- use({
 		-- 	"CRAG666/code_runner.nvim",
 		-- 	requires = "nvim-lua/plenary.nvim",
