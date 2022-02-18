@@ -31,7 +31,7 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 --Defer loading shada until after startup_
-vim.opt.shadafile = "NONE"
+-- vim.opt.shadafile = "NONE"
 
 -- pcall(require, "custom")
 

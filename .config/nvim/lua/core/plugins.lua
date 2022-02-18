@@ -207,18 +207,17 @@ return require("packer").startup({
 			end,
 		})
 		use("lewis6991/impatient.nvim")
-		-- use({
-		-- 	"CRAG666/code_runner.nvim",
-		-- 	requires = "nvim-lua/plenary.nvim",
-		-- 	config = function()
-		-- 		require("plugins.code_runner")
-		-- 	end,
-		-- })
 		use({
 			"pianocomposer321/yabs.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
 			config = function()
 				require("plugins.yabs")
+			end,
+		})
+		use({
+			"chentau/marks.nvim",
+			config = function()
+				require("plugins.marks")
 			end,
 		})
 	end,
