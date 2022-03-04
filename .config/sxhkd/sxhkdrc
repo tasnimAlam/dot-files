@@ -144,6 +144,10 @@ super + ctrl + s
 super + ctrl + r
   shutdown -r now 
 
+# take screenshot
+ctrl + shift + 5
+  flameshot gui
+
 # Lock screen
 super + ctrl + x
   betterlockscreen --lock blur  
