@@ -220,6 +220,13 @@ return require("packer").startup({
 				require("plugins.marks")
 			end,
 		})
+		use({
+			"SmiteshP/nvim-gps",
+			requires = "nvim-treesitter/nvim-treesitter",
+			config = function()
+				require("nvim-gps").setup()
+			end,
+		})
 	end,
 	config = {
 		--      compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
