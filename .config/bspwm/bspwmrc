@@ -3,9 +3,13 @@
 # pgrep -x sxhkd > /dev/null || sxhkd &
 sxhkd &
 
-feh --bg-fill ~/Downloads/blur_colorful_gradient_4k_hd_abstract-1920x1080.jpg &
+feh --bg-fill ~/Pictures/mountain.png &
+
+bsp-layout set tall 1 &
 
 picom --experimental-backends --config ~/.config/picom/picom.conf &
+
+ibus-daemon -drxR &
 
 # make right menu key super
 xmodmap -e "keycode 135=Super_R"
