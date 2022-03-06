@@ -57,7 +57,7 @@ font-5 = "Font Awesome 6 Brands:pixelsize=12;1"
 
 modules-left = bspwm 
 modules-center = xwindow
-modules-right = pulseaudio memory cpu wlan temperature date powermenu
+modules-right = pulseaudio memory cpu wlan network networkspeedup networkspeeddown temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -229,6 +229,27 @@ format-disconnected =
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/networkspeedup]
+type = internal/network
+interface = wlan0
+interval = 1.0
+label-connected = "%upspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = ""
+format-connected-prefix-foreground = ${colors.foreground}
+format-connected-foreground = ${colors.foreground}
+format-connected-background = ${colors.background}
+
+[module/networkspeeddown]
+type = internal/network
+interface = wlan0
+label-connected = "%downspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = ""
+format-connected-prefix-foreground = ${colors.foreground}
+format-connected-foreground = ${colors.foreground}
+format-connected-background = ${colors.background}
 
 [module/date]
 type = internal/date
