@@ -76,6 +76,12 @@ super + {_,shift + }c
 
 super + {u,i} 
 	bspc desktop -f {prev,next}.local
+  
+alt + {u,i} 
+	bspc desktop -f {prev,next}.local
+
+alt + {1-9,0}
+  bspc desktop -f '^{1-9,10}'
 
 # focus the last node/desktop
 super + {grave,Tab}
