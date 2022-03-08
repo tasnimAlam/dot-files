@@ -72,7 +72,7 @@ map("i", "?", "?<C-g>u", {})
 map("n", "<Leader>u", ":UndotreeToggle | :UndotreeFocus<CR>", {})
 
 -- Nvim tree config
-map("n", "<leader>e", ":NvimTreeToggle<CR>", {})
+map("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", {})
 
 -- Packer config
 map("n", "<Leader>1", ":PackerInstall<CR>", { silent = true, noremap = true })
