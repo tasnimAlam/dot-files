@@ -91,9 +91,18 @@ map("i", "<Tab>", 'pumvisible() ? "<C-n>" : "<Tab>"', { expr = true })
 map("i", "<S-Tab>", 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true })
 map("i", "<CR>", 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true })
 
--- Telescope config
-map("n", "<space><space>", '<cmd>lua require("telescope.builtin").find_files({ hidden = true})<CR>', { noremap = true })
-map("n", "<Leader>rg", '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true })
+-- Telescope and fzf config
+vim.api.nvim_command([[nnoremap <expr> <space><space> (len(system('git rev-parse')) ? ':Files' : ':GFiles')."\<cr>"]])
+map("n", "<Leader>rg", "<cmd>Rg<CR>", { noremap = true })
+map("n", "<Leader>rg", "<cmd>Rg<CR>", { noremap = true })
+map("n", "<Leader>/", "<cmd>BLines<CR>", { noremap = true })
+-- map(
+-- 	"n",
+-- 	"<leader>/",
+-- 	'<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>',
+-- 	{ noremap = true, silent = true }
+-- )
+-- map("n", "<Leader>rg", '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true })
 map("n", "<Leader>rw", '<cmd>lua require("telescope.builtin").grep_string()<CR><C-R><C-W>', { noremap = true })
 map("n", "<C-p>", '<cmd>lua require("telescope").extensions.project.project{}<CR>', { noremap = true, silent = true })
 map(
@@ -108,12 +117,12 @@ map(
 	'<cmd>lua require("telescope").extensions.media_files.media_files()<CR>',
 	{ noremap = true, silent = true }
 )
-map(
-	"n",
-	"<leader>/",
-	'<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>',
-	{ noremap = true, silent = true }
-)
+-- map(
+-- 	"n",
+-- 	"<leader>/",
+-- 	'<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>',
+-- 	{ noremap = true, silent = true }
+-- )
 
 -- Buffer management
 map("n", "<Leader>,", "<C-^>", {})

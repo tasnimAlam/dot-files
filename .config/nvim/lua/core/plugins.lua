@@ -86,6 +86,13 @@ return require("packer").startup({
 		use({ "nvim-treesitter/nvim-treesitter-angular" })
 		use("windwp/nvim-ts-autotag")
 		use({ "maxmellon/vim-jsx-pretty", ft = { "js", "jsx", "ts", "tsx" } })
+		-- use({
+		-- 	"narutoxy/dim.lua",
+		-- 	requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
+		-- 	config = function()
+		-- 		require("dim").setup({})
+		-- 	end,
+		-- })
 
 		-- Status line and bufferline
 		use({
@@ -115,7 +122,9 @@ return require("packer").startup({
 		-- Icons
 		use({ "kyazdani42/nvim-web-devicons" })
 
-		-- Telescope
+		-- Telescope and Fzf
+		use({ "junegunn/fzf", run = "./install --all" })
+		use({ "junegunn/fzf.vim" })
 		use({
 			"nvim-telescope/telescope.nvim",
 			requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" }, cmd = "Telescope" },
