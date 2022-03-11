@@ -1,40 +1,14 @@
+-- impatient has to be loaded before anything else
 local present, impatient = pcall(require, "impatient")
 
 if present then
 	impatient.enable_profile()
 end
 
---disable builtin plugins
-local disabled_built_ins = {
-	"2html_plugin",
-	"getscript",
-	"getscriptPlugin",
-	"gzip",
-	"logipat",
-	"netrw",
-	"netrwPlugin",
-	"netrwSettings",
-	"netrwFileHandlers",
-	"matchit",
-	"tar",
-	"tarPlugin",
-	"rrhelper",
-	"spellfile_plugin",
-	"vimball",
-	"vimballPlugin",
-	"zip",
-	"zipPlugin",
-}
+-- disable builtin plugins
+require("core/disable-builtins")
 
-for _, plugin in pairs(disabled_built_ins) do
-	vim.g["loaded_" .. plugin] = 1
-end
-
---Defer loading shada until after startup_
--- vim.opt.shadafile = "NONE"
-
--- pcall(require, "custom")
-
+-- load core modules
 local core_modules = {
 	"core.settings",
 	"core.globals",
