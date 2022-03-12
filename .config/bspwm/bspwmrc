@@ -11,8 +11,16 @@ picom --experimental-backends --config ~/.config/picom/picom.conf &
 
 ibus-daemon -drxR &
 
+nm-applet &
+
 # make right menu key super
 xmodmap -e "keycode 135=Super_R"
+
+# make caps lock as home
+xmodmap -e "keycode 66 = KP_Home"
+
+# make home as caps lock
+xmodmap -e "keycode 110 = Caps_Lock"
 
 $HOME/.config/polybar/launch.sh
 
@@ -33,6 +41,7 @@ bspc rule -a Gimp desktop='^4' state=floating follow=on
 bspc rule -a Zoom desktop='^4' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
 bspc rule -a Screenkey manage=off
+bspc rule -a URxvt:urxvt_keys_help state=floating
 
 # Delete desktop when all client are disconnected
 $HOME/.config/bspwm/delete-desktop.sh
