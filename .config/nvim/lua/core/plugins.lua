@@ -166,6 +166,12 @@ return require("packer").startup({
 		-- use("ggandor/lightspeed.nvim")
 		use({ "mfussenegger/nvim-treehopper" })
 		use({ "gelguy/wilder.nvim", run = "UpdateRemotePlugins" })
+		use({
+			"numToStr/Navigator.nvim",
+			config = function()
+				require("Navigator").setup()
+			end,
+		})
 
 		-- Dashboard
 		use({

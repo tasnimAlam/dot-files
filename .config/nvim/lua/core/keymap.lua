@@ -9,7 +9,7 @@ map("n", "<Leader>q", ":q!<CR>", {})
 map("n", "<Leader>p", "<cmd>lua vim.lsp.buf.formatting()<CR>", {})
 map("n", "<Leader>n", ":FloatermNew! nnn<CR>", {})
 map("n", "<S-h>", ":noh<CR>", {})
-map("i", "<C-a>", "<C-o>0", {})
+map("i", "<C-a>", "<C-o>^", {})
 map("i", "<C-e>", "<C-o>$", {})
 map("n", "<C-n>", "<cmd>FloatermNew<CR>", {})
 
@@ -137,14 +137,6 @@ map("n", "d<", ":BufferLineCloseLeft<CR>", { silent = true })
 map("n", "g>", ":BufferLineMoveNext<CR>", { silent = true })
 map("n", "g<", ":BufferLineMovePrev<CR>", { silent = true })
 
--- Harpoon config
--- map("n", "<Leader>M", "<cmd>lua require('harpoon.mark').add_file()<CR>", {noremap = true})
--- map("n", "<Leader>m", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", {noremap = true})
--- map("n", "<Leader>1", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", {noremap = true})
--- map("n", "<Leader>2", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", {noremap = true})
--- map("n", "<Leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", {noremap = true})
--- map("n", "<Leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", {noremap = true})
-
 -- Git config
 map("n", "<Leader>g", ":FloatermNew --width=1.0 --height=1.0 --autoclose=2 lazygit<CR>", {})
 map("n", "]c", "<cmd>Gitsigns next_hunk<CR>", {})
@@ -165,19 +157,9 @@ map("n", "S", "<cmd>PounceRepeat<CR>", {})
 map("o", "gs", "<cmd>Pounce<CR>", {})
 
 -- Window movement
-map("n", "<C-l>", '<cmd>lua require("core.utils").move_window("l")<CR>', { noremap = true })
-map("n", "<C-h>", '<cmd>lua require("core.utils").move_window("h")<CR>', { noremap = true })
-
--- Window focus
--- local focusmap = function(direction)
--- 	vim.api.nvim_set_keymap(
--- 		"n",
--- 		"<C-" .. direction .. ">",
--- 		":lua require'focus'.split_command('" .. direction .. "')<CR>",
--- 		{ silent = true }
--- 	)
--- end
--- focusmap("h")
--- focusmap("j")
--- focusmap("k")
--- focusmap("l")
+map("n", "<C-h>", "<cmd>lua require(N'avigator').left()<CR>", {})
+map("n", "<C-k>", "<cmd>lua require('Navigator').up()<CR>", {})
+map("n", "<C-l>", "<cmd>lua require('Navigator').right()<CR>", {})
+map("n", "<C-j>", "<cmd>lua require('Navigator').down()<CR>", {})
+-- map("n", "<C-l>", '<cmd>lua require("core.utils").move_window("l")<CR>', { noremap = true })
+-- map("n", "<C-h>", '<cmd>lua require("core.utils").move_window("h")<CR>', { noremap = true })
