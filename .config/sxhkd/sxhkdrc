@@ -13,6 +13,10 @@ super + @space
 # open browser
 super + b
   chromium
+
+# open file manager
+super + e
+  kitty -e nnn
   
 # make sxhkd reload its configuration files:
 super + Escape
@@ -76,7 +80,10 @@ super + {_,shift + }c
 
 super + {u,i} 
 	bspc desktop -f {prev,next}.local
-  
+
+super + {_,shift +} + {u,i} 
+	bspc node -d {prev,next}
+
 alt + {u,i} 
 	bspc desktop -f {prev,next}.local
 
@@ -142,7 +149,7 @@ super + {Left,Down,Up,Right}
   
 XF86AudioMute
   pactl set-sink-mute 0 toggle 
-  
+
 # shutdown and restart shortcut
 super + ctrl + s
   shutdown now
