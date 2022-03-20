@@ -1,3 +1,4 @@
+set os (uname)
 set -U fish_greeting ""
 if status is-interactive
     # Commands to run in interactive sessions can go here
@@ -13,22 +14,36 @@ set fzf_fd_opts --hidden --exclude=.git
 
 # Set path 
 fish_add_path ~/bin
-fish_add_path /opt/homebrew/bin /opt/homebrew/sbin
 fish_add_path /usr/local/bin /usr/local/sbin
-fish_add_path ~/Projects/scripts/
 fish_add_path ~/.local/bin/
 fish_add_path ~/.emacs.d/bin/
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.yarn/bin ~/.config/yarn/global/node_modules/.bin ~/.npm-global/bin
-
 fish_add_path ~/.composer/vendor/bin
+
+if test "$os" = Linux
+    fish_add_path ~/Documents/scripts/
+end
+if test "$os" = Darwin
+    fish_add_path /opt/homebrew/bin /opt/homebrew/sbin
+    fish_add_path ~/Projects/scripts/
+end
+
+
 
 # NNN config
 set -x NNN_FIFO "/tmp/nnn.fifo"
 set -x NNN_PLUG "f:fzopen;u:getplugs;p:preview-tui;c:croc;m:mailattach;w:wordcount;i:ipinfo;k:pskill;j:autojump;e:-!sudo -E nvim $nnn*"
-set -x NNN_BMS "h:~/;d:~/Downloads/;w:~/Projects/sports-cloud-webapp;u:~/Projects/ui2/;r:~/Projects/rust-projects/rust_test/;.:~/Documents/dot-files/"
 set -x NNN_COLORS 2136
 set -x NNN_FCOLORS c1e2272e006033f7c6d6abc4
+
+if test "$os" = Linux
+    set -x NNN_BMS "d:~/Downloads/;w:~/Documents/sports-cloud-webapp;u:~/Documents/ui2/;r:~/Documents/rust-projects/rust_test/;.:~/Documents/dot-files/"
+end
+
+if test "$os" = Darwin
+    set -x NNN_BMS "d:~/Downloads/;w:~/Projects/sports-cloud-webapp;u:~/Projects/ui2/;r:~/Projects/rust-projects/rust_test/;.:~/Projects/dot-files/"
+end
 
 # Zoxide init
 zoxide init fish | source
@@ -38,3 +53,4 @@ starship init fish | source
 
 set -gx PNPM_HOME "/home/shourov/.local/share/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH
+ctrlg init fish | source
