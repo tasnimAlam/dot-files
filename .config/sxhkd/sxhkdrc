@@ -146,6 +146,9 @@ super + {Left,Down,Up,Right}
 # volume control shortcuts
 {XF86AudioRaiseVolume,XF86AudioLowerVolume}
   pactl set-sink-volume 0 {+5%,-5%}
+
+super + ctrl + {comma,period,m}
+  amixer set Master {5%-,5%+,toggle}
   
 XF86AudioMute
   pactl set-sink-mute 0 toggle 
