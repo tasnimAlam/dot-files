@@ -13,18 +13,28 @@ local ex_command = vim.api.nvim_command
 -- end
 
 local function move_window(key)
-  local curwin = call("winnr", {})
-  ex_command("wincmd " .. key)
-  if (curwin == call("winnr", {})) then
-    if (key == "j" or key == "k") then
-      ex_command("wincmd s")
-    elseif (key == "h" or key == "l") then
-      ex_command("wincmd v")
-    end
-    ex_command("wincmd " .. key)
-  end
+	local curwin = call("winnr", {})
+	ex_command("wincmd " .. key)
+	if curwin == call("winnr", {}) then
+		if key == "j" or key == "k" then
+			ex_command("wincmd s")
+		elseif key == "h" or key == "l" then
+			ex_command("wincmd v")
+		end
+		ex_command("wincmd " .. key)
+	end
+end
+
+local function packer_lazy_load(plugin, timer)
+	if plugin then
+		timer = timer or 0
+		vim.defer_fn(function()
+			require("packer").loader(plugin)
+		end, timer)
+	end
 end
 
 return {
-  move_window = move_window
+	move_window = move_window,
+	packer_lazy_load = packer_lazy_load,
 }

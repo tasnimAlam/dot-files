@@ -11,13 +11,12 @@ require("core/disable-builtins")
 -- load core modules
 local core_modules = {
 	"core.settings",
-	"core.globals",
-	"core.autocmds",
+	-- "core.globals",
 	"core.keymap",
 	"core.plugins",
+	"core.autocmds",
 	"core.theme",
 }
-
 for _, module in ipairs(core_modules) do
 	local ok, err = pcall(require, module)
 	if not ok then
