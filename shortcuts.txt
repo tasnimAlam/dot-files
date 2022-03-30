@@ -2,7 +2,7 @@
  + Space     = rofi
  + b         = chromium
  + ESC       = reload sxhkd
- + Alt + q/r = quit/reload sxhkd
+ + Alt + q/r = quit/reload bspwm
  + w         = close 
  + m         = maximize layout 
  + f         = fullscreen
@@ -25,6 +25,8 @@
 
  + Shift + x   = lockscreen 
  + Shift + d/a = move window forward, backward 
+ + Alt + m/./, = volume mute/decrese/increase 5%
+ + Alt + b     = bluetooth control
 
  + Alt + h/j/k/l         = resize window outward
  + Alt + Shift + h/j/k/l = resize window inward
