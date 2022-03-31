@@ -45,6 +45,11 @@ if test "$os" = Darwin
     set -x NNN_BMS "d:~/Downloads/;w:~/Projects/sports-cloud-webapp;u:~/Projects/ui2/;r:~/Projects/rust-projects/rust_test/;.:~/Projects/dot-files/"
 end
 
+#  Abbreviations
+if status --is-interactive
+    abbr --add --global kll kill -9
+end
+
 # Zoxide init
 zoxide init fish | source
 
@@ -53,4 +58,3 @@ starship init fish | source
 
 set -gx PNPM_HOME "/home/shourov/.local/share/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH
-ctrlg init fish | source
