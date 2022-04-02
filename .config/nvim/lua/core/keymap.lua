@@ -152,7 +152,7 @@ map("n", "cll", "yiwocll<ESC>p", {})
 
 -- Pounce config
 map("n", "s", "<cmd>Pounce<CR>", {})
-map("v", "s", "<cmd>Pounce<CR>", {})
+-- map("v", "s", "<cmd>Pounce<CR>", {})
 map("n", "S", "<cmd>PounceRepeat<CR>", {})
 map("o", "gs", "<cmd>Pounce<CR>", {})
 

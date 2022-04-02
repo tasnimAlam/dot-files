@@ -94,6 +94,13 @@ return require("packer").startup({
 				require("dim").setup({})
 			end,
 		})
+		use({
+			"m-demare/hlargs.nvim",
+			requires = { "nvim-treesitter/nvim-treesitter" },
+			config = function()
+				require("hlargs").setup()
+			end,
+		})
 
 		-- Status line and bufferline
 		use({
