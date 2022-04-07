@@ -106,6 +106,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       --
       -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
+      -- Shutdown, restart
+      ((modm .|. shiftMask, xK_s), spawn "shutdown now"),
+      ((modm .|. shiftMask, xK_r), spawn "shutdown -r now"),
       -- Quit xmonad
       ((modm .|. shiftMask, xK_q), io (exitWith ExitSuccess)),
       -- Restart xmonad
@@ -235,6 +238,8 @@ myStartupHook = do
   spawnOnce "bsp-layout set tall 1 &"
   spawnOnce "picom --experimental-backends --config ~/.config/picom/picom.conf &"
   spawnOnce "ibus-daemon -drxR &"
+  spawnOnce "xmodmap -e 'keycode 66 = KP_Home'"
+  spawnOnce "xmodmap -e 'keycode 110 = Caps_Lock'"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
