@@ -12,9 +12,12 @@ import Data.Monoid
 import System.Exit
 import XMonad
 import XMonad.Hooks.ManageDocks
+import XMonad.Layout.Gaps
+import XMonad.Layout.Spacing
 import qualified XMonad.StackSet as W
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
+import XMonad.Actions.CycleWS
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -53,7 +56,7 @@ myWorkspaces = ["1", "2", "3", "4"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor = "#dddddd"
+myNormalBorderColor = "transparent"
 
 myFocusedBorderColor = "#03A9F4"
 
@@ -64,18 +67,23 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   M.fromList $
     -- launch a terminal
     [ ((modm, xK_Return), spawn $ XMonad.terminal conf),
-      -- launch dmenu
+    
+      -- launch applications
       ((modm, xK_p), spawn "rofi -show drun -show-icons"),
+      
       -- Chromium
       ((modm, xK_b), spawn "chromium"),
+      
       -- close focused window
       ((modm .|. shiftMask, xK_c), kill),
+      
       -- Rotate through the available layout algorithms
       ((modm, xK_space), sendMessage NextLayout),
       --  Reset the layouts on the current workspace to default
       ((modm .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf),
       -- Resize viewed windows to the correct size
       ((modm, xK_n), refresh),
+      
       -- Move focus to the next window
       ((modm, xK_Tab), windows W.focusDown),
       -- Move focus to the next window
@@ -84,12 +92,21 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       ((modm, xK_k), windows W.focusUp),
       -- Move focus to the master window
       ((modm, xK_m), windows W.focusMaster),
+
+      -- Move between windows
+      ((modm, xK_i), nextWS),
+      ((modm, xK_u), prevWS),
+      ((modm .|. shiftMask, xK_i), shiftToNext),
+      ((modm .|. shiftMask, xK_u), shiftToPrev),
+      -- ((modm, xK_z), toggleWS),
+      
       -- Swap the focused window and the master window
       ((modm .|. shiftMask, xK_Return), windows W.swapMaster),
       -- Swap the focused window with the next window
       ((modm .|. shiftMask, xK_j), windows W.swapDown),
       -- Swap the focused window with the previous window
       ((modm .|. shiftMask, xK_k), windows W.swapUp),
+      
       -- Shrink the master area
       ((modm, xK_h), sendMessage Shrink),
       -- Expand the master area
@@ -107,8 +124,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
       -- Shutdown, restart
-      ((modm .|. shiftMask, xK_s), spawn "shutdown now"),
-      ((modm .|. shiftMask, xK_r), spawn "shutdown -r now"),
+      ((modm .|. controlMask, xK_s), spawn "shutdown now"),
+      ((modm .|. controlMask, xK_r), spawn "shutdown -r now"),
+      
       -- Quit xmonad
       ((modm .|. shiftMask, xK_q), io (exitWith ExitSuccess)),
       -- Restart xmonad
@@ -168,7 +186,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) =
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
+myLayout = spacingWithEdge 4 $ avoidStruts (tiled ||| Mirror tiled ||| Full)
   where
     -- default tiling algorithm partitions the screen into two panes
     tiled = Tall nmaster delta ratio
@@ -201,6 +219,7 @@ myManageHook =
   composeAll
     [ className =? "MPlayer" --> doFloat,
       className =? "Gimp" --> doFloat,
+      className =? "Chromium" --> doShift (myWorkspaces !! 2),
       resource =? "desktop_window" --> doIgnore,
       resource =? "kdesktop" --> doIgnore
     ]
@@ -241,6 +260,7 @@ myStartupHook = do
   spawnOnce "xmodmap -e 'keycode 66 = KP_Home'"
   spawnOnce "xmodmap -e 'keycode 110 = Caps_Lock'"
 
+
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
@@ -272,7 +292,7 @@ defaults =
       keys = myKeys,
       mouseBindings = myMouseBindings,
       -- hooks, layouts
-      layoutHook = myLayout,
+      layoutHook =  myLayout,
       manageHook = myManageHook,
       handleEventHook = myEventHook,
       logHook = myLogHook,
