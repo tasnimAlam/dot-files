@@ -18,6 +18,8 @@ import qualified XMonad.StackSet as W
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Actions.CycleWS
+import XMonad.Actions.GridSelect
+import XMonad.Actions.WindowGo
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -72,7 +74,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       ((modm, xK_p), spawn "rofi -show drun -show-icons"),
       
       -- Chromium
-      ((modm, xK_b), spawn "chromium"),
+      ((modm, xK_b), runOrRaise "chromium" (className =? "Chromium")),
       
       -- close focused window
       ((modm .|. shiftMask, xK_c), kill),
@@ -92,7 +94,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       ((modm, xK_k), windows W.focusUp),
       -- Move focus to the master window
       ((modm, xK_m), windows W.focusMaster),
-
+      ((modm, xK_g), goToSelected defaultGSConfig),
+      
       -- Move between windows
       ((modm, xK_i), nextWS),
       ((modm, xK_u), prevWS),
@@ -122,7 +125,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       -- See also the statusBar function from Hooks.DynamicLog.
       --
       -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
-
       -- Shutdown, restart
       ((modm .|. controlMask, xK_s), spawn "shutdown now"),
       ((modm .|. controlMask, xK_r), spawn "shutdown -r now"),
@@ -150,6 +152,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
         | (key, sc) <- zip [xK_w, xK_e, xK_r] [0 ..],
           (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
       ]
+
 
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
@@ -219,7 +222,7 @@ myManageHook =
   composeAll
     [ className =? "MPlayer" --> doFloat,
       className =? "Gimp" --> doFloat,
-      className =? "Chromium" --> doShift (myWorkspaces !! 2),
+      -- className =? "Chromium" --> doShift (myWorkspaces !! 2),
       resource =? "desktop_window" --> doIgnore,
       resource =? "kdesktop" --> doIgnore
     ]
@@ -259,7 +262,6 @@ myStartupHook = do
   spawnOnce "ibus-daemon -drxR &"
   spawnOnce "xmodmap -e 'keycode 66 = KP_Home'"
   spawnOnce "xmodmap -e 'keycode 110 = Caps_Lock'"
-
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
