@@ -12,14 +12,18 @@ import Data.Monoid
 import System.Exit
 import XMonad
 import XMonad.Hooks.ManageDocks
-import XMonad.Layout.Gaps
-import XMonad.Layout.Spacing
-import qualified XMonad.StackSet as W
-import XMonad.Util.Run
-import XMonad.Util.SpawnOnce
+import XMonad.Hooks.DynamicLog
+
 import XMonad.Actions.CycleWS
 import XMonad.Actions.GridSelect
 import XMonad.Actions.WindowGo
+
+import XMonad.Layout.Gaps
+import XMonad.Layout.Spacing
+import qualified XMonad.StackSet as W
+
+import XMonad.Util.Run
+import XMonad.Util.SpawnOnce
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -124,7 +128,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       -- Use this binding with avoidStruts from Hooks.ManageDocks.
       -- See also the statusBar function from Hooks.DynamicLog.
       --
-      -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
+      -- ((modm              , xK_b     ), sendMessage ToggleStruts),
       -- Shutdown, restart
       ((modm .|. controlMask, xK_s), spawn "shutdown now"),
       ((modm .|. controlMask, xK_r), spawn "shutdown -r now"),
@@ -245,7 +249,7 @@ myEventHook = mempty
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = return ()
+myLogHook = dynamicLog
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -268,10 +272,12 @@ myStartupHook = do
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
--- main = xmonad defaults
 main = do
   xmproc <- spawnPipe "xmobar -x 0 ~/.xmobarrc"
   xmonad $ docks defaults
+  -- xmonad defaults
+-- main = xmonad =<< xmobar defaults
+  
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
