@@ -24,6 +24,7 @@ import qualified XMonad.StackSet as W
 
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
+import XMonad.Util.WorkspaceCompare
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -268,15 +269,24 @@ myStartupHook = do
   spawnOnce "xmodmap -e 'keycode 110 = Caps_Lock'"
 
 ------------------------------------------------------------------------
+-- My custom stdin pretty-printer for xmobar. Only interested in
+-- workspaces at this time
+myPP = def
+   { 
+     ppLayout = const ""  -- Don't show the layout name
+   , ppVisible = wrap "(" ")"  -- Non-focused (but still visible) screen
+   }
 -- Now run xmonad with all the defaults we set up.
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-main = do
-  xmproc <- spawnPipe "xmobar -x 0 ~/.xmobarrc"
-  xmonad $ docks defaults
+-- main = do
+--   xmproc <- spawnPipe "xmobar -x 0 ~/.xmobarrc"
+--   xmonad $ docks defaults
   -- xmonad defaults
 -- main = xmonad =<< xmobar defaults
+main = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey defaults
+toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_6)
   
 
 -- A structure containing your configuration settings, overriding
