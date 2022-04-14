@@ -1,16 +1,16 @@
 
-xmonad.hs:102:35: warning: [-Wdeprecations]
+xmonad.hs:107:35: warning: [-Wdeprecations]
     In the use of ‘defaultGSConfig’
     (imported from XMonad.Actions.GridSelect):
     Deprecated: "Use def (from Data.Default, and re-exported from XMonad.Actions.GridSelect) instead."
     |
-102 |       ((modm, xK_g), goToSelected defaultGSConfig),
+107 |       ((modm, xK_g), goToSelected defaultGSConfig),
     |                                   ^^^^^^^^^^^^^^^
 
-xmonad.hs:197:12: warning: [-Wdeprecations]
+xmonad.hs:208:12: warning: [-Wdeprecations]
     In the use of ‘spacingWithEdge’
     (imported from XMonad.Layout.Spacing):
     Deprecated: "Use spacingRaw instead."
     |
-197 | myLayout = spacingWithEdge 4 $ avoidStruts (tiled ||| Mirror tiled ||| Full)
+208 | myLayout = spacingWithEdge 4 $ avoidStruts (tiled ||| Mirror tiled ||| Full)
     |            ^^^^^^^^^^^^^^^

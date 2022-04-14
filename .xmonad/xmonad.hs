@@ -18,6 +18,10 @@ import XMonad.Actions.CycleWS
 import XMonad.Actions.GridSelect
 import XMonad.Actions.WindowGo
 
+-- import qualified XMonad.Prompt         as P
+-- import qualified XMonad.Actions.Submap as SM
+-- import qualified XMonad.Actions.Search as S
+
 import XMonad.Layout.Gaps
 import XMonad.Layout.Spacing
 import qualified XMonad.StackSet as W
@@ -66,6 +70,7 @@ myWorkspaces = ["1", "2", "3", "4"]
 myNormalBorderColor = "transparent"
 
 myFocusedBorderColor = "#03A9F4"
+
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -133,7 +138,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       -- Shutdown, restart
       ((modm .|. controlMask, xK_s), spawn "shutdown now"),
       ((modm .|. controlMask, xK_r), spawn "shutdown -r now"),
-      
+
       -- Quit xmonad
       ((modm .|. shiftMask, xK_q), io (exitWith ExitSuccess)),
       -- Restart xmonad
@@ -144,6 +149,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       -- mod-[1..9], Switch to workspace N
       -- mod-shift-[1..9], Move client to workspace N
       --
+      [ ((m .|. mod1Mask, k), windows $ f i)
+        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9],
+          (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
+      ]
+      ++
+      
+      -- alt-[1..9] also switch workpaces
       [ ((m .|. modm, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9],
           (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
@@ -227,7 +239,10 @@ myManageHook =
   composeAll
     [ className =? "MPlayer" --> doFloat,
       className =? "Gimp" --> doFloat,
-      -- className =? "Chromium" --> doShift (myWorkspaces !! 2),
+      className =? "Chromium" --> doShift (myWorkspaces !! 1),
+      className =? "Slack" -->  doShift (myWorkspaces !! 2),
+      className =? "qbittorrent" --> (doFloat <+> doShift "4"),
+      className =? "vlc" -->  doShift "4",
       resource =? "desktop_window" --> doIgnore,
       resource =? "kdesktop" --> doIgnore
     ]
@@ -274,7 +289,7 @@ myStartupHook = do
 myPP = def
    { 
      ppLayout = const ""  -- Don't show the layout name
-   , ppVisible = wrap "(" ")"  -- Non-focused (but still visible) screen
+    ,ppVisible = wrap "(" ")"  -- Non-focused (but still visible) screen
    }
 -- Now run xmonad with all the defaults we set up.
 
