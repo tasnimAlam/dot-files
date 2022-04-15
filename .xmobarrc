@@ -15,7 +15,7 @@
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%StdinReader% }{<fn=1></fn>%multicpu% <fn=1></fn>%memory%  <fn=1></fn> %wlan0wi% %dynnetwork%  <fn=1></fn>%date% "
+   , template = "%StdinReader% }{<fc=#9ece6a><fn=1></fn>%multicpu%</fc><fc=#f7768e> <fn=1></fn>%memory% </fc> <fc=#2ac3de><fn=1></fn> %wlan0wi% %dynnetwork% </fc> <fc=#ff9e64><fn=1></fn></fc> %date% "
 
    -- general behavior
    , lowerOnStart =     False    -- send to bottom of window stack on start
@@ -41,49 +41,20 @@
    --   see http://projects.haskell.org/xmobar/#system-monitor-plugins.
    , commands = 
 
-        -- weather monitor
-        [ Run Weather "RJTT" [ "--template", "<skyCondition> | <fc=#4682B4><tempC></fc>°C | <fc=#4682B4><rh></fc>% | <fc=#4682B4><pressure></fc>hPa"
-                             ] 36000
-
-
+        [
         -- network activity monitor (dynamic interface resolution)
-        , Run DynNetwork     [ "--template" , " <fn=1></fn><tx>kB <fn=1></fn><rx>kB"
-                             , "--Low"      , "1000"       -- units: B/s
-                             , "--High"     , "5000"       -- units: B/s
-                             , "--low"      , "darkgreen"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkred"
-                             ] 10
-
+         Run DynNetwork     [ "--template" , " <fn=1></fn><tx>kB <fn=1></fn><rx>kB" ] 10
 
         ,Run Wireless "wlan0" [ "-t", "<essid>" ] 10
 
         -- cpu activity monitor
-        , Run MultiCpu       [ "--template" , " <total0>%"
-                             , "--Low"      , "50"         -- units: %
-                             , "--High"     , "85"         -- units: %
-                             , "--low"      , "darkgreen"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkred"
-                             ] 10
+        , Run MultiCpu       [ "--template" , " <total0>%"] 10
 
         -- memory usage monitor
-        , Run Memory         [ "--template" ," <usedratio>%"
-                             , "--Low"      , "20"        -- units: %
-                             , "--High"     , "90"        -- units: %
-                             , "--low"      , "darkgreen"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkred"
-                             ] 10
+        , Run Memory         [ "--template" ," <usedratio>%"] 10
 
         -- battery monitor
         , Run Battery        [ "--template" , "Batt: <acstatus>"
-                             , "--Low"      , "10"        -- units: %
-                             , "--High"     , "80"        -- units: %
-                             , "--low"      , "darkred"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkgreen"
-
                              , "--" -- battery specific options
                                        -- discharging status
                                        , "-o"	, "<left>% (<timeleft>)"
@@ -95,7 +66,7 @@
 
         -- time and date indicator 
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
-        , Run Date           " <fc=#ABABAB>%d %b %Y (%a) %r</fc>" "date" 10
+        , Run Date           "<fc=#ff9e64> %b %Y (%a) </fc><fc=#bb9af7> %r</fc>" "date" 10
         , Run StdinReader
         ]
 
