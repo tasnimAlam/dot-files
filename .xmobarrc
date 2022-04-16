@@ -15,7 +15,7 @@
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%StdinReader% }{<fc=#9ece6a><fn=1></fn>%multicpu%</fc><fc=#f7768e> <fn=1></fn>%memory% </fc> <fc=#2ac3de><fn=1></fn> %wlan0wi% %dynnetwork% </fc> <fc=#ff9e64><fn=1></fn></fc> %date% "
+   , template = "%StdinReader% }{ <action=pavucontrol>%default:Master%</action> <fc=#9ece6a><fn=1></fn>%multicpu%</fc><fc=#f7768e> <fn=1></fn>%memory% </fc> <fc=#2ac3de><fn=1></fn> %wlan0wi% %dynnetwork% </fc> <fc=#ff9e64><fn=1></fn></fc> %date% "
 
    -- general behavior
    , lowerOnStart =     False    -- send to bottom of window stack on start
@@ -44,7 +44,17 @@
         [
         -- network activity monitor (dynamic interface resolution)
          Run DynNetwork     [ "--template" , " <fn=1></fn><tx>kB <fn=1></fn><rx>kB" ] 10
-
+        
+        -- volume controller
+        , Run Volume "default" "Master"
+                        [ "--template", "<status> ", "--"
+                        , "--on", "<fc=#73daca><fn=1>\xf028</fn> <volume>%</fc>"
+                        , "--onc", "#73daca"
+                        , "--off", "<fc=#f7768e><fn=1>\xf026</fn> MUTE</fc>"
+                        , "--offc", "#f7768e"
+                        ] 10
+        
+        -- wireless network name
         ,Run Wireless "wlan0" [ "-t", "<essid>" ] 10
 
         -- cpu activity monitor
@@ -67,6 +77,8 @@
         -- time and date indicator 
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
         , Run Date           "<fc=#ff9e64> %b %Y (%a) </fc><fc=#bb9af7> %r</fc>" "date" 10
+        
+        -- show workspaces
         , Run StdinReader
         ]
 

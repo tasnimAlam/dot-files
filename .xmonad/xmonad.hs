@@ -17,7 +17,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Actions.CycleWS
 import XMonad.Actions.GridSelect
 import XMonad.Actions.WindowGo
-
+ 
 -- import qualified XMonad.Prompt         as P
 -- import qualified XMonad.Actions.Submap as SM
 -- import qualified XMonad.Actions.Search as S
@@ -138,6 +138,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       -- Shutdown, restart
       ((modm .|. controlMask, xK_s), spawn "shutdown now"),
       ((modm .|. controlMask, xK_r), spawn "shutdown -r now"),
+
+			-- Volume controller
+      ((modm .|. controlMask, xK_comma), spawn "pactl set-sink-volume 0 -5%"),
+      ((modm .|. controlMask, xK_period), spawn "pactl set-sink-volume 0 +5%"),
+      ((modm .|. controlMask, xK_m), spawn "pactl set-sink-mute 0 toggle"),
+			
 
       -- Quit xmonad
       ((modm .|. shiftMask, xK_q), io (exitWith ExitSuccess)),
