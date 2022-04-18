@@ -92,18 +92,14 @@ map("i", "<S-Tab>", 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true })
 map("i", "<CR>", 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true })
 
 -- Telescope and fzf config
-vim.api.nvim_command([[nnoremap <expr> <space><space> (len(system('git rev-parse')) ? ':Files' : ':GFiles')."\<cr>"]])
-map("n", "<Leader>rg", "<cmd>Rg<CR>", { noremap = true })
-map("n", "<Leader>rg", "<cmd>Rg<CR>", { noremap = true })
-map("n", "<Leader>/", "<cmd>BLines<CR>", { noremap = true })
--- map(
--- 	"n",
--- 	"<leader>/",
--- 	'<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>',
--- 	{ noremap = true, silent = true }
--- )
--- map("n", "<Leader>rg", '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true })
-map("n", "<Leader>rw", '<cmd>lua require("telescope.builtin").grep_string()<CR><C-R><C-W>', { noremap = true })
+-- vim.api.nvim_command([[nnoremap <expr> <space><space> (len(system('git rev-parse')) ? ':Files' : ':GFiles')."\<cr>"]])
+map("n", "<space><space>", '<cmd>lua require("telescope.builtin").find_files()<CR>', { noremap = true, silent = true })
+map("n", "<Leader>ss", '<cmd>lua require("telescope.builtin").grep_string()<CR>', { noremap = true, silent = true })
+map("n", "<Leader>sl", '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true })
+map("n", "<Leader>/", '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>', { noremap = true })
+-- map("n", "<Leader>/", "<cmd>BLines<CR>", { noremap = true })
+-- map("n", "<Leader>rg", "<cmd>Rg<CR>", { noremap = true })
+-- map("n", "<Leader>rw", '<cmd>lua require("telescope.builtin").grep_string()<CR><C-R><C-W>', { noremap = true })
 map("n", "<C-p>", '<cmd>lua require("telescope").extensions.project.project{}<CR>', { noremap = true, silent = true })
 map(
 	"n",
@@ -152,7 +148,7 @@ map("n", "cll", "yiwocll<ESC>p", {})
 
 -- Pounce config
 map("n", "s", "<cmd>Pounce<CR>", {})
--- map("v", "s", "<cmd>Pounce<CR>", {})
+map("v", "s", "<cmd>Pounce<CR>", {})
 map("n", "S", "<cmd>PounceRepeat<CR>", {})
 map("o", "gs", "<cmd>Pounce<CR>", {})
 

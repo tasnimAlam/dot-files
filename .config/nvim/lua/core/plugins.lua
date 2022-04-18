@@ -26,7 +26,7 @@ return require("packer").startup({
 			end,
 		})
 		use("onsails/lspkind-nvim")
-		use({ "jose-elias-alvarez/nvim-lsp-ts-utils", ft = { "js", "jsx", "ts", "tsx" } })
+		use("jose-elias-alvarez/nvim-lsp-ts-utils")
 		use({ "simrat39/rust-tools.nvim", ft = { "rs" } })
 		use({
 			"folke/trouble.nvim",
@@ -78,7 +78,6 @@ return require("packer").startup({
 		use({
 			"nvim-treesitter/nvim-treesitter",
 			run = ":TSUpdate",
-			event = "BufRead",
 			config = function()
 				require("plugins.treesitter")
 			end,
@@ -87,20 +86,13 @@ return require("packer").startup({
 		use({ "nvim-treesitter/nvim-treesitter-angular" })
 		use("windwp/nvim-ts-autotag")
 		use({ "maxmellon/vim-jsx-pretty", ft = { "js", "jsx", "ts", "tsx" } })
-		use({
-			"narutoxy/dim.lua",
-			requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
-			config = function()
-				require("dim").setup({})
-			end,
-		})
-		use({
-			"m-demare/hlargs.nvim",
-			requires = { "nvim-treesitter/nvim-treesitter" },
-			config = function()
-				require("hlargs").setup()
-			end,
-		})
+		-- use({
+		-- 	"narutoxy/dim.lua",
+		-- 	requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
+		-- 	config = function()
+		-- 		require("dim").setup({})
+		-- 	end,
+		-- })
 
 		-- Status line and bufferline
 		use({
@@ -171,6 +163,7 @@ return require("packer").startup({
 		use("voldikss/vim-floaterm")
 
 		-- Navigation and search
+		-- use("ggandor/lightspeed.nvim")
 		use({ "mfussenegger/nvim-treehopper" })
 		use({ "gelguy/wilder.nvim", run = "UpdateRemotePlugins" })
 		use({
@@ -211,15 +204,15 @@ return require("packer").startup({
 				require("plugins.neoclip")
 			end,
 		})
-		use({ "nathom/filetype.nvim" })
-		use({ "tpope/vim-surround" })
-		use({ "tpope/vim-repeat" })
-		use({ "tpope/vim-unimpaired" })
-		use({ "jiangmiao/auto-pairs" })
-		use({ "mattn/emmet-vim" })
-		use({ "matze/vim-move" })
+		use("nathom/filetype.nvim")
+		use("tpope/vim-surround")
+		use("tpope/vim-repeat")
+		use("tpope/vim-unimpaired")
+		use("jiangmiao/auto-pairs")
+		use("mattn/emmet-vim")
+		use("matze/vim-move")
 		use({ "rrethy/vim-hexokinase", run = "make hexokinase" })
-		use({ "tommcdo/vim-exchange" })
+		use("tommcdo/vim-exchange")
 		use({ "kevinhwang91/nvim-bqf" })
 		use({ "APZelos/blamer.nvim" })
 		use({
@@ -228,7 +221,6 @@ return require("packer").startup({
 				require("plugins.pounce")
 			end,
 		})
-		-- use({ "ggandor/leap.nvim" })
 		use("lewis6991/impatient.nvim")
 		use({
 			"pianocomposer321/yabs.nvim",
@@ -250,6 +242,7 @@ return require("packer").startup({
 				require("nvim-gps").setup()
 			end,
 		})
+		use({ "amadeus/vim-convert-color-to" })
 	end,
 	config = {
 		--      compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
