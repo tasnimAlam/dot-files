@@ -7,17 +7,17 @@ xmonad.hs:107:35: warning: [-Wdeprecations]
 107 |       ((modm, xK_g), goToSelected defaultGSConfig),
     |                                   ^^^^^^^^^^^^^^^
 
-xmonad.hs:142:1: warning: [-Wtabs]
+xmonad.hs:145:1: warning: [-Wtabs]
     Tab character found here, and in five further locations.
     Please use spaces instead.
     |
-142 |                         -- Volume controller
+145 |                         -- Volume controller
     | ^^^^^^^^
 
-xmonad.hs:215:12: warning: [-Wdeprecations]
+xmonad.hs:220:12: warning: [-Wdeprecations]
     In the use of ‘spacingWithEdge’
     (imported from XMonad.Layout.Spacing):
     Deprecated: "Use spacingRaw instead."
     |
-215 | myLayout = spacingWithEdge 4 $ avoidStruts (tiled ||| Mirror tiled ||| Full)
+220 | myLayout = spacingWithEdge 4 $ avoidStruts (tiled ||| Mirror tiled ||| Full)
     |            ^^^^^^^^^^^^^^^

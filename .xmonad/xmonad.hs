@@ -13,6 +13,7 @@ import System.Exit
 import XMonad
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops 
 
 import XMonad.Actions.CycleWS
 import XMonad.Actions.GridSelect
@@ -29,7 +30,6 @@ import qualified XMonad.StackSet as W
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Util.WorkspaceCompare
-
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
@@ -109,6 +109,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       -- Move between windows
       ((modm, xK_i), nextWS),
       ((modm, xK_u), prevWS),
+      ((mod1Mask, xK_i), nextWS),
+      ((mod1Mask, xK_u), prevWS),
+      
       ((modm .|. shiftMask, xK_i), shiftToNext),
       ((modm .|. shiftMask, xK_u), shiftToPrev),
       -- ((modm, xK_z), toggleWS),
@@ -144,6 +147,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       ((modm .|. controlMask, xK_period), spawn "pactl set-sink-volume 0 +5%"),
       ((modm .|. controlMask, xK_m), spawn "pactl set-sink-mute 0 toggle"),
 			
+      -- Screenshot
+      (( controlMask .|. shiftMask, xK_5), spawn "flameshot gui"),
 
       -- Quit xmonad
       ((modm .|. shiftMask, xK_q), io (exitWith ExitSuccess)),
@@ -263,7 +268,8 @@ myManageHook =
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
-myEventHook = mempty
+-- myEventHook = mempty
+myEventHook = docksEventHook <+> handleEventHook def <+> fullscreenEventHook
 
 ------------------------------------------------------------------------
 -- Status bars and logging
