@@ -11,6 +11,7 @@ import qualified Data.Map as M
 import Data.Monoid
 import System.Exit
 import XMonad
+
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops 
@@ -30,6 +31,7 @@ import qualified XMonad.StackSet as W
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Util.WorkspaceCompare
+
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
@@ -104,7 +106,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       ((modm, xK_k), windows W.focusUp),
       -- Move focus to the master window
       ((modm, xK_m), windows W.focusMaster),
-      ((modm, xK_g), goToSelected defaultGSConfig),
+      ((modm, xK_f), goToSelected defaultGSConfig),
       
       -- Move between windows
       ((modm, xK_i), nextWS),
