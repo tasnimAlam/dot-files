@@ -15,6 +15,8 @@ import XMonad
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops 
+import XMonad.Hooks.StatusBar
+import XMonad.Hooks.StatusBar.PP
 
 import XMonad.Actions.CycleWS
 import XMonad.Actions.GridSelect
@@ -31,6 +33,7 @@ import qualified XMonad.StackSet as W
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Util.WorkspaceCompare
+import XMonad.Util.ClickableWorkspaces
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -67,6 +70,10 @@ myModMask = mod4Mask
 --
 myWorkspaces = ["1", "2", "3", "4"]
 
+-- myWorkspaceIndices = Map.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
+-- clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
+--     where i = fromJust $ Map.lookup ws myWorkspaceIndices
+    
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor = "transparent"
@@ -250,14 +257,14 @@ myLayout = spacingWithEdge 4 $ avoidStruts (tiled ||| Mirror tiled ||| Full)
 --
 myManageHook =
   composeAll
-    [ className =? "MPlayer" --> doFloat,
-      className =? "Gimp" --> doFloat,
-      className =? "Chromium" --> doShift (myWorkspaces !! 1),
-      className =? "Slack" -->  doShift (myWorkspaces !! 2),
-      className =? "qbittorrent" --> (doFloat <+> doShift "4"),
-      className =? "vlc" -->  doShift "4",
-      resource =? "desktop_window" --> doIgnore,
-      resource =? "kdesktop" --> doIgnore
+    [ className =? "MPlayer"        --> doFloat,
+      className =? "Gimp"           --> doFloat,
+      className =? "Chromium"       --> doShift "2",
+      className =? "Slack"          --> doShift "3",
+      className =? "qbittorrent"    --> doShift "4",
+      className =? "vlc"            --> doShift "4",
+      resource =? "desktop_window"  --> doIgnore,
+      resource =? "kdesktop"        --> doIgnore
     ]
 
 ------------------------------------------------------------------------
@@ -308,15 +315,8 @@ myPP = def
 -- Now run xmonad with all the defaults we set up.
 
 -- Run xmonad with the settings you specify. No need to modify this.
---
--- main = do
---   xmproc <- spawnPipe "xmobar -x 0 ~/.xmobarrc"
---   xmonad $ docks defaults
-  -- xmonad defaults
--- main = xmonad =<< xmobar defaults
-main = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey defaults
-toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_6)
-  
+
+main = xmonad $ withEasySB mySB defToggleStrutsKey def
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will

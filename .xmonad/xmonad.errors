@@ -1,6 +1,21 @@
 
-xmonad.hs:256:45: error:
-    Variable not in scope: viewShift :: t0 -> WorkspaceId -> ManageHook
-    |
-256 |       className =? "Slack" -->  doShift <+> viewShift 3,
-    |                                             ^^^^^^^^^
+xmonad.hs:18:1: error:
+    Could not find module ‘XMonad.Hooks.StatusBar’
+    Use -v (or `:set -v` in ghci) to see a list of the files searched for.
+   |
+18 | import XMonad.Hooks.StatusBar
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+xmonad.hs:19:1: error:
+    Could not find module ‘XMonad.Hooks.StatusBar.PP’
+    Use -v (or `:set -v` in ghci) to see a list of the files searched for.
+   |
+19 | import XMonad.Hooks.StatusBar.PP
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+xmonad.hs:36:1: error:
+    Could not find module ‘XMonad.Util.ClickableWorkspaces’
+    Use -v (or `:set -v` in ghci) to see a list of the files searched for.
+   |
+36 | import XMonad.Util.ClickableWorkspaces
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
