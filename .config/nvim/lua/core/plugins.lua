@@ -14,7 +14,7 @@ return require("packer").startup({
 
 		-- Lsp
 		use({
-			"neovim/nvim-lspconfig",
+			"neovim/nvim-lspconfig", 
 			config = function()
 				require("plugins.lsp")
 			end,
@@ -37,10 +37,15 @@ return require("packer").startup({
 		})
 
 		-- Formatter
-		use({
-			"jose-elias-alvarez/null-ls.nvim",
-			config = function()
-				require("plugins.null-ls")
+		-- use({
+		-- 	"jose-elias-alvarez/null-ls.nvim",
+		-- 	config = function()
+		-- 		require("plugins.null-ls")
+		-- 	end,
+		-- })
+
+		use({"mhartington/formatter.nvim", config = function() 
+			require("plugins.formatter")
 			end,
 		})
 
@@ -83,7 +88,8 @@ return require("packer").startup({
 			end,
 		})
 		use("nvim-treesitter/nvim-treesitter-textobjects")
-		use({ "nvim-treesitter/nvim-treesitter-angular" })
+		-- use({ "nvim-treesitter/nvim-treesitter-angular" })
+		use({"ShooTeX/nvim-treesitter-angular"})
 		use("windwp/nvim-ts-autotag")
 		use({ "maxmellon/vim-jsx-pretty", ft = { "js", "jsx", "ts", "tsx" } })
 		-- use({
