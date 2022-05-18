@@ -83,7 +83,8 @@ return require("packer").startup({
 			end,
 		})
 		use("nvim-treesitter/nvim-treesitter-textobjects")
-		use({ "nvim-treesitter/nvim-treesitter-angular" })
+		-- use({ "nvim-treesitter/nvim-treesitter-angular" })
+		use({ "ShooTeX/nvim-treesitter-angular" })
 		use("windwp/nvim-ts-autotag")
 		use({ "maxmellon/vim-jsx-pretty", ft = { "js", "jsx", "ts", "tsx" } })
 		-- use({
@@ -230,7 +231,7 @@ return require("packer").startup({
 			end,
 		})
 		use({
-			"chentau/marks.nvim",
+			"chentoast/marks.nvim",
 			config = function()
 				require("plugins.marks")
 			end,

@@ -6,7 +6,7 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 local on_attach = function(client, bufnr)
 	-- Disable tsserver formatting so that null-ls can format
 	if client.name == "tsserver" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 	end
 
 	local function buf_set_option(...)
@@ -16,7 +16,7 @@ local on_attach = function(client, bufnr)
 	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	-- Set autocommands conditional on server_capabilities
-	if client.resolved_capabilities.document_highlight then
+	if client.server_capabilities.document_highlight then
 		vim.api.nvim_exec(
 			[[
       hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
