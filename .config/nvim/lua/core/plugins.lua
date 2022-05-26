@@ -72,31 +72,26 @@ return require("packer").startup(
         }
       )
 
-      -- Autocomplete
-      use(
-        {
-          "hrsh7th/nvim-cmp",
-          requires = {
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-nvim-lua",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-cmdline",
-            "hrsh7th/cmp-calc",
-            "octaltree/cmp-look"
-          },
-          config = function()
-            require("plugins.cmp")
-          end
-        }
-      )
-      use(
-        {
-          "tzachar/cmp-tabnine",
-          run = "./install.sh",
-          requires = "hrsh7th/nvim-cmp"
-        }
-      )
+		-- Treeesitter
+		use({
+			"nvim-treesitter/nvim-treesitter",
+			run = ":TSUpdate",
+			config = function()
+				require("plugins.treesitter")
+			end,
+		})
+		use("nvim-treesitter/nvim-treesitter-textobjects")
+		-- use({ "nvim-treesitter/nvim-treesitter-angular" })
+		use({ "ShooTeX/nvim-treesitter-angular" })
+		use("windwp/nvim-ts-autotag")
+		use({ "maxmellon/vim-jsx-pretty", ft = { "js", "jsx", "ts", "tsx" } })
+		-- use({
+		-- 	"narutoxy/dim.lua",
+		-- 	requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
+		-- 	config = function()
+		-- 		require("dim").setup({})
+		-- 	end,
+		-- })
 
       -- Treeesitter
       use(
@@ -214,103 +209,76 @@ return require("packer").startup(
         }
       )
 
-      -- Dashboard
-      use(
-        {
-          "goolord/alpha-nvim",
-          requires = {"kyazdani42/nvim-web-devicons"},
-          config = function()
-            require("plugins.alpha")
-          end
-        }
-      )
-
-      -- Helper
-      use(
-        {
-          "max397574/better-escape.nvim",
-          config = function()
-            require("plugins.better-escape")
-          end
-        }
-      )
-      use(
-        {
-          "abecodes/tabout.nvim",
-          config = function()
-            require("plugins.tabout")
-          end,
-          wants = {"nvim-treesitter"},
-          after = {"nvim-cmp"}
-        }
-      )
-      use({"rmagatti/alternate-toggler"})
-      use(
-        {
-          "AckslD/nvim-neoclip.lua",
-          config = function()
-            require("plugins.neoclip")
-          end
-        }
-      )
-      use("nathom/filetype.nvim")
-      use("tpope/vim-surround")
-      use("tpope/vim-repeat")
-      use("tpope/vim-unimpaired")
-      use("jiangmiao/auto-pairs")
-      use("mattn/emmet-vim")
-      use("matze/vim-move")
-      use({"rrethy/vim-hexokinase", run = "make hexokinase"})
-      use("tommcdo/vim-exchange")
-      use({"kevinhwang91/nvim-bqf"})
-      use({"APZelos/blamer.nvim"})
-      use(
-        {
-          "rlane/pounce.nvim",
-          config = function()
-            require("plugins.pounce")
-          end
-        }
-      )
-      use("lewis6991/impatient.nvim")
-      use(
-        {
-          "pianocomposer321/yabs.nvim",
-          requires = {"nvim-lua/plenary.nvim"},
-          config = function()
-            require("plugins.yabs")
-          end
-        }
-      )
-      use(
-        {
-          "chentoast/marks.nvim",
-          config = function()
-            require("plugins.marks")
-          end
-        }
-      )
-      use(
-        {
-          "SmiteshP/nvim-gps",
-          requires = "nvim-treesitter/nvim-treesitter",
-          config = function()
-            require("nvim-gps").setup()
-          end
-        }
-      )
-      use({"amadeus/vim-convert-color-to"})
-      use({"windwp/nvim-spectre"})
-    end,
-    config = {
-      --      compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
-      display = {
-        open_fn = require("packer.util").float
-      },
-      profile = {
-        enable = true,
-        threshold = 1 -- the amount in ms that a plugins load time must be over for it to be included in the profile
-      }
-    }
-  }
-)
+		-- Helper
+		use({
+			"max397574/better-escape.nvim",
+			config = function()
+				require("plugins.better-escape")
+			end,
+		})
+		use({
+			"abecodes/tabout.nvim",
+			config = function()
+				require("plugins.tabout")
+			end,
+			wants = { "nvim-treesitter" },
+			after = { "nvim-cmp" },
+		})
+		use({ "rmagatti/alternate-toggler" })
+		use({
+			"AckslD/nvim-neoclip.lua",
+			config = function()
+				require("plugins.neoclip")
+			end,
+		})
+		use("nathom/filetype.nvim")
+		use("tpope/vim-surround")
+		use("tpope/vim-repeat")
+		use("tpope/vim-unimpaired")
+		use("jiangmiao/auto-pairs")
+		use("mattn/emmet-vim")
+		use("matze/vim-move")
+		use({ "rrethy/vim-hexokinase", run = "make hexokinase" })
+		use("tommcdo/vim-exchange")
+		use({ "kevinhwang91/nvim-bqf" })
+		use({ "APZelos/blamer.nvim" })
+		use({
+			"rlane/pounce.nvim",
+			config = function()
+				require("plugins.pounce")
+			end,
+		})
+		use("lewis6991/impatient.nvim")
+		use({
+			"pianocomposer321/yabs.nvim",
+			requires = { "nvim-lua/plenary.nvim" },
+			config = function()
+				require("plugins.yabs")
+			end,
+		})
+		use({
+			"chentoast/marks.nvim",
+			config = function()
+				require("plugins.marks")
+			end,
+		})
+		use({
+			"SmiteshP/nvim-gps",
+			requires = "nvim-treesitter/nvim-treesitter",
+			config = function()
+				require("nvim-gps").setup()
+			end,
+		})
+		use({ "amadeus/vim-convert-color-to" })
+	end,
+	config = {
+		--      compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
+		display = {
+			open_fn = require("packer.util").float,
+		},
+		profile = {
+			enable = true,
+			threshold = 1, -- the amount in ms that a plugins load time must be over for it to be included in the profile
+		},
+	},
+})
