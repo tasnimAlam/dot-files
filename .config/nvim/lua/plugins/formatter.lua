@@ -44,6 +44,7 @@ require("formatter").setup(
     filetype = {
       lua = {luaFormat},
       typescript = {prettierdFormat},
+      typescriptreact = {prettierdFormat},
       javascript = {prettierdFormat},
       markdown = {prettierdFormat},
       html = {prettierdFormat},
@@ -55,3 +56,4 @@ require("formatter").setup(
     }
   }
 )
+
