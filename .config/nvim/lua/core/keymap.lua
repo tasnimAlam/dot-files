@@ -92,14 +92,10 @@ map("i", "<S-Tab>", 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true })
 map("i", "<CR>", 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true })
 
 -- Telescope and fzf config
--- vim.api.nvim_command([[nnoremap <expr> <space><space> (len(system('git rev-parse')) ? ':Files' : ':GFiles')."\<cr>"]])
 map("n", "<space><space>", '<cmd>lua require("telescope.builtin").find_files()<CR>', { noremap = true, silent = true })
 map("n", "<Leader>ss", '<cmd>lua require("telescope.builtin").grep_string()<CR>', { noremap = true, silent = true })
 map("n", "<Leader>sl", '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true })
 map("n", "<Leader>/", '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>', { noremap = true })
--- map("n", "<Leader>/", "<cmd>BLines<CR>", { noremap = true })
--- map("n", "<Leader>rg", "<cmd>Rg<CR>", { noremap = true })
--- map("n", "<Leader>rw", '<cmd>lua require("telescope.builtin").grep_string()<CR><C-R><C-W>', { noremap = true })
 map("n", "<C-p>", '<cmd>lua require("telescope").extensions.project.project{}<CR>', { noremap = true, silent = true })
 map(
 	"n",
@@ -113,12 +109,6 @@ map(
 	'<cmd>lua require("telescope").extensions.media_files.media_files()<CR>',
 	{ noremap = true, silent = true }
 )
--- map(
--- 	"n",
--- 	"<leader>/",
--- 	'<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>',
--- 	{ noremap = true, silent = true }
--- )
 
 -- Buffer management
 map("n", "<Leader>,", "<C-^>", {})
@@ -129,7 +119,6 @@ map("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true })
 map("n", "gb", ":BufferLinePick<CR>", { silent = true })
 map("n", "d>", ":BufferLineCloseRight<CR>", { silent = true })
 map("n", "d<", ":BufferLineCloseLeft<CR>", { silent = true })
--- map("n", "bc", ":BufferLinePickClose<CR>", {silent = true})
 map("n", "g>", ":BufferLineMoveNext<CR>", { silent = true })
 map("n", "g<", ":BufferLineMovePrev<CR>", { silent = true })
 
@@ -137,9 +126,6 @@ map("n", "g<", ":BufferLineMovePrev<CR>", { silent = true })
 map("n", "<Leader>g", ":FloatermNew --width=1.0 --height=1.0 --autoclose=2 lazygit<CR>", {})
 map("n", "]c", "<cmd>Gitsigns next_hunk<CR>", {})
 map("n", "[c", "<cmd>Gitsigns prev_hunk<CR>", {})
--- map("n", "<Leader>/", ":BLines<CR>", {})
--- TODO: make it lua function
--- vim.api.nvim_exec([[ let g:nremap = {'=': '<TAB>'} ]], true)
 
 -- Console log shortcut
 map("i", "cll", "console.log()<ESC><S-f>(a", {})
@@ -153,9 +139,7 @@ map("n", "S", "<cmd>PounceRepeat<CR>", {})
 map("o", "gs", "<cmd>Pounce<CR>", {})
 
 -- Window movement
-map("n", "<C-h>", "<cmd>lua require(N'avigator').left()<CR>", {})
+map("n", "<C-h>", "<cmd>lua require('Navigator').left()<CR>", {})
 map("n", "<C-k>", "<cmd>lua require('Navigator').up()<CR>", {})
 map("n", "<C-l>", "<cmd>lua require('Navigator').right()<CR>", {})
 map("n", "<C-j>", "<cmd>lua require('Navigator').down()<CR>", {})
--- map("n", "<C-l>", '<cmd>lua require("core.utils").move_window("l")<CR>', { noremap = true })
--- map("n", "<C-h>", '<cmd>lua require("core.utils").move_window("h")<CR>', { noremap = true })

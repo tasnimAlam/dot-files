@@ -83,17 +83,9 @@ return require("packer").startup({
 			end,
 		})
 		use("nvim-treesitter/nvim-treesitter-textobjects")
-		-- use({ "nvim-treesitter/nvim-treesitter-angular" })
 		use({ "ShooTeX/nvim-treesitter-angular" })
 		use("windwp/nvim-ts-autotag")
 		use({ "maxmellon/vim-jsx-pretty", ft = { "js", "jsx", "ts", "tsx" } })
-		-- use({
-		-- 	"narutoxy/dim.lua",
-		-- 	requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
-		-- 	config = function()
-		-- 		require("dim").setup({})
-		-- 	end,
-		-- })
 
 		-- Status line and bufferline
 		use({
@@ -150,8 +142,6 @@ return require("packer").startup({
 
 		-- Theme
 		use({ "folke/tokyonight.nvim" })
-		-- use "morhetz/gruvbox"
-		-- use "navarasu/onedark.nvim"
 		use("rebelot/kanagawa.nvim")
 
 		-- Terminal
@@ -246,7 +236,6 @@ return require("packer").startup({
 		use({ "amadeus/vim-convert-color-to" })
 	end,
 	config = {
-		--      compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
 		display = {
 			open_fn = require("packer.util").float,
 		},
