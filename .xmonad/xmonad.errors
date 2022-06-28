@@ -1,21 +1,23 @@
 
-xmonad.hs:18:1: error:
-    Could not find module ‘XMonad.Hooks.StatusBar’
-    Use -v (or `:set -v` in ghci) to see a list of the files searched for.
-   |
-18 | import XMonad.Hooks.StatusBar
-   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+xmonad.hs:109:35: warning: [-Wdeprecations]
+    In the use of ‘defaultGSConfig’
+    (imported from XMonad.Actions.GridSelect):
+    Deprecated: "Use def (from Data.Default, and re-exported from XMonad.Actions.GridSelect) instead."
+    |
+109 |       ((modm, xK_f), goToSelected defaultGSConfig),
+    |                                   ^^^^^^^^^^^^^^^
 
-xmonad.hs:19:1: error:
-    Could not find module ‘XMonad.Hooks.StatusBar.PP’
-    Use -v (or `:set -v` in ghci) to see a list of the files searched for.
-   |
-19 | import XMonad.Hooks.StatusBar.PP
-   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+xmonad.hs:146:1: warning: [-Wtabs]
+    Tab character found here, and in 11 further locations.
+    Please use spaces instead.
+    |
+146 |                         
+    | ^^^^^^^^
 
-xmonad.hs:36:1: error:
-    Could not find module ‘XMonad.Util.ClickableWorkspaces’
-    Use -v (or `:set -v` in ghci) to see a list of the files searched for.
-   |
-36 | import XMonad.Util.ClickableWorkspaces
-   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+xmonad.hs:225:12: warning: [-Wdeprecations]
+    In the use of ‘spacingWithEdge’
+    (imported from XMonad.Layout.Spacing):
+    Deprecated: "Use spacingRaw instead."
+    |
+225 | myLayout = spacingWithEdge 4 $ avoidStruts (tiled ||| Mirror tiled ||| Full)
+    |            ^^^^^^^^^^^^^^^
