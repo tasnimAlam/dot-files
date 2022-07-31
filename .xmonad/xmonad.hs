@@ -7,19 +7,17 @@
 -- Normally, you'd only override those defaults you care about.
 --
 
+import Data.Default
 import qualified Data.Map as M
 import Data.Monoid
 import System.Exit
 import XMonad
-
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.EwmhDesktops 
-
 import XMonad.Actions.CycleWS
 import XMonad.Actions.GridSelect
 import XMonad.Actions.WindowGo
- 
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.ManageDocks
 -- import qualified XMonad.Prompt         as P
 -- import qualified XMonad.Actions.Submap as SM
 -- import qualified XMonad.Actions.Search as S
@@ -27,7 +25,6 @@ import XMonad.Actions.WindowGo
 import XMonad.Layout.Gaps
 import XMonad.Layout.Spacing
 import qualified XMonad.StackSet as W
-
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Util.WorkspaceCompare
@@ -73,7 +70,6 @@ myNormalBorderColor = "transparent"
 
 myFocusedBorderColor = "#03A9F4"
 
-
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
@@ -81,23 +77,18 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   M.fromList $
     -- launch a terminal
     [ ((modm, xK_Return), spawn $ XMonad.terminal conf),
-    
       -- launch applications
       ((modm, xK_p), spawn "rofi -show drun -show-icons"),
-      
       -- Chromium
       ((modm, xK_b), runOrRaise "chromium" (className =? "Chromium")),
-      
       -- close focused window
       ((modm .|. shiftMask, xK_c), kill),
-      
       -- Rotate through the available layout algorithms
       ((modm, xK_space), sendMessage NextLayout),
       --  Reset the layouts on the current workspace to default
       ((modm .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf),
       -- Resize viewed windows to the correct size
       ((modm, xK_n), refresh),
-      
       -- Move focus to the next window
       ((modm, xK_Tab), windows W.focusDown),
       -- Move focus to the next window
@@ -106,25 +97,22 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       ((modm, xK_k), windows W.focusUp),
       -- Move focus to the master window
       ((modm, xK_m), windows W.focusMaster),
-      ((modm, xK_f), goToSelected defaultGSConfig),
-      
+      ((modm, xK_f), goToSelected def),
       -- Move between windows
       ((modm, xK_i), nextWS),
       ((modm, xK_u), prevWS),
       ((mod1Mask, xK_i), nextWS),
       ((mod1Mask, xK_u), prevWS),
-      
       ((modm .|. shiftMask, xK_i), shiftToNext),
       ((modm .|. shiftMask, xK_u), shiftToPrev),
       -- ((modm, xK_z), toggleWS),
-      
+
       -- Swap the focused window and the master window
       ((modm .|. shiftMask, xK_Return), windows W.swapMaster),
       -- Swap the focused window with the next window
       ((modm .|. shiftMask, xK_j), windows W.swapDown),
       -- Swap the focused window with the previous window
       ((modm .|. shiftMask, xK_k), windows W.swapUp),
-      
       -- Shrink the master area
       ((modm, xK_h), sendMessage Shrink),
       -- Expand the master area
@@ -143,18 +131,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       -- Shutdown, restart
       ((modm .|. controlMask, xK_s), spawn "shutdown now"),
       ((modm .|. controlMask, xK_r), spawn "shutdown -r now"),
-			
-			-- Bluetooth connection
+      -- Bluetooth connection
       ((modm .|. controlMask, xK_b), spawn "dmenu-bluetooth"),
-
-			-- Volume controller
+      -- Volume controller
       ((modm .|. controlMask, xK_comma), spawn "pactl set-sink-volume 0 -5%"),
       ((modm .|. controlMask, xK_period), spawn "pactl set-sink-volume 0 +5%"),
       ((modm .|. controlMask, xK_m), spawn "pactl set-sink-mute 0 toggle"),
-			
       -- Screenshot
-      (( controlMask .|. shiftMask, xK_5), spawn "flameshot gui"),
-
+      ((controlMask .|. shiftMask, xK_5), spawn "flameshot gui"),
       -- Quit xmonad
       ((modm .|. shiftMask, xK_q), io (exitWith ExitSuccess)),
       -- Restart xmonad
@@ -170,7 +154,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
           (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
       ]
       ++
-      
       -- alt-[1..9] also switch workpaces
       [ ((m .|. modm, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9],
@@ -185,7 +168,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
         | (key, sc) <- zip [xK_w, xK_e, xK_r] [0 ..],
           (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
       ]
-
 
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
@@ -256,9 +238,9 @@ myManageHook =
     [ className =? "MPlayer" --> doFloat,
       className =? "Gimp" --> doFloat,
       className =? "Chromium" --> doShift (myWorkspaces !! 1),
-      className =? "Slack" -->  doShift (myWorkspaces !! 2),
+      className =? "Slack" --> doShift (myWorkspaces !! 2),
       className =? "qbittorrent" --> (doFloat <+> doShift "4"),
-      className =? "vlc" -->  doShift "4",
+      className =? "vlc" --> doShift "4",
       resource =? "desktop_window" --> doIgnore,
       resource =? "kdesktop" --> doIgnore
     ]
@@ -274,7 +256,8 @@ myManageHook =
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
 -- myEventHook = mempty
-myEventHook = docksEventHook <+> handleEventHook def <+> fullscreenEventHook
+-- myEventHook = docksEventHook <+> handleEventHook def <+> fullscreenEventHook
+myEventHook = handleEventHook def
 
 ------------------------------------------------------------------------
 -- Status bars and logging
@@ -303,11 +286,12 @@ myStartupHook = do
 ------------------------------------------------------------------------
 -- My custom stdin pretty-printer for xmobar. Only interested in
 -- workspaces at this time
-myPP = def
-   { 
-     ppLayout = const ""  -- Don't show the layout name
-    ,ppVisible = wrap "(" ")"  -- Non-focused (but still visible) screen
-   }
+myPP =
+  def
+    { ppLayout = const "", -- Don't show the layout name
+      ppVisible = wrap "(" ")" -- Non-focused (but still visible) screen
+    }
+
 -- Now run xmonad with all the defaults we set up.
 
 -- Run xmonad with the settings you specify. No need to modify this.
@@ -315,11 +299,11 @@ myPP = def
 -- main = do
 --   xmproc <- spawnPipe "xmobar -x 0 ~/.xmobarrc"
 --   xmonad $ docks defaults
-  -- xmonad defaults
+-- xmonad defaults
 -- main = xmonad =<< xmobar defaults
 main = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey defaults
-toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_6)
-  
+
+toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_6)
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
@@ -342,7 +326,7 @@ defaults =
       keys = myKeys,
       mouseBindings = myMouseBindings,
       -- hooks, layouts
-      layoutHook =  myLayout,
+      layoutHook = myLayout,
       manageHook = myManageHook,
       handleEventHook = myEventHook,
       logHook = myLogHook,
