@@ -43,6 +43,7 @@ return require("packer").startup({
 				require("plugins.null-ls")
 			end,
 		})
+		use({ "gpanders/editorconfig.nvim" })
 
 		-- Comments
 		use({
@@ -151,10 +152,14 @@ return require("packer").startup({
 				require("plugins.toggleterm")
 			end,
 		})
-		use("voldikss/vim-floaterm")
+		use({
+			"numToStr/FTerm.nvim",
+			config = function()
+				require("plugins.fterm")
+			end,
+		})
 
 		-- Navigation and search
-		-- use("ggandor/lightspeed.nvim")
 		use({ "mfussenegger/nvim-treehopper" })
 		use({ "gelguy/wilder.nvim", run = "UpdateRemotePlugins" })
 		use({
