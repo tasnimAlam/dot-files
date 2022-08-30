@@ -1,11 +1,12 @@
 local utils = require("core.utils")
 local map = vim.api.nvim_set_keymap
 
-vim.g.mapleader = ","
-map("n", ",", "", {})
+vim.g.mapleader = " "
+-- map("n", ",", "", {})
 map("n", "<Leader>o", ":on<CR>", {})
 map("n", "<Leader>w", ":w!<CR>", {})
 map("n", "<Leader>q", ":q!<CR>", {})
+-- map("n", "<Leader>p", "<cmd>lua vim.lsp.buf.format()<CR>", {})
 map("n", "<Leader>p", "<cmd>lua vim.lsp.buf.format()<CR>", {})
 map("n", "<Leader>n", ":FloatermNew! nnn<CR>", {})
 map("n", "<S-h>", ":noh<CR>", {})
@@ -29,7 +30,7 @@ map("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", {})
 map("n", "<space>e", "<cmd>Lspsaga show_line_diagnostics<CR>", {})
 map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", {})
 map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", {})
-map("n", "<space>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", {})
+-- map("n", "<space>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", {})
 
 -- Snippet config
 map("i", "<C-j>", "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'", { expr = true })
