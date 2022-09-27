@@ -289,13 +289,9 @@ myPP =
 -- Now run xmonad with all the defaults we set up.
 
 -- Run xmonad with the settings you specify. No need to modify this.
---
--- main = do
---   xmproc <- spawnPipe "xmobar -x 0 ~/.xmobarrc"
---   xmonad $ docks defaults
 -- xmonad defaults
--- main = xmonad =<< xmobar defaults
-main = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey defaults
+-- main = xmonad $ ewmhFullscreen $ ewmh  $ defaults 
+main = xmonad . ewmhFullscreen . ewmh  =<< statusBar "xmobar" myPP toggleStrutsKey  defaults
 
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_6)
 
