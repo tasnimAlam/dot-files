@@ -84,9 +84,15 @@ return require("packer").startup({
 			end,
 		})
 		use("nvim-treesitter/nvim-treesitter-textobjects")
-		use({ "ShooTeX/nvim-treesitter-angular" })
 		use("windwp/nvim-ts-autotag")
 		use({ "maxmellon/vim-jsx-pretty", ft = { "js", "jsx", "ts", "tsx" } })
+		use({
+			"kevinhwang91/nvim-ufo",
+			requires = "kevinhwang91/promise-async",
+			config = function()
+				require("plugins.ufo")
+			end,
+		})
 
 		-- Status line and bufferline
 		use({
@@ -222,9 +228,9 @@ return require("packer").startup({
 		use({ "kevinhwang91/nvim-bqf" })
 		use({ "APZelos/blamer.nvim" })
 		use({
-			"rlane/pounce.nvim",
+			"phaazon/hop.nvim",
 			config = function()
-				require("plugins.pounce")
+				require("plugins.hop")
 			end,
 		})
 		use("lewis6991/impatient.nvim")
