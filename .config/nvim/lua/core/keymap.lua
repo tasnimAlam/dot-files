@@ -30,6 +30,7 @@ map("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", {})
 map("n", "<space>e", "<cmd>Lspsaga show_line_diagnostics<CR>", {})
 map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", {})
 map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", {})
+-- map("n", "<space>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", {})
 
 -- Snippet config
 map("i", "<C-j>", "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'", { expr = true })
@@ -45,7 +46,7 @@ map("s", "<S-Tab>", "vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'"
 map("n", "n", "nzzzv", {})
 map("n", "<S-n>", "Nzzzv", {})
 
--- Toggle boolean
+-- Tooggle config
 map("n", "<Leader>t", ":ToggleAlternate<CR>", {})
 
 -- Trouble config
@@ -132,9 +133,11 @@ map("i", "cll", "console.log()<ESC><S-f>(a", {})
 map("v", "cll", "S(iconsole.log<ESC>", {})
 map("n", "cll", "yiwocll<ESC>p", {})
 
--- Hop config
-map("n", "s", "<cmd>HopChar2<CR>", {})
-map("v", "s", "<cmd>HopChar2<CR>", {})
+-- Pounce config
+map("n", "s", "<cmd>Pounce<CR>", {})
+map("v", "s", "<cmd>Pounce<CR>", {})
+map("n", "S", "<cmd>PounceRepeat<CR>", {})
+map("o", "gs", "<cmd>Pounce<CR>", {})
 
 -- Window movement
 map("n", "<C-h>", "<cmd>lua require('Navigator').left()<CR>", {})

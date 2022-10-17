@@ -84,15 +84,9 @@ return require("packer").startup({
 			end,
 		})
 		use("nvim-treesitter/nvim-treesitter-textobjects")
+		-- use({ "ShooTeX/nvim-treesitter-angular" })
 		use("windwp/nvim-ts-autotag")
 		use({ "maxmellon/vim-jsx-pretty", ft = { "js", "jsx", "ts", "tsx" } })
-		use({
-			"kevinhwang91/nvim-ufo",
-			requires = "kevinhwang91/promise-async",
-			config = function()
-				require("plugins.ufo")
-			end,
-		})
 
 		-- Status line and bufferline
 		use({
@@ -185,14 +179,14 @@ return require("packer").startup({
 		})
 
 		-- Note taking
-		use({
-			"nvim-neorg/neorg",
-			ft = "norg",
-			after = "nvim-treesitter",
-			config = function()
-				require("neorg").setup({})
-			end,
-		})
+		-- use({
+		-- 	"nvim-neorg/neorg",
+		-- 	ft = "norg",
+		-- 	after = "nvim-treesitter",
+		-- 	config = function()
+		-- 		require("neorg").setup({})
+		-- 	end,
+		-- })
 
 		-- Helper
 		use({
@@ -228,9 +222,9 @@ return require("packer").startup({
 		use({ "kevinhwang91/nvim-bqf" })
 		use({ "APZelos/blamer.nvim" })
 		use({
-			"phaazon/hop.nvim",
+			"rlane/pounce.nvim",
 			config = function()
-				require("plugins.hop")
+				require("plugins.pounce")
 			end,
 		})
 		use("lewis6991/impatient.nvim")
@@ -257,6 +251,7 @@ return require("packer").startup({
 		use({ "amadeus/vim-convert-color-to" })
 	end,
 	config = {
+		max_jobs = 10,
 		display = {
 			open_fn = require("packer.util").float,
 		},
