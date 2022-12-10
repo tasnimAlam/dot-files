@@ -1,6 +1,34 @@
 return {
-  ["nathom/filetype.nvim"] = {},
-  ["goolord/alpha-nvim"] = { disable = false },
+  ["L3MON4D3/LuaSnip"] = {
+    wants = "friendly-snippets",
+    after = "nvim-cmp",
+    config = function()
+      require("plugins.configs.others").luasnip()
+      require("luasnip").filetype_extend("typescript", { "javascript" })
+    end,
+  },
+  ["mfussenegger/nvim-treehopper"] = {},
+  ["NvChad/nvterm"] = { disable = true },
+  ["akinsho/toggleterm.nvim"] = {
+    config = function()
+      require "custom.plugins.toggleterm"
+    end,
+  },
+  ["junegunn/fzf"] = { run = "./install --all" },
+  ["junegunn/fzf.vim"] = {},
+  ["neovim/nvim-lspconfig"] = {
+    config = function()
+      require "plugins.configs.lspconfig"
+      require "custom.plugins.lsp"
+    end,
+  },
+  -- ["nathom/filetype.nvim"] = {},
+  ["goolord/alpha-nvim"] = {
+    disable = false,
+    config = function()
+      require "custom.plugins.alpha"
+    end,
+  },
   ["folke/which-key.nvim"] = { disable = false },
   ["max397574/better-escape.nvim"] = {
     config = function()
@@ -31,6 +59,12 @@ return {
   },
   ["gpanders/editorconfig.nvim"] = {},
 
+  ["nvim-treesitter/nvim-treesitter"] = {
+    config = function()
+      require "plugins.configs.treesitter"
+      require "custom.plugins.treesitter"
+    end,
+  },
   ["nvim-treesitter/nvim-treesitter-textobjects"] = {},
   -- ["hrsh7th/vim-vsnip"] = {},
   -- ["hrsh7th/cmp-vsnip"] = {},

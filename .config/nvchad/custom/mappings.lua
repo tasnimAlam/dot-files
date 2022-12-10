@@ -1,11 +1,15 @@
 local M = {}
 
 M.disabled = {
-  ["<leader>n"] = "",
+  n = {
+    ["<leader>n"] = "",
+  },
 }
 
 M.general = {
   n = {
+    ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>" },
+    ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>" },
     ["<leader>o"] = { "<cmd>on<cr>", "only file" },
     ["<leader>w"] = { "<cmd>w!<cr>", "write file" },
     ["<leader>q"] = { "<cmd>q!<cr>", "quit neovim" },
@@ -29,16 +33,21 @@ M.lspconfig = {
     ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>" },
     ["gr"] = { "<cmd>TroubleToggle lsp_references<CR>" },
     ["gi"] = { "<cmd>lua vim.lsp.buf.implementation()<CR>" },
-    ["K"] = { "<cmd>Lspsaga hover_doc<cr>" },
     ["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>" },
     ["<leader>wa"] = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>" },
     ["<leader>wr"] = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>" },
     ["<leader>wl"] = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>" },
     ["<leader>D"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>" },
-    ["<leader>rn"] = { "<cmd>Lspsaga rename<CR>" },
-    ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>" },
-    ["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>" },
-    ["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>" },
+  },
+}
+
+M.lspsaga = {
+  n = {
+    ["<leader>rn"] = { "<cmd>Lspsaga rename<CR>", "rename multiple" },
+    ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "code action" },
+    ["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "next diagnostic" },
+    ["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "previous diagnostic" },
+    ["K"] = { "<cmd>Lspsaga hover_doc<cr>", "hover documentation" },
   },
 }
 
@@ -92,7 +101,6 @@ M.nvimtree = {
 
 M.git = {
   n = {
-
     ["<Leader>g"] = { ":FloatermNew --width=1.0 --height=1.0 --autoclose=2 lazygit<CR>" },
     ["]c"] = { "<cmd>Gitsigns next_hunk<CR>" },
     ["[c"] = { "<cmd>Gitsigns prev_hunk<CR>" },
@@ -121,7 +129,7 @@ M.yabs = {
 
 M.treehopper = {
   n = {
-    ["<leader>v"] = { "<cmd>lua require('tsht').nodems()<CR>", "run task" },
+    ["<leader>v"] = { "<cmd>lua require('tsht').nodes()<CR>", "highlight part" },
   },
 }
 
