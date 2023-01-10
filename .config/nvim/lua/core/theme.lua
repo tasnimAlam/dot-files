@@ -9,4 +9,4 @@ vim.cmd([[highlight IndentBlanklineChar guifg=#414868 gui=nocombine]])
 vim.g.tokyonight_style = "day"
 vim.g.tokyonight_italic_functions = true
 vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
-vim.cmd([[colorscheme tokyonight-day]])
+vim.cmd([[colorscheme tokyonight-storm]])

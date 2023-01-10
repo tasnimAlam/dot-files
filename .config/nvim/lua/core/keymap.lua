@@ -1,18 +1,16 @@
-local utils = require("core.utils")
+local utils = require "core.utils"
 local map = vim.api.nvim_set_keymap
 
 vim.g.mapleader = " "
--- map("n", ",", "", {})
 map("n", "<Leader>o", ":on<CR>", {})
 map("n", "<Leader>w", ":w!<CR>", {})
 map("n", "<Leader>q", ":q!<CR>", {})
--- map("n", "<Leader>p", "<cmd>lua vim.lsp.buf.format()<CR>", {})
 map("n", "<Leader>p", "<cmd>lua vim.lsp.buf.format()<CR>", {})
 map("n", "<Leader>n", ":FloatermNew! nnn<CR>", {})
-map("n", "<S-h>", ":noh<CR>", {})
+map("n", "<Esc>", ":noh<CR>", {})
 map("i", "<C-a>", "<C-o>^", {})
 map("i", "<C-e>", "<C-o>$", {})
-map("n", "<C-n>", "<cmd>FloatermNew<CR>", {})
+map("n", "<C-n>", ":FloatermNew!<CR>", {})
 
 -- Lsp mapping
 map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", {})
@@ -30,7 +28,6 @@ map("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", {})
 map("n", "<space>e", "<cmd>Lspsaga show_line_diagnostics<CR>", {})
 map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", {})
 map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", {})
--- map("n", "<space>q", "<cmd>lua vim.diagnostic.set_loclist()<CR>", {})
 
 -- Snippet config
 map("i", "<C-j>", "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'", { expr = true })
@@ -94,21 +91,27 @@ map("i", "<CR>", 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true })
 
 -- Telescope and fzf config
 map("n", "<space><space>", '<cmd>lua require("telescope.builtin").find_files()<CR>', { noremap = true, silent = true })
+map(
+  "n",
+  "<Leader>fa",
+  "<cmd>Telescope find_files follow=true no_ignore=true hidden=true <CR>",
+  { noremap = true, silent = true }
+)
 map("n", "<Leader>ss", '<cmd>lua require("telescope.builtin").grep_string()<CR>', { noremap = true, silent = true })
 map("n", "<Leader>sl", '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true })
 map("n", "<Leader>/", '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>', { noremap = true })
 map("n", "<C-p>", '<cmd>lua require("telescope").extensions.project.project{}<CR>', { noremap = true, silent = true })
 map(
-	"n",
-	"<Leader>rf",
-	'<cmd>lua require("telescope.builtin").oldfiles({hidden = true})<CR>',
-	{ noremap = true, silent = true }
+  "n",
+  "<Leader>rf",
+  '<cmd>lua require("telescope.builtin").oldfiles({hidden = true})<CR>',
+  { noremap = true, silent = true }
 )
 map(
-	"n",
-	"<Leader>fm",
-	'<cmd>lua require("telescope").extensions.media_files.media_files()<CR>',
-	{ noremap = true, silent = true }
+  "n",
+  "<Leader>fm",
+  '<cmd>lua require("telescope").extensions.media_files.media_files()<CR>',
+  { noremap = true, silent = true }
 )
 
 -- Buffer management
