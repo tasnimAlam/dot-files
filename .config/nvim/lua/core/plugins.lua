@@ -137,7 +137,12 @@ return require("packer").startup {
     use "hrsh7th/cmp-vsnip"
     use "rafamadriz/friendly-snippets"
     use { "mbbill/undotree", cmd = "UndotreeToggle" }
-    use { "lukas-reineke/indent-blankline.nvim", event = "BufRead" }
+    use {
+      "lukas-reineke/indent-blankline.nvim",
+      config = function()
+        require "plugins.indent"
+      end,
+    }
     use {
       "lewis6991/gitsigns.nvim",
       requires = { "nvim-lua/plenary.nvim" },
