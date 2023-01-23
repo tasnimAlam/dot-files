@@ -5,10 +5,10 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvi
 
 # Install packages
 sudo pacman -S --noconfirm --needed - <packages.txt
-yay -S --noconfirm fnm mycli slack visual-studio-code-bin betterlockscreen
+yay -S --noconfirm - <yay.txt
 
 # Npm packages
-npm i -g <npm.txt
+cat npm.txt | xargs -L1 npm i -g
 
 # install fisher
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher

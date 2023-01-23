@@ -37,3 +37,4 @@ vlc
 yay
 zsh
 lazygit
+exa

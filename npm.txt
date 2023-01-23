@@ -1,2 +1,5 @@
+yarn
 @fsouza/prettierd
 eslint_d
+bash-language-server
+vscode-langservers-extracted

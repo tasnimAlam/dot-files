@@ -1,0 +1,7 @@
+fnm
+mycli
+slack-desktop
+visual-studio-code-bin
+betterlockscreen
+topgrade
+networkmanager-dmenu-git
