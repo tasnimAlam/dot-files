@@ -2,9 +2,7 @@
 
    -- appearance
      font =         "xft:Ubuntu Mono:size=12:bold:antialias=true"
-   , additionalFonts = [ "xft:Font Awesome 6 Free Solid:pixelsize=13" 
-	 , "xtf:Font Awesome 6 Free Brands:pixelsize=10"
-	 , "xtf:Font Awesome 6 Free Solid:pixelsize=10" ]
+   , additionalFonts = [ "xft:Font Awesome 6 Free Solid:pixelsize=13"] 
    , bgColor =      "black"
    , fgColor =      "#646464"
    , position =     Static { xpos = 0, ypos=0, width=1920, height=28 }
@@ -15,7 +13,7 @@
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%StdinReader% }{ <action=pavucontrol>%default:Master%</action> <fc=#9ece6a><fn=1></fn>%multicpu%</fc><fc=#f7768e> <fn=1></fn>%memory% </fc> <fc=#2ac3de><fn=1></fn> %wlan0wi% %dynnetwork% </fc> <fc=#ff9e64><fn=1></fn></fc> %date% "
+   , template = "%StdinReader% }{ <action=pavucontrol>%default:Master%</action> <fc=#9ece6a><fn=1></fn>%multicpu%</fc><fc=#f7768e> <fn=1></fn>%memory% </fc> <fc=#dAA520><fn=1></fn> %battery% </fc> <fc=#2ac3de><fn=1></fn> %wlan0wi% %dynnetwork% </fc> <fc=#ff9e64><fn=1></fn></fc> %date% "
 
    -- general behavior
    , lowerOnStart =     False    -- send to bottom of window stack on start
@@ -64,14 +62,14 @@
         , Run Memory         [ "--template" ," <usedratio>%"] 10
 
         -- battery monitor
-        , Run Battery        [ "--template" , "Batt: <acstatus>"
+        , Run Battery        [ "--template" , "<acstatus>"
                              , "--" -- battery specific options
                                        -- discharging status
                                        , "-o"	, "<left>% (<timeleft>)"
                                        -- AC "on" status
                                        , "-O"	, "<fc=#dAA520>Charging</fc>"
                                        -- charged status
-                                       , "-i"	, "<fc=#006000>Charged</fc>"
+                                       , "-i"	, "<fc=#9ece61>Charged</fc>"
                              ] 50
 
         -- time and date indicator 
