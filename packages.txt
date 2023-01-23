@@ -36,3 +36,4 @@ ttf-ubuntu-font-family
 vlc
 yay
 zsh
+lazygit

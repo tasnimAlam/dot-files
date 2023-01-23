@@ -7,7 +7,7 @@
 -- Normally, you'd only override those defaults you care about.
 --
 
-import Data.Default
+-- import Data.Default
 import qualified Data.Map as M
 import Data.Monoid
 import System.Exit
@@ -270,9 +270,8 @@ myLogHook = dynamicLog
 --
 -- By default, do nothing.
 myStartupHook = do
-  spawnOnce "feh --bg-fill ~/Pictures/mountain.png &"
-  spawnOnce "bsp-layout set tall 1 &"
-  spawnOnce "picom --experimental-backends --config ~/.config/picom/picom.conf &"
+  spawnOnce "feh --bg-fill ~/Pictures/mountain.jpg &"
+  spawnOnce "picom --config ~/.config/picom/picom.conf &"
   spawnOnce "ibus-daemon -drxR &"
   spawnOnce "xmodmap -e 'keycode 66 = KP_Home'"
   spawnOnce "xmodmap -e 'keycode 110 = Caps_Lock'"
