@@ -2,4 +2,6 @@ yarn
 @fsouza/prettierd
 eslint_d
 bash-language-server
+typescript-language-server
 vscode-langservers-extracted
+@angular/language-server

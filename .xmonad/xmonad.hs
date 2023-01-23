@@ -7,7 +7,6 @@
 -- Normally, you'd only override those defaults you care about.
 --
 
--- import Data.Default
 import qualified Data.Map as M
 import Data.Monoid
 import System.Exit
@@ -24,6 +23,8 @@ import qualified XMonad.StackSet as W
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Util.WorkspaceCompare
+import XMonad.Hooks.StatusBar
+import XMonad.Hooks.StatusBar.PP
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -76,7 +77,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       -- launch applications
       ((modm, xK_p), spawn "rofi -show drun -show-icons"),
       -- Chromium
-      ((modm, xK_b), runOrRaise "chromium" (className =? "Chromium")),
+      ((modm , xK_b), runOrRaise "chromium" (className =? "Chromium")),
       -- close focused window
       ((modm .|. shiftMask, xK_c), kill),
       -- Rotate through the available layout algorithms
@@ -133,6 +134,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       ((modm .|. controlMask, xK_comma), spawn "pactl set-sink-volume 0 -5%"),
       ((modm .|. controlMask, xK_period), spawn "pactl set-sink-volume 0 +5%"),
       ((modm .|. controlMask, xK_m), spawn "pactl set-sink-mute 0 toggle"),
+      -- Network switch
+      ((modm .|. mod1Mask, xK_i), spawn "networkmanager_dmenu"),
       -- Screenshot
       ((controlMask .|. shiftMask, xK_5), spawn "flameshot gui"),
       -- Quit xmonad
@@ -272,9 +275,9 @@ myLogHook = dynamicLog
 myStartupHook = do
   spawnOnce "feh --bg-fill ~/Pictures/mountain.jpg &"
   spawnOnce "picom --config ~/.config/picom/picom.conf &"
-  spawnOnce "ibus-daemon -drxR &"
   spawnOnce "xmodmap -e 'keycode 66 = KP_Home'"
   spawnOnce "xmodmap -e 'keycode 110 = Caps_Lock'"
+  spawnOnce "xmodmap -e 'keycode 94 = Shift_L'"
 
 ------------------------------------------------------------------------
 -- My custom stdin pretty-printer for xmobar. Only interested in
@@ -289,10 +292,15 @@ myPP =
 
 -- Run xmonad with the settings you specify. No need to modify this.
 -- xmonad defaults
--- main = xmonad $ ewmhFullscreen $ ewmh  $ defaults 
-main = xmonad . ewmhFullscreen . ewmh  =<< statusBar "xmobar" myPP toggleStrutsKey  defaults
-
-toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_6)
+main :: IO ()
+main = xmonad 
+     . ewmhFullscreen
+     . ewmh  
+     . withEasySB (statusBarProp "xmobar" (pure def)) toggleStrutsKey 
+     $ defaults 
+  where 
+    toggleStrutsKey :: XConfig  Layout -> (KeyMask, KeySym)
+    toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_6)
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will

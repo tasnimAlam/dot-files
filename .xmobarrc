@@ -5,7 +5,8 @@
    , additionalFonts = [ "xft:Font Awesome 6 Free Solid:pixelsize=13"] 
    , bgColor =      "black"
    , fgColor =      "#646464"
-   , position =     Static { xpos = 0, ypos=0, width=1920, height=28 }
+   , position =     Static { xpos = 0, ypos=0, width=1728, height=28 }
+   -- position =     TopW L 90
    , border =       BottomB
    , borderColor =  "#646464"
    , alpha =  200
@@ -13,7 +14,7 @@
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%StdinReader% }{ <action=pavucontrol>%default:Master%</action> <fc=#9ece6a><fn=1></fn>%multicpu%</fc><fc=#f7768e> <fn=1></fn>%memory% </fc> <fc=#dAA520><fn=1></fn> %battery% </fc> <fc=#2ac3de><fn=1></fn> %wlan0wi% %dynnetwork% </fc> <fc=#ff9e64><fn=1></fn></fc> %date% "
+   , template = "%XMonadLog% }{ <action=pavucontrol>%default:Master%</action> <fc=#9ece6a><fn=1></fn>%multicpu%</fc><fc=#f7768e> <fn=1></fn>%memory% </fc> <fc=#dAA520><fn=1></fn> %battery% </fc> <fc=#2ac3de><fn=1></fn> %wlan0wi% %dynnetwork% </fc> <fc=#ff9e64><fn=1></fn></fc> %date% "
 
    -- general behavior
    , lowerOnStart =     False    -- send to bottom of window stack on start
@@ -77,7 +78,7 @@
         , Run Date           "<fc=#ff9e64>%e %b %Y (%a) </fc><fc=#bb9af7> %r</fc>" "date" 10
         
         -- show workspaces
-        , Run StdinReader
+        , Run XMonadLog
         ]
 
    }
