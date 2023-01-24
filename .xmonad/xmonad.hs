@@ -295,8 +295,8 @@ main = xmonad
 --
 defaults =
   def
+  { -- simple stuff
       terminal = myTerminal,
-{ -- simple stuff
       focusFollowsMouse = myFocusFollowsMouse,
       clickJustFocuses = myClickJustFocuses,
       borderWidth = myBorderWidth,
