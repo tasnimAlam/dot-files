@@ -1,12 +1,3 @@
---
--- xmonad example config file.
---
--- A template showing all available configuration hooks,
--- and how to override the defaults in your own xmonad.hs conf file.
---
--- Normally, you'd only override those defaults you care about.
---
-
 import qualified Data.Map as M
 import Data.Monoid
 import System.Exit
@@ -23,6 +14,7 @@ import qualified XMonad.StackSet as W
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Util.WorkspaceCompare
+import XMonad.Util.EZConfig
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 
@@ -70,6 +62,7 @@ myFocusedBorderColor = "#03A9F4"
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
+
 myKeys conf@(XConfig {XMonad.modMask = modm}) =
   M.fromList $
     -- launch a terminal
@@ -102,7 +95,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       ((mod1Mask, xK_u), prevWS),
       ((modm .|. shiftMask, xK_i), shiftToNext),
       ((modm .|. shiftMask, xK_u), shiftToPrev),
-      -- ((modm, xK_z), toggleWS),
 
       -- Swap the focused window and the master window
       ((modm .|. shiftMask, xK_Return), windows W.swapMaster),
@@ -279,14 +271,7 @@ myStartupHook = do
   spawnOnce "xmodmap -e 'keycode 110 = Caps_Lock'"
   spawnOnce "xmodmap -e 'keycode 94 = Shift_L'"
 
-------------------------------------------------------------------------
--- My custom stdin pretty-printer for xmobar. Only interested in
--- workspaces at this time
-myPP =
-  def
-    { ppLayout = const "", -- Don't show the layout name
-      ppVisible = wrap "(" ")" -- Non-focused (but still visible) screen
-    }
+-----------------------------------------------------------------------
 
 -- Now run xmonad with all the defaults we set up.
 
@@ -310,8 +295,8 @@ main = xmonad
 --
 defaults =
   def
-    { -- simple stuff
       terminal = myTerminal,
+{ -- simple stuff
       focusFollowsMouse = myFocusFollowsMouse,
       clickJustFocuses = myClickJustFocuses,
       borderWidth = myBorderWidth,
@@ -319,10 +304,8 @@ defaults =
       workspaces = myWorkspaces,
       normalBorderColor = myNormalBorderColor,
       focusedBorderColor = myFocusedBorderColor,
-      -- key bindings
       keys = myKeys,
       mouseBindings = myMouseBindings,
-      -- hooks, layouts
       layoutHook = myLayout,
       manageHook = myManageHook,
       handleEventHook = myEventHook,

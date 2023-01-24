@@ -5,3 +5,5 @@ visual-studio-code-bin
 betterlockscreen
 topgrade
 networkmanager-dmenu-git
+tmuxinator
+dmenu-bluetooth
