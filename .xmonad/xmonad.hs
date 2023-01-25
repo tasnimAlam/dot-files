@@ -294,8 +294,9 @@ myStartupHook = do
   spawnOnce "xmodmap -e 'keycode 66 = KP_Home'"
   spawnOnce "xmodmap -e 'keycode 110 = Caps_Lock'"
   spawnOnce "xmodmap -e 'keycode 94 = Shift_L'"
+  spawnOnce "xmodmap -e 'keycode 107 = Super_R'"
 
------------------------------------------------------------------------
+----------------------------------------------------------------------
 
 -- Now run xmonad with all the defaults we set up.
 
