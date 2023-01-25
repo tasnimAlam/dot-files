@@ -75,11 +75,11 @@ return require("packer").startup {
         require "plugins.cmp"
       end,
     }
-    use {
-      "tzachar/cmp-tabnine",
-      run = "./install.sh",
-      requires = "hrsh7th/nvim-cmp",
-    }
+    -- use {
+    --   "tzachar/cmp-tabnine",
+    --   run = "./install.sh",
+    --   requires = "hrsh7th/nvim-cmp",
+    -- }
 
     -- Treeesitter
     use {

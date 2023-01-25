@@ -8,6 +8,7 @@ local sources = {
 	formatting.rustfmt,
 	formatting.stylua,
 	formatting.black,
+	formatting.brittany,
 }
 
 local on_attach = function(client, bufnr)

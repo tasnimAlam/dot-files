@@ -7,3 +7,4 @@ topgrade
 networkmanager-dmenu-git
 tmuxinator
 dmenu-bluetooth
+haskell-brittany
