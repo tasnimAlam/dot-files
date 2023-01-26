@@ -1,5 +1,6 @@
 import qualified Data.Map                      as M
 import           Data.Monoid
+import           Graphics.X11.ExtraTypes.XF86
 import           System.Exit
 import           XMonad
 import           XMonad.Actions.CycleWS
@@ -17,7 +18,6 @@ import           XMonad.Util.EZConfig
 import           XMonad.Util.Run
 import           XMonad.Util.SpawnOnce
 import           XMonad.Util.WorkspaceCompare
-
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
@@ -137,10 +137,12 @@ myKeys conf@(XConfig { XMonad.modMask = modm }) =
       -- Use this binding with avoidStruts from Hooks.ManageDocks.
       -- See also the statusBar function from Hooks.DynamicLog.
       --
-      -- ((modm              , xK_b     ), sendMessage ToggleStruts),
-      -- Shutdown, restart
+        ((modm .|. mod1Mask, xK_b), sendMessage ToggleStruts)
+      ,
+      -- Shutdown, restart, lock
         ((modm .|. controlMask, xK_s), spawn "shutdown now")
       , ((modm .|. controlMask, xK_r), spawn "shutdown -r now")
+      , ((modm .|. controlMask, xK_l), spawn "betterlockscreen --lock blur")
       ,
       -- Bluetooth connection
         ((modm .|. controlMask, xK_b), spawn "dmenu-bluetooth")
@@ -149,12 +151,24 @@ myKeys conf@(XConfig { XMonad.modMask = modm }) =
         ((modm .|. controlMask, xK_comma), spawn "pactl set-sink-volume 0 -5%")
       , ((modm .|. controlMask, xK_period), spawn "pactl set-sink-volume 0 +5%")
       , ((modm .|. controlMask, xK_m), spawn "pactl set-sink-mute 0 toggle")
+      , ((0, xF86XK_AudioLowerVolume), spawn "pactl set-sink-volume 0 -5%")
+      , ((0, xF86XK_AudioRaiseVolume), spawn "pactl set-sink-volume 0 +5%")
+      , ((0, xF86XK_AudioMute), spawn "pactl set-sink-mute 0 toggle")
+      , ( (0, xF86XK_AudioMicMute)
+        , spawn "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+        )
+      -- Brightness controller
+      , ((0, xF86XK_MonBrightnessUp), spawn "lux -a 5%")
+      , ((0, xF86XK_MonBrightnessDown), spawn "lux -s 5%")
       ,
       -- Network switch
         ((modm .|. mod1Mask, xK_i), spawn "networkmanager_dmenu")
       ,
       -- Screenshot
         ((controlMask .|. shiftMask, xK_5), spawn "flameshot gui")
+      ,
+      -- Slack shortcut
+        ((0, xF86XK_Messenger), runOrRaise "slack" (className =? "Slack"))
       ,
       -- Quit xmonad
         ((modm .|. shiftMask, xK_q), io exitSuccess)
