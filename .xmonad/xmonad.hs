@@ -290,7 +290,7 @@ myLogHook = dynamicLog
 -- By default, do nothing.
 myStartupHook = do
   spawnOnce "feh --bg-fill ~/Pictures/mountain.jpg &"
-  spawnOnce "picom --config ~/.config/picom/picom.conf &"
+  spawnOnce "picom --backend glx --config ~/.config/picom/picom.conf &"
   spawnOnce "xmodmap -e 'keycode 66 = KP_Home'"
   spawnOnce "xmodmap -e 'keycode 110 = Caps_Lock'"
   spawnOnce "xmodmap -e 'keycode 94 = Shift_L'"
