@@ -5,3 +5,4 @@ bash-language-server
 typescript-language-server
 vscode-langservers-extracted
 @angular/language-server
+@angular/cli
