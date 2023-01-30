@@ -41,3 +41,4 @@ exa
 htop
 btop
 stylua
+xdotool
