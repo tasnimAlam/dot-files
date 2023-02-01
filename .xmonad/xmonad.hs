@@ -12,56 +12,29 @@ import           XMonad.Hooks.ManageDocks
 import           XMonad.Hooks.StatusBar
 import           XMonad.Hooks.StatusBar.PP
 import           XMonad.Layout.Gaps
+import           XMonad.Layout.IndependentScreens
 import           XMonad.Layout.Spacing
 import qualified XMonad.StackSet               as W
 import           XMonad.Util.EZConfig
 import           XMonad.Util.Run
 import           XMonad.Util.SpawnOnce
 import           XMonad.Util.WorkspaceCompare
--- The preferred terminal program, which is used in a binding below and by
--- certain contrib modules.
---
+
 myTerminal = "kitty"
 
--- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = True
 
--- Whether clicking on a window to focus also passes the click to the window
 myClickJustFocuses :: Bool
 myClickJustFocuses = False
 
--- Width of the window border in pixels.
---
-myBorderWidth = 1
-
--- modMask lets you specify which modkey you want to use. The default
--- is mod1Mask ("left alt").  You may also consider using mod3Mask
--- ("right alt"), which does not conflict with emacs keybindings. The
--- "windows key" is usually mod4Mask.
---
 myModMask = mod4Mask
-
--- The default number of workspaces (virtual screens) and their names.
--- By default we use numeric strings, but any string may be used as a
--- workspace name. The number of workspaces is determined by the length
--- of this list.
---
--- A tagging example:
---
--- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
---
-myWorkspaces = ["1", "2", "3", "4"]
-
--- Border colors for unfocused and focused windows, respectively.
---
+myBorderWidth = 1
 myNormalBorderColor = "transparent"
-
 myFocusedBorderColor = "#03A9F4"
 
-------------------------------------------------------------------------
--- Key bindings. Add, modify or remove key bindings here.
---
+myWorkspaces = ["1", "2", "3", "4"]
+
 
 myKeys conf@(XConfig { XMonad.modMask = modm }) =
   M.fromList
@@ -192,7 +165,7 @@ myKeys conf@(XConfig { XMonad.modMask = modm }) =
        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
        ]
     ++
-      --
+
       -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
       -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
       --
@@ -221,15 +194,6 @@ myMouseBindings (XConfig { XMonad.modMask = modm }) = M.fromList
   ]
 
 ------------------------------------------------------------------------
--- Layouts:
-
--- You can specify and transform your layouts by modifying these values.
--- If you change layout bindings be sure to use 'mod-shift-space' after
--- restarting (with 'mod-q') to reset your layout state to the new
--- defaults, as xmonad preserves your old layout settings by default.
---
--- The available layouts.  Note that each layout is separated by |||,
--- which denotes layout choice.
 --
 myLayoutHook = spacingWithEdge 4
   $ avoidStruts (tiled ||| Mirror tiled ||| Full)
@@ -304,7 +268,7 @@ myLogHook = dynamicLog
 -- By default, do nothing.
 myStartupHook = do
   spawnOnce "feh --bg-fill ~/Pictures/mountain.jpg &"
-  spawnOnce "picom --backend glx --config ~/.config/picom/picom.conf &"
+  spawnOnce "picom --backend glx &"
   spawnOnce "xmodmap -e 'keycode 66 = KP_Home'"
   spawnOnce "xmodmap -e 'keycode 110 = Caps_Lock'"
   spawnOnce "xmodmap -e 'keycode 94 = Shift_L'"
@@ -327,12 +291,6 @@ main =
   toggleStrutsKey :: XConfig Layout -> (KeyMask, KeySym)
   toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_6)
 
--- A structure containing your configuration settings, overriding
--- fields in the default config. Any you don't override, will
--- use the defaults defined in xmonad/XMonad/Config.hs
---
--- No need to modify this.
---
 defaults = def { -- simple stuff
                  terminal           = myTerminal
                , focusFollowsMouse  = myFocusFollowsMouse
