@@ -15,21 +15,21 @@ local on_attach = function(client, bufnr)
 
 	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-	-- Set autocommands conditional on server_capabilities
-	if client.server_capabilities.document_highlight then
-		vim.api.nvim_exec(
-			[[
-      hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]],
-			false
-		)
-	end
+	-- -- Set autocommands conditional on server_capabilities
+	-- if client.server_capabilities.document_highlight then
+	-- 	vim.api.nvim_exec(
+	-- 		[[
+	--      hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
+	--      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
+	--      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
+	--      augroup lsp_document_highlight
+	--        autocmd! * <buffer>
+	--        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+	--      augroup END
+	--    ]],
+	-- 		false
+	-- 	)
+	-- end
 end
 
 -- Use a loop to conveniently both setup defined servers
