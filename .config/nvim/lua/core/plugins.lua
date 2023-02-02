@@ -132,8 +132,8 @@ return require("packer").startup({
 		use({ "nvim-telescope/telescope-project.nvim" })
 
 		-- Snippets
-		use("hrsh7th/vim-vsnip")
-		use("hrsh7th/cmp-vsnip")
+		use({ "hrsh7th/vim-vsnip" })
+		use({ "hrsh7th/cmp-vsnip" })
 		use({ "rafamadriz/friendly-snippets" })
 		use({ "mbbill/undotree", cmd = "UndotreeToggle" })
 		use({

@@ -55,3 +55,10 @@ cmp.setup.cmdline("/", {
 		{ name = "buffer" },
 	},
 })
+
+vim.cmd([[
+	let g:vsnip_filetypes = {}
+	let g:vsnip_filetypes.javascriptreact = ['javascript']
+	let g:vsnip_filetypes.typescriptreact = ['typescript']
+	let g:vsnip_filetypes.typescript = ['javascript']
+]])
