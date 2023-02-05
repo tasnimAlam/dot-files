@@ -1,21 +1,26 @@
--- impatient has to be loaded before anything else
-local present, impatient = pcall(require, "impatient")
+-- Load lazy plugin first
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-if present then
-	impatient.enable_profile()
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"--single-branch",
+		"https://github.com/folke/lazy.nvim.git",
+		lazypath,
+	})
 end
+vim.opt.runtimepath:prepend(lazypath)
 
--- disable builtin plugins
-require("core/disable-builtins")
+vim.g.mapleader = " "
+require("plugins.lazy-nvim")
 
--- load core modules
+-- Load all other modules after that
 local core_modules = {
 	"core.settings",
-	-- "core.globals",
 	"core.autocmds",
 	"core.keymap",
-	"core.plugins",
-	"core.theme",
 }
 
 for _, module in ipairs(core_modules) do
