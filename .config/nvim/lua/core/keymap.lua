@@ -1,4 +1,4 @@
-local utils = require "core.utils"
+local utils = require("core.utils")
 local map = vim.api.nvim_set_keymap
 
 vim.g.mapleader = " "
@@ -6,11 +6,9 @@ map("n", "<Leader>o", ":on<CR>", {})
 map("n", "<Leader>w", ":w!<CR>", {})
 map("n", "<Leader>q", ":q!<CR>", {})
 map("n", "<Leader>p", "<cmd>lua vim.lsp.buf.format()<CR>", {})
-map("n", "<Leader>n", ":FloatermNew! nnn<CR>", {})
-map("n", "<Esc>", ":noh<CR>", {})
 map("i", "<C-a>", "<C-o>^", {})
+map("n", "<Esc>", ":noh<CR>", {})
 map("i", "<C-e>", "<C-o>$", {})
-map("n", "<C-n>", ":FloatermNew!<CR>", {})
 
 -- Lsp mapping
 map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", {})
@@ -92,26 +90,26 @@ map("i", "<CR>", 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true })
 -- Telescope and fzf config
 map("n", "<space><space>", '<cmd>lua require("telescope.builtin").find_files()<CR>', { noremap = true, silent = true })
 map(
-  "n",
-  "<Leader>fa",
-  "<cmd>Telescope find_files follow=true no_ignore=true hidden=true <CR>",
-  { noremap = true, silent = true }
+	"n",
+	"<Leader>fa",
+	"<cmd>Telescope find_files follow=true no_ignore=true hidden=true <CR>",
+	{ noremap = true, silent = true }
 )
 map("n", "<Leader>ss", '<cmd>lua require("telescope.builtin").grep_string()<CR>', { noremap = true, silent = true })
 map("n", "<Leader>sl", '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true })
 map("n", "<Leader>/", '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>', { noremap = true })
 map("n", "<C-p>", '<cmd>lua require("telescope").extensions.project.project{}<CR>', { noremap = true, silent = true })
 map(
-  "n",
-  "<Leader>rf",
-  '<cmd>lua require("telescope.builtin").oldfiles({hidden = true})<CR>',
-  { noremap = true, silent = true }
+	"n",
+	"<Leader>rf",
+	'<cmd>lua require("telescope.builtin").oldfiles({hidden = true})<CR>',
+	{ noremap = true, silent = true }
 )
 map(
-  "n",
-  "<Leader>fm",
-  '<cmd>lua require("telescope").extensions.media_files.media_files()<CR>',
-  { noremap = true, silent = true }
+	"n",
+	"<Leader>fm",
+	'<cmd>lua require("telescope").extensions.media_files.media_files()<CR>',
+	{ noremap = true, silent = true }
 )
 
 -- Buffer management
@@ -127,7 +125,6 @@ map("n", "g>", ":BufferLineMoveNext<CR>", { silent = true })
 map("n", "g<", ":BufferLineMovePrev<CR>", { silent = true })
 
 -- Git config
-map("n", "<Leader>g", ":FloatermNew --width=1.0 --height=1.0 --autoclose=2 lazygit<CR>", {})
 map("n", "]c", "<cmd>Gitsigns next_hunk<CR>", {})
 map("n", "[c", "<cmd>Gitsigns prev_hunk<CR>", {})
 

@@ -18,7 +18,6 @@ local nnn = fterm:new({
 	},
 })
 
-
 vim.keymap.set("n", "<Leader>g", function()
 	lazygit:toggle()
 end)

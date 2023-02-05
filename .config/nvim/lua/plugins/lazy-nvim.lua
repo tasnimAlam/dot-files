@@ -13,33 +13,23 @@ require("lazy").setup({
 		end,
 	},
 	{
-
 		"tami5/lspsaga.nvim",
 		config = function()
 			require("plugins.lspsaga")
 		end,
 	},
+	{ "onsails/lspkind-nvim" },
+	{ "jose-elias-alvarez/nvim-lsp-ts-utils" },
+	{ "simrat39/rust-tools.nvim", ft = { "rs" } },
 	{
-
-		"onsails/lspkind-nvim",
-	},
-	{
-
-		"jose-elias-alvarez/nvim-lsp-ts-utils",
-	},
-	{
-
-		"simrat39/rust-tools.nvim",
-		ft = { "rs" },
-	},
-	{
-
 		"folke/trouble.nvim",
 		dependencies = "kyazdani42/nvim-web-devicons",
 		config = function()
 			require("plugins.trouble")
 		end,
 	},
+
+	-- Formatting
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		config = function()
@@ -54,8 +44,9 @@ require("lazy").setup({
 		end,
 	},
 	{ "nvim-lua/plenary.nvim" },
+	{ "gpanders/editorconfig.nvim" }, -- remove this when neovim is 0.9
 
-	{ "gpanders/editorconfig.nvim" },
+	-- Comment
 	{
 		"numToStr/Comment.nvim",
 		config = function()
@@ -63,6 +54,7 @@ require("lazy").setup({
 		end,
 	},
 
+	-- Auto completion
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
@@ -81,8 +73,10 @@ require("lazy").setup({
 	{
 		"tzachar/cmp-tabnine",
 		build = "./install.sh",
-		requires = "hrsh7th/nvim-cmp",
+		dependencies = "hrsh7th/nvim-cmp",
 	},
+
+	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -91,22 +85,15 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"nvim-treesitter/nvim-treesitter-textobjects",
-	},
-	{
-		"windwp/nvim-ts-autotag",
-	},
-	{
-		"maxmellon/vim-jsx-pretty",
-		ft = { "js", "jsx", "ts", "tsx" },
-	},
-
+	{ "nvim-treesitter/nvim-treesitter-textobjects" },
 	{ "windwp/nvim-ts-autotag" },
 	{ "maxmellon/vim-jsx-pretty", ft = { "js", "jsx", "ts", "tsx" } },
+	{ "windwp/nvim-ts-autotag" },
+
+	-- Status line
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "kyazdani42/nvim-web-devicons", opt = true },
+		dependencies = { "kyazdani42/nvim-web-devicons", lazy = true },
 		config = function()
 			require("plugins.lualine")
 		end,
@@ -118,6 +105,8 @@ require("lazy").setup({
 			require("plugins.bufferline")
 		end,
 	},
+
+	-- File tree
 	{
 		"kyazdani42/nvim-tree.lua",
 		dependencies = "kyazdani42/nvim-web-devicons",
@@ -127,13 +116,14 @@ require("lazy").setup({
 	},
 	{ "kyazdani42/nvim-web-devicons" },
 
+	-- Search related tools
 	{ "junegunn/fzf", build = "./install --all" },
 	{ "junegunn/fzf.vim" },
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" }, cmd = "Telescope" },
 	},
-	{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{ "nvim-telescope/telescope-project.nvim" },
 
 	-- Snippets
