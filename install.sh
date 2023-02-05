@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Install packer
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
 # Install packages
 sudo pacman -S --noconfirm --needed - <pacman.txt
 yay -S --noconfirm - <yay.txt
