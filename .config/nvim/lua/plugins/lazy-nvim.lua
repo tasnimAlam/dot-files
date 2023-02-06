@@ -168,13 +168,6 @@ require("lazy").setup({
 	-- Navigation and search
 	{ "mfussenegger/nvim-treehopper" },
 	{
-		"gelguy/wilder.nvim",
-		build = "UpdateRemotePlugins",
-		config = function()
-			require("plugins.wilder")
-		end,
-	},
-	{
 		"numToStr/Navigator.nvim",
 		config = function()
 			require("Navigator").setup()
@@ -250,4 +243,12 @@ require("lazy").setup({
 	},
 	{ "amadeus/vim-convert-color-to" },
 	{ "ellisonleao/glow.nvim" },
+	{
+		"folke/noice.nvim",
+		config = function()
+			require("plugins.noice")
+		end,
+	},
+	{ "rcarriga/nvim-notify" },
+	{ "MunifTanjim/nui.nvim" },
 })
