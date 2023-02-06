@@ -132,6 +132,13 @@ require("lazy").setup({
 	{ "rafamadriz/friendly-snippets" },
 	{ "mbbill/undotree", cmd = "UndotreeToggle" },
 	{ "JoosepAlviste/nvim-ts-context-commentstring", ft = { "js", "jsx", "ts", "tsx" } },
+	{
+		"lewis6991/gitsigns.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("plugins.gitsigns")
+		end,
+	},
 
 	-- Theme
 	{

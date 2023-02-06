@@ -70,11 +70,8 @@ map("n", "<Leader>u", ":UndotreeToggle | :UndotreeFocus<CR>", {})
 -- Nvim tree config
 map("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", {})
 
--- Packer config
-map("n", "<Leader>1", ":PackerInstall<CR>", { silent = true, noremap = true })
-map("n", "<Leader>2", ":PackerUpdate<CR>", { silent = true, noremap = true })
-map("n", "<Leader>3", ":PackerClean<CR>", { silent = true, noremap = true })
-map("n", "<Leader>4", ":PackerSync<CR>", { silent = true, noremap = true })
+-- Lazy config
+map("n", "<Leader>l", ":Lazy<CR>", { silent = true, noremap = true })
 
 -- Vim move config
 map("n", "∆", ":m .+1<CR>", { silent = true, noremap = true })
