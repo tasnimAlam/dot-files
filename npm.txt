@@ -6,3 +6,4 @@ typescript-language-server
 vscode-langservers-extracted
 @angular/language-server
 @angular/cli
+npm-check-updates
