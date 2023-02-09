@@ -18,7 +18,7 @@ for folder in ${config_folders[@]}; do
 	fd $folder -d1 $base_dir -x cp -r {} ./.config
 done
 
-# Remove compiled pakcer file
-rm ./.config/nvim/packer/packer.nvim
+# nnn plugins install
+sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
 
 fish
