@@ -68,7 +68,7 @@
                                        -- discharging status
                                        , "-o"	, "<fc=#dAA520><fn=1></fn></fc> <left>%"
                                        -- AC "on" status
-                                       , "-O"	, "<fc=#9ece61><fn=1></fn></fc>"
+                                       , "-O"	, "<fc=#9ece61><fn=1></fn></fc> <left>%"
                                        -- charged status
                                        , "-i"	, "<fc=#9ece61><fn=1></fn></fc>"
                              ] 50
