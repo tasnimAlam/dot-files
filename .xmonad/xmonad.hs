@@ -71,7 +71,7 @@ myKeys conf@(XConfig { XMonad.modMask = modm }) =
       ,
       -- Move focus to the master window
         ((modm, xK_m), windows W.focusMaster)
-      , ((modm, xK_f), goToSelected def)
+      , ((mod1Mask, xK_f), goToSelected def)
       ,
       -- Move between windows
         ((modm, xK_i), nextWS)
@@ -273,6 +273,7 @@ myStartupHook = do
   spawnOnce "xmodmap -e 'keycode 110 = Caps_Lock'"
   spawnOnce "xmodmap -e 'keycode 94 = Shift_L'"
   spawnOnce "xmodmap -e 'keycode 107 = Super_R'"
+  spawnOnce "xmodmap -e 'keycode 135 = Super_R'"
 
 ----------------------------------------------------------------------
 
