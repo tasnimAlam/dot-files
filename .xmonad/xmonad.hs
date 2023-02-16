@@ -5,6 +5,7 @@ import           System.Exit
 import           XMonad
 import           XMonad.Actions.CycleWS
 import           XMonad.Actions.GridSelect
+import           XMonad.Actions.OnScreen
 import           XMonad.Actions.PhysicalScreens
 import           XMonad.Actions.WindowGo
 import           XMonad.Hooks.DynamicLog
@@ -36,62 +37,195 @@ myFocusedBorderColor = "#03A9F4"
 
 myWorkspaces = ["1", "2", "3", "4"]
 
-myKeys = \conf ->
-  mkKeymap conf
-    $  [ ("M-<Return>"            , spawn $ XMonad.terminal conf)
-       , ("M-p", spawn "rofi -show drun -show-icons")
-       , ("M-b", runOrRaise "chromium" (className =? "Chromium"))
-       , ("M-S-c"                 , kill)
-       , ("M-<Space>"             , sendMessage NextLayout)
-       , ("M-n"                   , refresh)
-       , ("M-<Tab>"               , windows W.focusDown)
-       , ("M-j"                   , windows W.focusDown)
-       , ("M-k"                   , windows W.focusUp)
-       , ("M-m"                   , windows W.focusMaster)
-       , ("M-i"                   , nextWS)
-       , ("M-u"                   , prevWS)
-       , ("<Alt_L>-i"             , nextWS)
-       , ("<Alt_L>-u"             , nextWS)
-       , ("M-S-i"                 , shiftToNext)
-       , ("M-S-u"                 , shiftToPrev)
-       , ("M-S-<Return>"          , windows W.swapMaster)
-       , ("M-S-j"                 , windows W.swapDown)
-       , ("M-S-k"                 , windows W.swapUp)
-       , ("M-h"                   , sendMessage Shrink)
-       , ("M-l"                   , sendMessage Expand)
-       , ("M-t"                   , withFocused $ windows . W.sink)
-       -- , ("M-,"                   , sendMessage (IncMasterN 1))
-       -- , ("M-."                   , sendMessage (IncMasterN (-1)))
-       , ("M-S-b"                 , sendMessage ToggleStruts)
-       , ("M-C-s"                 , spawn "shutdown now")
-       , ("M-C-s"                 , spawn "shutdown now")
-       , ("M-C-r"                 , spawn "shutdown -r now")
-       , ("M-C-l", spawn "betterlockscreen --lock blur")
-       , ("M-C-b"                 , spawn "dmenu-bluetooth")
-       , ("M-C-,", spawn "pactl set-sink-volume 0 -5%")
-       , ("M-C-.", spawn "pactl set-sink-volume 0 +5%")
-       , ("M-C-m", spawn "pactl set-sink-mute 0 toggle")
-       , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume 0 -5%")
-       , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume 0 +5%")
-       , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
-       , ( "<XF86AudioMicMute>"
-         , spawn "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
-         )
-       , ("<XF86MonBrightnessUp>"  , spawn "lux -a 5%")
-       , ("<XF86MonBrightnessDown>", spawn "lux -s 5%")
-       , ("M-<Alt_L>-i"            , spawn "networkmanager_dmenu")
-       , ("C-S-5"                  , spawn "flameshot gui ")
-       , ("<XF86Messenger>", runOrRaise "slack" (className =? "Slack"))
-       , ("M-S-q"                  , io exitSuccess)
-       , ("M-q", spawn "xmonad --recompile; xmonad --restart")
-       , ("M-."                    , nextScreen)
+myKeys conf@(XConfig { XMonad.modMask = modm }) =
+  M.fromList
+    $
+    -- launch a terminal
+      [ ((modm, xK_Return), spawn $ XMonad.terminal conf)
+      ,
+      -- launch applications
+        ((modm, xK_p), spawn "rofi -show drun -show-icons")
+      ,
+      -- Chromium
+        ((modm, xK_b), runOrRaise "chromium" (className =? "Chromium"))
+      ,
+      -- close focused window
+        ((modm .|. shiftMask, xK_c), kill)
+      ,
+      -- Rotate through the available layout algorithms
+        ((modm, xK_space), sendMessage NextLayout)
+      ,
+      --  Reset the layouts on the current workspace to default
+        ((modm .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf)
+      ,
+      -- Resize viewed windows to the correct size
+        ((modm, xK_n), refresh)
+      ,
+      -- Move focus to the next window
+        ((modm, xK_Tab), windows W.focusDown)
+      ,
+      -- Move focus to the next window
+        ((modm, xK_j), windows W.focusDown)
+      ,
+      -- Move focus to the previous window
+        ((modm, xK_k), windows W.focusUp)
+      ,
+      -- Move focus to the master window
+        ((modm, xK_m), windows W.focusMaster)
+      , ((modm, xK_f), goToSelected def)
+      ,
+      -- Move between windows
+        ((modm, xK_i), nextWS)
+      , ((modm, xK_u), prevWS)
+      , ((mod1Mask, xK_i), nextWS)
+      , ((mod1Mask, xK_u), prevWS)
+      , ((modm .|. shiftMask, xK_i), shiftToNext)
+      , ((modm .|. shiftMask, xK_u), shiftToPrev)
+      ,
+
+      -- Swap the focused window and the master window
+        ((modm .|. shiftMask, xK_Return), windows W.swapMaster)
+      ,
+      -- Swap the focused window with the next window
+        ((modm .|. shiftMask, xK_j), windows W.swapDown)
+      ,
+      -- Swap the focused window with the previous window
+        ((modm .|. shiftMask, xK_k), windows W.swapUp)
+      ,
+      -- Shrink the master area
+        ((modm, xK_h), sendMessage Shrink)
+      ,
+      -- Expand the master area
+        ((modm, xK_l), sendMessage Expand)
+      ,
+      -- Push window back into tiling
+        ((modm, xK_t), withFocused $ windows . W.sink)
+      ,
+      -- Increment the number of windows in the master area
+        -- ((modm, xK_comma), sendMessage (IncMasterN 1))
+      -- Deincrement the number of windows in the master area
+        -- ((modm, xK_period), sendMessage (IncMasterN (-1)))
+      -- ,
+      -- Toggle the status bar gap
+      -- Use this binding with avoidStruts from Hooks.ManageDocks.
+      -- See also the statusBar function from Hooks.DynamicLog.
+      --
+        ((modm .|. mod1Mask, xK_b), sendMessage ToggleStruts)
+      ,
+      -- Shutdown, restart, lock
+        ((modm .|. controlMask, xK_s), spawn "shutdown now")
+      , ((modm .|. controlMask, xK_r), spawn "shutdown -r now")
+      , ((modm .|. controlMask, xK_l), spawn "betterlockscreen --lock blur")
+      ,
+      -- Bluetooth connection
+        ((modm .|. controlMask, xK_b), spawn "dmenu-bluetooth")
+      ,
+      -- Volume controller
+        ((modm .|. controlMask, xK_comma), spawn "pactl set-sink-volume 0 -5%")
+      , ((modm .|. controlMask, xK_period), spawn "pactl set-sink-volume 0 +5%")
+      , ((modm .|. controlMask, xK_m), spawn "pactl set-sink-mute 0 toggle")
+      , ((0, xF86XK_AudioLowerVolume), spawn "pactl set-sink-volume 0 -5%")
+      , ((0, xF86XK_AudioRaiseVolume), spawn "pactl set-sink-volume 0 +5%")
+      , ((0, xF86XK_AudioMute), spawn "pactl set-sink-mute 0 toggle")
+      , ( (0, xF86XK_AudioMicMute)
+        , spawn "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+        )
+      -- Brightness controller
+      , ((0, xF86XK_MonBrightnessUp), spawn "lux -a 5%")
+      , ((0, xF86XK_MonBrightnessDown), spawn "lux -s 5%")
+      ,
+      -- Network switch
+        ((modm .|. mod1Mask, xK_i), spawn "networkmanager_dmenu")
+      ,
+      -- Screenshot
+        ((controlMask .|. shiftMask, xK_5), spawn "flameshot gui")
+      ,
+      -- Slack shortcut
+        ((0, xF86XK_Messenger), runOrRaise "slack" (className =? "Slack"))
+      ,
+      -- Quit xmonad
+        ((modm .|. shiftMask, xK_q), io exitSuccess)
+      ,
+      -- Restart xmonad
+        ((modm, xK_q), spawn "xmonad --recompile; xmonad --restart")
+      ]
+    ++
+      --
+      -- mod-[1..9], Switch to workspace N
+      -- mod-shift-[1..9], Move client to workspace N
+      --
+       [ ((m .|. mod1Mask, k), windows $ f i)
+       | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+       , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
+       ]
+    ++
+      -- alt-[1..9] also switch workpaces
+       [ ((m .|. modm, k), windows $ f i)
+       | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+       , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
+       ]
+    ++
+
+      -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
+      -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
+      --
+       [ ((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
+       | (key, sc) <- zip [xK_comma, xK_period] [0 ..]
+       , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
        ]
 
-    ++ [ ("M-" ++ m ++ k, windows $ f i)
-       | (i, k) <- zip myWorkspaces ["1", "2", "3", "4"]
-       , (f, m) <- [(W.greedyView, ""), (W.shift, "S-")]
-       ]
-
+-- myKeys = \conf ->
+--   mkKeymap conf
+--     $  [ ("M-<Return>"            , spawn $ XMonad.terminal conf)
+--        , ("M-p", spawn "rofi -show drun -show-icons")
+--        , ("M-b", runOrRaise "chromium" (className =? "Chromium"))
+--        , ("M-S-c"                 , kill)
+--        , ("M-<Space>"             , sendMessage NextLayout)
+--        , ("M-n"                   , refresh)
+--        , ("M-<Tab>"               , windows W.focusDown)
+--        , ("M-j"                   , windows W.focusDown)
+--        , ("M-k"                   , windows W.focusUp)
+--        , ("M-m"                   , windows W.focusMaster)
+--        , ("M-i"                   , nextWS)
+--        , ("M-u"                   , prevWS)
+--        , ("M-S-i"                 , shiftToNext)
+--        , ("M-S-u"                 , shiftToPrev)
+--        , ("M-S-<Return>"          , windows W.swapMaster)
+--        , ("M-S-j"                 , windows W.swapDown)
+--        , ("M-S-k"                 , windows W.swapUp)
+--        , ("M-h"                   , sendMessage Shrink)
+--        , ("M-l"                   , sendMessage Expand)
+--        , ("M-t"                   , withFocused $ windows . W.sink)
+--        , ("M-S-b"                 , sendMessage ToggleStruts)
+--        , ("M-C-s"                 , spawn "shutdown now")
+--        , ("M-C-r"                 , spawn "shutdown -r now")
+--        , ("M-C-l", spawn "betterlockscreen --lock blur")
+--        , ("M-C-b"                 , spawn "dmenu-bluetooth")
+--        , ("M-C-,", spawn "pactl set-sink-volume 0 -5%")
+--        , ("M-C-.", spawn "pactl set-sink-volume 0 +5%")
+--        , ("M-C-m", spawn "pactl set-sink-mute 0 toggle")
+--        , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume 0 -5%")
+--        , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume 0 +5%")
+--        , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
+--        , ( "<XF86AudioMicMute>"
+--          , spawn "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+--          )
+--        , ("<XF86MonBrightnessUp>"  , spawn "lux -a 5%")
+--        , ("<XF86MonBrightnessDown>", spawn "lux -s 5%")
+--        , ("M-<Alt_L>-i"            , spawn "networkmanager_dmenu")
+--        , ("C-S-5"                  , spawn "flameshot gui ")
+--        , ("<XF86Messenger>", runOrRaise "slack" (className =? "Slack"))
+--        , ("M-S-q"                  , io exitSuccess)
+--        , ("M-q", spawn "xmonad --recompile; xmonad --restart")
+--        , ("M-,"                    , prevScreen)
+--        , ("M-."                    , nextScreen)
+--        ]
+--
+--     ++ [ ("M-" ++ m ++ k, windows $ f i)
+--        | (i, k) <- zip myWorkspaces ["1", "2", "3", "4"]
+--        , (f, m) <- [(W.greedyView, ""), (W.shift, "S-")]
+--        ]
+--
 
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
