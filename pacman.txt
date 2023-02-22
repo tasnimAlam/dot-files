@@ -42,3 +42,4 @@ htop
 btop
 stylua
 xdotool
+zathura-pdf-mupdf

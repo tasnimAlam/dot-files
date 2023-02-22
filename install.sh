@@ -21,4 +21,7 @@ done
 # nnn plugins install
 sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
 
+# Set zathura as default pdf reader
+xdg-mime default org.pwmt.zathura.desktop application/pdf
+
 fish
