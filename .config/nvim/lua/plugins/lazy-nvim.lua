@@ -251,4 +251,22 @@ require("lazy").setup({
 	},
 	{ "rcarriga/nvim-notify" },
 	{ "MunifTanjim/nui.nvim" },
+	{
+		"mfussenegger/nvim-dap",
+		lazy = true,
+		dependencies = {
+			"theHamsta/nvim-dap-virtual-text",
+			"rcarriga/nvim-dap-ui",
+			"nvim-telescope/telescope-dap.nvim",
+			{ "mxsdev/nvim-dap-vscode-js" },
+			{
+				"microsoft/vscode-js-debug",
+				lazy = true,
+				build = "npm install --legacy-peer-deps && npm run compile",
+			},
+		},
+		config = function()
+			require("plugins.dap").setup()
+		end,
+	},
 })
