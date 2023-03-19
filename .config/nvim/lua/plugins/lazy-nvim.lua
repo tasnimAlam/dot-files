@@ -251,9 +251,10 @@ require("lazy").setup({
 	},
 	{ "rcarriga/nvim-notify" },
 	{ "MunifTanjim/nui.nvim" },
+
+	-- Debugging
 	{
 		"mfussenegger/nvim-dap",
-		lazy = true,
 		dependencies = {
 			"theHamsta/nvim-dap-virtual-text",
 			"rcarriga/nvim-dap-ui",
@@ -262,11 +263,11 @@ require("lazy").setup({
 			{
 				"microsoft/vscode-js-debug",
 				lazy = true,
-				build = "npm install --legacy-peer-deps && npm run compile",
+				build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
 			},
 		},
 		config = function()
-			require("plugins.dap").setup()
+			require("config.dap")
 		end,
 	},
 })
