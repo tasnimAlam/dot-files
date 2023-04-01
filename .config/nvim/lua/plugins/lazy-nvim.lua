@@ -74,6 +74,9 @@ require("lazy").setup({
 		"tzachar/cmp-tabnine",
 		build = "./install.sh",
 		dependencies = "hrsh7th/nvim-cmp",
+		config = function()
+			require("plugins.cmp-tabnine")
+		end,
 	},
 
 	-- Treesitter

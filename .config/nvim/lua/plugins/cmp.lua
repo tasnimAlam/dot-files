@@ -15,7 +15,7 @@ cmp.setup({
 				buffer = "[Buffer]",
 				vsnip = "[SNIP]",
 				nvim_lsp = "[LSP]",
-				-- cmp_tabnine = "[TN]",
+				cmp_tabnine = "[TN]",
 				nvim_lua = "[Lua]",
 			},
 		}),
@@ -37,7 +37,7 @@ cmp.setup({
 	sources = {
 		{ name = "vsnip" },
 		{ name = "nvim_lsp" },
-		-- { name = "cmp_tabnine" },
+		{ name = "cmp_tabnine" },
 		{ name = "buffer" },
 		{ name = "path" },
 		{ name = "cmdline" },
