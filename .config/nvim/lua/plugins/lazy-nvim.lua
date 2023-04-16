@@ -216,7 +216,7 @@ require("lazy").setup({
 	{ "rrethy/vim-hexokinase", build = "make hexokinase" },
 	{ "tommcdo/vim-exchange" },
 	{ "kevinhwang91/nvim-bqf" },
-	{ "APZelos/blamer.nvim" },
+	{ "f-person/git-blame.nvim" },
 	{
 		"rlane/pounce.nvim",
 		config = function()
