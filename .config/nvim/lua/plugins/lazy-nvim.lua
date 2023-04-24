@@ -40,7 +40,7 @@ require("lazy").setup({
 	{
 		"numToStr/Comment.nvim",
 		config = function()
-			require("plugins.comment")
+			require("Comment").setup()
 		end,
 	},
 	{ "nvim-lua/plenary.nvim" },

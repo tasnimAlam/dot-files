@@ -73,6 +73,9 @@ map("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", {})
 -- Lazy config
 map("n", "<Leader>l", ":Lazy<CR>", { silent = true, noremap = true })
 
+-- Git blame
+map("n", "<Leader>bl", ":GitBlameToggle<CR>", { silent = true, noremap = true })
+
 -- Vim move config
 map("n", "∆", ":m .+1<CR>", { silent = true, noremap = true })
 map("n", "˚", ":m .-2<CR>", { silent = true, noremap = true })
