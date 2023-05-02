@@ -254,6 +254,12 @@ require("lazy").setup({
 	},
 	{ "rcarriga/nvim-notify" },
 	{ "MunifTanjim/nui.nvim" },
+	{
+		"ahmedkhalf/project.nvim",
+		config = function()
+			require("project_nvim").setup({})
+		end,
+	},
 
 	-- Debugging
 	{
