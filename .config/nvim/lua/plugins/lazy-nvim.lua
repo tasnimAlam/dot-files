@@ -216,7 +216,12 @@ require("lazy").setup({
 	{ "rrethy/vim-hexokinase", build = "make hexokinase" },
 	{ "tommcdo/vim-exchange" },
 	{ "kevinhwang91/nvim-bqf" },
-	{ "f-person/git-blame.nvim" },
+	{
+		"f-person/git-blame.nvim",
+		init = function()
+			require("plugins.blame")
+		end,
+	},
 	{
 		"rlane/pounce.nvim",
 		config = function()
@@ -258,6 +263,14 @@ require("lazy").setup({
 		"ahmedkhalf/project.nvim",
 		config = function()
 			require("project_nvim").setup({})
+		end,
+	},
+	{
+		"Wansmer/treesj",
+		keys = { "<space>m", "<space>j", "<space>s" },
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("treesj").setup({})
 		end,
 	},
 
