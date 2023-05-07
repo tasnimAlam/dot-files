@@ -292,4 +292,13 @@ require("lazy").setup({
 			require("config.dap")
 		end,
 	},
+
+	-- Rest API
+	{
+		"rest-nvim/rest.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("plugins.rest")
+		end,
+	},
 })

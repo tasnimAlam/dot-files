@@ -152,6 +152,8 @@ map("n", "<F10>", "<cmd>lua require('dap').step_over() <CR>", {})
 map("n", "<F11>", "<cmd>lua require('dap').step_into() <CR>", {})
 map("n", "<F12>", "<cmd>lua require('dap').step_out() <CR>", {})
 map("n", "<Leader>b", "<cmd>lua require('dap').toggle_breakpoint() <CR>", {})
--- map("n", "<Leader>B", "<cmd>lua require("dap").set_breakpoint() <CR>", {})
--- map("n", "<Leader>dr", "<cmd>lua require("dap").repl.open() <CR>", {})
--- map("n", "<Leder>dl", "<cmd>lua require("dap").run_last() <CR>", {})
+
+-- Rest API test
+map("n", "<Leader>tt", "<Plug>RestNvim<CR>", {})
+map("n", "<Leader>tr", "<Plug>RestNvimLast<CR>", {})
+map("n", "<Leader>tp", "<Plug>RestNvimPreview<CR>", {})
