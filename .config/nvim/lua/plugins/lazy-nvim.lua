@@ -273,6 +273,9 @@ require("lazy").setup({
 			require("treesj").setup({})
 		end,
 	},
+	{
+		"nvim-pack/nvim-spectre",
+	},
 
 	-- Debugging
 	{
@@ -299,6 +302,22 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("plugins.rest")
+		end,
+	},
+
+	-- Copilot
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({})
+		end,
+	},
+	{
+		"zbirenbaum/copilot-cmp",
+		config = function()
+			require("copilot_cmp").setup()
 		end,
 	},
 })
