@@ -1,35 +1,22 @@
 local nvim_lsp = require("lspconfig")
+local navic = require("nvim-navic")
+local navbuddy = require("nvim-navbuddy")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local on_attach = function(client, bufnr)
-	-- Disable tsserver formatting so that null-ls can format
-	if client.name == "tsserver" then
-		client.server_capabilities.document_formatting = false
-	end
-
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
 
 	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-	-- -- Set autocommands conditional on server_capabilities
-	-- if client.server_capabilities.document_highlight then
-	-- 	vim.api.nvim_exec(
-	-- 		[[
-	--      hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-	--      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-	--      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
-	--      augroup lsp_document_highlight
-	--        autocmd! * <buffer>
-	--        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-	--      augroup END
-	--    ]],
-	-- 		false
-	-- 	)
-	-- end
+	-- Navic and Navbuddy setup
+	if client.server_capabilities.documentSymbolProvider then
+		navbuddy.attach(client, bufnr)
+	end
+	navic.attach(client, bufnr)
 end
 
 -- Use a loop to conveniently both setup defined servers

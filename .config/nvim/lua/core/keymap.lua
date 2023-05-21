@@ -107,7 +107,7 @@ map(
 )
 map(
 	"n",
-	"<Leader>fm",
+	"<Leader>mf",
 	'<cmd>lua require("telescope").extensions.media_files.media_files()<CR>',
 	{ noremap = true, silent = true }
 )
@@ -157,3 +157,6 @@ map("n", "<Leader>b", "<cmd>lua require('dap').toggle_breakpoint() <CR>", {})
 map("n", "<Leader>tt", "<Plug>RestNvim<CR>", {})
 map("n", "<Leader>tr", "<Plug>RestNvimLast<CR>", {})
 map("n", "<Leader>tp", "<Plug>RestNvimPreview<CR>", {})
+
+-- Navbuddy
+map("n", "<Leader>fm", "<cmd>lua require('nvim-navbuddy').open()<CR>", {})

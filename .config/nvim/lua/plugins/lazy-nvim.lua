@@ -128,6 +128,7 @@ require("lazy").setup({
 	},
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{ "nvim-telescope/telescope-project.nvim" },
+	{ "nvim-telescope/telescope-media-files.nvim" },
 
 	-- Snippets
 	{ "hrsh7th/vim-vsnip" },
@@ -242,15 +243,15 @@ require("lazy").setup({
 			require("plugins.marks")
 		end,
 	},
-	{
-		"SmiteshP/nvim-gps",
-		dependencies = "nvim-treesitter/nvim-treesitter",
-		config = function()
-			require("nvim-gps").setup()
-		end,
-	},
 	{ "amadeus/vim-convert-color-to" },
-	{ "ellisonleao/glow.nvim" },
+	{
+		"iamcco/markdown-preview.nvim",
+		build = "cd app && npm install",
+		config = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	},
 	{
 		"folke/noice.nvim",
 		config = function()
@@ -275,6 +276,20 @@ require("lazy").setup({
 	},
 	{
 		"nvim-pack/nvim-spectre",
+	},
+	{
+		"SmiteshP/nvim-navic",
+		dependencies = "neovim/nvim-lspconfig",
+	},
+	{
+		"SmiteshP/nvim-navbuddy",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+			"SmiteshP/nvim-navic",
+			"MunifTanjim/nui.nvim",
+			"numToStr/Comment.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
 	},
 
 	-- Debugging
