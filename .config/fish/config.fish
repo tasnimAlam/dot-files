@@ -5,12 +5,17 @@ if status is-interactive
 end
 set -gx EDITOR nvim
 set -gx BROWSER chromium
+
+# Docker 
+# set -gx DOCKER_HOST unix://$XDG_RUNTIME_DIR/docker.sock
+
 set fish_key_bindings fish_user_key_bindings
 
 # Fzf config
 set fzf_preview_file_cmd cat
 set fzf_preview_dir_cmd exa --all --color=always
 set fzf_fd_opts --hidden --exclude=.git
+set -gx FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix"
 
 # Set path 
 fish_add_path ~/bin
@@ -37,12 +42,15 @@ set -x NNN_PLUG "f:fzopen;u:getplugs;p:preview-tui;c:croc;m:mailattach;w:wordcou
 set -x NNN_COLORS 2136
 set -x NNN_FCOLORS c1e2272e006033f7c6d6abc4
 
+set -x CHROME_BIN /usr/bin/chromium
+
+
 if test "$os" = Linux
     set -x NNN_BMS "d:~/Downloads/;w:~/Documents/sports-cloud-webapp;u:~/Documents/ui2/;r:~/Documents/rust-projects/rust_test/;.:~/Documents/dot-files/"
 end
 
 if test "$os" = Darwin
-    set -x NNN_BMS "d:~/Downloads/;w:~/Projects/sports-cloud-webapp;u:~/Projects/ui2/;r:~/Projects/rust-projects/rust_test/;.:~/Projects/dot-files/"
+    set -x NNN_BMS "d:~/Downloads/;w:~/Documents/sports-cloud-webapp;u:~/Documents/ui2/;r:~/Projects/rust-projects/rust_test/;.:~/Projects/dot-files/"
 end
 
 #  Abbreviations

@@ -1,1 +1,1 @@
-/home/shourov/.local/share/nvim/site/pack/packer/start/fzf/shell/key-bindings.fish
+/home/shourov/.local/share/nvim/lazy/fzf/shell/key-bindings.fish
