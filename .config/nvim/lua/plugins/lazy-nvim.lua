@@ -291,6 +291,12 @@ require("lazy").setup({
 			"nvim-telescope/telescope.nvim",
 		},
 	},
+	{
+		"aserowy/tmux.nvim",
+		config = function()
+			return require("tmux").setup()
+		end,
+	},
 
 	-- Debugging
 	{
@@ -310,6 +316,7 @@ require("lazy").setup({
 			require("config.dap")
 		end,
 	},
+	{ "tasnimAlam/px2rem.lua" },
 
 	-- Rest API
 	{
