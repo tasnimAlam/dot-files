@@ -31,7 +31,7 @@ myClickJustFocuses :: Bool
 myClickJustFocuses = False
 
 myModMask = mod4Mask
-myBorderWidth = 1
+myBorderWidth = 2
 myNormalBorderColor = "transparent"
 myFocusedBorderColor = "#03A9F4"
 
@@ -223,7 +223,8 @@ myMouseBindings (XConfig{XMonad.modMask = modm}) =
 --
 myLayoutHook =
     spacingWithEdge 4 $
-        avoidStruts (tiled ||| Mirror tiled ||| Full)
+        -- avoidStruts (tiled ||| Mirror tiled ||| Full)
+        avoidStruts (tiled ||| Full)
   where
     -- default tiling algorithm partitions the screen into two panes
     tiled = Tall nmaster delta ratio
@@ -258,7 +259,7 @@ myManageHook =
         , className =? "Gimp" --> doFloat
         , className =? "Chromium" --> doShift (myWorkspaces !! 1)
         , className =? "Slack" --> doShift (myWorkspaces !! 2)
-        , className =? "Emacs" --> doShift (myWorkspaces !! 3)
+        , className =? "Emacs" --> doShift (myWorkspaces !! 0)
         , className =? "qbittorrent" --> (doFloat <+> doShift "4")
         , className =? "vlc" --> doShift "4"
         , resource =? "desktop_window" --> doIgnore
@@ -285,18 +286,16 @@ myEventHook = handleEventHook def
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = dynamicLog
-
-------------------------------------------------------------------------
+myLogHook = dynamicLog------------------------------------------------------------------------
 -- Startup hook
 
 -- Perform an arbitrary action each time xmonad starts or is restarted
 -- with mod-q.  Used by, e.g., XMonad.Layout.PerWorkspace to initialize
 -- per-workspace layout choices.
 --
--- By default, do nothing.
 myStartupHook = do
-    spawnOnce "feh --bg-fill ~/Pictures/mountain.jpg &"
+    spawnOnce "xmonad --recompile; xmonad --restart"
+    spawnOnce "feh --bg-fill ~/Pictures/comet.png &"
     spawnOnce "picom --backend glx &"
     spawnOnce "xmodmap -e 'keycode 66 = KP_Home'"
     spawnOnce "xmodmap -e 'keycode 110 = Caps_Lock'"
