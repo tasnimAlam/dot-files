@@ -3,6 +3,7 @@ local formatting = null_ls.builtins.formatting
 
 local sources = {
 	formatting.prettierd,
+	-- formatting.dprint,
 	formatting.fish_indent,
 	formatting.shfmt,
 	formatting.rustfmt,

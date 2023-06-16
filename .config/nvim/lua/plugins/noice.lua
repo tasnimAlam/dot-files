@@ -26,6 +26,6 @@ require("noice").setup({
 		},
 	},
 	messages = {
-		max_width = 200,
+		max_width = 80,
 	},
 })
