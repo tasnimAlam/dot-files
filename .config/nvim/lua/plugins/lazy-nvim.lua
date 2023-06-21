@@ -129,6 +129,13 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{ "nvim-telescope/telescope-project.nvim" },
 	{ "nvim-telescope/telescope-media-files.nvim" },
+	{
+		"axkirillov/easypick.nvim",
+		requires = "nvim-telescope/telescope.nvim",
+		config = function()
+			require("plugins.easypick")
+		end,
+	},
 
 	-- Snippets
 	{ "hrsh7th/vim-vsnip" },
