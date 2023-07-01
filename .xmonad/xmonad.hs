@@ -294,9 +294,9 @@ myLogHook = dynamicLog----------------------------------------------------------
 -- per-workspace layout choices.
 --
 myStartupHook = do
-    spawnOnce "xmonad --recompile; xmonad --restart"
     spawnOnce "feh --bg-fill ~/Pictures/comet.png &"
     spawnOnce "picom --backend glx &"
+    spawnOnce "stalonetray"
     spawnOnce "xmodmap -e 'keycode 66 = KP_Home'"
     spawnOnce "xmodmap -e 'keycode 110 = Caps_Lock'"
     spawnOnce "xmodmap -e 'keycode 94 = Shift_L'"
