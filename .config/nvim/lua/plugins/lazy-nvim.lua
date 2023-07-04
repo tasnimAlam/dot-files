@@ -157,7 +157,9 @@ require("lazy").setup({
 		lazy = false,
 		priority = 1000,
 		config = function()
+			require("tokyonight").setup({ transparent = true })
 			vim.cmd([[colorscheme tokyonight]])
+			vim.g.tokyonight_dark_float = false
 		end,
 	},
 	{ "rebelot/kanagawa.nvim" },
@@ -265,7 +267,12 @@ require("lazy").setup({
 			require("plugins.noice")
 		end,
 	},
-	{ "rcarriga/nvim-notify" },
+	{
+		"rcarriga/nvim-notify",
+		config = function()
+			require("plugins.notify")
+		end,
+	},
 	{ "MunifTanjim/nui.nvim" },
 	{
 		"ahmedkhalf/project.nvim",
@@ -356,6 +363,12 @@ require("lazy").setup({
 				desc = "Remote Flash",
 			},
 		},
+	},
+	{
+		"xiyaowong/transparent.nvim",
+		config = function()
+			require("plugins.transparent")
+		end,
 	},
 
 	-- Rest API
