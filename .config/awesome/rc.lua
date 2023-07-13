@@ -57,6 +57,7 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 terminal = "kitty"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
+browser = "chromium"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -189,7 +190,7 @@ awful.screen.connect_for_each_screen(function(s)
 	set_wallpaper(s)
 
 	-- Each screen has its own tag table.
-	awful.tag({ "1", "2", "3", "4" }, s, awful.layout.layouts[1])
+	awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
 	-- Create a promptbox for each screen
 	s.mypromptbox = awful.widget.prompt()
@@ -263,7 +264,7 @@ globalkeys = gears.table.join(
 	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
-	awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
+	awful.key({ modkey }, "Tab", awful.tag.history.restore, { description = "go back", group = "tag" }),
 
 	awful.key({ modkey }, "j", function()
 		awful.client.focus.byidx(1)
@@ -300,6 +301,9 @@ globalkeys = gears.table.join(
 	awful.key({ modkey }, "Return", function()
 		awful.spawn(terminal)
 	end, { description = "open a terminal", group = "launcher" }),
+	awful.key({ modkey }, "b", function()
+		awful.spawn(browser)
+	end, { description = "open a browser", group = "launcher" }),
 	awful.key({ modkey }, "q", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 
@@ -400,11 +404,11 @@ clientkeys = gears.table.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 4 do
+for i = 1, 9 do
 	globalkeys = gears.table.join(
 		globalkeys,
 		-- View tag only.
-		awful.key({ modkey }, "#" .. i + 4, function()
+		awful.key({ modkey }, "#" .. i + 9, function()
 			local screen = awful.screen.focused()
 			local tag = screen.tags[i]
 			if tag then
@@ -412,7 +416,7 @@ for i = 1, 4 do
 			end
 		end, { description = "view tag #" .. i, group = "tag" }),
 		-- Toggle tag display.
-		awful.key({ modkey, "Control" }, "#" .. i + 4, function()
+		awful.key({ modkey, "Control" }, "#" .. i + 9, function()
 			local screen = awful.screen.focused()
 			local tag = screen.tags[i]
 			if tag then
@@ -420,7 +424,7 @@ for i = 1, 4 do
 			end
 		end, { description = "toggle tag #" .. i, group = "tag" }),
 		-- Move client to tag.
-		awful.key({ modkey, "Shift" }, "#" .. i + 4, function()
+		awful.key({ modkey, "Shift" }, "#" .. i + 9, function()
 			if client.focus then
 				local tag = client.focus.screen.tags[i]
 				if tag then
@@ -429,7 +433,7 @@ for i = 1, 4 do
 			end
 		end, { description = "move focused client to tag #" .. i, group = "tag" }),
 		-- Toggle tag on focused client.
-		awful.key({ modkey, "Control", "Shift" }, "#" .. i + 4, function()
+		awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9, function()
 			if client.focus then
 				local tag = client.focus.screen.tags[i]
 				if tag then
@@ -585,3 +589,11 @@ client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
 -- }}}
+-- Startup programs
+awful.util.spawn_with_shell("fehbg")
+awful.util.spawn_with_shell("picom --backend glx &")
+awful.util.spawn_with_shell("xmodmap -e 'keycode 66 = KP_Home'")
+awful.util.spawn_with_shell("xmodmap -e 'keycode 110 = Caps_Lock'")
+awful.util.spawn_with_shell("xmodmap -e 'keycode 94 = Shift_L'")
+awful.util.spawn_with_shell("xmodmap -e 'keycode 107 = Super_R'")
+awful.util.spawn_with_shell("xmodmap -e 'keycode 135 = Super_R'")
