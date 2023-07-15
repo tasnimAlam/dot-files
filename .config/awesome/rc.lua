@@ -51,7 +51,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init("/home/shourov/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
@@ -68,19 +68,19 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-	awful.layout.suit.floating,
 	awful.layout.suit.tile,
+	awful.layout.suit.floating,
 	awful.layout.suit.tile.left,
-	awful.layout.suit.tile.bottom,
-	awful.layout.suit.tile.top,
-	awful.layout.suit.fair,
-	awful.layout.suit.fair.horizontal,
-	awful.layout.suit.spiral,
-	awful.layout.suit.spiral.dwindle,
+	-- awful.layout.suit.tile.bottom,
+	-- awful.layout.suit.tile.top,
+	-- awful.layout.suit.fair,
+	-- awful.layout.suit.fair.horizontal,
+	-- awful.layout.suit.spiral,
+	-- awful.layout.suit.spiral.dwindle,
 	awful.layout.suit.max,
-	awful.layout.suit.max.fullscreen,
-	awful.layout.suit.magnifier,
-	awful.layout.suit.corner.nw,
+	-- awful.layout.suit.max.fullscreen,
+	-- awful.layout.suit.magnifier,
+	-- awful.layout.suit.corner.nw,
 	-- awful.layout.suit.corner.ne,
 	-- awful.layout.suit.corner.sw,
 	-- awful.layout.suit.corner.se,
@@ -240,7 +240,7 @@ awful.screen.connect_for_each_screen(function(s)
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
-			mykeyboardlayout,
+			-- mykeyboardlayout,
 			wibox.widget.systray(),
 			mytextclock,
 			s.mylayoutbox,
@@ -302,10 +302,26 @@ globalkeys = gears.table.join(
 		awful.spawn(terminal)
 	end, { description = "open a terminal", group = "launcher" }),
 	awful.key({ modkey }, "b", function()
-		awful.spawn(browser)
+		-- awful.spawn(browser)
+		awful.spawn.raise_or_spawn(browser, nill, function(c)
+			if c.class == "Chromium" then
+				client.focus = c
+				return true
+			end
+			return false
+		end)
 	end, { description = "open a browser", group = "launcher" }),
+	awful.key({ modkey, "Control" }, "s", function()
+		awful.spawn("shutdown now")
+	end, { description = "Shutdown", group = "launcher" }),
+	awful.key({ modkey, "Control" }, "r", function()
+		awful.spawn("shutdown -r")
+	end, { description = "Restart", group = "launcher" }),
 	awful.key({ modkey }, "q", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
+	awful.key({ modkey, "Control" }, "i", function()
+		awful.spawn("dmenu-bluetooth")
+	end, { description = "bluetooth connection", group = "launcher" }),
 
 	awful.key({ modkey }, "l", function()
 		awful.tag.incmwfact(0.05)
@@ -519,8 +535,7 @@ awful.rules.rules = {
 	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = true } },
 
 	-- Set Firefox to always map on the tag named "2" on screen 1.
-	-- { rule = { class = "Firefox" },
-	--   properties = { screen = 1, tag = "2" } },
+	{ rule = { class = "Chromium" }, properties = { screen = 1, tag = "2" } },
 }
 -- }}}
 
@@ -597,3 +612,10 @@ awful.util.spawn_with_shell("xmodmap -e 'keycode 110 = Caps_Lock'")
 awful.util.spawn_with_shell("xmodmap -e 'keycode 94 = Shift_L'")
 awful.util.spawn_with_shell("xmodmap -e 'keycode 107 = Super_R'")
 awful.util.spawn_with_shell("xmodmap -e 'keycode 135 = Super_R'")
+
+-- wirelessStatus widget pressed function - open terminal and start `nmtui`
+-- beautiful.wirelessStatus.pressed = function(self, button)
+-- 	if button == 1 then -- left mouse click
+-- 		awful.spawn(terminal .. " -e nmtui")
+-- 	end
+-- end
