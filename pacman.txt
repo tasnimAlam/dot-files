@@ -1,6 +1,7 @@
 alsa-plugins
 alsa-utils
 apache
+awesome
 bluedevil
 blueman
 bluez-utils

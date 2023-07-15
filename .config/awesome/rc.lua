@@ -15,6 +15,7 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local battery_widget = require("widgets/battery")
+local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -126,7 +127,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock("%a %b %d, %l:%M %p |")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -242,16 +243,18 @@ awful.screen.connect_for_each_screen(function(s)
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			-- mykeyboardlayout,
-			mytextclock,
+			volume_widget({ widget_type = "icon_and_text" }),
 			battery_widget({
+				ac_prefix = "|  ",
 				battery_prefix = "|  ",
-				widget_text = "${AC_BAT}${color_on}${percent}%${color_off}|",
+				widget_text = "${AC_BAT}${color_on}${percent}%${color_off} | ",
 				percent_colors = {
 					{ 25, "red" },
 					{ 50, "orange" },
 					{ 999, "white" },
 				},
 			}),
+			mytextclock,
 			wibox.widget.systray(),
 			s.mylayoutbox,
 		},
@@ -320,17 +323,33 @@ globalkeys = gears.table.join(
 			return false
 		end)
 	end, { description = "open a browser", group = "launcher" }),
+
+	-- Shutdown, restart
 	awful.key({ modkey, "Control" }, "s", function()
 		awful.spawn("shutdown now")
 	end, { description = "Shutdown", group = "launcher" }),
 	awful.key({ modkey, "Control" }, "r", function()
 		awful.spawn("shutdown -r")
 	end, { description = "Restart", group = "launcher" }),
+	awful.key({ modkey, "Control" }, "l", function()
+		awful.spawn("betterlockscreen --lock blur")
+	end, { description = "Lock screen", group = "launcher" }),
+
 	awful.key({ modkey }, "q", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
-	awful.key({ modkey, "Control" }, "i", function()
+
+	-- Screenshot
+	awful.key({ "Control", "Shift" }, "5", function()
+		awful.spawn("flameshot gui")
+	end, { description = "Take screenshot", group = "launcher" }),
+
+	-- Internet, bluetooth
+	awful.key({ modkey, "Control" }, "b", function()
 		awful.spawn("dmenu-bluetooth")
 	end, { description = "bluetooth connection", group = "launcher" }),
+	awful.key({ modkey, "Control" }, "i", function()
+		awful.spawn("networkmanager_dmenu")
+	end, { description = "internet connection", group = "launcher" }),
 
 	awful.key({ modkey }, "l", function()
 		awful.tag.incmwfact(0.05)
@@ -347,9 +366,9 @@ globalkeys = gears.table.join(
 	awful.key({ modkey, "Control" }, "h", function()
 		awful.tag.incncol(1, nil, true)
 	end, { description = "increase the number of columns", group = "layout" }),
-	awful.key({ modkey, "Control" }, "l", function()
-		awful.tag.incncol(-1, nil, true)
-	end, { description = "decrease the number of columns", group = "layout" }),
+	-- awful.key({ modkey, "Control" }, "l", function()
+	-- 	awful.tag.incncol(-1, nil, true)
+	-- end, { description = "decrease the number of columns", group = "layout" }),
 	awful.key({ modkey }, "space", function()
 		awful.layout.inc(1)
 	end, { description = "select next", group = "layout" }),
@@ -380,7 +399,8 @@ globalkeys = gears.table.join(
 	end, { description = "lua execute prompt", group = "awesome" }),
 	-- Menubar
 	awful.key({ modkey }, "p", function()
-		menubar.show()
+		-- menubar.show()
+		awful.spawn("rofi -show drun -show-icons")
 	end, { description = "show the menubar", group = "launcher" })
 )
 

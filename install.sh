@@ -10,6 +10,11 @@ cat npm.txt | xargs -L1 npm i -g
 # install fisher
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
+# install awesome widgets
+cd ~/.config/awesome
+gh repo clone streetturtle/awesome-wm-widgets
+cd ~/
+
 # Add new config folder here
 config_folders=("bspwm" "dunst" "fish" "kitty" "nvim" "picom" "polybar" "rofi" "sxhkd" "zathura" "starship.toml")
 base_dir="${HOME}/.config/"
