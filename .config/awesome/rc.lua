@@ -14,6 +14,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local battery_widget = require("widgets/battery")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -55,7 +56,7 @@ beautiful.init("/home/shourov/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
-editor = os.getenv("EDITOR") or "nano"
+editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 browser = "chromium"
 
@@ -241,8 +242,17 @@ awful.screen.connect_for_each_screen(function(s)
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			-- mykeyboardlayout,
-			wibox.widget.systray(),
 			mytextclock,
+			battery_widget({
+				battery_prefix = "|  ",
+				widget_text = "${AC_BAT}${color_on}${percent}%${color_off}|",
+				percent_colors = {
+					{ 25, "red" },
+					{ 50, "orange" },
+					{ 999, "white" },
+				},
+			}),
+			wibox.widget.systray(),
 			s.mylayoutbox,
 		},
 	})
@@ -302,7 +312,6 @@ globalkeys = gears.table.join(
 		awful.spawn(terminal)
 	end, { description = "open a terminal", group = "launcher" }),
 	awful.key({ modkey }, "b", function()
-		-- awful.spawn(browser)
 		awful.spawn.raise_or_spawn(browser, nill, function(c)
 			if c.class == "Chromium" then
 				client.focus = c
@@ -534,8 +543,10 @@ awful.rules.rules = {
 	-- Add titlebars to normal clients and dialogs
 	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = true } },
 
-	-- Set Firefox to always map on the tag named "2" on screen 1.
+	-- Set Chromium to always map on the tag named "2" on screen 1.
 	{ rule = { class = "Chromium" }, properties = { screen = 1, tag = "2" } },
+	{ rule = { class = "Slack" }, properties = { screen = 1, tag = "3" } },
+	{ rule = { class = "Emacs" }, properties = { screen = 1, tag = "4" } },
 }
 -- }}}
 
@@ -605,17 +616,13 @@ client.connect_signal("unfocus", function(c)
 end)
 -- }}}
 -- Startup programs
-awful.util.spawn_with_shell("fehbg")
+awful.util.spawn_with_shell("feh --bg-scale ~/Pictures/wallpaper.png &")
 awful.util.spawn_with_shell("picom --backend glx &")
 awful.util.spawn_with_shell("xmodmap -e 'keycode 66 = KP_Home'")
 awful.util.spawn_with_shell("xmodmap -e 'keycode 110 = Caps_Lock'")
 awful.util.spawn_with_shell("xmodmap -e 'keycode 94 = Shift_L'")
 awful.util.spawn_with_shell("xmodmap -e 'keycode 107 = Super_R'")
 awful.util.spawn_with_shell("xmodmap -e 'keycode 135 = Super_R'")
+awful.util.spawn("nm-applet")
 
--- wirelessStatus widget pressed function - open terminal and start `nmtui`
--- beautiful.wirelessStatus.pressed = function(self, button)
--- 	if button == 1 then -- left mouse click
--- 		awful.spawn(terminal .. " -e nmtui")
--- 	end
--- end
+beautiful.useless_gap = 4
