@@ -127,7 +127,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock("%a %b %d, %l:%M %p |")
+mytextclock = wibox.widget.textclock("%a %b %d,%l:%M %p |")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -323,6 +323,9 @@ globalkeys = gears.table.join(
 			return false
 		end)
 	end, { description = "open a browser", group = "launcher" }),
+	awful.key({}, "XF86Messenger", function()
+		awful.spawn("slack")
+	end, { description = "open slack", group = "launcher" }),
 
 	-- Shutdown, restart
 	awful.key({ modkey, "Control" }, "s", function()
@@ -350,6 +353,28 @@ globalkeys = gears.table.join(
 	awful.key({ modkey, "Control" }, "i", function()
 		awful.spawn("networkmanager_dmenu")
 	end, { description = "internet connection", group = "launcher" }),
+
+	-- Brightness
+	awful.key({}, "XF86MonBrightnessUp", function()
+		awful.spawn("lux -a 5%")
+	end, { description = "Brightness increase", group = "launcher" }),
+	awful.key({}, "XF86MonBrightnessDown", function()
+		awful.spawn("lux -s 5%")
+	end, { description = "Brightness decrease", group = "launcher" }),
+
+	-- Volume
+	awful.key({}, "XF86AudioMute", function()
+		awful.spawn("pactl set-sink-mute 0 toggle")
+	end, { description = "Mute volume", group = "launcher" }),
+	awful.key({}, "XF86AudioLowerVolume", function()
+		awful.spawn("pactl set-sink-volume 0 -5%")
+	end, { description = "Volume decrease", group = "launcher" }),
+	awful.key({}, "XF86AudioRaiseVolume", function()
+		awful.spawn("pactl set-sink-volume 0 +5%")
+	end, { description = "Volume increase", group = "launcher" }),
+	awful.key({}, "XF86AudioMicMute", function()
+		awful.spawn("pactl set-source-mute @DEFAULT_SOURCE@ toggle")
+	end, { description = "Mute microphone", group = "launcher" }),
 
 	awful.key({ modkey }, "l", function()
 		awful.tag.incmwfact(0.05)
