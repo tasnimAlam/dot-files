@@ -138,6 +138,7 @@ _forgit_diff() {
         $FORGIT_FZF_DEFAULT_OPTS
         +m -0 --bind=\"enter:execute($enter_cmd | $_forgit_enter_pager)\"
         --preview=\"$preview_cmd\"
+        --bind=\"alt-e:execute-silent($EDITOR \$\($get_files\) >/dev/tty </dev/tty)+refresh-preview\"
         $FORGIT_DIFF_FZF_OPTS
         --prompt=\"$commits > \"
     "
@@ -178,6 +179,7 @@ _forgit_add() {
         $FORGIT_FZF_DEFAULT_OPTS
         -0 -m --nth 2..,..
         --preview=\"$preview\"
+        --bind=\"alt-e:execute-silent($EDITOR \$\(echo {} | $extract\) >/dev/tty </dev/tty)+refresh-preview\"
         $FORGIT_ADD_FZF_OPTS
     "
     files=$(git -c color.status=always -c status.relativePaths=true status -su |
@@ -194,6 +196,7 @@ _forgit_reset_head() {
     _forgit_inside_work_tree || return 1
     local git_reset_head cmd files opts rootdir
     git_reset_head="git reset -q $FORGIT_RESET_HEAD_GIT_OPTS HEAD"
+    [[ $# -ne 0 ]] && $git_reset_head "$@" && git status --short && return
     rootdir=$(git rev-parse --show-toplevel)
     cmd="git diff --staged --color=always -- $rootdir/{} | $_forgit_diff_pager "
     opts="
@@ -211,9 +214,11 @@ _forgit_reset_head() {
 # git stash viewer
 _forgit_stash_show() {
     _forgit_inside_work_tree || return 1
-    local git_stash_list cmd opts
+    local git_stash_show git_stash_list cmd opts
+    git_stash_show="git stash show --color=always --ext-diff"
+    [[ $# -ne 0 ]] && $git_stash_show "$@" && return
     git_stash_list="git stash list $FORGIT_STASH_SHOW_GIT_OPTS"
-    cmd="echo {} |cut -d: -f1 |xargs -I% git stash show --color=always --ext-diff % |$_forgit_diff_pager"
+    cmd="echo {} |cut -d: -f1 |xargs -I% $git_stash_show % |$_forgit_diff_pager"
     opts="
         $FORGIT_FZF_DEFAULT_OPTS
         +s +m -0 --tiebreak=index --bind=\"enter:execute($cmd | $_forgit_enter_pager)\"
@@ -269,6 +274,7 @@ _forgit_stash_push() {
 # git clean selector
 _forgit_clean() {
     _forgit_inside_work_tree || return 1
+    [[ $# -ne 0 ]] && git clean "$@" &>/dev/null && return 0
     local git_clean files opts
     git_clean="git clean $FORGIT_CLEAN_GIT_OPTS"
     opts="
@@ -516,6 +522,7 @@ _forgit_branch_delete() {
     _forgit_inside_work_tree || return 1
     local git_branch preview opts cmd branches
     git_branch="git branch $FORGIT_BRANCH_DELETE_GIT_OPTS"
+    [[ $# -ne 0 ]] && $git_branch -D "$@" && return
     preview="git log {1} $_forgit_log_preview_options"
 
     opts="

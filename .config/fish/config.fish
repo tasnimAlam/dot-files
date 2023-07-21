@@ -25,6 +25,7 @@ fish_add_path ~/.emacs.d/bin/
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.yarn/bin ~/.config/yarn/global/node_modules/.bin ~/.npm-global/bin
 fish_add_path ~/.composer/vendor/bin
+fish_add_path ~/.deno/bin/
 
 if test "$os" = Linux
     fish_add_path ~/Documents/scripts/
@@ -38,7 +39,7 @@ end
 
 # NNN config
 set -x NNN_FIFO "/tmp/nnn.fifo"
-set -x NNN_PLUG "f:fzopen;u:getplugs;p:preview-tui;c:croc;m:mailattach;w:wordcount;i:ipinfo;k:pskill;j:autojump;e:-!sudo -E nvim $nnn*"
+set -x NNN_PLUG "f:fzopen;u:getplugs;p:preview-tui;c:croc;m:nmount;v:imgview;w:wordcount;i:ipinfo;k:pskill;j:autojump;e:-!sudo -E nvim $nnn*;E:suedit;s:x2sel"
 set -x NNN_COLORS 2136
 set -x NNN_FCOLORS c1e2272e006033f7c6d6abc4
 
@@ -46,7 +47,7 @@ set -x CHROME_BIN /usr/bin/chromium
 
 
 if test "$os" = Linux
-    set -x NNN_BMS "d:~/Downloads/;w:~/Documents/sports-cloud-webapp;u:~/Documents/ui2/;r:~/Documents/rust-projects/rust_test/;.:~/Documents/dot-files/"
+    set -x NNN_BMS "d:~/Downloads/;w:~/Documents/sports-cloud-webapp;u:~/Documents/ui2/;r:~/Documents/rust-projects/rust_test/;.:~/Documents/dot-files/;p:~/Pictures/"
 end
 
 if test "$os" = Darwin

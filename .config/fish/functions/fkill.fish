@@ -1,4 +1,4 @@
-function fkill --description "Fuzzy kill"
+function fkill -d "Fuzzy kill"
     set pid (ps -ef | sed 1d | fzf -m | awk '{print $2}')
 
     if test -n "$pid"
