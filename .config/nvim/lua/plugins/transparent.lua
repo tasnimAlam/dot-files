@@ -22,12 +22,13 @@ require("transparent").setup({
 		"SignColumn",
 		"CursorLineNr",
 		"EndOfBuffer",
-		"TelescopeNormal",
-		"TelescopeBorder",
 	},
 	extra_groups = {
 		"NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
 		"NvimTreeNormal", -- NvimTree
+		"TelescopeNormal",
+		"TelescopeBorder",
+		"FloatBorder",
 	},
 	exclude_groups = {}, -- table: groups you don't want to clear
 })

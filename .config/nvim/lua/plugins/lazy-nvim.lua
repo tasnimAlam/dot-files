@@ -36,7 +36,6 @@ require("lazy").setup({
 			require("plugins.null-ls")
 		end,
 	},
-
 	{
 		"numToStr/Comment.nvim",
 		config = function()
@@ -44,7 +43,6 @@ require("lazy").setup({
 		end,
 	},
 	{ "nvim-lua/plenary.nvim" },
-	{ "gpanders/editorconfig.nvim" }, -- remove this when neovim is 0.9
 
 	-- Comment
 	{
@@ -87,7 +85,6 @@ require("lazy").setup({
 			require("plugins.treesitter")
 		end,
 	},
-
 	{ "nvim-treesitter/nvim-treesitter-textobjects" },
 	{ "windwp/nvim-ts-autotag" },
 	{ "maxmellon/vim-jsx-pretty", ft = { "js", "jsx", "ts", "tsx" } },
@@ -368,6 +365,30 @@ require("lazy").setup({
 		"xiyaowong/transparent.nvim",
 		config = function()
 			require("plugins.transparent")
+		end,
+	},
+	{
+		"NeogitOrg/neogit",
+		dependencies = "nvim-lua/plenary.nvim",
+		config = function()
+			require("neogit").setup({})
+		end,
+	},
+	{
+		"alexghergh/nvim-tmux-navigation",
+		config = function()
+			local nvim_tmux_nav = require("nvim-tmux-navigation")
+
+			nvim_tmux_nav.setup({
+				disable_when_zoomed = true, -- defaults to false
+			})
+
+			vim.keymap.set("n", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
+			vim.keymap.set("n", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
+			vim.keymap.set("n", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
+			vim.keymap.set("n", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+			vim.keymap.set("n", "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
+			vim.keymap.set("n", "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
 		end,
 	},
 

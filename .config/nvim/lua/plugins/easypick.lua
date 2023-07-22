@@ -17,5 +17,11 @@ easypick.setup({
 			-- specify your custom previwer, or use one of the easypick.previewers
 			previewer = easypick.previewers.default(),
 		},
+		-- diff current branch with base_branch and show files that changed with respective diffs in preview
+		{
+			name = "changed_files",
+			command = "git diff --name-only $(git merge-base HEAD " .. base_branch .. " )",
+			previewer = easypick.previewers.branch_diff({ base_branch = base_branch }),
+		},
 	},
 })
