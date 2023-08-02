@@ -126,6 +126,7 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{ "nvim-telescope/telescope-project.nvim" },
 	{ "nvim-telescope/telescope-media-files.nvim" },
+	{ "nvim-telescope/telescope-live-grep-args.nvim" },
 	{
 		"axkirillov/easypick.nvim",
 		requires = "nvim-telescope/telescope.nvim",
@@ -331,7 +332,6 @@ require("lazy").setup({
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
-		---@type Flash.Config
 		opts = {},
 		keys = {
 			{
@@ -368,27 +368,9 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"NeogitOrg/neogit",
-		dependencies = "nvim-lua/plenary.nvim",
-		config = function()
-			require("neogit").setup({})
-		end,
-	},
-	{
 		"alexghergh/nvim-tmux-navigation",
 		config = function()
-			local nvim_tmux_nav = require("nvim-tmux-navigation")
-
-			nvim_tmux_nav.setup({
-				disable_when_zoomed = true, -- defaults to false
-			})
-
-			vim.keymap.set("n", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
-			vim.keymap.set("n", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
-			vim.keymap.set("n", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
-			vim.keymap.set("n", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
-			vim.keymap.set("n", "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
-			vim.keymap.set("n", "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
+			require("plugins.vim-tmux")
 		end,
 	},
 

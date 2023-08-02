@@ -96,7 +96,8 @@ map(
 	{ noremap = true, silent = true }
 )
 map("n", "<Leader>ss", '<cmd>lua require("telescope.builtin").grep_string()<CR>', { noremap = true, silent = true })
-map("n", "<Leader>sl", '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true })
+-- map("n", "<Leader>sl", '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true })
+map("n", "<Leader>sl", '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', { noremap = true })
 map("n", "<Leader>/", '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>', { noremap = true })
 map("n", "<C-p>", '<cmd>lua require("telescope").extensions.projects.projects{}<CR>', { noremap = true, silent = true })
 map(
@@ -157,6 +158,9 @@ map("n", "<Leader>b", "<cmd>lua require('dap').toggle_breakpoint() <CR>", {})
 map("n", "<Leader>tt", "<Plug>RestNvim<CR>", {})
 map("n", "<Leader>tr", "<Plug>RestNvimLast<CR>", {})
 map("n", "<Leader>tp", "<Plug>RestNvimPreview<CR>", {})
+
+-- Noice
+map("n", "<Leader>cl", "<cmd>Noice dismiss<CR>", {})
 
 -- Navbuddy
 map("n", "<Leader>fm", "<cmd>lua require('nvim-navbuddy').open()<CR>", {})
