@@ -1,6 +1,7 @@
 atool
 bat
 coreutils
+croc
 exa
 fd
 fish
@@ -31,6 +32,7 @@ shfmt
 sqlite
 starship
 tmux
+tmuxinator
 tokei
 wget
 xclip
