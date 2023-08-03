@@ -1,0 +1,8 @@
+# /home/shourov/.config/tmuxinator/web.yml
+
+name: nest
+root: ~/Documents/nestjs-api-tutorial
+
+windows:
+  - node: yarn start:dev
+  - nvim: nvim

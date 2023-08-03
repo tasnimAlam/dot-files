@@ -1,0 +1,10 @@
+# /home/shourov/.config/tmuxinator/web.yml
+
+name: nest
+root: ~/Documents/test-rust
+windows:
+  - editor:
+      layout: even-horizontal
+      panes:
+        - nvim src/main.rs
+        - cargo watch -x run
