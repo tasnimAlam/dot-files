@@ -14,6 +14,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+
 local battery_widget = require("widgets/battery")
 local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
 -- Enable hotkeys help widget for VIM and other apps
@@ -71,8 +72,7 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
 	awful.layout.suit.tile,
-	awful.layout.suit.floating,
-	awful.layout.suit.tile.left,
+	-- awful.layout.suit.tile.left,
 	-- awful.layout.suit.tile.bottom,
 	-- awful.layout.suit.tile.top,
 	-- awful.layout.suit.fair,
@@ -80,6 +80,7 @@ awful.layout.layouts = {
 	-- awful.layout.suit.spiral,
 	-- awful.layout.suit.spiral.dwindle,
 	awful.layout.suit.max,
+	awful.layout.suit.floating,
 	-- awful.layout.suit.max.fullscreen,
 	-- awful.layout.suit.magnifier,
 	-- awful.layout.suit.corner.nw,
@@ -278,7 +279,15 @@ globalkeys = gears.table.join(
 	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	awful.key({ modkey }, "Tab", awful.tag.history.restore, { description = "go back", group = "tag" }),
-
+	awful.key({ modkey }, ",", function()
+		awful.screen.focus(1)
+	end, { description = "focus the first screen", group = "screen" }),
+	awful.key({ modkey }, ".", function()
+		awful.screen.focus_relative(1)
+	end, { description = "focus the next screen", group = "screen" }),
+	awful.key({}, "XF86Display", function()
+		awful.screen.focus_relative(1)
+	end, { description = "toggle screen focus", group = "screen" }),
 	awful.key({ modkey }, "j", function()
 		awful.client.focus.byidx(1)
 	end, { description = "focus next by index", group = "client" }),
@@ -375,6 +384,14 @@ globalkeys = gears.table.join(
 	awful.key({}, "XF86AudioMicMute", function()
 		awful.spawn("pactl set-source-mute @DEFAULT_SOURCE@ toggle")
 	end, { description = "Mute microphone", group = "launcher" }),
+
+	-- Focus monitor
+	-- awful.key({ modkey }, ".", function()
+	-- 	awful.screen.focus_relative(1)
+	-- end, { description = "focus the next screen", group = "screen" }),
+	-- awful.key({ modkey }, ",", function()
+	-- 	awful.screen.focus_relative(-1)
+	-- end, { description = "focus the next screen", group = "screen" }),
 
 	awful.key({ modkey }, "l", function()
 		awful.tag.incmwfact(0.05)
@@ -511,6 +528,10 @@ for i = 1, 9 do
 				end
 			end
 		end, { description = "toggle focused client on tag #" .. i, group = "tag" })
+
+		-- awful.key({ modKey }, ".", function()
+		-- 	xrandr.xrandr()
+		-- end)
 	)
 end
 
@@ -592,6 +613,7 @@ awful.rules.rules = {
 	{ rule = { class = "Chromium" }, properties = { screen = 1, tag = "2" } },
 	{ rule = { class = "Slack" }, properties = { screen = 1, tag = "3" } },
 	{ rule = { class = "Emacs" }, properties = { screen = 1, tag = "4" } },
+	{ rule = { class = "VirtualBox Manager" }, properties = { screen = 1, tag = "4" } },
 }
 -- }}}
 
@@ -659,6 +681,7 @@ end)
 client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
+
 -- }}}
 -- Startup programs
 awful.util.spawn_with_shell("feh --bg-scale ~/Pictures/wallpaper.png &")
