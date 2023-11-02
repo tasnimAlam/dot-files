@@ -97,7 +97,12 @@ map(
 )
 map("n", "<Leader>ss", '<cmd>lua require("telescope.builtin").grep_string()<CR>', { noremap = true, silent = true })
 -- map("n", "<Leader>sl", '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true })
-map("n", "<Leader>sl", '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', { noremap = true })
+map(
+	"n",
+	"<Leader>sl",
+	'<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>',
+	{ noremap = true }
+)
 map("n", "<Leader>/", '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>', { noremap = true })
 map("n", "<C-p>", '<cmd>lua require("telescope").extensions.projects.projects{}<CR>', { noremap = true, silent = true })
 map(
@@ -135,10 +140,10 @@ map("v", "cll", "S(iconsole.log<ESC>", {})
 map("n", "cll", "yiwocll<ESC>p", {})
 
 -- Pounce config
-map("n", "s", "<cmd>Pounce<CR>", {})
-map("v", "<Leader>s", "<cmd>Pounce<CR>", {})
-map("n", "S", "<cmd>PounceRepeat<CR>", {})
-map("o", "gs", "<cmd>Pounce<CR>", {})
+-- map("n", "s", "<cmd>Pounce<CR>", {})
+-- map("v", "<Leader>s", "<cmd>Pounce<CR>", {})
+-- map("n", "S", "<cmd>PounceRepeat<CR>", {})
+-- map("o", "gs", "<cmd>Pounce<CR>", {})
 
 -- Window movement
 map("n", "<C-h>", "<cmd>lua require('Navigator').left()<CR>", {})

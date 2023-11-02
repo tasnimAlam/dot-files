@@ -1,1 +1,3 @@
-vim.g.gitblame_enabled = 0
+require("gitblame").setup({
+	enabled = false,
+})

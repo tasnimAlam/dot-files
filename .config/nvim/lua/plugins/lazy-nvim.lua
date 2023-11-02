@@ -128,6 +128,13 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope-media-files.nvim" },
 	{ "nvim-telescope/telescope-live-grep-args.nvim" },
 	{
+		"Marskey/telescope-sg",
+		dependencies = "nvim-telescope/telescope.nvim",
+		config = function()
+			require("telescope").load_extension("ast_grep")
+		end,
+	},
+	{
 		"axkirillov/easypick.nvim",
 		requires = "nvim-telescope/telescope.nvim",
 		config = function()
@@ -226,14 +233,8 @@ require("lazy").setup({
 	{ "kevinhwang91/nvim-bqf" },
 	{
 		"f-person/git-blame.nvim",
-		init = function()
-			require("plugins.blame")
-		end,
-	},
-	{
-		"rlane/pounce.nvim",
 		config = function()
-			require("plugins.pounce")
+			require("plugins.blame")
 		end,
 	},
 	{ "lewis6991/impatient.nvim" },

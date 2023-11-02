@@ -1,7 +1,6 @@
 local actions = require("telescope.actions")
 local lga_actions = require("telescope-live-grep-args.actions")
 
-
 require("telescope").setup({
 	defaults = {
 		mappings = {
@@ -26,15 +25,22 @@ require("telescope").setup({
 			find_cmd = "rg", -- find command (defaults to `fd`)
 		},
 		live_grep_args = {
-      auto_quoting = true, -- enable/disable auto-quoting
-      mappings = { -- extend mappings
-        i = {
-          ["<C-k>"] = lga_actions.quote_prompt(),
-          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-        },
-      },
-    }
-  }
+			auto_quoting = true, -- enable/disable auto-quoting
+			mappings = { -- extend mappings
+				i = {
+					["<C-k>"] = lga_actions.quote_prompt(),
+					["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+				},
+			},
+		},
+		ast_grep = {
+			command = {
+				"ast-grep",
+				"--json=stream",
+			}, -- must have --json and -p
+			grep_open_files = false, -- search in opened files
+			lang = nil, -- string value, specify language for ast-grep `nil` for default
+		},
 	},
 })
 
