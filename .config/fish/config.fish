@@ -5,6 +5,7 @@ if status is-interactive
 end
 set -gx EDITOR nvim
 set -gx BROWSER chromium
+set -gx LC_ALL en_US.UTF-8
 
 # Docker 
 # set -gx DOCKER_HOST unix://$XDG_RUNTIME_DIR/docker.sock
