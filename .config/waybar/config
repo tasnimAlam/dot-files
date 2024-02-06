@@ -31,9 +31,9 @@
         "cpu",
         "pulseaudio",
         "battery",
-        "tray",
         "clock#date",
-        "clock#time"
+        "clock#time",
+        "tray"
     ],
 
 
