@@ -19,8 +19,8 @@ cd ~/
 config_folders=("bspwm" "dunst" "fish" "kitty" "nvim" "picom" "polybar" "rofi" "sxhkd" "zathura" "starship.toml")
 base_dir="${HOME}/.config/"
 
-for folder in ${config_folders[@]}; do
-	fd $folder -d1 $base_dir -x cp -r {} ./.config
+for folder in "${config_folders[@]}"; do
+	find "$base_dir$folder" -maxdepth 1 -mindepth 1 -exec cp -r {} "$base_dir" \;
 done
 
 # nnn plugins install
