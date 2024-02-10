@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ $(hyprctl activewindow | rg monitor | awk '{print $2}') -eq 0 ]]; then
+	hyprctl dispatch focusmonitor HDMI-A-1
+else
+	hyprctl dispatch focusmonitor eDP-1
+fi
