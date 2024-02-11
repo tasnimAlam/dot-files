@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo pacman -S hyprland xdg-desktop-portal-hyprland-git waybar mako wofi pipewire wireplumber grim slurp pipewire-audio pipewire-pulse
+sudo pacman -S hyprland xdg-desktop-portal-hyprland-git waybar mako wofi pipewire wireplumber grim slurp pipewire-audio pipewire-pulse wl-clipboard
 
 yay -S keyd
 
