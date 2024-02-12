@@ -4,6 +4,8 @@ sudo pacman -S hyprland xdg-desktop-portal-hyprland-git waybar mako wofi pipewir
 
 yay -S keyd
 
+cargo install hyprsome
+
 config_folders=("hypr" "waybar" "keyd" "mako")
 base_dir="${HOME}/.config/"
 
