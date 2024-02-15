@@ -6,6 +6,7 @@ end
 set -gx EDITOR nvim
 set -gx BROWSER chromium
 set -gx LC_ALL en_US.UTF-8
+set -gx DMENU_BLUETOOTH_LAUNCHER dmenu-wl
 
 # Docker 
 # set -gx DOCKER_HOST unix://$XDG_RUNTIME_DIR/docker.sock
@@ -29,7 +30,7 @@ fish_add_path ~/.composer/vendor/bin
 fish_add_path ~/.deno/bin/
 
 if test "$os" = Linux
-    fish_add_path ~/Documents/scripts/
+    fish_add_path ~/Documents/dot-files/scripts/
 end
 if test "$os" = Darwin
     fish_add_path /opt/homebrew/bin /opt/homebrew/sbin
