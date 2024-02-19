@@ -41,7 +41,7 @@ end
 
 # NNN config
 set -x NNN_FIFO "/tmp/nnn.fifo"
-set -x NNN_PLUG "f:fzopen;u:getplugs;p:preview-tui;c:croc;m:nmount;v:imgview;w:wordcount;i:ipinfo;k:pskill;j:autojump;e:-!sudo -E nvim $nnn*;E:suedit;s:x2sel"
+set -x NNN_PLUG "f:fzopen;u:getplugs;p:preview-tui;c:xdgdefault;m:nmount;t:thumbnail;d:dragdrop;i:ipinfo;k:pskill;j:autojump;e:-!sudo -E nvim $nnn*;E:suedit;s:x2sel"
 set -x NNN_COLORS 2136
 set -x NNN_FCOLORS c1e2272e006033f7c6d6abc4
 
