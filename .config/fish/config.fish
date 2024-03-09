@@ -8,6 +8,7 @@ set -gx BROWSER chromium
 set -gx LC_ALL en_US.UTF-8
 set -gx DMENU_BLUETOOTH_LAUNCHER dmenu-wl
 
+
 # Docker 
 # set -gx DOCKER_HOST unix://$XDG_RUNTIME_DIR/docker.sock
 
@@ -24,6 +25,7 @@ fish_add_path ~/bin
 fish_add_path /usr/local/bin /usr/local/sbin
 fish_add_path ~/.local/bin/
 fish_add_path ~/.emacs.d/bin/
+fish_add_path ~/.config/emacs/bin
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.yarn/bin ~/.config/yarn/global/node_modules/.bin ~/.npm-global/bin
 fish_add_path ~/.composer/vendor/bin
@@ -41,7 +43,7 @@ end
 
 # NNN config
 set -x NNN_FIFO "/tmp/nnn.fifo"
-set -x NNN_PLUG "f:fzopen;u:getplugs;p:preview-tui;c:xdgdefault;m:nmount;t:thumbnail;d:dragdrop;i:ipinfo;k:pskill;j:autojump;e:-!sudo -E nvim $nnn*;E:suedit;s:x2sel"
+set -x NNN_PLUG "f:fzopen;u:getplugs;p:preview-tui;c:xdgdefault;m:nmount;t:thumbnail;d:dragdrop;i:ipinfo;k:pskill;j:autojump;e:-!sudo -E nvim $nnn*;E:suedit;s:x2sel;"
 set -x NNN_COLORS 2136
 set -x NNN_FCOLORS c1e2272e006033f7c6d6abc4
 
@@ -67,5 +69,5 @@ zoxide init fish | source
 # Starship init
 starship init fish | source
 
-set -gx PNPM_HOME "/home/shourov/.local/share/pnpm"
-set -gx PATH "$PNPM_HOME" $PATH
+# set -gx PNPM_HOME "/home/shourov/.local/share/pnpm"
+# set -gx PATH "$PNPM_HOME" $PATH
