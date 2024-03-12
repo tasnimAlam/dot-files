@@ -25,7 +25,7 @@ o.hidden = true
 o.timeoutlen = 2000
 o.ttimeoutlen = 100
 o.lazyredraw = true
-o.mouse = "a"
+o.mouse = ""
 if has("mac") == 1 then
 	o.clipboard = "unnamedplus"
 elseif has("unix") == 1 then

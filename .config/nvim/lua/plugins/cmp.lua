@@ -1,8 +1,3 @@
-local has_words_before = function()
-	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 
@@ -13,7 +8,6 @@ cmp.setup({
 			maxwidth = 50,
 			menu = {
 				buffer = "[Buffer]",
-				vsnip = "[SNIP]",
 				nvim_lsp = "[LSP]",
 				copilot = "[CP]",
 				cmp_tabnine = "[TN]",
@@ -21,11 +15,7 @@ cmp.setup({
 			},
 		}),
 	},
-	snippet = {
-		expand = function(args)
-			vim.fn["vsnip#anonymous"](args.body)
-		end,
-	},
+	snippet = { expand = function(args) require'luasnip'.lsp_expand(args.body) end },
 	mapping = {
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -36,7 +26,7 @@ cmp.setup({
 		["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
 	},
 	sources = {
-		{ name = "vsnip" },
+		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
 		{ name = "cmp_tabnine" },
 		{ name = "copilot" },
@@ -47,20 +37,16 @@ cmp.setup({
 })
 
 cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
 		{ name = "cmdline" },
 	},
 })
 
 cmp.setup.cmdline("/", {
+	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
 		{ name = "buffer" },
 	},
 })
 
-vim.cmd([[
-	let g:vsnip_filetypes = {}
-	let g:vsnip_filetypes.javascriptreact = ['javascript']
-	let g:vsnip_filetypes.typescriptreact = ['typescript']
-	let g:vsnip_filetypes.typescript = ['javascript']
-]])

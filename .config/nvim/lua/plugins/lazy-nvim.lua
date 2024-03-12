@@ -7,6 +7,14 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"yioneko/nvim-vtsls",
+		config = function()
+			require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+			require("lspconfig").vtsls.setup({ --[[ your custom server config here ]]
+			})
+		end,
+	},
+	{
 		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup()
@@ -20,13 +28,18 @@ require("lazy").setup({
 	},
 	{ "onsails/lspkind-nvim" },
 	{ "jose-elias-alvarez/nvim-lsp-ts-utils" },
-	{ "simrat39/rust-tools.nvim", ft = { "rs" } },
+	{ "simrat39/rust-tools.nvim",            ft = { "rs" } },
 	{
 		"folke/trouble.nvim",
 		dependencies = "kyazdani42/nvim-web-devicons",
 		config = function()
 			require("plugins.trouble")
 		end,
+	},
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^4", -- Recommended
+		ft = { "rust" },
 	},
 
 	-- Formatting
@@ -87,7 +100,7 @@ require("lazy").setup({
 	},
 	{ "nvim-treesitter/nvim-treesitter-textobjects" },
 	{ "windwp/nvim-ts-autotag" },
-	{ "maxmellon/vim-jsx-pretty", ft = { "js", "jsx", "ts", "tsx" } },
+	{ "maxmellon/vim-jsx-pretty",                   ft = { "js", "jsx", "ts", "tsx" } },
 	{ "windwp/nvim-ts-autotag" },
 
 	-- Status line
@@ -117,13 +130,13 @@ require("lazy").setup({
 	{ "kyazdani42/nvim-web-devicons" },
 
 	-- Search related tools
-	{ "junegunn/fzf", build = "./install --all" },
+	{ "junegunn/fzf",                build = "./install --all" },
 	{ "junegunn/fzf.vim" },
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" }, cmd = "Telescope" },
 	},
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	{ "nvim-telescope/telescope-fzf-native.nvim",    build = "make" },
 	{ "nvim-telescope/telescope-project.nvim" },
 	{ "nvim-telescope/telescope-media-files.nvim" },
 	{ "nvim-telescope/telescope-live-grep-args.nvim" },
@@ -143,10 +156,19 @@ require("lazy").setup({
 	},
 
 	-- Snippets
-	{ "hrsh7th/vim-vsnip" },
-	{ "hrsh7th/cmp-vsnip" },
 	{ "rafamadriz/friendly-snippets" },
-	{ "mbbill/undotree", cmd = "UndotreeToggle" },
+	{
+		"L3MON4D3/LuaSnip",
+		version = "v2.*",
+		build = "make install_jsregexp",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		config = function()
+			require("luasnip.loaders.from_vscode").lazy_load()
+			require'luasnip'.filetype_extend("typescript", { "javascript" })
+		end
+	},
+	{ 'saadparwaiz1/cmp_luasnip' },
+	{ "mbbill/undotree",                             cmd = "UndotreeToggle" },
 	{ "JoosepAlviste/nvim-ts-context-commentstring", ft = { "js", "jsx", "ts", "tsx" } },
 	{
 		"lewis6991/gitsigns.nvim",
@@ -228,7 +250,7 @@ require("lazy").setup({
 	{ "jiangmiao/auto-pairs" },
 	{ "mattn/emmet-vim" },
 	{ "matze/vim-move" },
-	{ "rrethy/vim-hexokinase", build = "make hexokinase" },
+	{ "rrethy/vim-hexokinase",     build = "make hexokinase" },
 	{ "tommcdo/vim-exchange" },
 	{ "kevinhwang91/nvim-bqf" },
 	{
@@ -383,7 +405,16 @@ require("lazy").setup({
 			require("plugins.rest")
 		end,
 	},
+	{
+		'bloznelis/before.nvim',
+		config = function()
+			local before = require('before')
+			before.setup()
 
+			vim.keymap.set('n', '<C-i>', before.jump_to_last_edit, {})
+			vim.keymap.set('n', '<C-o>', before.jump_to_next_edit, {})
+		end
+	}
 	-- Copilot
 	-- {
 	-- 	"zbirenbaum/copilot.lua",
