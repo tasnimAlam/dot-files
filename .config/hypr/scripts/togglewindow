@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ $(hyprctl activewindow | rg monitor | awk '{print $2}') -eq 0 ]]; then
+	# hyprctl dispatch movewindow mon:HDMI-A-1
+	hyprctl dispatch movewindow mon:DP-1
+else
+	hyprctl dispatch movewindow mon:eDP-1
+fi
