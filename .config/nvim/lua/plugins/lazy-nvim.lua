@@ -1,23 +1,24 @@
 require("lazy").setup({
 	-- Lsp
+	{ 'williamboman/mason.nvim' },
+	{ 'williamboman/mason-lspconfig.nvim' },
 	{
-		"neovim/nvim-lspconfig",
-		config = function()
-			require("plugins.lsp")
-		end,
+		'VonHeikemen/lsp-zero.nvim',
+		config =
+				function()
+					require('plugins.zero')
+				end,
+		branch = 'v3.x'
+	},
+	{
+		'neovim/nvim-lspconfig',
+		dependencies = { { 'hrsh7th/cmp-nvim-lsp' }, }
 	},
 	{
 		"yioneko/nvim-vtsls",
 		config = function()
 			require("lspconfig.configs").vtsls = require("vtsls").lspconfig
-			require("lspconfig").vtsls.setup({ --[[ your custom server config here ]]
-			})
-		end,
-	},
-	{
-		"williamboman/mason.nvim",
-		config = function()
-			require("mason").setup()
+			require("lspconfig").vtsls.setup({})
 		end,
 	},
 	{
@@ -164,7 +165,7 @@ require("lazy").setup({
 		dependencies = { "rafamadriz/friendly-snippets" },
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load()
-			require'luasnip'.filetype_extend("typescript", { "javascript" })
+			require 'luasnip'.filetype_extend("typescript", { "javascript" })
 		end
 	},
 	{ 'saadparwaiz1/cmp_luasnip' },
@@ -184,10 +185,18 @@ require("lazy").setup({
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("tokyonight").setup({ transparent = true })
-			vim.cmd([[colorscheme tokyonight]])
-			vim.g.tokyonight_dark_float = false
+			-- require("tokyonight").setup({ transparent = true })
+			-- vim.cmd([[colorscheme tokyonight]])
+			-- vim.g.tokyonight_dark_float = false
 		end,
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		config = function()
+			vim.cmd([[ colorscheme catppuccin-macchiato]])
+		end
 	},
 	{ "rebelot/kanagawa.nvim" },
 
@@ -414,20 +423,5 @@ require("lazy").setup({
 			vim.keymap.set('n', '<C-i>', before.jump_to_last_edit, {})
 			vim.keymap.set('n', '<C-o>', before.jump_to_next_edit, {})
 		end
-	}
-	-- Copilot
-	-- {
-	-- 	"zbirenbaum/copilot.lua",
-	-- 	cmd = "Copilot",
-	-- 	event = "InsertEnter",
-	-- 	config = function()
-	-- 		require("plugins.cp")
-	-- 	end,
-	-- },
-	-- {
-	-- 	"zbirenbaum/copilot-cmp",
-	-- 	config = function()
-	-- 		require("copilot_cmp").setup()
-	-- 	end,
-	-- },
+	},
 })
