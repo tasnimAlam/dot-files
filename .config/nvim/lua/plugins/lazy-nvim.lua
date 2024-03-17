@@ -138,15 +138,23 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		dependencies = {
-			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-telescope/telescope.nvim" }
+		"cbochs/grapple.nvim",
+		opts = {
+			scope = "git",
 		},
-		config = function()
-			require('plugins.hrpn')
-		end
+		event = { "BufReadPost", "BufNewFile" },
+		cmd = "Grapple",
+		keys = {
+			{ "<leader>M", "<cmd>Grapple toggle<cr>",         desc = "Grapple toggle tag" },
+			{ "<leader>k", "<cmd>Grapple toggle_tags<cr>",    desc = "Grapple toggle tags" },
+			{ "<leader>K", "<cmd>Grapple toggle_scopes<cr>",  desc = "Grapple toggle scopes" },
+			{ "<leader>j", "<cmd>Grapple cycle forward<cr>",  desc = "Grapple cycle forward" },
+			{ "<leader>J", "<cmd>Grapple cycle backward<cr>", desc = "Grapple cycle backward" },
+			{ "<leader>1", "<cmd>Grapple select index=1<cr>", desc = "Grapple select 1" },
+			{ "<leader>2", "<cmd>Grapple select index=2<cr>", desc = "Grapple select 2" },
+			{ "<leader>3", "<cmd>Grapple select index=3<cr>", desc = "Grapple select 3" },
+			{ "<leader>4", "<cmd>Grapple select index=4<cr>", desc = "Grapple select 4" },
+		},
 	},
 
 	-- Snippets
@@ -299,7 +307,7 @@ require("lazy").setup({
 	},
 	{
 		"Wansmer/treesj",
-		keys = { "<space>m", "<space>j", "<space>s" },
+		-- keys = { "<space>m", "<space>j", "<space>s" },
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
 			require("treesj").setup({})
