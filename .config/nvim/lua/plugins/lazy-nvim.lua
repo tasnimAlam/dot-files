@@ -28,8 +28,6 @@ require("lazy").setup({
 		end,
 	},
 	{ "onsails/lspkind-nvim" },
-	{ "jose-elias-alvarez/nvim-lsp-ts-utils" },
-	{ "simrat39/rust-tools.nvim",            ft = { "rs" } },
 	{
 		"folke/trouble.nvim",
 		dependencies = "kyazdani42/nvim-web-devicons",
@@ -57,14 +55,6 @@ require("lazy").setup({
 		end,
 	},
 	{ "nvim-lua/plenary.nvim" },
-
-	-- Comment
-	{
-		"numToStr/Comment.nvim",
-		config = function()
-			require("plugins.comment")
-		end,
-	},
 
 	-- Auto completion
 	{
@@ -100,9 +90,8 @@ require("lazy").setup({
 		end,
 	},
 	{ "nvim-treesitter/nvim-treesitter-textobjects" },
-	{ "windwp/nvim-ts-autotag" },
+	{ "windwp/nvim-ts-autotag",                     config = function() require("nvim-ts-autotag").setup() end },
 	{ "maxmellon/vim-jsx-pretty",                   ft = { "js", "jsx", "ts", "tsx" } },
-	{ "windwp/nvim-ts-autotag" },
 
 	-- Status line
 	{
@@ -116,7 +105,7 @@ require("lazy").setup({
 		"akinsho/nvim-bufferline.lua",
 		dependencies = "kyazdani42/nvim-web-devicons",
 		config = function()
-			require("plugins.bufferline")
+			require("bufferline").setup()
 		end,
 	},
 
@@ -149,13 +138,6 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"axkirillov/easypick.nvim",
-		requires = "nvim-telescope/telescope.nvim",
-		config = function()
-			require("plugins.easypick")
-		end,
-	},
-	{
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
 		dependencies = {
@@ -180,13 +162,12 @@ require("lazy").setup({
 		end
 	},
 	{ 'saadparwaiz1/cmp_luasnip' },
-	{ "mbbill/undotree",                             cmd = "UndotreeToggle" },
 	{ "JoosepAlviste/nvim-ts-context-commentstring", ft = { "js", "jsx", "ts", "tsx" } },
 	{
 		"lewis6991/gitsigns.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("plugins.gitsigns")
+			require("gitsigns").setup()
 		end,
 	},
 
@@ -196,9 +177,7 @@ require("lazy").setup({
 		lazy = false,
 		priority = 1000,
 		config = function()
-			-- require("tokyonight").setup({ transparent = true })
-			-- vim.cmd([[colorscheme tokyonight]])
-			-- vim.g.tokyonight_dark_float = false
+			-- require('plugins.tokyo');
 		end,
 	},
 	{
@@ -209,7 +188,12 @@ require("lazy").setup({
 			vim.cmd([[ colorscheme catppuccin-macchiato]])
 		end
 	},
-	{ "rebelot/kanagawa.nvim" },
+	{
+		"rebelot/kanagawa.nvim",
+		config = function()
+			-- vim.cmd("colorscheme kanagawa")
+		end
+	},
 
 	-- Terminal
 	{
@@ -261,17 +245,16 @@ require("lazy").setup({
 	{
 		"AckslD/nvim-neoclip.lua",
 		config = function()
-			require("plugins.neoclip")
+			require("neoclip").setup()
 		end,
 	},
 	{ "tpope/vim-surround" },
 	{ "tpope/vim-repeat" },
 	{ "tpope/vim-unimpaired" },
-	{ "jiangmiao/auto-pairs" },
+	{ 'windwp/nvim-autopairs',  event = "InsertEnter",    config = true },
 	{ "mattn/emmet-vim" },
-	{ "matze/vim-move" },
-	{ "rrethy/vim-hexokinase",     build = "make hexokinase" },
-	{ "tommcdo/vim-exchange" },
+	{ "rrethy/vim-hexokinase",  build = "make hexokinase" },
+	{ "gbprod/substitute.nvim", opts = {} },
 	{ "kevinhwang91/nvim-bqf" },
 	{
 		"f-person/git-blame.nvim",
@@ -279,14 +262,7 @@ require("lazy").setup({
 			require("plugins.blame")
 		end,
 	},
-	{ "lewis6991/impatient.nvim" },
-	{
-		"pianocomposer321/yabs.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("plugins.yabs")
-		end,
-	},
+	{ 'stevearc/overseer.nvim',      opts = {}, },
 	{
 		"chentoast/marks.nvim",
 		config = function()
@@ -329,13 +305,8 @@ require("lazy").setup({
 			require("treesj").setup({})
 		end,
 	},
-	{
-		"nvim-pack/nvim-spectre",
-	},
-	{
-		"SmiteshP/nvim-navic",
-		dependencies = "neovim/nvim-lspconfig",
-	},
+	{ "nvim-pack/nvim-spectre" },
+	{ "SmiteshP/nvim-navic",   dependencies = "neovim/nvim-lspconfig" },
 	{
 		"SmiteshP/nvim-navbuddy",
 		dependencies = {
@@ -345,6 +316,7 @@ require("lazy").setup({
 			"numToStr/Comment.nvim",
 			"nvim-telescope/telescope.nvim",
 		},
+		opts = { lsp = { auto_attach = true } }
 	},
 	{
 		"aserowy/tmux.nvim",
@@ -428,11 +400,7 @@ require("lazy").setup({
 	{
 		'bloznelis/before.nvim',
 		config = function()
-			local before = require('before')
-			before.setup()
-
-			vim.keymap.set('n', '<C-i>', before.jump_to_last_edit, {})
-			vim.keymap.set('n', '<C-o>', before.jump_to_next_edit, {})
+			require('before').setup()
 		end
 	},
 })

@@ -1,4 +1,3 @@
-local utils = require("core.utils")
 local map = vim.api.nvim_set_keymap
 
 vim.g.mapleader = " "
@@ -119,11 +118,11 @@ map(
 
 -- Buffer management
 map("n", "<Leader>,", "<C-^>", {})
-map("n", "<Leader>x", ":bd!<CR>", {})
-map("n", "<Leader>bc", '<cmd>%bdelete|edit#|normal `"`<CR>', { noremap = true })
+map("n", "<Leader>x", "<cmd>bd!<CR>", {})
+map("n", "<Leader>bc", '<cmd>bufdo bwipeout<CR>', { noremap = true })
 map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true })
 map("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true })
-map("n", "sb", ":BufferLinePick<CR>", { silent = true })
+map("n", "bs", ":BufferLinePick<CR>", { silent = true })
 map("n", "d>", ":BufferLineCloseRight<CR>", { silent = true })
 map("n", "d<", ":BufferLineCloseLeft<CR>", { silent = true })
 map("n", "g>", ":BufferLineMoveNext<CR>", { silent = true })
@@ -163,3 +162,8 @@ map("n", "<Leader>cl", "<cmd>Noice dismiss<CR>", {})
 
 -- Navbuddy
 map("n", "<Leader>fm", "<cmd>lua require('nvim-navbuddy').open()<CR>", {})
+
+-- Before
+map("n", "<C-i>", "<cmd>lua require('before').jump_to_last_edit()<CR>", {});
+map("n", "<C-o>", "<cmd>lua require('before').jump_to_next_edit()<CR>", {});
+map("n", "<Leader>oe", "<cmd>lua require('before').show_edits_in_telescope()<CR>", {});

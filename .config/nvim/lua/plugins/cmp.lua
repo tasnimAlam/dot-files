@@ -4,6 +4,7 @@ local lspkind = require("lspkind")
 cmp.setup({
 	formatting = {
 		format = lspkind.cmp_format({
+			mode = "symbol",
 			with_text = false,
 			maxwidth = 50,
 			menu = {
@@ -15,7 +16,7 @@ cmp.setup({
 			},
 		}),
 	},
-	snippet = { expand = function(args) require'luasnip'.lsp_expand(args.body) end },
+	snippet = { expand = function(args) require 'luasnip'.lsp_expand(args.body) end },
 	mapping = {
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -49,4 +50,3 @@ cmp.setup.cmdline("/", {
 		{ name = "buffer" },
 	},
 })
-
