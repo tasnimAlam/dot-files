@@ -125,7 +125,7 @@ require("lazy").setup({
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" }, cmd = "Telescope" },
-		config = function ()
+		config = function()
 			require('plugins.telescope')
 		end
 	},
@@ -149,10 +149,10 @@ require("lazy").setup({
 		cmd = "Grapple",
 		keys = {
 			{ "<leader>M", "<cmd>Grapple toggle<cr>",         desc = "Grapple toggle tag" },
-			{ "<leader>k", "<cmd>Grapple toggle_tags<cr>",    desc = "Grapple toggle tags" },
+			{ "<leader>J", "<cmd>Grapple toggle_tags<cr>",    desc = "Grapple toggle tags" },
 			{ "<leader>K", "<cmd>Grapple toggle_scopes<cr>",  desc = "Grapple toggle scopes" },
 			{ "<leader>j", "<cmd>Grapple cycle forward<cr>",  desc = "Grapple cycle forward" },
-			{ "<leader>J", "<cmd>Grapple cycle backward<cr>", desc = "Grapple cycle backward" },
+			{ "<leader>k", "<cmd>Grapple cycle backward<cr>", desc = "Grapple cycle backward" },
 			{ "<leader>1", "<cmd>Grapple select index=1<cr>", desc = "Grapple select 1" },
 			{ "<leader>2", "<cmd>Grapple select index=2<cr>", desc = "Grapple select 2" },
 			{ "<leader>3", "<cmd>Grapple select index=3<cr>", desc = "Grapple select 3" },
@@ -196,7 +196,7 @@ require("lazy").setup({
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			vim.cmd([[ colorscheme catppuccin-macchiato]])
+			vim.cmd([[ colorscheme catppuccin-frappe]])
 		end
 	},
 	{
@@ -250,7 +250,14 @@ require("lazy").setup({
 		config = function()
 			require("plugins.tabout")
 		end,
-		dependencies = { "nvim-treesitter", "nvim-cmp" },
+		requires = {
+			"nvim-treesitter/nvim-treesitter",
+			"L3MON4D3/LuaSnip",
+			"hrsh7th/nvim-cmp"
+		},
+		opt = true,              -- Set this to true if the plugin is optional
+		event = 'InsertCharPre', -- Set the event to 'InsertCharPre' for better compatibility
+		priority = 1000,
 	},
 	{ "rmagatti/alternate-toggler" },
 	{
@@ -308,14 +315,14 @@ require("lazy").setup({
 			require("project_nvim").setup({})
 		end,
 	},
-	{
-		"Wansmer/treesj",
-		-- keys = { "<space>m", "<space>j", "<space>s" },
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		config = function()
-			require("treesj").setup({})
-		end,
-	},
+	-- {
+	-- 	"Wansmer/treesj",
+	-- 	keys = { "<space>m", "<space>j", "<space>s" },
+	-- 	dependencies = { "nvim-treesitter/nvim-treesitter" },
+	-- 	config = function()
+	-- 		require("treesj").setup({})
+	-- 	end,
+	-- },
 	{ "nvim-pack/nvim-spectre" },
 	{ "SmiteshP/nvim-navic",   dependencies = "neovim/nvim-lspconfig" },
 	{
@@ -336,24 +343,24 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Debugging
-	{
-		"mfussenegger/nvim-dap",
-		dependencies = {
-			"theHamsta/nvim-dap-virtual-text",
-			"rcarriga/nvim-dap-ui",
-			"nvim-telescope/telescope-dap.nvim",
-			{ "mxsdev/nvim-dap-vscode-js" },
-			{
-				"microsoft/vscode-js-debug",
-				lazy = true,
-				build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
-			},
-		},
-		config = function()
-			require("config.dap")
-		end,
-	},
+	-- -- Debugging
+	-- {
+	-- 	"mfussenegger/nvim-dap",
+	-- 	dependencies = {
+	-- 		"theHamsta/nvim-dap-virtual-text",
+	-- 		"rcarriga/nvim-dap-ui",
+	-- 		"nvim-telescope/telescope-dap.nvim",
+	-- 		{ "mxsdev/nvim-dap-vscode-js" },
+	-- 		{
+	-- 			"microsoft/vscode-js-debug",
+	-- 			lazy = true,
+	-- 			build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+	-- 		},
+	-- 	},
+	-- 	config = function()
+	-- 		require("config.dap")
+	-- 	end,
+	-- },
 	{ "tasnimAlam/px2rem.lua" },
 	{
 		"folke/flash.nvim",
@@ -401,17 +408,30 @@ require("lazy").setup({
 	},
 
 	-- Rest API
-	{
-		"rest-nvim/rest.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("plugins.rest")
-		end,
-	},
+	-- {
+	-- 	"rest-nvim/rest.nvim",
+	-- 	dependencies = { "nvim-lua/plenary.nvim" },
+	-- 	config = function()
+	-- 		require("plugins.rest")
+	-- 	end,
+	-- },
 	{
 		'bloznelis/before.nvim',
 		config = function()
 			require('before').setup()
 		end
 	},
+	{
+		"jackMort/ChatGPT.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("plugins.chatgpt")
+		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"folke/trouble.nvim",
+			"nvim-telescope/telescope.nvim"
+		}
+	}
 })

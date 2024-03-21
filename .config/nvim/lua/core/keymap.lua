@@ -46,11 +46,6 @@ map("n", "<Leader>t", ":ToggleAlternate<CR>", {})
 -- Trouble config
 map("n", "<Leader>d", "<cmd>TroubleToggle document_diagnostics<CR>", { silent = true, noremap = true })
 
--- Yabs config
-map("n", "<Leader>rr", "<cmd>YabsDefaultTask<CR>", { noremap = true })
-map("n", "<Leader>rb", "<cmd>YabsTask build<CR>", { noremap = true })
-map("n", "<Leader>rp", "<cmd>YabsTask run<CR>", { noremap = true })
-
 -- Treehooper config
 map("n", "<Leader>v", "<cmd>lua require('tsht').nodes()<CR>", { silent = true, noremap = true })
 
@@ -63,9 +58,6 @@ map("i", ".", ".<C-g>u", {})
 map("i", "!", "!<C-g>u", {})
 map("i", "?", "?<C-g>u", {})
 
--- Undotree config
-map("n", "<Leader>u", ":UndotreeToggle | :UndotreeFocus<CR>", {})
-
 -- Nvim tree config
 map("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", {})
 
@@ -74,12 +66,6 @@ map("n", "<Leader>l", ":Lazy<CR>", { silent = true, noremap = true })
 
 -- Git blame
 map("n", "<Leader>bl", ":GitBlameToggle<CR>", { silent = true, noremap = true })
-
--- Vim move config
-map("n", "∆", ":m .+1<CR>", { silent = true, noremap = true })
-map("n", "˚", ":m .-2<CR>", { silent = true, noremap = true })
-map("v", "˚", ":m '<-2<CR>gv=gv", { silent = true, noremap = true })
-map("v", "∆", ":m '>+1<CR>gv=gv", { silent = true, noremap = true })
 
 -- Auto completion config
 map("i", "<Tab>", 'pumvisible() ? "<C-n>" : "<Tab>"', { expr = true })
@@ -122,7 +108,7 @@ map("n", "<Leader>x", "<cmd>bd!<CR>", {})
 map("n", "<Leader>bc", '<cmd>bufdo bwipeout<CR>', { noremap = true })
 map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true })
 map("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true })
-map("n", "bs", ":BufferLinePick<CR>", { silent = true })
+map("n", "<Leader>bs", ":BufferLinePick<CR>", { silent = true })
 map("n", "d>", ":BufferLineCloseRight<CR>", { silent = true })
 map("n", "d<", ":BufferLineCloseLeft<CR>", { silent = true })
 map("n", "g>", ":BufferLineMoveNext<CR>", { silent = true })

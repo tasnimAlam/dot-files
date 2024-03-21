@@ -42,6 +42,7 @@ bo.modifiable = true
 -- window options
 wo.signcolumn = "yes"
 wo.cursorline = true
+wo.cursorlineopt = "number"
 wo.foldmethod = "expr"
 wo.number = true
 wo.relativenumber = true
