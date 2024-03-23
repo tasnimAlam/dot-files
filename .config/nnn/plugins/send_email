@@ -1,0 +1,19 @@
+#!/bin/bash
+# Description: Send selected files as email attachment
+# Dependencies: mailutils
+# Shell: Bash
+# Author: Tasnim Alam
+
+selection=${NNN_SEL:-${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection}
+
+# Prompt the user for the recipient's email address
+read -p "Enter email: " email
+
+# Create zip file from selected files
+cat $selection | tr '\0' '\n' | xargs -n1 basename | tar -cvzf attach.zip -T - | sleep 1
+
+# Send zip file as email attachment
+echo "Sending mail" | mail -s "File attached" -a "attach.zip" "$email"
+
+# Remove zip file
+rm attach.zip
