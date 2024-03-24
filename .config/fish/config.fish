@@ -19,6 +19,9 @@ set fzf_preview_file_cmd cat
 set fzf_preview_dir_cmd exa --all --color=always
 set fzf_fd_opts --hidden --exclude=.git
 set -gx FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix"
+set -gx FZF_CTRL_T_OPTS " --walker-skip .git,node_modules,target --preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+set -gx FZF_ALT_C_OPTS " --walker-skip .git,node_modules,target --preview 'tree -C {}'"
+
 
 # Set path 
 fish_add_path ~/bin
@@ -43,9 +46,10 @@ end
 
 # NNN config
 set -x NNN_FIFO "/tmp/nnn.fifo"
-set -x NNN_PLUG "f:fzopen;u:getplugs;p:preview-tui;c:xdgdefault;m:nmount;t:thumbnail;d:dragdrop;i:ipinfo;k:pskill;j:autojump;e:-!sudo -E nvim $nnn*;E:suedit;s:x2sel;"
+set -x NNN_PLUG "f:fzopen;m:send_email;u:getplugs;p:preview-tui;c:croc_send;h:nmount;t:thumbnail;d:dragdrop;i:ipinfo;k:pskill;j:autojump;e:-!sudo -E nvim $nnn*;E:suedit;s:x2sel;"
 set -x NNN_COLORS 2136
 set -x NNN_FCOLORS c1e2272e006033f7c6d6abc4
+set -x NNN_PREFER_SELECTION 1
 
 set -x CHROME_BIN /usr/bin/chromium
 
