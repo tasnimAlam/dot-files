@@ -1,0 +1,9 @@
+#!/bin/bash
+# Description: Send selected files via croc
+# Dependencies: croc
+# Shell: Bash
+# Author: Tasnim Alam
+
+selection=${NNN_SEL:-${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection}
+
+cat $selection | tr '\0' ' ' | xargs croc send | awk "NR==2"
