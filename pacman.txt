@@ -33,6 +33,7 @@ polybar
 qbittorrent
 ripgrep
 rofi
+sd
 shfmt
 smartmontools
 stylua
