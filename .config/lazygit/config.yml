@@ -1,0 +1,75 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+notARepository: "skip" # one of: 'prompt' | 'create' | 'skip'
+promptToReturnFromSubprocess: false
+gui:
+  nerdFontsVersion: "3"
+  showIcons: true
+  showFileTree: true
+  scrollHeight: 10
+  scrollPastBottom: true
+  mouseEvents: true
+  skipDiscardChangeWarning: false
+  skipStashWarning: true
+  sidePanelWidth: 0.3333
+  expandFocusedSidePanel: false
+  enlargedSideViewLocation: "top"
+  mainPanelSplitMode: flexible
+  theme:
+    activeBorderColor:
+      - "#89ddff"
+      - bold
+    inactiveBorderColor:
+      - "#565f89"
+    optionsTextColor:
+      - "#3d59a1"
+    selectedLineBgColor:
+      - "#292e42"
+      - bold
+    selectedRangeBgColor:
+      - "#89ddff"
+  commitLength:
+    show: true
+  skipNoStagedFilesWarning: false
+os:
+  openCommand: session_nvim {{filename}}
+git:
+  log:
+    showGraph: always
+  branchLogCmd: "git log --graph --abbrev-commit --decorate --format=format:'%C(bold white)%s%C(reset) %C(dim white)- %ar %C(white)%d%C(reset)' master..{{branchName}} --"
+  overrideGpg: true
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
+customCommands:
+  - key: "R"
+    command: "gh repo view --web"
+    description: "view repo on github"
+    context: "global"
+    loadingText: "opening github..."
+    subprocess: false
+  - key: "o"
+    command: "gh pr view --web"
+    description: "view PR on github"
+    context: "global"
+    loadingText: "opening github..."
+    subprocess: false
+  - key: "<c-p>"
+    command: "git remote prune {{.SelectedRemote.Name}}"
+    context: "remotes"
+    loadingText: "Pruning..."
+    description: "prune deleted remote branches"
+  - key: "b"
+    command: "git branch --merged master | grep -v '^[ *]*master$' | xargs -r git branch -d"
+    context: "localBranches"
+    loadingText: "Pruning..."
+    description: "prune local branches that have been merged to master"
+  - key: t
+    command: tig {{.SelectedSubCommit.Sha}} -- {{.SelectedCommitFile.Name}}
+    context: commitFiles
+    description: tig file (history of commits affecting file)
+    subprocess: yes
+  - key: t
+    command: tig -- {{.SelectedFile.Name}}
+    context: files
+    description: tig file (history of commits affecting file)
+    subprocess: yes
