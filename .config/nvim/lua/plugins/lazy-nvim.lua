@@ -315,14 +315,6 @@ require("lazy").setup({
 			require("project_nvim").setup({})
 		end,
 	},
-	-- {
-	-- 	"Wansmer/treesj",
-	-- 	keys = { "<space>m", "<space>j", "<space>s" },
-	-- 	dependencies = { "nvim-treesitter/nvim-treesitter" },
-	-- 	config = function()
-	-- 		require("treesj").setup({})
-	-- 	end,
-	-- },
 	{ "nvim-pack/nvim-spectre" },
 	{ "SmiteshP/nvim-navic",   dependencies = "neovim/nvim-lspconfig" },
 	{
@@ -371,7 +363,6 @@ require("lazy").setup({
 				"s",
 				mode = { "n", "x", "o" },
 				function()
-					-- default options: exact mode, multi window, all directions, with a backdrop
 					require("flash").jump()
 				end,
 				desc = "Flash",
@@ -421,17 +412,4 @@ require("lazy").setup({
 			require('before').setup()
 		end
 	},
-	{
-		"jackMort/ChatGPT.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("plugins.chatgpt")
-		end,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"folke/trouble.nvim",
-			"nvim-telescope/telescope.nvim"
-		}
-	}
 })
