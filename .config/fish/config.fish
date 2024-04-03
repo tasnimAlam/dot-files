@@ -18,10 +18,10 @@ set fish_key_bindings fish_user_key_bindings
 set fzf_preview_file_cmd cat
 set fzf_preview_dir_cmd exa --all --color=always
 set fzf_fd_opts --hidden --exclude=.git
+set -x FZF_DEFAULT_OPTS "--reverse --bind 'ctrl-y:execute-silent(printf {} | cut -f 2- | wl-copy --trim-newline)'"
 set -gx FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix"
 set -gx FZF_CTRL_T_OPTS " --walker-skip .git,node_modules,target --preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 set -gx FZF_ALT_C_OPTS " --walker-skip .git,node_modules,target --preview 'tree -C {}'"
-
 
 # Set path 
 fish_add_path ~/bin
@@ -33,6 +33,7 @@ fish_add_path ~/.cargo/bin
 fish_add_path ~/.yarn/bin ~/.config/yarn/global/node_modules/.bin ~/.npm-global/bin
 fish_add_path ~/.composer/vendor/bin
 fish_add_path ~/.deno/bin/
+fish_add_path ~/go/bin/
 
 if test "$os" = Linux
     fish_add_path ~/Documents/dot-files/scripts/
