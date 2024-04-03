@@ -48,8 +48,22 @@ end
 # NNN config
 set -x NNN_FIFO "/tmp/nnn.fifo"
 set -x NNN_PLUG "f:fzopen;m:send_email;u:getplugs;p:preview-tui;c:croc_send;h:nmount;t:thumbnail;d:dragdrop;i:ipinfo;k:pskill;j:autojump;e:-!sudo -E nvim $nnn*;E:suedit;s:x2sel;"
-set -x NNN_COLORS 2136
-set -x NNN_FCOLORS c1e2272e006033f7c6d6abc4
+
+# Colors
+set BLK 03
+set CHR 03
+set DIR 04
+set EXE 02
+set REG 07
+set HARDLINK 05
+set SYMLINK 05
+set MISSING 08
+set ORPHAN 01
+set FIFO 06
+set SOCK 03
+set UNKNOWN 01
+set -x NNN_COLORS "#04020301;4231"
+set -x NNN_FCOLORS "$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$UNKNOWN"
 set -x NNN_PREFER_SELECTION 1
 
 set -x CHROME_BIN /usr/bin/chromium
