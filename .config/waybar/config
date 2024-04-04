@@ -120,15 +120,10 @@
     },
 
     "hyprland/workspaces": {
-        "all-outputs": false,
+        "all-outputs": true,
         "disable-scroll": true,
-        "format": "{icon} {name}",
+        "format": "{name}",
         "button-style": "circle",
-        "format-icons": {
-            "urgent": " ",
-            "focused": " ",
-            "default": "  "
-        }
     },
 
     "pulseaudio": {
