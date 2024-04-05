@@ -101,12 +101,12 @@
 }
 
 #clock {
-  color: @blue;
+  color: @sky;
   font-weight: bold;
 }
 
 #clock.time {
-  color: @sky;
+  color: @blue;
 }
 
 #cpu {
@@ -122,7 +122,7 @@
 }
 
 #memory {
-  color: @peach;
+  color: @pink;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
@@ -153,7 +153,7 @@
 }
 
 #pulseaudio {
-  color: @flamingo;
+  color: @yellow;
 }
 
 #pulseaudio.muted {
@@ -199,8 +199,8 @@
 }
 
 #workspaces button.urgent {
-  border-color: @maroon;
-  color: @red;
+  color: @crust;
+  background-color: @red;
 }
 
 window#waybar {
