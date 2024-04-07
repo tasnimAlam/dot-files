@@ -1,5 +1,4 @@
 local map = vim.api.nvim_set_keymap
-
 vim.g.mapleader = " "
 map("n", "<Leader>o", ":on<CR>", {})
 map("n", "<Leader>w", ":w!<CR>", {})
@@ -150,6 +149,8 @@ map("n", "<Leader>cl", "<cmd>Noice dismiss<CR>", {})
 map("n", "<Leader>fm", "<cmd>lua require('nvim-navbuddy').open()<CR>", {})
 
 -- Before
-map("n", "<C-i>", "<cmd>lua require('before').jump_to_last_edit()<CR>", {});
-map("n", "<C-o>", "<cmd>lua require('before').jump_to_next_edit()<CR>", {});
+
+map("n", "<C-u>", "<cmd>lua require('before').jump_to_last_edit()<CR>", {});
+map("n", "<C-i>", "<cmd>lua require('before').jump_to_next_edit()<CR>", {});
+map("n", "<Leader>oq", "<cmd>lua require('before').show_edits_in_quickfix()()<CR>", {});
 map("n", "<Leader>oe", "<cmd>lua require('before').show_edits_in_telescope()<CR>", {});

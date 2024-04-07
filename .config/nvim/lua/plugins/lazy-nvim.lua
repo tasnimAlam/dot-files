@@ -31,15 +31,16 @@ require("lazy").setup({
 	{
 		"folke/trouble.nvim",
 		dependencies = "kyazdani42/nvim-web-devicons",
+		branch = "dev",
 		config = function()
 			require("plugins.trouble")
 		end,
 	},
-	{
-		"mrcjkb/rustaceanvim",
-		version = "^4", -- Recommended
-		ft = { "rust" },
-	},
+	-- {
+	-- 	"mrcjkb/rustaceanvim",
+	-- 	version = "^4", -- Recommended
+	-- 	ft = { "rust" },
+	-- },
 
 	-- Formatting
 	{
@@ -105,7 +106,7 @@ require("lazy").setup({
 		"akinsho/nvim-bufferline.lua",
 		dependencies = "kyazdani42/nvim-web-devicons",
 		config = function()
-			require("bufferline").setup()
+			require("plugins.buffer")
 		end,
 	},
 
@@ -255,7 +256,7 @@ require("lazy").setup({
 			"L3MON4D3/LuaSnip",
 			"hrsh7th/nvim-cmp"
 		},
-		opt = true,              -- Set this to true if the plugin is optional
+		opt = true,            -- Set this to true if the plugin is optional
 		event = 'InsertCharPre', -- Set the event to 'InsertCharPre' for better compatibility
 		priority = 1000,
 	},
@@ -409,7 +410,7 @@ require("lazy").setup({
 	{
 		'bloznelis/before.nvim',
 		config = function()
-			require('before').setup()
+			require('plugins.b4')
 		end
 	},
 })

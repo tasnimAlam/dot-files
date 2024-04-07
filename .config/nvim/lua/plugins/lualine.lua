@@ -5,6 +5,7 @@ require("lualine").setup({
 		 -- theme = "tokyonight",
 	},
 	sections = {
-        lualine_b = { "grapple" }
+        lualine_b = { "grapple"},
+        lualine_c = { "branch" }
     }
 })
