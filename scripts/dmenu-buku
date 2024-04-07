@@ -1,3 +1,0 @@
-#!/bin/bash
-
-chromium $(buku -p -f 40 | dmenu-wl)
