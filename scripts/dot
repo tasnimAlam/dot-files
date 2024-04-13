@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Check if argument is provided
+if [ $# -eq 0 ]; then
+	echo "Need a folder name"
+	exit 1
+fi
+
+# Get the folder name from the argument
+folder_name="$1"
+
+# Build the path to the folder inside ~/.config
+config_folder="$HOME/.config/$folder_name"
+dot_folder="$HOME/Documents/dot-files/.config/"
+
+# Check if folder exists inside ~/.config
+if [ -d "$config_folder" ]; then
+	cp -r "$config_folder" "$dot_folder"
+  echo "Copied $config_folder" 
+else 
+  echo "Folder doesn't exists inside ~/.config/ "
+fi
