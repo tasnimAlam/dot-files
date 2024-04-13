@@ -260,7 +260,12 @@ require("lazy").setup({
 		event = 'InsertCharPre', -- Set the event to 'InsertCharPre' for better compatibility
 		priority = 1000,
 	},
-	{ "rmagatti/alternate-toggler" },
+	{
+		"rmagatti/alternate-toggler",
+		config = function()
+			require("plugins.toggler")
+		end
+	},
 	{
 		"AckslD/nvim-neoclip.lua",
 		config = function()
@@ -270,10 +275,10 @@ require("lazy").setup({
 	{ "tpope/vim-surround" },
 	{ "tpope/vim-repeat" },
 	{ "tpope/vim-unimpaired" },
-	{ 'windwp/nvim-autopairs',  event = "InsertEnter",    config = true },
+	{ 'windwp/nvim-autopairs',       event = "InsertEnter",    config = true },
 	{ "mattn/emmet-vim" },
-	{ "rrethy/vim-hexokinase",  build = "make hexokinase" },
-	{ "gbprod/substitute.nvim", opts = {} },
+	{ "rrethy/vim-hexokinase",       build = "make hexokinase" },
+	{ "gbprod/substitute.nvim",      opts = {} },
 	{ "kevinhwang91/nvim-bqf" },
 	{
 		"f-person/git-blame.nvim",
