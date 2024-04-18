@@ -43,11 +43,24 @@ require("lazy").setup({
 	-- },
 
 	-- Formatting
+	-- {
+	-- 	"nvimtools/none-ls.nvim",
+	-- 	config = function()
+	-- 		require("plugins.null-ls")
+	-- 	end,
+	-- },
 	{
-		"nvimtools/none-ls.nvim",
+		'stevearc/conform.nvim',
+		opts = {},
 		config = function()
-			require("plugins.null-ls")
-		end,
+			require("plugins.conform-format")
+		end
+	},
+	{
+		'mfussenegger/nvim-lint',
+		config = function()
+			require('plugins.linter')
+		end
 	},
 	{
 		"numToStr/Comment.nvim",
@@ -418,4 +431,19 @@ require("lazy").setup({
 			require('plugins.b4')
 		end
 	},
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = {
+			"Myzel394/jsonfly.nvim",
+		},
+		keys = {
+			{
+				"<leader>j",
+				"<cmd>Telescope jsonfly<cr>",
+				desc = "Open json(fly)",
+				ft = { "json" },
+				mode = "n"
+			}
+		}
+	}
 })
