@@ -103,7 +103,7 @@
 
     "network": {
         "interval": 5,
-        "format-wifi": "  {essid}", // Icon: wifi
+        "format-wifi": "  {essid}  {bandwidthUpBits}  {bandwidthDownBits}", // Icon: wifi
         "format-ethernet": "  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
         "format-disconnected": "⚠  Disconnected",
         "tooltip-format": "{ifname}: {ipaddr}"
