@@ -8,5 +8,6 @@ require("conform").setup({
 		typescriptreact = { "prettierd" },
 		css = { "prettierd" },
 		html = { "prettierd" },
+		rust = { "rustfmt" },
 	},
 })

@@ -1,18 +1,17 @@
 require("lazy").setup({
 	-- Lsp
-	{ 'williamboman/mason.nvim' },
-	{ 'williamboman/mason-lspconfig.nvim' },
+	{ "williamboman/mason.nvim" },
+	{ "williamboman/mason-lspconfig.nvim" },
 	{
-		'VonHeikemen/lsp-zero.nvim',
-		config =
-				function()
-					require('plugins.zero')
-				end,
-		branch = 'v3.x'
+		"VonHeikemen/lsp-zero.nvim",
+		config = function()
+			require("plugins.zero")
+		end,
+		branch = "v3.x",
 	},
 	{
-		'neovim/nvim-lspconfig',
-		dependencies = { { 'hrsh7th/cmp-nvim-lsp' }, }
+		"neovim/nvim-lspconfig",
+		dependencies = { { "hrsh7th/cmp-nvim-lsp" } },
 	},
 	{
 		"yioneko/nvim-vtsls",
@@ -36,11 +35,11 @@ require("lazy").setup({
 			require("plugins.trouble")
 		end,
 	},
-	-- {
-	-- 	"mrcjkb/rustaceanvim",
-	-- 	version = "^4", -- Recommended
-	-- 	ft = { "rust" },
-	-- },
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^4", -- Recommended
+		ft = { "rust" },
+	},
 
 	-- Formatting
 	-- {
@@ -50,17 +49,17 @@ require("lazy").setup({
 	-- 	end,
 	-- },
 	{
-		'stevearc/conform.nvim',
+		"stevearc/conform.nvim",
 		opts = {},
 		config = function()
 			require("plugins.conform-format")
-		end
+		end,
 	},
 	{
-		'mfussenegger/nvim-lint',
+		"mfussenegger/nvim-lint",
 		config = function()
-			require('plugins.linter')
-		end
+			require("plugins.linter")
+		end,
 	},
 	{
 		"numToStr/Comment.nvim",
@@ -104,8 +103,13 @@ require("lazy").setup({
 		end,
 	},
 	{ "nvim-treesitter/nvim-treesitter-textobjects" },
-	{ "windwp/nvim-ts-autotag",                     config = function() require("nvim-ts-autotag").setup() end },
-	{ "maxmellon/vim-jsx-pretty",                   ft = { "js", "jsx", "ts", "tsx" } },
+	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup()
+		end,
+	},
+	{ "maxmellon/vim-jsx-pretty", ft = { "js", "jsx", "ts", "tsx" } },
 
 	-- Status line
 	{
@@ -134,16 +138,30 @@ require("lazy").setup({
 	{ "kyazdani42/nvim-web-devicons" },
 
 	-- Search related tools
-	{ "junegunn/fzf",                build = "./install --all" },
+	{ "junegunn/fzf", build = "./install --all" },
 	{ "junegunn/fzf.vim" },
 	{
 		"nvim-telescope/telescope.nvim",
-		dependencies = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" }, cmd = "Telescope" },
+		dependencies = {
+			{ "nvim-lua/popup.nvim" },
+			{ "nvim-lua/plenary.nvim" },
+			{ "Myzel394/jsonfly.nvim" },
+			keys = {
+				{
+					"<leader>j",
+					"<cmd>Telescope jsonfly<cr>",
+					desc = "Open json(fly)",
+					ft = { "json" },
+					mode = "n",
+				},
+			},
+			cmd = "Telescope",
+		},
 		config = function()
-			require('plugins.telescope')
-		end
+			require("plugins.telescope")
+		end,
 	},
-	{ "nvim-telescope/telescope-fzf-native.nvim",    build = "make" },
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{ "nvim-telescope/telescope-project.nvim" },
 	{ "nvim-telescope/telescope-media-files.nvim" },
 	{ "nvim-telescope/telescope-live-grep-args.nvim" },
@@ -162,10 +180,10 @@ require("lazy").setup({
 		event = { "BufReadPost", "BufNewFile" },
 		cmd = "Grapple",
 		keys = {
-			{ "<leader>M", "<cmd>Grapple toggle<cr>",         desc = "Grapple toggle tag" },
-			{ "<leader>J", "<cmd>Grapple toggle_tags<cr>",    desc = "Grapple toggle tags" },
-			{ "<leader>K", "<cmd>Grapple toggle_scopes<cr>",  desc = "Grapple toggle scopes" },
-			{ "<leader>j", "<cmd>Grapple cycle forward<cr>",  desc = "Grapple cycle forward" },
+			{ "<leader>M", "<cmd>Grapple toggle<cr>", desc = "Grapple toggle tag" },
+			{ "<leader>J", "<cmd>Grapple toggle_tags<cr>", desc = "Grapple toggle tags" },
+			{ "<leader>K", "<cmd>Grapple toggle_scopes<cr>", desc = "Grapple toggle scopes" },
+			{ "<leader>j", "<cmd>Grapple cycle forward<cr>", desc = "Grapple cycle forward" },
 			{ "<leader>k", "<cmd>Grapple cycle backward<cr>", desc = "Grapple cycle backward" },
 			{ "<leader>1", "<cmd>Grapple select index=1<cr>", desc = "Grapple select 1" },
 			{ "<leader>2", "<cmd>Grapple select index=2<cr>", desc = "Grapple select 2" },
@@ -183,10 +201,10 @@ require("lazy").setup({
 		dependencies = { "rafamadriz/friendly-snippets" },
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load()
-			require 'luasnip'.filetype_extend("typescript", { "javascript" })
-		end
+			require("luasnip").filetype_extend("typescript", { "javascript" })
+		end,
 	},
-	{ 'saadparwaiz1/cmp_luasnip' },
+	{ "saadparwaiz1/cmp_luasnip" },
 	{ "JoosepAlviste/nvim-ts-context-commentstring", ft = { "js", "jsx", "ts", "tsx" } },
 	{
 		"lewis6991/gitsigns.nvim",
@@ -211,13 +229,13 @@ require("lazy").setup({
 		priority = 1000,
 		config = function()
 			vim.cmd([[ colorscheme catppuccin-frappe]])
-		end
+		end,
 	},
 	{
 		"rebelot/kanagawa.nvim",
 		config = function()
 			-- vim.cmd("colorscheme kanagawa")
-		end
+		end,
 	},
 
 	-- Terminal
@@ -267,17 +285,17 @@ require("lazy").setup({
 		requires = {
 			"nvim-treesitter/nvim-treesitter",
 			"L3MON4D3/LuaSnip",
-			"hrsh7th/nvim-cmp"
+			"hrsh7th/nvim-cmp",
 		},
-		opt = true,            -- Set this to true if the plugin is optional
-		event = 'InsertCharPre', -- Set the event to 'InsertCharPre' for better compatibility
+		opt = true, -- Set this to true if the plugin is optional
+		event = "InsertCharPre", -- Set the event to 'InsertCharPre' for better compatibility
 		priority = 1000,
 	},
 	{
 		"rmagatti/alternate-toggler",
 		config = function()
 			require("plugins.toggler")
-		end
+		end,
 	},
 	{
 		"AckslD/nvim-neoclip.lua",
@@ -288,10 +306,10 @@ require("lazy").setup({
 	{ "tpope/vim-surround" },
 	{ "tpope/vim-repeat" },
 	{ "tpope/vim-unimpaired" },
-	{ 'windwp/nvim-autopairs',       event = "InsertEnter",    config = true },
+	{ "windwp/nvim-autopairs", event = "InsertEnter", config = true },
 	{ "mattn/emmet-vim" },
-	{ "rrethy/vim-hexokinase",       build = "make hexokinase" },
-	{ "gbprod/substitute.nvim",      opts = {} },
+	{ "rrethy/vim-hexokinase", build = "make hexokinase" },
+	{ "gbprod/substitute.nvim", opts = {} },
 	{ "kevinhwang91/nvim-bqf" },
 	{
 		"f-person/git-blame.nvim",
@@ -299,7 +317,7 @@ require("lazy").setup({
 			require("plugins.blame")
 		end,
 	},
-	{ 'stevearc/overseer.nvim',      opts = {}, },
+	{ "stevearc/overseer.nvim", opts = {} },
 	{
 		"chentoast/marks.nvim",
 		config = function()
@@ -335,7 +353,7 @@ require("lazy").setup({
 		end,
 	},
 	{ "nvim-pack/nvim-spectre" },
-	{ "SmiteshP/nvim-navic",   dependencies = "neovim/nvim-lspconfig" },
+	{ "SmiteshP/nvim-navic", dependencies = "neovim/nvim-lspconfig" },
 	{
 		"SmiteshP/nvim-navbuddy",
 		dependencies = {
@@ -345,7 +363,7 @@ require("lazy").setup({
 			"numToStr/Comment.nvim",
 			"nvim-telescope/telescope.nvim",
 		},
-		opts = { lsp = { auto_attach = true } }
+		opts = { lsp = { auto_attach = true } },
 	},
 	{
 		"aserowy/tmux.nvim",
@@ -426,24 +444,14 @@ require("lazy").setup({
 	-- 	end,
 	-- },
 	{
-		'bloznelis/before.nvim',
+		"bloznelis/before.nvim",
 		config = function()
-			require('plugins.b4')
-		end
+			require("plugins.b4")
+		end,
 	},
 	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = {
-			"Myzel394/jsonfly.nvim",
-		},
-		keys = {
-			{
-				"<leader>j",
-				"<cmd>Telescope jsonfly<cr>",
-				desc = "Open json(fly)",
-				ft = { "json" },
-				mode = "n"
-			}
-		}
-	}
+		"chrisgrieser/nvim-various-textobjs",
+		lazy = false,
+		opts = { useDefaultKeymaps = true },
+	},
 })
