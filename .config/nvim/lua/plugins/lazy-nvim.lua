@@ -173,6 +173,13 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"piersolenski/telescope-import.nvim",
+		dependencies = "nvim-telescope/telescope.nvim",
+		config = function()
+			require("telescope").load_extension("import")
+		end,
+	},
+	{
 		"cbochs/grapple.nvim",
 		opts = {
 			scope = "git",
@@ -454,4 +461,13 @@ require("lazy").setup({
 		lazy = false,
 		opts = { useDefaultKeymaps = true },
 	},
+	-- {
+	-- 	"supermaven-inc/supermaven-nvim",
+	-- 	opts = {
+	-- 		keymaps = {
+	-- 			accept_suggestion = "<A-f>",
+	-- 			clear_suggestion = "<A-c>",
+	-- 		},
+	-- 	},
+	-- },
 })
