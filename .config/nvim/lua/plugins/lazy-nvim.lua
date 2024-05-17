@@ -15,10 +15,10 @@ require("lazy").setup({
 	},
 	{
 		"yioneko/nvim-vtsls",
-		config = function()
-			require("lspconfig.configs").vtsls = require("vtsls").lspconfig
-			require("lspconfig").vtsls.setup({})
-		end,
+		-- config = function()
+		-- 	require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+		-- 	require("lspconfig").vtsls.setup({})
+		-- end,
 	},
 	{
 		"tami5/lspsaga.nvim",
@@ -35,11 +35,11 @@ require("lazy").setup({
 			require("plugins.trouble")
 		end,
 	},
-	{
-		"mrcjkb/rustaceanvim",
-		version = "^4", -- Recommended
-		ft = { "rust" },
-	},
+	-- {
+	-- 	"mrcjkb/rustaceanvim",
+	-- 	version = "^4", -- Recommended
+	-- 	ft = { "rust" },
+	-- },
 
 	-- Formatting
 	-- {
@@ -460,6 +460,14 @@ require("lazy").setup({
 		"chrisgrieser/nvim-various-textobjs",
 		lazy = false,
 		opts = { useDefaultKeymaps = true },
+	},
+	{
+		"MeanderingProgrammer/markdown.nvim",
+		name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("render-markdown").setup({})
+		end,
 	},
 	-- {
 	-- 	"supermaven-inc/supermaven-nvim",
