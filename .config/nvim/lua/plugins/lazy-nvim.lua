@@ -21,10 +21,14 @@ require("lazy").setup({
 		-- end,
 	},
 	{
-		"tami5/lspsaga.nvim",
+		"nvimdev/lspsaga.nvim",
 		config = function()
-			require("plugins.lspsaga")
+			require("lspsaga").setup({})
 		end,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
 	},
 	{ "onsails/lspkind-nvim" },
 	{
