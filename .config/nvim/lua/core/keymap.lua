@@ -105,7 +105,7 @@ map(
 -- Buffer management
 map("n", "<Leader>,", "<C-^>", {})
 map("n", "<Leader>x", "<cmd>bd!<CR>", {})
-map("n", "<Leader>bc", '<cmd>bufdo bwipeout<CR>', { noremap = true })
+map("n", "<Leader>bc", "<cmd>bufdo bwipeout<CR>", { noremap = true })
 map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true })
 map("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true })
 map("n", "<Leader>bs", ":BufferLinePick<CR>", { silent = true })
@@ -122,7 +122,6 @@ map("n", "[c", "<cmd>Gitsigns prev_hunk<CR>", {})
 map("i", "cll", "console.log()<ESC><S-f>(a", {})
 map("v", "cll", "S(iconsole.log<ESC>", {})
 map("n", "cll", "yiwocll<ESC>p", {})
-
 
 -- Window movement
 map("n", "<C-h>", "<cmd>lua require('Navigator').left()<CR>", {})
@@ -150,7 +149,7 @@ map("n", "<Leader>cl", "<cmd>Noice dismiss<CR>", {})
 map("n", "<Leader>fm", "<cmd>lua require('nvim-navbuddy').open()<CR>", {})
 
 -- Before
-map("n", "<C-A>", "<cmd>lua require('before').jump_to_last_edit()<CR>", {});
-map("n", "<C-S>", "<cmd>lua require('before').jump_to_next_edit()<CR>", {});
-map("n", "<Leader>oq", "<cmd>lua require('before').show_edits_in_quickfix()()<CR>", {});
-map("n", "<Leader>oe", "<cmd>lua require('before').show_edits_in_telescope()<CR>", {});
+map("n", "<C-A>", "<cmd>lua require('before').jump_to_last_edit()<CR>", {})
+map("n", "<C-S>", "<cmd>lua require('before').jump_to_next_edit()<CR>", {})
+map("n", "<Leader>oq", "<cmd>lua require('before').show_edits_in_quickfix()()<CR>", {})
+map("n", "<Leader>oe", "<cmd>lua require('before').show_edits_in_telescope()<CR>", {})
