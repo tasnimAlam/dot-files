@@ -34,7 +34,6 @@ require("lazy").setup({
 	{
 		"folke/trouble.nvim",
 		dependencies = "kyazdani42/nvim-web-devicons",
-		branch = "dev",
 		config = function()
 			require("plugins.trouble")
 		end,
