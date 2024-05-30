@@ -48,7 +48,7 @@ end
 
 # NNN config
 set -x NNN_FIFO "/tmp/nnn.fifo"
-set -x NNN_PLUG "f:fzopen;m:send_email;u:getplugs;p:preview-tui;c:croc_send;h:nmount;t:thumbnail;d:dragdrop;i:ipinfo;k:pskill;j:autojump;e:-!sudo -E nvim $nnn*;E:suedit;s:x2sel;"
+set -x NNN_PLUG "f:fzopen;m:send_email;u:getplugs;p:preview-tui;c:croc_send;h:nmount;t:thumbnail;d:dragdrop;i:ipinfo;k:pskill;j:autojump;e:-!sudo -E nvim $nnn*;E:suedit;s:x2sel"
 
 # Colors
 set BLK 03
