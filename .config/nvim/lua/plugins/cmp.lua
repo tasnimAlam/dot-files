@@ -23,9 +23,9 @@ cmp.setup({
   },
   sources = {
     { name = "luasnip" },
-    { name = "nvim_lsp" },
+    -- { name = "nvim_lsp" },
     { name = "cmp_tabnine" },
-    { name = "copilot" },
+    -- { name = "copilot" },
     { name = "buffer" },
     { name = "path" },
     { name = "cmdline" },

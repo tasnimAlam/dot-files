@@ -78,11 +78,8 @@ require("lazy").setup({
 		dependencies = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-calc",
-			"octaltree/cmp-look",
 		},
 		config = function()
 			require("plugins.cmp")
@@ -168,13 +165,13 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope-project.nvim" },
 	{ "nvim-telescope/telescope-media-files.nvim" },
 	{ "nvim-telescope/telescope-live-grep-args.nvim" },
-	{
-		"Marskey/telescope-sg",
-		dependencies = "nvim-telescope/telescope.nvim",
-		config = function()
-			require("telescope").load_extension("ast_grep")
-		end,
-	},
+	-- {
+	-- 	"Marskey/telescope-sg",
+	-- 	dependencies = "nvim-telescope/telescope.nvim",
+	-- 	config = function()
+	-- 		require("telescope").load_extension("ast_grep")
+	-- 	end,
+	-- },
 	{
 		"piersolenski/telescope-import.nvim",
 		dependencies = "nvim-telescope/telescope.nvim",
@@ -319,7 +316,7 @@ require("lazy").setup({
 	{ "windwp/nvim-autopairs", event = "InsertEnter", config = true },
 	{ "mattn/emmet-vim" },
 	{ "rrethy/vim-hexokinase", build = "make hexokinase" },
-	{ "gbprod/substitute.nvim", opts = {} },
+	-- { "gbprod/substitute.nvim", opts = {} },
 	{ "kevinhwang91/nvim-bqf" },
 	{
 		"f-person/git-blame.nvim",

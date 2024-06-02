@@ -18,10 +18,24 @@ local nnn = fterm:new({
 	},
 })
 
+local yazi = fterm:new({
+	ft = "fterm_yazi",
+	cmd = "yazi",
+	dimensions = {
+		height = 1.0,
+		width = 1.0,
+	},
+})
+
+
 vim.keymap.set("n", "<Leader>g", function()
 	lazygit:toggle()
 end)
 
+-- vim.keymap.set("n", "<Leader>n", function()
+-- 	nnn:toggle()
+-- end)
+
 vim.keymap.set("n", "<Leader>n", function()
-	nnn:toggle()
+	yazi:toggle()
 end)
