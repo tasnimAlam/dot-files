@@ -140,27 +140,6 @@ require("lazy").setup({
 	-- Search related tools
 	{ "junegunn/fzf", build = "./install --all" },
 	{ "junegunn/fzf.vim" },
-	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = {
-			{ "nvim-lua/popup.nvim" },
-			{ "nvim-lua/plenary.nvim" },
-			{ "Myzel394/jsonfly.nvim" },
-			keys = {
-				{
-					"<leader>j",
-					"<cmd>Telescope jsonfly<cr>",
-					desc = "Open json(fly)",
-					ft = { "json" },
-					mode = "n",
-				},
-			},
-			cmd = "Telescope",
-		},
-		config = function()
-			require("plugins.telescope")
-		end,
-	},
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{ "nvim-telescope/telescope-project.nvim" },
 	{ "nvim-telescope/telescope-media-files.nvim" },
@@ -466,7 +445,9 @@ require("lazy").setup({
 		name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
-			require("render-markdown").setup({})
+			require("render-markdown").setup({
+				start_enabled = false,
+			})
 		end,
 	},
 	-- {
