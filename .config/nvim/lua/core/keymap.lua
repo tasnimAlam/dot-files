@@ -80,7 +80,7 @@ map(
 	"<cmd>Telescope find_files follow=true no_ignore=true hidden=true <CR>",
 	{ noremap = true, silent = true }
 )
--- map("n", "<Leader>ss", '<cmd>lua require("telescope.builtin").grep_string()<CR>', { noremap = true, silent = true })
+map("n", "<Leader>ss", '<cmd>lua require("telescope.builtin").grep_string()<CR>', { noremap = true, silent = true })
 map(
 	"n",
 	"<Leader>sl",

@@ -140,6 +140,13 @@ require("lazy").setup({
 	-- Search related tools
 	{ "junegunn/fzf", build = "./install --all" },
 	{ "junegunn/fzf.vim" },
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("plugins.telescope")
+		end,
+	},
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{ "nvim-telescope/telescope-project.nvim" },
 	{ "nvim-telescope/telescope-media-files.nvim" },
