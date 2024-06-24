@@ -128,13 +128,13 @@ require("lazy").setup({
 	},
 
 	-- File tree
-	{
-		"kyazdani42/nvim-tree.lua",
-		dependencies = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("nvim-tree").setup({})
-		end,
-	},
+	-- {
+	-- 	"kyazdani42/nvim-tree.lua",
+	-- 	dependencies = "kyazdani42/nvim-web-devicons",
+	-- 	config = function()
+	-- 		require("nvim-tree").setup({})
+	-- 	end,
+	-- },
 	{ "kyazdani42/nvim-web-devicons" },
 
 	-- Search related tools
@@ -345,7 +345,6 @@ require("lazy").setup({
 			require("project_nvim").setup({})
 		end,
 	},
-	{ "nvim-pack/nvim-spectre" },
 	{ "SmiteshP/nvim-navic", dependencies = "neovim/nvim-lspconfig" },
 	{
 		"SmiteshP/nvim-navbuddy",
