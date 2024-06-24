@@ -38,19 +38,8 @@ require("lazy").setup({
 			require("plugins.trouble")
 		end,
 	},
-	-- {
-	-- 	"mrcjkb/rustaceanvim",
-	-- 	version = "^4", -- Recommended
-	-- 	ft = { "rust" },
-	-- },
 
 	-- Formatting
-	-- {
-	-- 	"nvimtools/none-ls.nvim",
-	-- 	config = function()
-	-- 		require("plugins.null-ls")
-	-- 	end,
-	-- },
 	{
 		"stevearc/conform.nvim",
 		opts = {},
@@ -127,14 +116,7 @@ require("lazy").setup({
 		end,
 	},
 
-	-- File tree
-	-- {
-	-- 	"kyazdani42/nvim-tree.lua",
-	-- 	dependencies = "kyazdani42/nvim-web-devicons",
-	-- 	config = function()
-	-- 		require("nvim-tree").setup({})
-	-- 	end,
-	-- },
+	-- Icons
 	{ "kyazdani42/nvim-web-devicons" },
 
 	-- Search related tools
@@ -151,13 +133,6 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope-project.nvim" },
 	{ "nvim-telescope/telescope-media-files.nvim" },
 	{ "nvim-telescope/telescope-live-grep-args.nvim" },
-	-- {
-	-- 	"Marskey/telescope-sg",
-	-- 	dependencies = "nvim-telescope/telescope.nvim",
-	-- 	config = function()
-	-- 		require("telescope").load_extension("ast_grep")
-	-- 	end,
-	-- },
 	{
 		"piersolenski/telescope-import.nvim",
 		dependencies = "nvim-telescope/telescope.nvim",
@@ -302,7 +277,6 @@ require("lazy").setup({
 	{ "windwp/nvim-autopairs", event = "InsertEnter", config = true },
 	{ "mattn/emmet-vim" },
 	{ "rrethy/vim-hexokinase", build = "make hexokinase" },
-	-- { "gbprod/substitute.nvim", opts = {} },
 	{ "kevinhwang91/nvim-bqf" },
 	{
 		"f-person/git-blame.nvim",
@@ -345,18 +319,18 @@ require("lazy").setup({
 			require("project_nvim").setup({})
 		end,
 	},
-	{ "SmiteshP/nvim-navic", dependencies = "neovim/nvim-lspconfig" },
-	{
-		"SmiteshP/nvim-navbuddy",
-		dependencies = {
-			"neovim/nvim-lspconfig",
-			"SmiteshP/nvim-navic",
-			"MunifTanjim/nui.nvim",
-			"numToStr/Comment.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-		opts = { lsp = { auto_attach = true } },
-	},
+	-- { "SmiteshP/nvim-navic", dependencies = "neovim/nvim-lspconfig" },
+	-- {
+	-- 	"SmiteshP/nvim-navbuddy",
+	-- 	dependencies = {
+	-- 		"neovim/nvim-lspconfig",
+	-- 		"SmiteshP/nvim-navic",
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		"numToStr/Comment.nvim",
+	-- 		"nvim-telescope/telescope.nvim",
+	-- 	},
+	-- 	opts = { lsp = { auto_attach = true } },
+	-- },
 	{
 		"aserowy/tmux.nvim",
 		config = function()
