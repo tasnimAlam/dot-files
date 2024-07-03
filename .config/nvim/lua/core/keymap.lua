@@ -105,10 +105,10 @@ map(
 -- Buffer management
 map("n", "<Leader>,", "<C-^>", {})
 map("n", "<Leader>x", "<cmd>bd!<CR>", {})
-map("n", "<Leader>bc", "<cmd>bufdo bwipeout<CR>", { noremap = true })
+map("n", "<Leader>X", "<cmd>bufdo bwipeout<CR>", { noremap = true })
 map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true })
 map("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true })
-map("n", "<Leader>bs", ":BufferLinePick<CR>", { silent = true })
+map("n", "<Leader>B", ":BufferLinePick<CR>", { silent = true })
 map("n", "d>", ":BufferLineCloseRight<CR>", { silent = true })
 map("n", "d<", ":BufferLineCloseLeft<CR>", { silent = true })
 map("n", "g>", ":BufferLineMoveNext<CR>", { silent = true })
@@ -130,11 +130,11 @@ map("n", "<C-l>", "<cmd>lua require('Navigator').right()<CR>", {})
 map("n", "<C-j>", "<cmd>lua require('Navigator').down()<CR>", {})
 
 -- Debugger
-map("n", "<Leader>B", "<cmd>lua require('dapui').toggle()<CR>", {})
-map("n", "<F5>", "<cmd>lua require('dap').continue() <CR>", {})
-map("n", "<F10>", "<cmd>lua require('dap').step_over() <CR>", {})
-map("n", "<F11>", "<cmd>lua require('dap').step_into() <CR>", {})
-map("n", "<F12>", "<cmd>lua require('dap').step_out() <CR>", {})
+-- map("n", "<Leader>B", "<cmd>lua require('dapui').toggle()<CR>", {})
+-- map("n", "<F5>", "<cmd>lua require('dap').continue() <CR>", {})
+-- map("n", "<F10>", "<cmd>lua require('dap').step_over() <CR>", {})
+-- map("n", "<F11>", "<cmd>lua require('dap').step_into() <CR>", {})
+-- map("n", "<F12>", "<cmd>lua require('dap').step_out() <CR>", {})
 -- map("n", "<Leader>b", "<cmd>lua require('dap').toggle_breakpoint() <CR>", {})
 
 -- Rest API test
