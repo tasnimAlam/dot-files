@@ -276,7 +276,12 @@ require("lazy").setup({
 	{ "tpope/vim-unimpaired" },
 	{ "windwp/nvim-autopairs", event = "InsertEnter", config = true },
 	{ "mattn/emmet-vim" },
-	{ "rrethy/vim-hexokinase", build = "make hexokinase" },
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup()
+		end,
+	},
 	{ "kevinhwang91/nvim-bqf" },
 	{
 		"f-person/git-blame.nvim",

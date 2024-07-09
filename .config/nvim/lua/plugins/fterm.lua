@@ -27,6 +27,14 @@ local yazi = fterm:new({
 	},
 })
 
+local find_replace = fterm:new({
+	ft = "fterm_find_replace",
+	cmd = "serpl",
+	dimensions = {
+		height = 1.0,
+		width = 1.0,
+	},
+})
 
 vim.keymap.set("n", "<Leader>g", function()
 	lazygit:toggle()
@@ -38,4 +46,8 @@ end)
 
 vim.keymap.set("n", "<Leader>y", function()
 	yazi:toggle()
+end)
+
+vim.keymap.set("n", "<Leader>fr", function()
+	find_replace:toggle()
 end)
