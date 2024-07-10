@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# List all processes with PID and command
+process=$(ps -e -o pid= -o comm= | dmenu-wl -i -l 20 -p "Select process to kill:")
+
+# Extract PID
+pid=$(echo $process | awk '{print $1}')
+
+# Kill the process
+if [ -n "$pid" ]; then
+    kill $pid
+    notify-send "Process killed" "PID: $pid"
+else
+    notify-send "No process selected"
+fi
+

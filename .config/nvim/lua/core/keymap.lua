@@ -58,9 +58,6 @@ map("i", ".", ".<C-g>u", {})
 map("i", "!", "!<C-g>u", {})
 map("i", "?", "?<C-g>u", {})
 
--- Nvim tree config
-map("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", {})
-
 -- Lazy config
 map("n", "<Leader>l", "<cmd>Lazy<CR>", { silent = true, noremap = true })
 
