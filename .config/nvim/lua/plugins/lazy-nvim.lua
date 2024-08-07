@@ -431,7 +431,7 @@ require("lazy").setup({
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
 			require("render-markdown").setup({
-				start_enabled = false,
+				enabled = false,
 			})
 		end,
 	},
@@ -443,5 +443,19 @@ require("lazy").setup({
 	-- 			clear_suggestion = "<A-c>",
 	-- 		},
 	-- 	},
+	-- },
+	-- lazy.nvim
+	{
+		"m4xshen/hardtime.nvim",
+		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+		opts = {},
+	},
+	{ "tris203/precognition.nvim" },
+	-- {
+	-- 	"julienvincent/hunk.nvim",
+	-- 	cmd = { "DiffEditor" },
+	-- 	config = function()
+	-- 		require("hunk").setup()
+	-- 	end,
 	-- },
 })

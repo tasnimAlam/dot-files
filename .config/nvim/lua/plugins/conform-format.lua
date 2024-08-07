@@ -10,6 +10,7 @@ require("conform").setup({
 		css = { "prettierd" },
 		scss = { "prettierd" },
 		html = { "prettierd" },
+		htmlangular = { "prettierd" },
 		rust = { "rustfmt" },
 	},
 })
