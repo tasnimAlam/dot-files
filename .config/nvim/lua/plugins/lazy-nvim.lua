@@ -13,13 +13,7 @@ require("lazy").setup({
 		"neovim/nvim-lspconfig",
 		dependencies = { { "hrsh7th/cmp-nvim-lsp" } },
 	},
-	{
-		"yioneko/nvim-vtsls",
-		-- config = function()
-		-- 	require("lspconfig.configs").vtsls = require("vtsls").lspconfig
-		-- 	require("lspconfig").vtsls.setup({})
-		-- end,
-	},
+	{ "yioneko/nvim-vtsls" },
 	{
 		"nvimdev/lspsaga.nvim",
 		config = function()
@@ -324,18 +318,6 @@ require("lazy").setup({
 			require("project_nvim").setup({})
 		end,
 	},
-	-- { "SmiteshP/nvim-navic", dependencies = "neovim/nvim-lspconfig" },
-	-- {
-	-- 	"SmiteshP/nvim-navbuddy",
-	-- 	dependencies = {
-	-- 		"neovim/nvim-lspconfig",
-	-- 		"SmiteshP/nvim-navic",
-	-- 		"MunifTanjim/nui.nvim",
-	-- 		"numToStr/Comment.nvim",
-	-- 		"nvim-telescope/telescope.nvim",
-	-- 	},
-	-- 	opts = { lsp = { auto_attach = true } },
-	-- },
 	{
 		"aserowy/tmux.nvim",
 		config = function()
@@ -435,27 +417,10 @@ require("lazy").setup({
 			})
 		end,
 	},
-	-- {
-	-- 	"supermaven-inc/supermaven-nvim",
-	-- 	opts = {
-	-- 		keymaps = {
-	-- 			accept_suggestion = "<A-f>",
-	-- 			clear_suggestion = "<A-c>",
-	-- 		},
-	-- 	},
-	-- },
-	-- lazy.nvim
 	{
 		"m4xshen/hardtime.nvim",
 		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
 		opts = {},
 	},
 	{ "tris203/precognition.nvim" },
-	-- {
-	-- 	"julienvincent/hunk.nvim",
-	-- 	cmd = { "DiffEditor" },
-	-- 	config = function()
-	-- 		require("hunk").setup()
-	-- 	end,
-	-- },
 })
