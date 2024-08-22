@@ -3,6 +3,8 @@ keybinds {
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
+        bind "Alt t" { NewTab; SwitchToMode "Normal"; }
+        bind "Home" { SwitchToMode "tmux"; }
     }
     locked {
         bind "Ctrl g" { SwitchToMode "Normal"; }
