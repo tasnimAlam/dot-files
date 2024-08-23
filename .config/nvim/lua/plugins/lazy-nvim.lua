@@ -128,13 +128,6 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope-media-files.nvim" },
 	{ "nvim-telescope/telescope-live-grep-args.nvim" },
 	{
-		"piersolenski/telescope-import.nvim",
-		dependencies = "nvim-telescope/telescope.nvim",
-		config = function()
-			require("telescope").load_extension("import")
-		end,
-	},
-	{
 		"cbochs/grapple.nvim",
 		opts = {
 			scope = "git",
@@ -302,6 +295,8 @@ require("lazy").setup({
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
+		enabled = true,
+		commit = "d9328ef903168b6f52385a751eb384ae7e906c6f",
 		opts = {},
 		dependencies = {
 			"MunifTanjim/nui.nvim",
