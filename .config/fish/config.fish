@@ -4,7 +4,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 set -gx EDITOR nvim
-set -gx BROWSER chromium
+set -gx BROWSER brave
 set -gx LC_ALL en_US.UTF-8
 set -gx DMENU_BLUETOOTH_LAUNCHER dmenu-wl
 
@@ -82,6 +82,7 @@ end
 if status --is-interactive
     abbr --add --global kll kill -9
 end
+abbr --add --global zlweb "zellij --session webapp --layout ~/.config/zellij/webapp.kdl"
 
 # Zoxide init
 zoxide init fish | source
