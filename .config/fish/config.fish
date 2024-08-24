@@ -83,6 +83,7 @@ if status --is-interactive
     abbr --add --global kll kill -9
 end
 abbr --add --global zlweb "zellij --session webapp --layout ~/.config/zellij/webapp.kdl"
+abbr --add --global zlui "zellij --session ui --layout ~/.config/zellij/ui.kdl"
 
 # Zoxide init
 zoxide init fish | source
