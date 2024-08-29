@@ -57,17 +57,66 @@ require("lazy").setup({
 
 	-- Auto completion
 	{
-		"hrsh7th/nvim-cmp",
+		"yioneko/nvim-cmp",
+		branch = "perf",
+		event = "InsertEnter",
+		opts = function()
+			local cmp = require("cmp")
+
+			return {
+				mapping = {
+					["<c-n>"] = cmp.mapping.select_next_item(),
+					["<c-p>"] = cmp.mapping.select_prev_item(),
+					["<c-u>"] = cmp.mapping.scroll_docs(-4),
+					["<c-d>"] = cmp.mapping.scroll_docs(4),
+					["<c-y>"] = cmp.mapping.confirm({ select = true }),
+					["<c-e>"] = cmp.mapping.abort(),
+				},
+				sources = cmp.config.sources({
+					{ name = "nvim_lsp" },
+					{ name = "snippets" },
+				}, {
+					{ name = "buffer", keyword_length = 4 },
+				}),
+				formatting = {
+					format = function(_, item)
+						if vim.api.nvim_strwidth(item.abbr) > 30 then
+							item.abbr = vim.fn.strcharpart(item.abbr, 0, 30) .. "…"
+						end
+						if vim.api.nvim_strwidth(item.menu or "") > 30 then
+							item.menu = vim.fn.strcharpart(item.menu, 0, 30) .. "…"
+						end
+						return item
+					end,
+				},
+			}
+		end,
 		dependencies = {
-			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
+			{
+				"garymjr/nvim-snippets",
+				opts = {},
+			},
 		},
 		config = function()
 			require("plugins.cmp")
 		end,
 	},
+	-- {
+	-- 	"hrsh7th/nvim-cmp",
+	-- 	dependencies = {
+	-- 		"hrsh7th/cmp-buffer",
+	-- 		"hrsh7th/cmp-nvim-lsp",
+	-- 		"hrsh7th/cmp-path",
+	-- 		"hrsh7th/cmp-cmdline",
+	-- 	},
+	-- 	config = function()
+	-- 		require("plugins.cmp")
+	-- 	end,
+	-- },
 	{
 		"tzachar/cmp-tabnine",
 		build = "./install.sh",
@@ -298,6 +347,9 @@ require("lazy").setup({
 		enabled = true,
 		commit = "d9328ef903168b6f52385a751eb384ae7e906c6f",
 		opts = {},
+		config = function()
+			require("plugins.noice")
+		end,
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
