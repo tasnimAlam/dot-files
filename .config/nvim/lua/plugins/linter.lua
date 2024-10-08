@@ -6,6 +6,7 @@ lint.linters_by_ft = {
 	typescript = { "quick-lint-js" },
 	typescriptreact = { "quick-lint-js" },
 	css = { "quick-lint-js" },
+	htmlangular = { "quick-lint-js" },
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {

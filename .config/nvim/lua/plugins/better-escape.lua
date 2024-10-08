@@ -1,9 +1,9 @@
 require("better_escape").setup({
 	timeout = vim.o.timeoutlen,
+	default_mappings = true,
 	mappings = {
 		i = {
 			k = {
-				k = "<Esc>",
 				j = "<Esc>",
 			},
 		},

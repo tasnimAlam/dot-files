@@ -4,8 +4,8 @@ local lazygit = fterm:new({
 	ft = "fterm_lazygit",
 	cmd = "lazygit",
 	dimensions = {
-		height = 9.0,
-		width = 9.0,
+		height = 8.0,
+		width = 8.0,
 	},
 })
 
