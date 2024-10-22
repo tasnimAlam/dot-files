@@ -105,18 +105,6 @@ require("lazy").setup({
 			require("plugins.cmp")
 		end,
 	},
-	-- {
-	-- 	"hrsh7th/nvim-cmp",
-	-- 	dependencies = {
-	-- 		"hrsh7th/cmp-buffer",
-	-- 		"hrsh7th/cmp-nvim-lsp",
-	-- 		"hrsh7th/cmp-path",
-	-- 		"hrsh7th/cmp-cmdline",
-	-- 	},
-	-- 	config = function()
-	-- 		require("plugins.cmp")
-	-- 	end,
-	-- },
 	{
 		"tzachar/cmp-tabnine",
 		build = "./install.sh",
@@ -467,11 +455,6 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{
-		"m4xshen/hardtime.nvim",
-		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-		opts = {},
-	},
 	{ "tris203/precognition.nvim" },
 	-- {
 	-- 	"https://git.sr.ht/~swaits/zellij-nav.nvim",
@@ -494,4 +477,22 @@ require("lazy").setup({
 		end,
 	},
 	{ "voldikss/vim-floaterm" },
+	-- {
+	-- 	"saghen/blink.cmp",
+	-- 	lazy = false,
+	-- 	dependencies = "rafamadriz/friendly-snippets",
+	-- 	version = "v0.*",
+	-- 	opts = {
+	-- 		highlight = {
+	-- 			use_nvim_cmp_as_default = true,
+	-- 		},
+	-- 		nerd_font_variant = "normal",
+	--
+	-- 		-- experimental auto-brackets support
+	-- 		-- accept = { auto_brackets = { enabled = true } }
+	--
+	-- 		-- experimental signature help support
+	-- 		-- trigger = { signature_help = { enabled = true } }
+	-- 	},
+	-- },
 })
