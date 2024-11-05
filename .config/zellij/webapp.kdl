@@ -8,9 +8,7 @@ layout {
     children
   }
   tab name="Yarn" {
-    pane command="yarn"  {
-      args "start"
-    }
+    pane
   }
   tab name="Code" {
     pane command="nvim"  
