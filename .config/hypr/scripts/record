@@ -1,0 +1,41 @@
+#!/usr/bin/env fish
+
+# Set up default file save path and options
+set output_dir ~/Videos
+mkdir -p "$output_dir"
+set filename "$output_dir/Recording-(date +%Y%m%d%H%M%S).mp4"
+
+# Prompt for recording mode using bemenu
+set mode (echo -e "Full Screen\nActive Window\nSelect Area" | bemenu -i -l 3 -p "Screen Recording Mode:")
+
+# Check the selected mode and record accordingly
+switch "$mode"
+    case "Full Screen"
+        wf-recorder -f "$filename"
+
+    case "Active Window"
+        # Use slurp to select an active window area
+        set geometry (slurp)
+        if test -n "$geometry"
+            wf-recorder -g "$geometry" -f "$filename"
+        else
+            echo "No window selected. Exiting."
+            exit 1
+        end
+
+    case "Select Area"
+        # Use slurp to select a specific area
+        set geometry (slurp)
+        if test -n "$geometry"
+            wf-recorder -g "$geometry" -f "$filename"
+        else
+            echo "No area selected. Exiting."
+            exit 1
+        end
+
+    case '*'
+        echo "Recording canceled."
+        exit 1
+end
+
+notify-send "Screen Recording" "Recording saved as $filename"

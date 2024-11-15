@@ -1,0 +1,5 @@
+selection=$(man --apropos . | bemenu --binding vim --fn monospace 16 -l 30 | awk '{print $1}')
+
+if [ -n "$selection" ]; then
+  man --troff-device=pdf "$selection" | zathura -
+fi

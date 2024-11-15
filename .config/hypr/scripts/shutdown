@@ -4,12 +4,12 @@
 # Requirements:
 # - dmenu
 
-set chosen (echo -e "[Cancel]\nLogout\nShutdown\nReboot\n" | dmenu-wl -i -p "Choose an action:")
+set chosen (echo -e "[Cancel] \nLogout \nShutdown \nReboot\n" | bemenu -i --fn monospace 16 -p "Choose an action:")
 
 if test "$chosen" = "Logout"
 	pkill -u (whoami)
   else if test "$chosen" = "Shutdown"
-	shutdown now
+	systemctl poweroff 
 else if test "$chosen" = "Reboot"
-	shutdown -r
+	systemctl reboot
 end
