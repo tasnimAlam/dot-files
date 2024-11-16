@@ -1,3 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env fish
 
-chromium $(buku -p -f 40 | dmenu-wl)
+set selected_url (buku -p -f 40 | bemenu | string trim)
+
+if test -n "$selected_url"
+    brave $selected_url
+else
+    echo "No selection made. Exiting."
+end

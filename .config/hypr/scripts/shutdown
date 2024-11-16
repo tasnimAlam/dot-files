@@ -9,7 +9,7 @@ set chosen (echo -e "[Cancel] \nLogout \nShutdown \nReboot\n" | bemenu -i --fn m
 if test "$chosen" = "Logout"
 	pkill -u (whoami)
   else if test "$chosen" = "Shutdown"
-	systemctl poweroff 
+	sudo shutdown now
 else if test "$chosen" = "Reboot"
-	systemctl reboot
+	sudo shutdown -r
 end
