@@ -1,15 +1,21 @@
 #!/usr/bin/env fish
 
-# Simple script to handle a DIY shutdown menu.
-# Requirements:
-# - dmenu
+# Simple script to handle a DIY shutdown menu
+# Requirements: bemenu, systemd
 
-set chosen (echo -e "[Cancel] \nLogout \nShutdown \nReboot\n" | bemenu -i --fn monospace 16 -p "Choose an action:")
+set options "[Cancel]\nLogout\nShutdown\nReboot"
+set chosen (echo -e $options | bemenu -i -p "Power Menu:")
 
-if test "$chosen" = "Logout"
-	pkill -u (whoami)
-  else if test "$chosen" = "Shutdown"
-	sudo shutdown now
-else if test "$chosen" = "Reboot"
-	sudo shutdown -r
+switch "$chosen"
+    case "Logout"
+         pkill -KILL -u $USER
+	
+    case "Shutdown"
+        systemctl poweroff
+        
+    case "Reboot"
+        systemctl reboot
+        
+    case '*'
+        echo "Cancelled."
 end
