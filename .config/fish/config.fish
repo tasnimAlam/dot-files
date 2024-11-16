@@ -7,6 +7,11 @@ set -gx EDITOR nvim
 set -gx BROWSER brave
 set -gx LC_ALL en_US.UTF-8
 set -gx DMENU_BLUETOOTH_LAUNCHER dmenu-wl
+set -gx FM_OPENER emacs 
+set -gx TERMINAL kitty 
+
+set -x GEM_HOME (gem env user_gemhome)
+set -x PATH $PATH $GEM_HOME/bin
 
 
 # Fzf config
@@ -78,6 +83,10 @@ if test "$os" = Darwin
     set -x NNN_BMS "d:~/Downloads/;w:~/Documents/sports-cloud-webapp;u:~/Documents/ui2/;r:~/Projects/rust-projects/rust_test/;.:~/Projects/dot-files/"
 end
 
+# Bemenu 
+set -gx BEMENU_OPTS "--fn 'monospace 12'"
+
+
 #  Abbreviations
 if status --is-interactive
     abbr --add --global kll kill -9
@@ -93,3 +102,7 @@ starship init fish | source
 
 # set -gx PNPM_HOME "/home/shourov/.local/share/pnpm"
 # set -gx PATH "$PNPM_HOME" $PATH
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
