@@ -1,12 +1,17 @@
 #!/usr/bin/env fish
 
+if pgrep wf-recorder >/dev/null
+    kill $(pgrep -x wf-recorder)
+    return 1
+end
+
 # Set up default file save path and options
 set output_dir ~/Videos
 mkdir -p $output_dir
 set filename "$output_dir/Rec-"(date +%I:%M:%S%p-%Y-%m-%d)".mp4"
 
 # Prompt for recording mode using bemenu
-set mode (echo -e "Full Screen\nSelect Area\nDone" | bemenu -i -p "Screen Recording Mode:")
+set mode (echo -e "Full Screen\nSelect Area" | bemenu -i -p "Screen Recording Mode:")
 
 # Check the selected mode and record accordingly
 switch "$mode"
@@ -22,13 +27,10 @@ switch "$mode"
             echo "No area selected. Exiting."
             exit 1
         end
-  
-   case "Done"
-     kill $(pgrep -x wf-recorder)
-  
+
     case '*'
         echo "Recording canceled."
         exit 1
 end
 
- notify-send "Screen Recording" "Recording saved as $filename"
+notify-send "Screen Recording" "Recording saved as $filename"
