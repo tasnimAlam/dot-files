@@ -48,7 +48,7 @@ switch $file_type
         if test -n "$search_term"
             # Search for images and pipe to bemenu for selection
             set selected_file (fd --type f -e jpg -e png -e jpeg -e gif -e bmp -e tiff "$search_term" / | \
-                bemenu -i -l 15 -p "Select image:")
+                bemenu -i -l 15 -p "Select image:") \
 
             if test -n "$selected_file"
                 if test -f "$selected_file"

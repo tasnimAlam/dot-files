@@ -1,0 +1,55 @@
+#!/usr/bin/env fish
+
+function edit_config_files
+    set config_dir ~/.config
+
+    # Find both text files and executable scripts in ~/.config using fd
+    # First search for text files with specific extensions
+    set files (fd --type f -d 5 \
+        -e txt \
+        -e conf \
+        -e config \
+        -e ini \
+        -e json \
+        -e yaml \
+        -e yml \
+        -e toml \
+        -e md \
+        -e fish \
+        -e sh \
+        -e lua \
+        -e vim \
+        -e rc \
+        -e py \
+        -e pl \
+        -e rb \
+        -e js \
+        -e bash \
+        -e zsh \
+         . $config_dir)
+
+    # Then add executable files (both with and without extensions)
+    set -a files (fd -t x -d 5 . $config_dir)
+
+    # Remove duplicates (in case some files match both criteria)
+    set files (printf "%s\n" $files | sort -u)
+
+    # Check if any files were found
+    if test (count $files) -eq 0
+        echo "No config files or scripts found in ~/.config"
+        return 1
+    end
+
+    # Present files to user using bemenu
+    set selected_file (printf "%s\n" $files | \
+        bemenu -i -l 15 -p "Select config file:")
+
+    # Check if a file was selected
+    if test -n "$selected_file"
+        # Open selected file in neovim
+        kitty -e nvim "$selected_file"
+    end
+end
+
+# Run the function
+edit_config_files
