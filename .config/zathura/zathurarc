@@ -5,6 +5,7 @@ set page-padding 1
 set selection-clipboard clipboard
 set database sqlite
 set zoom-mode best-fit
+set adjust-open width
 map u scroll half-up
 map d scroll half-down
 map D toggle_page_mode
