@@ -5,6 +5,7 @@ set file_type (echo -e "Document\nVideo\nImage" | bemenu -i -p "Select file type
 
 # Handle file type selection
 switch $file_type
+  
     case Document
         # Ask for document name
         set search_term (echo "" | bemenu -i -p "Enter document name to search:")

@@ -5,7 +5,7 @@ function edit_config_files
 
     # Find both text files and executable scripts in ~/.config using fd
     # First search for text files with specific extensions
-    set files (fd --type f -d 5 \
+    set files (fd -tf -d5 \
         -e txt \
         -e conf \
         -e config \
@@ -29,7 +29,7 @@ function edit_config_files
          . $config_dir)
 
     # Then add executable files (both with and without extensions)
-    set -a files (fd -t x -d 5 . $config_dir)
+    set -a files (fd -tx -d5 . $config_dir)
 
     # Remove duplicates (in case some files match both criteria)
     set files (printf "%s\n" $files | sort -u)

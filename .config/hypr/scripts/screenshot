@@ -1,17 +1,15 @@
 #!/usr/bin/env fish
 
 # Ask for file type
-set type (echo -e "Full screen \nArea selection" | bemenu -i -p "Screenshot type: ")
+set type (echo -e "Full screen\nArea selection" | bemenu -i -p "Screenshot type: ")
 
 # Handle file type selection
 switch $type
     case "Full screen"
-        hyprshot -m window
-        notify-send "Screenshot saved at ~/Desktop"
+        hyprshot -m window -o ~/Desktop/
 
     case "Area selection"
-        hyprshot -m region --raw | swappy -f -
-        notify-send "Screenshot saved at ~/Desktop"
+        hyprshot -m region --raw -o ~/Desktop/ | swappy -f -
   
     case '*'
         notify-send "No screenshot type selected"

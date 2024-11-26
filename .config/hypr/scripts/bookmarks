@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Path to Brave's bookmarks file
+BOOKMARKS_FILE="$HOME/.config/BraveSoftware/Brave-Browser/Default/Bookmarks"
+
+# Check if the bookmarks file exists
+if [ ! -f "$BOOKMARKS_FILE" ]; then
+    echo "Brave bookmarks file not found at $BOOKMARKS_FILE"
+    exit 1
+fi
+
+# Extract all bookmarks (from bookmark bar and other folders) using jq
+BOOKMARKS=$(jq -r '.roots.bookmark_bar.children[].children[] | "\(.name): \(.url)"' "$BOOKMARKS_FILE")
+
+# Use bemenu to search and select a bookmark
+CHOICE=$(echo "$BOOKMARKS" | bemenu -i -l 10 --prompt="Search Bookmarks:")
+
+# Extract the URL from the selected entry
+URL=$(echo "$CHOICE" | awk -F': ' '{print $2}')
+
+# Open the selected URL in Brave
+if [ -n "$URL" ]; then
+    brave "$URL"
+fi
