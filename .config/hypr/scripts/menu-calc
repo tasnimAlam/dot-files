@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# Calculator for use with bemenu
+# Copying to the clipboard requires wl-copy
+
+# Process CLI parameters
+for var in "$@"
+do
+    case $var in
+        -h|--help) usage ;;
+        -d=*|--dmenu=*)
+            menu=$(echo $var | cut -d'=' -f 2);
+            ;;
+        --) break ;;
+    esac
+done
+
+# Grab the answer
+if [ -n "$1" ]; then
+    answer=$(echo "$1" | qalc +u8 -color=never -terse | awk '!/^>/ && !/^$/ {gsub(/^[ \t]+|[ \t]+$/, "", $0); print}')
+fi
+
+# Check if bemenu is available
+if [[ -z $(command -v bemenu) ]]; then
+    >&2 echo "Bemenu not found"
+    exit 1
+fi
+
+# Set bemenu command with options
+menu="bemenu $BEMENU_OPTIONS"
+
+# Determine args to pass to bemenu
+while [[ $# -gt 0 && $1 != "--" ]]; do
+    shift
+done
+[[ $1 == "--" ]] && shift
+
+# Prompt for action
+action=$(echo -e "Copy to clipboard\nClear\nClose" | $menu "$@" -p "= $answer")
+
+# Handle selected action
+case $action in
+    "Clear") $0 ;;
+    "Copy to clipboard") echo -n "$answer" | wl-copy  ;;
+    "Close") ;;
+    "") ;;
+    *) $0 "$answer $action" "--" "$@" ;;
+esac
