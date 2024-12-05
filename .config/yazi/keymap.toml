@@ -22,3 +22,8 @@ desc = "Delete a bookmark"
 on = [ "b", "D" ]
 run = "plugin bookmarks --args=delete_all"
 desc = "Delete all bookmarks"
+
+[[manager.prepend_keymap]]
+on = [ "g", "v" ]
+run = "cd '~/Videos'"
+desc = "Go to Videos folder" 
