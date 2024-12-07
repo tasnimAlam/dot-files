@@ -27,3 +27,8 @@ desc = "Delete all bookmarks"
 on = [ "g", "v" ]
 run = "cd '~/Videos'"
 desc = "Go to Videos folder" 
+
+[[manager.prepend_keymap]]
+on   = "p"
+run  = "plugin --sync smart-paste"
+desc = "Paste into the hovered directory or CWD"
