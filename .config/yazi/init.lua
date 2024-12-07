@@ -14,3 +14,5 @@ require("bookmarks"):setup({
 		},
 	},
 })
+
+require("folder-rules"):setup()
