@@ -2,10 +2,10 @@ require("lualine").setup({
 	options = {
 		theme = "catppuccin",
 		-- theme = "kanagawa",
-		 -- theme = "tokyonight",
+		-- theme = "tokyonight",
 	},
 	sections = {
-        lualine_b = { "grapple"},
-        lualine_c = { "branch" }
-    }
+		lualine_b = { "grapple" },
+		lualine_c = { "branch" },
+	},
 })

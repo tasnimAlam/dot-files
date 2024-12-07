@@ -150,6 +150,3 @@ map("n", "<C-A>", "<cmd>lua require('before').jump_to_last_edit()<CR>", {})
 map("n", "<C-S>", "<cmd>lua require('before').jump_to_next_edit()<CR>", {})
 map("n", "<Leader>oq", "<cmd>lua require('before').show_edits_in_quickfix()()<CR>", {})
 map("n", "<Leader>oe", "<cmd>lua require('before').show_edits_in_telescope()<CR>", {})
-
--- Precognition
-map("n", "<Leader>h", "<cmd>lua require('precognition').toggle()<CR>", {})
