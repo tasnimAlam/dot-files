@@ -16,21 +16,28 @@ set mode (echo -e "Full Screen\nSelect Area" | bemenu -i -p "Screen Recording Mo
 # Check the selected mode and record accordingly
 switch "$mode"
     case "Full Screen"
-        wf-recorder -f "$filename"
+        set monitor_count (hyprctl monitors | rg ID | count)
+        if test $monitor_count -gt 1
+            set output (hyprctl monitors | rg ID | awk -F ' ' '{print $2}' | bemenu -i -p "Select monitor to record:" | awk '{print $1}')
+            wf-recorder -o "$output" -f "$filename"
+        else
+            wf-recorder -f "$filename"
+        end
+        notify-send "Screen Recording" "Recording saved as $filename"
 
     case "Select Area"
         # Use slurp to select a specific area
         set geometry (slurp)
         if test -n "$geometry"
             wf-recorder -g "$geometry" -f "$filename"
+
         else
             echo "No area selected. Exiting."
             exit 1
         end
+        notify-send "Screen Recording" "Recording saved as $filename"
 
     case '*'
         echo "Recording canceled."
         exit 1
 end
-
-notify-send "Screen Recording" "Recording saved as $filename"
