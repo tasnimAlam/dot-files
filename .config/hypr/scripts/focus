@@ -1,9 +1,10 @@
-#!/bin/bash
+#!/usr/bin/fish
 
-SECOND_MONITOR=$(hyprctl monitors -j | jq '.[1].name' | tr -d '"')
+set SECOND_MONITOR (hyprctl monitors -j | jq '.[1].name' | string trim -c '"')
 
-if [[ $(hyprctl activewindow | rg monitor | awk '{print $2}') -eq 0 ]]; then
-	hyprctl dispatch focusmonitor $SECOND_MONITOR
-else
-	hyprctl dispatch focusmonitor eDP-1
-fi
+if test (hyprctl monitors -j | jq '.[] | select(.focused == true).id') -eq 0
+  hyprctl dispatch focusmonitor $SECOND_MONITOR
+else 
+  hyprctl dispatch focusmonitor eDP-1
+end
+  
