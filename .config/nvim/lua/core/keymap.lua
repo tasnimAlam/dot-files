@@ -70,7 +70,8 @@ map("i", "<S-Tab>", 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true })
 map("i", "<CR>", 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true })
 
 -- Telescope and fzf config
-map("n", "<space><space>", '<cmd>lua require("telescope.builtin").find_files()<CR>', { noremap = true, silent = true })
+-- map("n", "<space><space>", '<cmd>lua require("telescope.builtin").find_files()<CR>', { noremap = true, silent = true })
+map("n", "<leader><leader>", "<cmd>Telescope smart_open<CR>", { noremap = true, silent = true })
 map(
 	"n",
 	"<Leader>fa",

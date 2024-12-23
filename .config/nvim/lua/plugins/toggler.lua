@@ -3,5 +3,6 @@ require("alternate-toggler").setup {
 		["==="] = "!==",
 		["=="] = "!=",
 		["start"] = "end",
+		["left"] = "right",
 	}
 }
