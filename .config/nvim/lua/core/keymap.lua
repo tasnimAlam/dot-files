@@ -102,7 +102,7 @@ map(
 
 -- Buffer management
 map("n", "<Leader>,", "<C-^>", {})
-map("n", "<Leader>x", "<cmd>bd!<CR>", {})
+-- map("n", "<Leader>x", "<cmd>bd!<CR>", {})
 map("n", "<Leader>X", "<cmd>bufdo bwipeout<CR>", { noremap = true })
 map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true })
 map("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true })

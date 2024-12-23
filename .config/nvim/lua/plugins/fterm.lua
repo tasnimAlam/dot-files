@@ -36,9 +36,9 @@ local find_replace = fterm:new({
 	},
 })
 
-vim.keymap.set("n", "<Leader>g", function()
-	lazygit:toggle()
-end)
+-- vim.keymap.set("n", "<Leader>g", function()
+-- 	lazygit:toggle()
+-- end)
 
 vim.keymap.set("n", "<Leader>n", function()
 	nnn:toggle()
