@@ -9,11 +9,6 @@ run = "plugin bookmarks --args=save"
 desc = "Save current position as a bookmark"
 
 [[manager.prepend_keymap]]
-on = [ "'" ]
-run = "plugin bookmarks --args=jump"
-desc = "Jump to a bookmark"
-
-[[manager.prepend_keymap]]
 on = [ "b", "d" ]
 run = "plugin bookmarks --args=delete"
 desc = "Delete a bookmark"
@@ -30,7 +25,7 @@ desc = "Go to Videos folder"
 
 [[manager.prepend_keymap]]
 on   = "p"
-run  = "plugin --sync smart-paste"
+run  = "plugin smart-paste"
 desc = "Paste into the hovered directory or CWD"
 
 [[manager.prepend_keymap]]
