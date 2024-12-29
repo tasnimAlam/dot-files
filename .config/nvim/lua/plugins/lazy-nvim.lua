@@ -240,25 +240,25 @@ require("lazy").setup({
 	},
 	{
 		"0xstepit/flow.nvim",
-		lazy = false,
 		priority = 1000,
 		tag = "v2.0.0",
 		opts = {
 			theme = {
-				style = "dark", --  "dark" | "light"
-				contrast = "high", -- "default" | "high"
-				transparent = false, -- true | false
+				style = "light", --  "dark" | "light"
+				contrast = "default", -- "default" | "high"
+				transparent = true, -- true | false
 			},
 			colors = {
-				mode = "dark", -- "default" | "dark" | "light"
-				fluo = "pink", -- "pink" | "cyan" | "yellow" | "orange" | "green"
+				mode = "default", -- "default" | "dark" | "light"
+				fluo = "cyan", -- "pink" | "cyan" | "yellow" | "orange" | "green"
 			},
 			ui = {
-				borders = "inverse", -- "theme" | "inverse" | "fluo" | "none"
+				borders = "theme", -- "theme" | "inverse" | "fluo" | "none"
 				aggressive_spell = false, -- true | false
 			},
 		},
 		config = function()
+			require("flow").setup(opts)
 			vim.cmd("colorscheme flow")
 		end,
 	},
