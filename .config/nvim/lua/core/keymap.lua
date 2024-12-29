@@ -143,9 +143,6 @@ map("n", "<Leader>tp", "<Plug>RestNvimPreview<CR>", {})
 -- Noice
 map("n", "<Leader>cl", "<cmd>Noice dismiss<CR>", {})
 
--- Navbuddy
-map("n", "<Leader>fm", "<cmd>lua require('nvim-navbuddy').open()<CR>", {})
-
 -- Before
 map("n", "<C-A>", "<cmd>lua require('before').jump_to_last_edit()<CR>", {})
 map("n", "<C-S>", "<cmd>lua require('before').jump_to_next_edit()<CR>", {})

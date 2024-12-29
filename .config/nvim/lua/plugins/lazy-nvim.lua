@@ -7,7 +7,6 @@ require("lazy").setup({
 		config = function()
 			require("plugins.zero")
 		end,
-		branch = "v3.x",
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -230,13 +229,37 @@ require("lazy").setup({
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			vim.cmd([[ colorscheme catppuccin-frappe]])
+			-- vim.cmd([[ colorscheme catppuccin-frappe]])
 		end,
 	},
 	{
 		"rebelot/kanagawa.nvim",
 		config = function()
 			-- vim.cmd("colorscheme kanagawa")
+		end,
+	},
+	{
+		"0xstepit/flow.nvim",
+		lazy = false,
+		priority = 1000,
+		tag = "v2.0.0",
+		opts = {
+			theme = {
+				style = "dark", --  "dark" | "light"
+				contrast = "high", -- "default" | "high"
+				transparent = false, -- true | false
+			},
+			colors = {
+				mode = "dark", -- "default" | "dark" | "light"
+				fluo = "pink", -- "pink" | "cyan" | "yellow" | "orange" | "green"
+			},
+			ui = {
+				borders = "inverse", -- "theme" | "inverse" | "fluo" | "none"
+				aggressive_spell = false, -- true | false
+			},
+		},
+		config = function()
+			vim.cmd("colorscheme flow")
 		end,
 	},
 

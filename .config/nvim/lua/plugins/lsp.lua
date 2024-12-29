@@ -1,6 +1,4 @@
 local nvim_lsp = require("lspconfig")
-local navic = require("nvim-navic")
-local navbuddy = require("nvim-navbuddy")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
@@ -11,17 +9,11 @@ local on_attach = function(client, bufnr)
 	end
 
 	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-	-- Navic and Navbuddy setup
-	if client.server_capabilities.documentSymbolProvider then
-		navbuddy.attach(client, bufnr)
-	end
-	navic.attach(client, bufnr)
 end
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
-local servers = { "bashls", "pyright", "rust-analyzer", "prismals" , "lua_ls"}
+local servers = { "bashls", "pyright", "rust-analyzer", "prismals", "lua_ls" }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = on_attach,
