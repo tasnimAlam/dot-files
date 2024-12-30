@@ -319,7 +319,14 @@ require("lazy").setup({
 			require("neoclip").setup()
 		end,
 	},
-	{ "tpope/vim-surround" },
+	-- { "tpope/vim-surround" },
+	{
+		"kylechui/nvim-surround",
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({})
+		end,
+	},
 	{ "tpope/vim-repeat" },
 	{ "tpope/vim-unimpaired" },
 	{ "windwp/nvim-autopairs", event = "InsertEnter", config = true },
@@ -337,14 +344,12 @@ require("lazy").setup({
 			require("plugins.blame")
 		end,
 	},
-	{ "stevearc/overseer.nvim", opts = {} },
 	{
 		"chentoast/marks.nvim",
 		config = function()
 			require("plugins.marks")
 		end,
 	},
-	{ "amadeus/vim-convert-color-to" },
 	{
 		"iamcco/markdown-preview.nvim",
 		build = "cd app && npm install",
@@ -479,18 +484,6 @@ require("lazy").setup({
 			})
 		end,
 	},
-	-- {
-	-- 	"https://git.sr.ht/~swaits/zellij-nav.nvim",
-	-- 	lazy = true,
-	-- 	event = "VeryLazy",
-	-- 	keys = {
-	-- 		{ "<c-h>", "<cmd>ZellijNavigateLeft<cr>", { silent = true, desc = "navigate left" } },
-	-- 		{ "<c-j>", "<cmd>ZellijNavigateDown<cr>", { silent = true, desc = "navigate down" } },
-	-- 		{ "<c-k>", "<cmd>ZellijNavigateUp<cr>", { silent = true, desc = "navigate up" } },
-	-- 		{ "<c-l>", "<cmd>ZellijNavigateRight<cr>", { silent = true, desc = "navigate right" } },
-	-- 	},
-	-- 	opts = {},
-	-- },
 	{
 		"Wansmer/treesj",
 		keys = { "<space>m", "<space>j", "<space>S" },
@@ -499,7 +492,6 @@ require("lazy").setup({
 			require("treesj").setup({})
 		end,
 	},
-	{ "voldikss/vim-floaterm" },
 	-- {
 	-- 	"saghen/blink.cmp",
 	-- 	lazy = false,
