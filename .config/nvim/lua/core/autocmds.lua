@@ -6,14 +6,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Disable cmp on CmdWinEnter
-vim.cmd([[
-  autocmd CmdWinEnter * lua require('cmp').setup({enabled = false})
-]])
+-- vim.cmd([[
+--   autocmd CmdWinEnter * lua require('cmp').setup({enabled = false})
+-- ]])
 
 -- Enable cmp on CmdWinLeave
-vim.cmd([[
-  autocmd CmdWinLeave * lua require('cmp').setup({enabled = true})
-]])
+-- vim.cmd([[
+--   autocmd CmdWinLeave * lua require('cmp').setup({enabled = true})
+-- ]])
 
 -- Enable hyprland treesitter
 vim.filetype.add({

@@ -8,11 +8,27 @@ require("lazy").setup({
 			require("plugins.zero")
 		end,
 	},
+	{ "yioneko/nvim-vtsls" },
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = { { "hrsh7th/cmp-nvim-lsp" } },
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = { "saghen/blink.cmp" },
+		opts = {
+			servers = {
+				lua_ls = {},
+				bashls = {},
+				pyright = {},
+				vtsls = {},
+			},
+		},
+		config = function(_, opts)
+			local lspconfig = require("lspconfig")
+			for server, config in pairs(opts.servers) do
+				config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+				lspconfig[server].setup(config)
+			end
+		end,
 	},
-	{ "yioneko/nvim-vtsls" },
 	{
 		"nvimdev/lspsaga.nvim",
 		config = function()
@@ -56,62 +72,36 @@ require("lazy").setup({
 
 	-- Auto completion
 	{
-		"yioneko/nvim-cmp",
-		event = "InsertEnter",
-		opts = function()
-			local cmp = require("cmp")
-
-			return {
-				mapping = {
-					["<c-n>"] = cmp.mapping.select_next_item(),
-					["<c-p>"] = cmp.mapping.select_prev_item(),
-					["<c-u>"] = cmp.mapping.scroll_docs(-4),
-					["<c-d>"] = cmp.mapping.scroll_docs(4),
-					["<c-y>"] = cmp.mapping.confirm({ select = true }),
-					["<c-e>"] = cmp.mapping.abort(),
-				},
-				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
-					{ name = "snippets" },
-				}, {
-					{ name = "buffer", keyword_length = 4 },
-				}),
-				formatting = {
-					format = function(_, item)
-						if vim.api.nvim_strwidth(item.abbr) > 30 then
-							item.abbr = vim.fn.strcharpart(item.abbr, 0, 30) .. "…"
-						end
-						if vim.api.nvim_strwidth(item.menu or "") > 30 then
-							item.menu = vim.fn.strcharpart(item.menu, 0, 30) .. "…"
-						end
-						return item
-					end,
-				},
-			}
-		end,
+		"saghen/blink.cmp",
 		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
-			{
-				"garymjr/nvim-snippets",
-				opts = {},
+			"rafamadriz/friendly-snippets",
+			"onsails/lspkind.nvim",
+		},
+		version = "*",
+		opts = {
+			keymap = { preset = "default", ["<Tab>"] = { "select_and_accept" } },
+			appearance = {
+				use_nvim_cmp_as_default = false,
+				nerd_font_variant = "mono",
+			},
+			sources = {
+				default = { "snippets", "lsp", "path", "buffer", "cmdline" },
+				cmdline = function()
+					local type = vim.fn.getcmdtype()
+					-- Search forward and backward
+					if type == "/" or type == "?" then
+						return { "buffer" }
+					end
+					-- Commands
+					if type == ":" then
+						return { "cmdline" }
+					end
+					return {}
+				end,
 			},
 		},
-		config = function()
-			require("plugins.cmp")
-		end,
+		opts_extend = { "sources.default" },
 	},
-	{
-		"tzachar/cmp-tabnine",
-		build = "./install.sh",
-		dependencies = "hrsh7th/nvim-cmp",
-		config = function()
-			require("plugins.cmp-tabnine")
-		end,
-	},
-
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -205,7 +195,7 @@ require("lazy").setup({
 			require("luasnip").filetype_extend("typescript", { "javascript" })
 		end,
 	},
-	{ "saadparwaiz1/cmp_luasnip" },
+	-- { "saadparwaiz1/cmp_luasnip" },
 	{ "JoosepAlviste/nvim-ts-context-commentstring", ft = { "js", "jsx", "ts", "tsx" } },
 	{
 		"lewis6991/gitsigns.nvim",
@@ -301,7 +291,6 @@ require("lazy").setup({
 		requires = {
 			"nvim-treesitter/nvim-treesitter",
 			"L3MON4D3/LuaSnip",
-			"hrsh7th/nvim-cmp",
 		},
 		opt = true, -- Set this to true if the plugin is optional
 		event = "InsertCharPre", -- Set the event to 'InsertCharPre' for better compatibility
@@ -319,7 +308,6 @@ require("lazy").setup({
 			require("neoclip").setup()
 		end,
 	},
-	-- { "tpope/vim-surround" },
 	{
 		"kylechui/nvim-surround",
 		event = "VeryLazy",
@@ -492,37 +480,17 @@ require("lazy").setup({
 			require("treesj").setup({})
 		end,
 	},
-	-- {
-	-- 	"saghen/blink.cmp",
-	-- 	lazy = false,
-	-- 	dependencies = "rafamadriz/friendly-snippets",
-	-- 	version = "v0.*",
-	-- 	opts = {
-	-- 		highlight = {
-	-- 			use_nvim_cmp_as_default = true,
-	-- 		},
-	-- 		nerd_font_variant = "normal",
-	--
-	-- 		-- experimental auto-brackets support
-	-- 		-- accept = { auto_brackets = { enabled = true } }
-	--
-	-- 		-- experimental signature help support
-	-- 		-- trigger = { signature_help = { enabled = true } }
-	-- 	},
-	-- },
 	{
-		{
-			"EvWilson/spelunk.nvim",
-			dependencies = {
-				"nvim-lua/plenary.nvim", -- For window drawing utilities
-				"nvim-telescope/telescope.nvim", -- Optional: for fuzzy search capabilities
-			},
-			config = function()
-				require("spelunk").setup({
-					enable_persist = true,
-				})
-			end,
+		"EvWilson/spelunk.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- For window drawing utilities
+			"nvim-telescope/telescope.nvim", -- Optional: for fuzzy search capabilities
 		},
+		config = function()
+			require("spelunk").setup({
+				enable_persist = true,
+			})
+		end,
 	},
 	{
 		"folke/snacks.nvim",
