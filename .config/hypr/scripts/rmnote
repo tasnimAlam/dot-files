@@ -1,0 +1,10 @@
+#!/usr/bin/env fish
+
+set selected (awk -F ":" '{print $(NF)}' notes.txt | bemenu -l8 -i)
+
+if test -n "$selected"
+    set line_num (awk -F ":" -v sel="$selected" '$NF == sel {print NR; exit}' notes.txt)
+    sed -i "$line_num"d notes.txt
+    notify-send "Deleted: $selected"
+end
+
