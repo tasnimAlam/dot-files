@@ -1,0 +1,5 @@
+[keys.gallery]
+h = step_left
+l = step_right
+k = step_up
+j = step_down
