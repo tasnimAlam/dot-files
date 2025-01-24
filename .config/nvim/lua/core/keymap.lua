@@ -10,9 +10,9 @@ map("n", "<Esc>", ":noh<CR>", {})
 map("i", "<C-e>", "<C-o>$", {})
 
 -- Lsp mapping
-map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", {})
-map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", {})
-map("n", "gr", "<cmd>lua require('trouble').toggle('lsp_references')<CR>", {})
+-- map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", {})
+-- map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", {})
+-- map("n", "gr", "<cmd>lua require('trouble').toggle('lsp_references')<CR>", {})
 map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", {})
 map("n", "K", "<cmd>Lspsaga hover_doc<cr>", {})
 map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", {})
@@ -72,12 +72,12 @@ map("i", "<CR>", 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true })
 -- Telescope and fzf config
 -- map("n", "<space><space>", '<cmd>lua require("telescope.builtin").find_files()<CR>', { noremap = true, silent = true })
 map("n", "<leader><leader>", "<cmd>Telescope smart_open<CR>", { noremap = true, silent = true })
-map(
-	"n",
-	"<Leader>fa",
-	"<cmd>Telescope find_files follow=true no_ignore=true hidden=true <CR>",
-	{ noremap = true, silent = true }
-)
+-- map(
+-- 	"n",
+-- 	"<Leader>fa",
+-- 	"<cmd>Telescope find_files follow=true no_ignore=true hidden=true <CR>",
+-- 	{ noremap = true, silent = true }
+-- )
 map("n", "<Leader>ss", '<cmd>lua require("telescope.builtin").grep_string()<CR>', { noremap = true, silent = true })
 map(
 	"n",
@@ -86,13 +86,13 @@ map(
 	{ noremap = true }
 )
 map("n", "<Leader>/", '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>', { noremap = true })
-map("n", "<A-p>", '<cmd>lua require("telescope").extensions.project.project{}<CR>', { noremap = true, silent = true })
-map(
-	"n",
-	"<Leader>of",
-	'<cmd>lua require("telescope.builtin").oldfiles({hidden = true})<CR>',
-	{ noremap = true, silent = true }
-)
+-- map("n", "<A-p>", '<cmd>lua require("telescope").extensions.project.project{}<CR>', { noremap = true, silent = true })
+-- map(
+-- 	"n",
+-- 	"<Leader>of",
+-- 	'<cmd>lua require("telescope.builtin").oldfiles({hidden = true})<CR>',
+-- 	{ noremap = true, silent = true }
+-- )
 map(
 	"n",
 	"<Leader>mf",

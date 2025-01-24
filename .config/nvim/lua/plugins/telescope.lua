@@ -73,6 +73,6 @@ require("telescope").setup({
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("media_files")
 -- require("telescope").load_extension("dap")
-require("telescope").load_extension("projects")
+-- require("telescope").load_extension("projects")
 require("telescope").load_extension("live_grep_args")
 -- require("telescope").load_extension("jsonfly")

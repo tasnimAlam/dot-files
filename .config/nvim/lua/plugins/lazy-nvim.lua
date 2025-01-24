@@ -99,6 +99,25 @@ require("lazy").setup({
 					return {}
 				end,
 			},
+
+			snippets = {
+				preset = "luasnip",
+				-- This comes from the luasnip extra, if you don't add it, won't be able to
+				-- jump forward or backward in luasnip snippets
+				-- https://www.lazyvim.org/extras/coding/luasnip#blinkcmp-optional
+				expand = function(snippet)
+					require("luasnip").lsp_expand(snippet)
+				end,
+				active = function(filter)
+					if filter and filter.direction then
+						return require("luasnip").jumpable(filter.direction)
+					end
+					return require("luasnip").in_snippet()
+				end,
+				jump = function(direction)
+					require("luasnip").jump(direction)
+				end,
+			},
 		},
 		opts_extend = { "sources.default" },
 	},
@@ -160,7 +179,7 @@ require("lazy").setup({
 		},
 	},
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	{ "nvim-telescope/telescope-project.nvim" },
+	-- { "nvim-telescope/telescope-project.nvim" },
 	{ "nvim-telescope/telescope-media-files.nvim" },
 	{ "nvim-telescope/telescope-live-grep-args.nvim" },
 	{
@@ -499,6 +518,7 @@ require("lazy").setup({
 		---@type snacks.Config
 		opts = {
 			bigfile = { enabled = true },
+			picker = {},
 			dashboard = {
 				enabled = true,
 				sections = {
@@ -667,7 +687,93 @@ require("lazy").setup({
 					})
 				end,
 			},
+			{
+				"gd",
+				function()
+					Snacks.picker.lsp_definitions()
+				end,
+				desc = "Goto Definition",
+			},
+			{
+				"gr",
+				function()
+					Snacks.picker.lsp_references()
+				end,
+				nowait = true,
+				desc = "References",
+			},
+			{
+				"gI",
+				function()
+					Snacks.picker.lsp_implementations()
+				end,
+				desc = "Goto Implementation",
+			},
+			{
+				"gy",
+				function()
+					Snacks.picker.lsp_type_definitions()
+				end,
+				desc = "Goto T[y]pe Definition",
+			},
+			{
+				"gs",
+				function()
+					Snacks.picker.lsp_symbols()
+				end,
+				desc = "LSP Symbols",
+			},
+			{
+				"<leader>qp",
+				function()
+					Snacks.picker.projects()
+				end,
+				desc = "Projects",
+			},
+			{
+				"<leader>sk",
+				function()
+					Snacks.picker.keymaps()
+				end,
+				desc = "Keymaps",
+			},
+			{
+				"<leader>sk",
+				function()
+					Snacks.picker.keymaps()
+				end,
+				desc = "Keymaps",
+			},
+			{
+				"<leader>ff",
+				function()
+					Snacks.picker.files()
+				end,
+				desc = "Find Files",
+			},
+			{
+				"<leader>fg",
+				function()
+					Snacks.picker.git_files()
+				end,
+				desc = "Find Git Files",
+			},
+			{
+				"<leader>of",
+				function()
+					Snacks.picker.recent()
+				end,
+				desc = "Recent",
+			},
+			{
+				"<leader>:",
+				function()
+					Snacks.picker.command_history()
+				end,
+				desc = "Command History",
+			},
 		},
+
 		init = function()
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "VeryLazy",
