@@ -107,6 +107,8 @@ require("lazy").setup({
 				-- https://www.lazyvim.org/extras/coding/luasnip#blinkcmp-optional
 				expand = function(snippet)
 					require("luasnip").lsp_expand(snippet)
+					require("luasnip.loaders.from_vscode").lazy_load()
+					require("luasnip").filetype_extend("typescript", { "javascript" })
 				end,
 				active = function(filter)
 					if filter and filter.direction then
@@ -771,6 +773,13 @@ require("lazy").setup({
 					Snacks.picker.command_history()
 				end,
 				desc = "Command History",
+			},
+			{
+				"<leader>e",
+				function()
+					Snacks.picker.explorer()
+				end,
+				desc = "File explorer",
 			},
 		},
 

@@ -22,7 +22,7 @@ map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_fol
 map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", {})
 map("n", "<space>rn", "<cmd>Lspsaga rename<CR>", {})
 map("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", {})
-map("n", "<space>e", "<cmd>Lspsaga show_line_diagnostics<CR>", {})
+-- map("n", "<space>e", "<cmd>Lspsaga show_line_diagnostics<CR>", {})
 map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", {})
 map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", {})
 
