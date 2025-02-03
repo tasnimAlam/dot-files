@@ -15,6 +15,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = ','
 require("plugins.lazy-nvim")
 
 -- Load all other modules after that

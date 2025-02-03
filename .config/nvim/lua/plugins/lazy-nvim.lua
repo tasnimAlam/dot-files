@@ -138,7 +138,6 @@ require("lazy").setup({
 			require("nvim-ts-autotag").setup()
 		end,
 	},
-	{ "maxmellon/vim-jsx-pretty", ft = { "js", "jsx", "ts", "tsx" } },
 
 	-- Status line
 	{
@@ -181,7 +180,6 @@ require("lazy").setup({
 		},
 	},
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	-- { "nvim-telescope/telescope-project.nvim" },
 	{ "nvim-telescope/telescope-media-files.nvim" },
 	{ "nvim-telescope/telescope-live-grep-args.nvim" },
 	{
@@ -216,7 +214,6 @@ require("lazy").setup({
 			require("luasnip").filetype_extend("typescript", { "javascript" })
 		end,
 	},
-	-- { "saadparwaiz1/cmp_luasnip" },
 	{ "JoosepAlviste/nvim-ts-context-commentstring", ft = { "js", "jsx", "ts", "tsx" } },
 	{
 		"lewis6991/gitsigns.nvim",
@@ -419,7 +416,7 @@ require("lazy").setup({
 	-- 		require("config.dap")
 	-- 	end,
 	-- },
-	{ "tasnimAlam/px2rem.lua" },
+	-- { "tasnimAlam/px2rem.lua" },
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
@@ -813,6 +810,17 @@ require("lazy").setup({
 					Snacks.toggle.indent():map("<leader>ug")
 					Snacks.toggle.dim():map("<leader>uD")
 				end,
+			})
+		end,
+	},
+	{
+		"MagicDuck/grug-far.nvim",
+		config = function()
+			require("grug-far").setup({
+				-- options, see Configuration section below
+				windowCreationCommand = "tab split",
+				-- there are no required options atm
+				-- engine = 'ripgrep' is default, but 'astgrep' can be specified
 			})
 		end,
 	},
