@@ -1,5 +1,5 @@
 [plugin]
-deps = [{ use = "dedukun/bookmarks", rev = "600f87c" }]
+deps = [{ use = "dedukun/bookmarks", rev = "600f87c" }, { use = "SL-RU/mount", rev = "e494101" }, { use = "lpanebr/yazi-plugins:first-non-directory", rev = "7af4fed" }]
 
 [flavor]
 deps = []
