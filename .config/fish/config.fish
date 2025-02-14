@@ -6,13 +6,18 @@ end
 set -gx EDITOR nvim
 set -gx BROWSER brave
 set -gx LC_ALL en_US.UTF-8
-set -gx DMENU_BLUETOOTH_LAUNCHER dmenu-wl
+set -gx DMENU_BLUETOOTH_LAUNCHER bemenu
 set -gx FM_OPENER emacs 
 set -gx TERMINAL kitty 
 
 set -x GEM_HOME (gem env user_gemhome)
 set -x PATH $PATH $GEM_HOME/bin
 
+set -x GTK_MODULES gail:atk-bridge
+set -x OOO_FORCE_DESKTOP gnome
+set -x GNOME_ACCESSIBILITY 1
+set -x QT_ACCESSIBILITY 1
+set -x QT_LINUX_ACCESSIBILITY_ALWAYS_ON 1
 
 # Fzf config
 
@@ -84,7 +89,7 @@ if test "$os" = Darwin
 end
 
 # Bemenu 
-set -gx BEMENU_OPTS "--fn 'monospace 12'"
+set -gx BEMENU_OPTS "--fn 'monospace 12' -H30"
 
 
 #  Abbreviations
