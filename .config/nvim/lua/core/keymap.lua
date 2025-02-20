@@ -65,7 +65,8 @@ map("i", "<S-Tab>", 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true })
 map("i", "<CR>", 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true })
 
 -- Telescope and fzf config
-map("n", "<leader><leader>", "<cmd>Telescope smart_open<CR>", { noremap = true, silent = true })
+-- { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+
 map("n", "<Leader>ss", '<cmd>lua require("telescope.builtin").grep_string()<CR>', { noremap = true, silent = true })
 map(
 	"n",

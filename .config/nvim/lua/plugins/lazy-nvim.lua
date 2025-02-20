@@ -86,18 +86,18 @@ require("lazy").setup({
 			},
 			sources = {
 				default = { "snippets", "lsp", "path", "buffer", "cmdline" },
-				cmdline = function()
-					local type = vim.fn.getcmdtype()
-					-- Search forward and backward
-					if type == "/" or type == "?" then
-						return { "buffer" }
-					end
-					-- Commands
-					if type == ":" then
-						return { "cmdline" }
-					end
-					return {}
-				end,
+				-- cmdline = function()
+				-- 	local type = vim.fn.getcmdtype()
+				-- 	-- Search forward and backward
+				-- 	if type == "/" or type == "?" then
+				-- 		return { "buffer" }
+				-- 	end
+				-- 	-- Commands
+				-- 	if type == ":" then
+				-- 		return { "cmdline" }
+				-- 	end
+				-- 	return {}
+				-- end,
 			},
 
 			snippets = {
@@ -168,17 +168,17 @@ require("lazy").setup({
 			require("plugins.telescope")
 		end,
 	},
-	{
-		"danielfalk/smart-open.nvim",
-		branch = "0.2.x",
-		config = function()
-			require("telescope").load_extension("smart_open")
-		end,
-		dependencies = {
-			"kkharji/sqlite.lua",
-			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		},
-	},
+	-- {
+	-- 	"danielfalk/smart-open.nvim",
+	-- 	branch = "0.2.x",
+	-- 	config = function()
+	-- 		require("telescope").load_extension("smart_open")
+	-- 	end,
+	-- 	dependencies = {
+	-- 		"kkharji/sqlite.lua",
+	-- 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	-- 	},
+	-- },
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{ "nvim-telescope/telescope-media-files.nvim" },
 	{ "nvim-telescope/telescope-live-grep-args.nvim" },
@@ -517,6 +517,7 @@ require("lazy").setup({
 		---@type snacks.Config
 		opts = {
 			bigfile = { enabled = true },
+			quickfile = {},
 			picker = {
 				win = {
 					input = {
@@ -606,6 +607,13 @@ require("lazy").setup({
 			},
 		},
 		keys = {
+			{
+				"<leader><space>",
+				function()
+					Snacks.picker.smart()
+				end,
+				desc = "Smart Find Files",
+			},
 			{
 				"<leader>z",
 				function()
@@ -746,13 +754,13 @@ require("lazy").setup({
 				end,
 				desc = "Goto T[y]pe Definition",
 			},
-			{
-				"<Leader>fs",
-				function()
-					Snacks.picker.lsp_symbols()
-				end,
-				desc = "LSP Symbols",
-			},
+			-- {
+			-- 	"<Leader>fs",
+			-- 	function()
+			-- 		Snacks.picker.lsp_symbols()
+			-- 	end,
+			-- 	desc = "LSP Symbols",
+			-- },
 			{
 				"<leader>qp",
 				function()
@@ -852,6 +860,30 @@ require("lazy").setup({
 				windowCreationCommand = "tab split",
 				-- there are no required options atm
 				-- engine = 'ripgrep' is default, but 'astgrep' can be specified
+			})
+		end,
+	},
+	{
+		"bassamsdata/namu.nvim",
+		config = function()
+			require("namu").setup({
+				namu_symbols = {
+					enable = true,
+					options = {},
+				},
+				ui_select = { enable = false },
+				colorscheme = {
+					enable = false,
+					options = {
+						-- NOTE: if you activate persist, then please remove any vim.cmd("colorscheme ...") in your config, no needed anymore
+						persist = true, -- very efficient mechanism to Remember selected colorscheme
+						write_shada = false, -- If you open multiple nvim instances, then probably you need to enable this
+					},
+				},
+			})
+			vim.keymap.set("n", "<leader>fs", ":Namu symbols<cr>", {
+				desc = "Jump to LSP symbol",
+				silent = true,
 			})
 		end,
 	},
