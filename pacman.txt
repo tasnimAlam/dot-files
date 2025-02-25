@@ -46,3 +46,4 @@ xdotool
 yay
 zathura-pdf-mupdf
 zsh
+zed
