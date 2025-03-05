@@ -5,23 +5,33 @@ desc = "Archive selected files"
 
 [[manager.prepend_keymap]]
 on = [ "m" ]
-run = "plugin bookmarks --args=save"
+run = "plugin bookmarks save"
 desc = "Save current position as a bookmark"
 
 [[manager.prepend_keymap]]
 on = [ "b", "d" ]
-run = "plugin bookmarks --args=delete"
+run = "plugin bookmarks delete"
 desc = "Delete a bookmark"
 
 [[manager.prepend_keymap]]
 on = [ "b", "D" ]
-run = "plugin bookmarks --args=delete_all"
+run = "plugin bookmarks delete_all"
 desc = "Delete all bookmarks"
 
 [[manager.prepend_keymap]]
 on = [ "g", "v" ]
 run = "cd '~/Videos'"
 desc = "Go to Videos folder" 
+
+[[manager.prepend_keymap]]
+on = [ "g", "p" ]
+run = "cd '~/Pictures/'"
+desc = "Go to Pictures folder" 
+
+[[manager.prepend_keymap]]
+on = [ "g", "." ]
+run = "cd '~/Documents/dot-files/'"
+desc = "Go to dot files git folder" 
 
 [[manager.prepend_keymap]]
 on = [ "g", "w" ]
@@ -44,9 +54,9 @@ run  = "plugin smart-tab"
 desc = "Create a tab and enter the hovered directory"
 
 [[manager.prepend_keymap]]
-on = ["<C-t>"]
-run = "shell swayimg --gallery"
-desc = "Open current directory in swayimg gallery"
+on   = [ "<C-t>" ]
+run  = 'shell "swayimg --gallery ."'
+desc = "Open current directory in Swayimg gallery"
 
 [[manager.prepend_keymap]]
 on   = "M"
@@ -57,3 +67,13 @@ desc = "Mount manager"
 on   = [ "'" ]
 run  = "plugin first-non-directory"
 desc = "Jumps to the first file"
+
+[[manager.prepend_keymap]]
+on   = "o"
+run  = "plugin open-with-cmd block"
+desc = "Open with command in the terminal"
+
+[[manager.prepend_keymap]]
+on   = "O"
+run  = "plugin open-with-cmd"
+desc = "Open with command"

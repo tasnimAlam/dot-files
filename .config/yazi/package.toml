@@ -1,5 +1,5 @@
 [plugin]
-deps = [{ use = "dedukun/bookmarks", rev = "600f87c" }, { use = "SL-RU/mount", rev = "e494101" }, { use = "lpanebr/yazi-plugins:first-non-directory", rev = "7af4fed" }]
+deps = [{ use = "dedukun/bookmarks", rev = "600f87c" }, { use = "SL-RU/mount", rev = "e494101" }, { use = "lpanebr/yazi-plugins:first-non-directory", rev = "7af4fed" }, { use = "dedukun/relative-motions", rev = "0d9c8cf" }, { use = "yazi-rs/plugins:smart-filter", rev = "02d18be" }, { use = "Ape/open-with-cmd", rev = "a80d1cf" }]
 
 [flavor]
 deps = []
