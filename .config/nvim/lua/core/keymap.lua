@@ -65,16 +65,6 @@ map("i", "<S-Tab>", 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true })
 map("i", "<CR>", 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true })
 
 -- Telescope and fzf config
--- { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
-
-map("n", "<Leader>ss", '<cmd>lua require("telescope.builtin").grep_string()<CR>', { noremap = true, silent = true })
-map(
-	"n",
-	"<Leader>sl",
-	'<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>',
-	{ noremap = true }
-)
-map("n", "<Leader>/", '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>', { noremap = true })
 map(
 	"n",
 	"<Leader>mf",
