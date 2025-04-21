@@ -1,7 +1,7 @@
 local function fail(s, ...) ya.notify { title = "Mount manager", content = string.format(s, ...), timeout = 5, level = "error" } end
 
-local function entry(_, job)
-   local mmtui_path = job.args[1] or "mmtui"
+local function entry(_, args)
+   local mmtui_path = args[1] or "mmtui"
    if not mmtui_path then
       return fail("You need to set --args=/path/to/mmtui")
    end

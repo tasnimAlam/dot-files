@@ -49,7 +49,7 @@ run  = "plugin smart-paste"
 desc = "Paste into the hovered directory or CWD"
 
 [[manager.prepend_keymap]]
-on   = "t"
+on   = "T"
 run  = "plugin smart-tab"
 desc = "Create a tab and enter the hovered directory"
 
@@ -77,3 +77,11 @@ desc = "Open with command in the terminal"
 on   = "O"
 run  = "plugin open-with-cmd"
 desc = "Open with command"
+
+[[manager.prepend_keymap]]
+on   = "<C-n>"
+run  = ''' 
+     shell 'dragon-drop --and-exit --on-top "$@"' --confirm
+'''
+desc = "Open with command"
+
