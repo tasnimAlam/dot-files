@@ -1,6 +1,6 @@
 #!/bin/bash
 note=$(echo "" | bemenu --fn monospace 16 -i -p "Quick Note:")
 if [[ "$note" ]]; then
-  echo "$(date): $note" >> ~/notes.txt
+  echo "$(date +'%b %d > %r'): $note" >> ~/notes.txt
   notify-send "Note saved!"
 fi
