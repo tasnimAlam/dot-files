@@ -1,5 +1,25 @@
+[keys.viewer]
+j = prev_file
+k = next_file
+r = rotate_right
+Shift+r = rotate_left
+g = first_file
+Shift+g = last_file
+Shift+j = zoom +10
+Shift+k = zoom -10
+Return = mode
+
 [keys.gallery]
 h = step_left
 l = step_right
 k = step_up
 j = step_down
+g = first_file
+Shift+g = last_file
+Shift+j = page_down
+Shift+k = page_up
+y = exec sh -c 'wl-copy --type image/png < "%"'
+Delete = exec rm -f '%' && echo "File removed: %"; 
+
+
+
