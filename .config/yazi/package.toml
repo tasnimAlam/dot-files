@@ -1,9 +1,4 @@
 [[plugin.deps]]
-use = "dedukun/bookmarks"
-rev = "600f87c"
-hash = "2d286d11115903311b4a7d7ab11ae4dd"
-
-[[plugin.deps]]
 use = "SL-RU/mount"
 rev = "e494101"
 hash = "1985b8e1c814fa441ba792c86670df23"
@@ -14,19 +9,24 @@ rev = "7af4fed"
 hash = "fd1278a691ac6ebf949c73e58d9851b"
 
 [[plugin.deps]]
-use = "dedukun/relative-motions"
-rev = "0d9c8cf"
-hash = ""
-
-[[plugin.deps]]
-use = "yazi-rs/plugins:smart-filter"
-rev = "02d18be"
-hash = ""
-
-[[plugin.deps]]
 use = "Ape/open-with-cmd"
 rev = "a80d1cf"
 hash = "86e0312b01bc5762813c6c1d0517f073"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:chmod"
+rev = "864a021"
+hash = "2f1053f89d1a301a648ab181d0948e38"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-filter"
+rev = "864a021"
+hash = "f0c4b41b5d19a3144958383333eff6e7"
+
+[[plugin.deps]]
+use = "dedukun/bookmarks"
+rev = "a70648a"
+hash = "b836fb264381f35dec79930438a906d5"
 
 [flavor]
 deps = []

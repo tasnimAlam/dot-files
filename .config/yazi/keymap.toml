@@ -85,3 +85,22 @@ run  = '''
 '''
 desc = "Open with command"
 
+[[manager.prepend_keymap]]
+on   = "n"
+run  = "plugin next-file-type"
+desc = "Jump to next file type"
+
+[[manager.prepend_keymap]]
+on = "V"
+run = "plugin pdfsearch --args"
+desc = "Search PDFs for text"
+
+[[manager.prepend_keymap]]
+on   = "*"
+run  = "plugin chmod"
+desc = "Chmod on selected files"
+
+[[manager.prepend_keymap]]
+on   = "F"
+run  = "plugin smart-filter"
+desc = "Smart filter"
