@@ -8,7 +8,7 @@ end
 # Set up default file save path and options
 set output_dir ~/Videos
 mkdir -p $output_dir
-set filename "$output_dir/Rec-"(date +%I:%M:%S%p-%Y-%m-%d)".mp4"
+set filename "$output_dir/Rec-"(date +%Y-%m-%d-[%I:%M:%S%p])".mp4"
 
 # Prompt for recording mode using bemenu
 set mode (echo -e "Full Screen\nSelect Area" | bemenu -i -p "Screen Recording Mode:")
