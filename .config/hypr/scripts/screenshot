@@ -6,13 +6,13 @@ set type (echo -e "Full\n\nMonitor\n\nSelection" | bemenu -i -p "Screenshot type
 # Handle file type selection
 switch $type
     case "Full"
-        hyprshot -m window -o ~/Desktop/
+        hyprshot -m window -o ~/Pictures/screenshots/
 
     case "Monitor"
-        hyprshot -m output -o ~/Desktop/
+        hyprshot -m output -o ~/Pictures/screenshots/
 	
     case "Selection"
-        hyprshot -m region --raw -o ~/Desktop/ | swappy -f -
+        hyprshot -m region --raw -o ~/Pictures/screenshots/ | swappy -f -
   
     case '*'
         notify-send "No screenshot type selected"
