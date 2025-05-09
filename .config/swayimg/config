@@ -19,7 +19,7 @@ Shift+g = last_file
 Shift+j = page_down
 Shift+k = page_up
 y = exec sh -c 'wl-copy --type image/png < "%"'
-Delete = exec rm -f '%' && echo "File removed: %"; 
+Delete = exec rm -f '%' && echo "File removed: %"; reload; 
 
 
 
