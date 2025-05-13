@@ -1,3 +1,4 @@
-function rmf --wraps='fzf -m | xargs -I {} rm {}' --description 'alias rmf=ls | fzf -m | xargs -I {} rm {}'
+function rmf --wraps='fzf -m | xargs -I {} rm {}' --description 'Interactive rm via fzf, including hidden files'
     fzf -m | xargs -I {} rm {} $argv
 end
+

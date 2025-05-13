@@ -18,12 +18,15 @@ set -x OOO_FORCE_DESKTOP gnome
 set -x GNOME_ACCESSIBILITY 1
 set -x QT_ACCESSIBILITY 1
 set -x QT_LINUX_ACCESSIBILITY_ALWAYS_ON 1
+set -Ux PATH /usr/lib/uutils-coreutils:$PATH
 
 # Fzf config
 
 set -Ux fifc_editor nvim
 set fish_key_bindings fish_user_key_bindings
 fzf_configure_bindings --variables=\e\cv
+bind -M insert \cp up-or-search
+bind -M insert \cn down-or-search
 
 set fzf_preview_file_cmd cat
 set fzf_preview_dir_cmd exa --all --color=always
@@ -46,6 +49,7 @@ fish_add_path ~/.yarn/bin ~/.config/yarn/global/node_modules/.bin ~/.npm-global/
 fish_add_path ~/.composer/vendor/bin
 fish_add_path ~/.deno/bin/
 fish_add_path ~/go/bin/
+fish_add_path ~/Downloads/adb-fastboot/
 
 if test "$os" = Linux
     fish_add_path ~/Documents/dot-files/scripts/
