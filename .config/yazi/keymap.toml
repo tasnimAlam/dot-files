@@ -24,6 +24,11 @@ run = "cd '~/Videos'"
 desc = "Go to Videos folder" 
 
 [[manager.prepend_keymap]]
+on = [ "g", "D" ]
+run = "cd '~/Documents/'"
+desc = "Go to Documents folder" 
+
+[[manager.prepend_keymap]]
 on = [ "g", "p" ]
 run = "cd '~/Pictures/'"
 desc = "Go to Pictures folder" 
@@ -104,3 +109,8 @@ desc = "Chmod on selected files"
 on   = "F"
 run  = "plugin smart-filter"
 desc = "Smart filter"
+
+[[manager.prepend_keymap]]
+on   = "W"
+run  = "plugin send-kdeconnect"
+desc = "Send files"

@@ -28,5 +28,7 @@ use = "dedukun/bookmarks"
 rev = "a70648a"
 hash = "b836fb264381f35dec79930438a906d5"
 
-[flavor]
-deps = []
+[[flavor.deps]]
+use = "dangooddd/kanagawa"
+rev = "31167ed"
+hash = "a04e157148549bacbb2831aab0e6e8cb"
