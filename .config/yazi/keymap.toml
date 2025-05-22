@@ -24,6 +24,11 @@ run = "cd '~/Videos'"
 desc = "Go to Videos folder" 
 
 [[manager.prepend_keymap]]
+on = [ "g", "b" ]
+run = "cd '~/Documents/books'"
+desc = "Go to books folder" 
+
+[[manager.prepend_keymap]]
 on = [ "g", "D" ]
 run = "cd '~/Documents/'"
 desc = "Go to Documents folder" 
@@ -60,8 +65,9 @@ desc = "Create a tab and enter the hovered directory"
 
 [[manager.prepend_keymap]]
 on   = [ "<C-t>" ]
-run  = 'shell "swayimg --gallery ."'
+run  = 'plugin thumbnail'
 desc = "Open current directory in Swayimg gallery"
+
 
 [[manager.prepend_keymap]]
 on   = "M"
@@ -114,3 +120,8 @@ desc = "Smart filter"
 on   = "W"
 run  = "plugin send-kdeconnect"
 desc = "Send files"
+
+[[manager.prepend_keymap]]
+on   = "R"
+run  = "plugin rotate-image"
+desc = "Rotate selected images"
