@@ -108,7 +108,7 @@ desc = "Search PDFs for text"
 
 [[manager.prepend_keymap]]
 on   = "*"
-run  = "plugin chmod"
+run  = "plugin executable"
 desc = "Chmod on selected files"
 
 [[manager.prepend_keymap]]
@@ -118,10 +118,30 @@ desc = "Smart filter"
 
 [[manager.prepend_keymap]]
 on   = "W"
-run  = "plugin send-kdeconnect"
+run  = "plugin kdeconnect-send"
 desc = "Send files"
 
 [[manager.prepend_keymap]]
 on   = "R"
 run  = "plugin rotate-image"
 desc = "Rotate selected images"
+
+[[manager.prepend_keymap]]
+on   = [ "i" ]
+run = "plugin searchjump"
+desc = "searchjump mode"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "i" ]
+run  = "plugin lazygit"
+desc = "run lazygit"
+
+[[manager.prepend_keymap]]
+on   = [ "c", "s" ]
+run  = "plugin croc-send"
+desc = "Send files using croc"
+
+[[manager.prepend_keymap]]
+on   = [ ",", "," ]
+run  = "sort mtime --reverse"
+desc = "sort files by time"

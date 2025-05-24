@@ -28,6 +28,16 @@ use = "dedukun/bookmarks"
 rev = "a70648a"
 hash = "b836fb264381f35dec79930438a906d5"
 
+[[plugin.deps]]
+use = "Lil-Dank/lazygit"
+rev = "7a08a09"
+hash = "a1fa2b3e1826c3a34804ea8c548e9f80"
+
+[[plugin.deps]]
+use = "Deepak22903/kdeconnect-send"
+rev = "ac23a0e"
+hash = "a1e38696a2ab2c607923b77f85f8058e"
+
 [[flavor.deps]]
 use = "dangooddd/kanagawa"
 rev = "31167ed"
