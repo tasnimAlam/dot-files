@@ -38,6 +38,11 @@ use = "Deepak22903/kdeconnect-send"
 rev = "ac23a0e"
 hash = "a1e38696a2ab2c607923b77f85f8058e"
 
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "2496cd9"
+hash = "5b9dea47776a30946cfbf83232d18fb1"
+
 [[flavor.deps]]
 use = "dangooddd/kanagawa"
 rev = "31167ed"
