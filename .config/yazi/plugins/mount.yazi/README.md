@@ -1,34 +1,51 @@
 # mount.yazi
 
-This is a Yazi plugin for mounting volumes.
+> [!NOTE]
+> Yazi v25.2.7 or later is required for this plugin to work.
 
-![](screencast.gif)
+A mount manager for Yazi, providing disk mount, unmount, and eject functionality.
+
+Supported platforms:
+
+- Linux with [`udisksctl`](https://github.com/storaged-project/udisks) and [`lsblk`](https://github.com/util-linux/util-linux)
+- macOS with `diskutil`
+
+https://github.com/user-attachments/assets/c6f780ab-458b-420f-85cf-2fc45fcfe3a2
 
 ## Installation
 
-Install the plugin:
-
-```
-ya pack -a SL-RU/mount
+```sh
+ya pack -a yazi-rs/plugins:mount
 ```
 
-Download latest pre-compiled binary here: https://github.com/SL-RU/mmtui/releases
+## Usage
 
-Or clone and build from source `https://github.com/SL-RU/mmtui`, copy the path of the compiled binary `mmtui`.
+Add this to your `~/.config/yazi/keymap.toml`:
 
-In `~/.config/yazi/keymap.toml` add. But make sure that executable mmtui is in the $PATH env variable:
-```
+```toml
 [[manager.prepend_keymap]]
-on   = "M"
-run  = "plugin mount"
-desc = "Mount manager"
+on  = "M"
+run = "plugin mount"
 ```
 
-If you need to set custom path for `mmtui` add this and replace `/path/to/mmtui` with your path:
+Available keybindings:
 
-```
-[[manager.prepend_keymap]]
-on   = "M"
-run  = "plugin mount --args=/path/to/mmtui"
-desc = "Mount manager"
-```
+| Key binding  | Alternate key | Action                |
+| ------------ | ------------- | --------------------- |
+| <kbd>q</kbd> | -             | Quit the plugin       |
+| <kbd>k</kbd> | <kbd>↑</kbd>  | Move up               |
+| <kbd>j</kbd> | <kbd>↓</kbd>  | Move down             |
+| <kbd>l</kbd> | <kbd>→</kbd>  | Enter the mount point |
+| <kbd>m</kbd> | -             | Mount the partition   |
+| <kbd>u</kbd> | -             | Unmount the partition |
+| <kbd>e</kbd> | -             | Eject the disk        |
+
+## TODO
+
+- Custom keybindings
+- Windows support (I don't have an Windows machine for testing, PRs welcome!)
+- Support mount, unmount, and eject the entire disk
+
+## License
+
+This plugin is MIT-licensed. For more information check the [LICENSE](LICENSE) file.

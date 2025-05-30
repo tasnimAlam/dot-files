@@ -1,30 +1,40 @@
+--- @since 25.2.26
+
 local get_target_directory = ya.sync(function()
-	local tab = cx.active
-	local target_dir = nil
+	local current_pane = cx.active.current
+	local hovered_item = current_pane.hovered
 
-	-- Case 1: A directory is currently hovered
-	if tab.current.hovered and tab.current.hovered.is_dir then
-		target_dir = tostring(tab.current.hovered.url)
-	-- Case 2: A file is hovered, or nothing specific is hovered (so use the current pane's directory)
+	if hovered_item and hovered_item.cha.is_dir then
+		-- If a directory is hovered, use its path
+		return tostring(hovered_item.url)
 	else
-		target_dir = tostring(tab.current.cwd)
+		-- Otherwise, use the current working directory of the pane
+		return tostring(current_pane.cwd)
 	end
-
-	return target_dir
 end)
 
 return {
 	entry = function()
-		ya.mgr_emit("escape", { visual = true }) -- Deselects if in visual mode
+		ya.mgr_emit("escape", { visual = true })
 
-		local dir_to_open = get_target_directory()
+		local target_dir = get_target_directory()
 
-		local status, err = Command("swayimg"):arg("--gallery"):arg(dir_to_open):spawn():wait()
+		if not target_dir then
+			return ya.notify({
+				title = "Swayimg Gallery",
+				content = "Could not determine target directory.",
+				level = "error",
+				timeout = 5,
+			})
+		end
+
+		-- Run swayimg in the target directory
+		local status, err = Command("swayimg"):arg("--gallery"):arg(target_dir):spawn():wait()
 
 		if not status or not status.success then
 			ya.notify({
-				title = "Sway image gallery",
-				content = string.format("Failed : %s", status and status.code or err),
+				title = "Swayimg Gallery",
+				content = string.format("Failed to open %s", status and status.code or err),
 				level = "error",
 				timeout = 5,
 			})
