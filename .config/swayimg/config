@@ -8,6 +8,10 @@ Shift+g = last_file
 Shift+j = zoom +10
 Shift+k = zoom -10
 Return = mode
+d = step_down 20
+e = step_up 20
+h = step_left 20
+l = step_right 20
 
 [keys.gallery]
 h = step_left
@@ -20,6 +24,7 @@ Shift+j = page_down
 Shift+k = page_up
 y = exec sh -c 'wl-copy --type image/png < "%"'
 Delete = exec rm -f '%' && echo "File removed: %"; reload; 
+Shift+R = reload
 
 
 
