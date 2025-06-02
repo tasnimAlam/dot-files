@@ -1,6 +1,6 @@
 require("mason").setup({})
 require("mason-lspconfig").setup({
-	ensure_installed = { "bashls", "pyright", "lua_ls", "hyprls" },
+	ensure_installed = { "bashls", "pyright", "lua_ls" },
 	handlers = {
 		function(server_name)
 			require("lspconfig")[server_name].setup({})

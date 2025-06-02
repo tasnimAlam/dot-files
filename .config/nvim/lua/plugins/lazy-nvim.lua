@@ -191,7 +191,7 @@ require("lazy").setup({
 		cmd = "Grapple",
 		keys = {
 			{ "<leader>M", "<cmd>Grapple toggle<cr>", desc = "Grapple toggle tag" },
-			{ "<leader>J", "<cmd>Grapple toggle_tags<cr>", desc = "Grapple toggle tags" },
+			{ "<leader>j", "<cmd>Grapple toggle_tags<cr>", desc = "Grapple toggle tags" },
 			{ "<leader>K", "<cmd>Grapple toggle_scopes<cr>", desc = "Grapple toggle scopes" },
 			{ "<leader>j", "<cmd>Grapple cycle forward<cr>", desc = "Grapple cycle forward" },
 			{ "<leader>k", "<cmd>Grapple cycle backward<cr>", desc = "Grapple cycle backward" },
@@ -237,7 +237,7 @@ require("lazy").setup({
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			-- vim.cmd([[ colorscheme catppuccin-frappe]])
+			vim.cmd([[ colorscheme catppuccin-frappe]])
 		end,
 	},
 	{
@@ -266,8 +266,8 @@ require("lazy").setup({
 			},
 		},
 		config = function()
-			require("flow").setup(opts)
-			vim.cmd("colorscheme flow")
+			-- require("flow").setup(opts)
+			-- vim.cmd("colorscheme flow")
 		end,
 	},
 
@@ -368,7 +368,6 @@ require("lazy").setup({
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		enabled = true,
-		commit = "d9328ef903168b6f52385a751eb384ae7e906c6f",
 		opts = {},
 		config = function()
 			require("plugins.noice")
@@ -385,12 +384,12 @@ require("lazy").setup({
 		end,
 	},
 	{ "MunifTanjim/nui.nvim" },
-	{
-		"ahmedkhalf/project.nvim",
-		config = function()
-			require("project_nvim").setup({})
-		end,
-	},
+	-- {
+	-- 	"ahmedkhalf/project.nvim",
+	-- 	config = function()
+	-- 		require("project_nvim").setup({})
+	-- 	end,
+	-- },
 	{
 		"aserowy/tmux.nvim",
 		config = function()
@@ -492,7 +491,6 @@ require("lazy").setup({
 	},
 	{
 		"Wansmer/treesj",
-		keys = { "<space>m", "<space>j", "<space>S" },
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
 			require("treesj").setup({})
@@ -524,8 +522,8 @@ require("lazy").setup({
 						keys = {
 							["<a-s>"] = { "flash", mode = { "n", "i" } },
 							["s"] = { "flash" },
-							["<S-k>"] = { "preview_scroll_up", mode = { "i", "n" } },
-							["<S-j>"] = { "preview_scroll_down", mode = { "i", "n" } },
+							["<S-k>"] = { "preview_scroll_up", mode = { "i" } },
+							["<S-j>"] = { "preview_scroll_down", mode = { "i" } },
 						},
 					},
 				},
@@ -896,7 +894,7 @@ require("lazy").setup({
 					},
 				},
 			})
-			vim.keymap.set("n", "<leader>fs", ":Namu symbols<cr>", {
+			vim.keymap.set("n", "<leader>sw", ":Namu symbols<cr>", {
 				desc = "Jump to LSP symbol",
 				silent = true,
 			})
