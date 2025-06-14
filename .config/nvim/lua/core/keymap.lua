@@ -20,7 +20,7 @@ map("n", "<space>rn", "<cmd>Lspsaga rename<CR>", {})
 map("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", {})
 map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", {})
 map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", {})
-map("n", "gd", "<cmd>Lspsaga goto_definition<CR>", {})
+-- map("n", "gd", "<cmd>Lspsaga goto_definition<CR>", {})
 
 -- Snippet config
 map("i", "<C-j>", "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'", { expr = true })

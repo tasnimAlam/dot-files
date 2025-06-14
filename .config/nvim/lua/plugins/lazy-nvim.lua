@@ -738,6 +738,13 @@ require("lazy").setup({
 				desc = "Goto Definition",
 			},
 			{
+				"gD",
+				function()
+					Snacks.picker.lsp_declarations()
+				end,
+				desc = "Goto Declaration",
+			},
+			{
 				"gr",
 				function()
 					Snacks.picker.lsp_references()
@@ -899,5 +906,19 @@ require("lazy").setup({
 				silent = true,
 			})
 		end,
+	},
+	{
+		"mistweaverco/kulala.nvim",
+		keys = {
+			{ "<leader>Rs", desc = "Send request" },
+			{ "<leader>Ra", desc = "Send all requests" },
+			{ "<leader>Rb", desc = "Open scratchpad" },
+		},
+		ft = { "http", "rest" },
+		opts = {
+			global_keymaps = true,
+			global_keymaps_prefix = "<leader>R",
+			kulala_keymaps_prefix = "",
+		},
 	},
 })
