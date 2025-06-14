@@ -79,27 +79,19 @@ require("lazy").setup({
 		},
 		version = "*",
 		opts = {
-			keymap = { preset = "default", ["<Tab>"] = { "select_and_accept" } },
+			keymap = {
+				preset = "default",
+				["<Tab>"] = { "select_and_accept" },
+				["<C-L>"] = { "snippet_forward" },
+				["<C-H>"] = { "snippet_backward" },
+			},
 			appearance = {
 				use_nvim_cmp_as_default = false,
 				nerd_font_variant = "mono",
 			},
 			sources = {
-				default = { "snippets", "lsp", "path", "buffer", "cmdline" },
-				-- cmdline = function()
-				-- 	local type = vim.fn.getcmdtype()
-				-- 	-- Search forward and backward
-				-- 	if type == "/" or type == "?" then
-				-- 		return { "buffer" }
-				-- 	end
-				-- 	-- Commands
-				-- 	if type == ":" then
-				-- 		return { "cmdline" }
-				-- 	end
-				-- 	return {}
-				-- end,
+				default = { "lsp", "snippets", "path", "buffer", "cmdline" },
 			},
-
 			snippets = {
 				preset = "luasnip",
 				-- This comes from the luasnip extra, if you don't add it, won't be able to
