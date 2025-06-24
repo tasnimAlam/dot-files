@@ -1,147 +1,158 @@
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = ["C"]
 run  = "plugin ouch"
 desc = "Compress with ouch"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "m" ]
 run = "plugin bookmarks save"
 desc = "Save current position as a bookmark"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "b", "d" ]
 run = "plugin bookmarks delete"
 desc = "Delete a bookmark"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "b", "D" ]
 run = "plugin bookmarks delete_all"
 desc = "Delete all bookmarks"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "g", "v" ]
 run = "cd '~/Videos'"
 desc = "Go to Videos folder" 
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "g", "b" ]
 run = "cd '~/Documents/books'"
 desc = "Go to books folder" 
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "g", "D" ]
 run = "cd '~/Documents/'"
 desc = "Go to Documents folder" 
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "g", "p" ]
 run = "cd '~/Pictures/'"
 desc = "Go to Pictures folder" 
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "g", "." ]
 run = "cd '~/Documents/dot-files/'"
 desc = "Go to dot files git folder" 
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "g", "w" ]
 run = "cd '~/Documents/sports-cloud-webapp'"
 desc = "Go to webapp folder" 
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "g", "u" ]
 run = "cd '~/Documents/ui2'"
 desc = "Go to ui2 folder" 
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
+on = [ "g", "r" ]
+run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"'
+
+[[mgr.prepend_keymap]]
 on   = "p"
 run  = "plugin smart-paste"
 desc = "Paste into the hovered directory or CWD"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "T"
 run  = "plugin smart-tab"
 desc = "Create a tab and enter the hovered directory"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "<C-t>" ]
 run  = 'plugin thumbnail'
 desc = "Open current directory in Swayimg gallery"
 
-
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "M"
 run  = "plugin mount"
 desc = "Mount manager"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "'" ]
 run  = "plugin first-non-directory"
 desc = "Jumps to the first file"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "o"
 run  = "plugin open-with-cmd block"
 desc = "Open with command in the terminal"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "O"
 run  = "plugin open-with-cmd"
 desc = "Open with command"
 
-[[manager.prepend_keymap]]
-on   = "D"
-run  = ''' 
-     shell 'dragon-drop --and-exit -A --on-top "$@"' --confirm 
-'''
-desc = "Open with command"
+[[mgr.prepend_keymap]]
+on   = "<C-n>"
+run = '''
+    shell 'ripdrag "$@" -x -a 2>/dev/null &' --confirm
+''' 
+desc = "Drag and drop"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "n"
 run  = "plugin next-file-type"
 desc = "Jump to next file type"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "V"
 run = "plugin pdfsearch --args"
 desc = "Search PDFs for text"
 
-[[manager.prepend_keymap]]
-on   = "*"
-run  = "plugin executable"
+[[mgr.prepend_keymap]]
+on   = ["c", "m"]
+run  = "plugin chmod"
 desc = "Chmod on selected files"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "F"
 run  = "plugin smart-filter"
 desc = "Smart filter"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "W"
 run  = "plugin kdeconnect-send"
 desc = "Send files"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "R"
 run  = "plugin rotate-image"
 desc = "Rotate selected images"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "i" ]
 run = "plugin searchjump"
 desc = "searchjump mode"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "g", "i" ]
 run  = "plugin lazygit"
 desc = "run lazygit"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "c", "s" ]
 run  = "plugin croc-send"
 desc = "Send files using croc"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ ",", "," ]
 run  = "sort mtime --reverse"
 desc = "sort files by time"
+
+[[mgr.prepend_keymap]]
+on   = "l"
+run  = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"
+
+[keys.normal]
+"yy" = "copy_path"

@@ -1,32 +1,42 @@
 [[plugin.deps]]
-use = "SL-RU/mount"
-rev = "e494101"
-hash = "1985b8e1c814fa441ba792c86670df23"
-
-[[plugin.deps]]
-use = "lpanebr/yazi-plugins:first-non-directory"
-rev = "7af4fed"
-hash = "fd1278a691ac6ebf949c73e58d9851b"
-
-[[plugin.deps]]
-use = "Ape/open-with-cmd"
-rev = "a80d1cf"
-hash = "86e0312b01bc5762813c6c1d0517f073"
-
-[[plugin.deps]]
-use = "yazi-rs/plugins:chmod"
-rev = "864a021"
-hash = "2f1053f89d1a301a648ab181d0948e38"
+use = "tasnimAlam/thumbnail"
+rev = "662e23a"
+hash = "75550a0b9562ad91a00159614e42dd1e"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-filter"
-rev = "864a021"
-hash = "f0c4b41b5d19a3144958383333eff6e7"
+rev = "5eea960"
+hash = "f660384d7ed12ecd456efed313453310"
 
 [[plugin.deps]]
-use = "dedukun/bookmarks"
-rev = "a70648a"
-hash = "b836fb264381f35dec79930438a906d5"
+use = "DreamMaoMao/searchjump"
+rev = "fe884f4"
+hash = "b4c00ef6899a9563af8d577d0bb46998"
+
+[[plugin.deps]]
+use = "tasnimAlam/rotate-image"
+rev = "26be45c"
+hash = "82d4dfc7647abac3ff687cd6c8281844"
+
+[[plugin.deps]]
+use = "dedukun/relative-motions"
+rev = "9d26460"
+hash = "6c0568cfa966a5d4ac496c926975a613"
+
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "1ee69a5"
+hash = "63679f3daf8551ff8755be38b5ced0f"
+
+[[plugin.deps]]
+use = "Ape/open-with-cmd"
+rev = "433cf30"
+hash = "86e0312b01bc5762813c6c1d0517f073"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:mount"
+rev = "5eea960"
+hash = "b3f1d6ec3721d4061aad5f69cddb0cf9"
 
 [[plugin.deps]]
 use = "Lil-Dank/lazygit"
@@ -34,21 +44,34 @@ rev = "7a08a09"
 hash = "a1fa2b3e1826c3a34804ea8c548e9f80"
 
 [[plugin.deps]]
-use = "Deepak22903/kdeconnect-send"
-rev = "ac23a0e"
-hash = "a1e38696a2ab2c607923b77f85f8058e"
+use = "tasnimAlam/kdeconnect-send"
+rev = "cdaffd2"
+hash = "1d4f13a6059be900380991fc931c1496"
 
 [[plugin.deps]]
-use = "ndtoan96/ouch"
-rev = "2496cd9"
-hash = "5b9dea47776a30946cfbf83232d18fb1"
+use = "lpanebr/yazi-plugins:first-non-directory"
+rev = "ca18a2c"
+hash = "5c20ffa5171dab34042e03d273dddc5b"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:mount"
-rev = "4df8f70"
-hash = "dd97eede8e20e59cd2604e8006e470e2"
+use = "DreamMaoMao/bookmarks"
+rev = "fa65ba2"
+hash = "cbce5906c0644dedda0c40bfc95c2678"
 
-[[flavor.deps]]
-use = "dangooddd/kanagawa"
-rev = "31167ed"
-hash = "a04e157148549bacbb2831aab0e6e8cb"
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-paste"
+rev = "5eea960"
+hash = "a8050052e59f3952abe0b3e27a5843de"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+rev = "5eea960"
+hash = "56fdabc96fc1f4d53c96eb884b02a5be"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:chmod"
+rev = "5eea960"
+hash = "a030fe48d91b04341ad2fba9be957df"
+
+[flavor]
+deps = []
