@@ -1,0 +1,12 @@
+#!/usr/bin/env fish
+
+set NOTES_FILE "$HOME/notes.txt"
+
+# Exit if the file doesn't exist
+if not test -f $NOTES_FILE
+    notify-send "Quicknotes" "No notes found!"
+    exit
+end
+
+# Use tac to reverse the file (newest first), pipe into bemenu
+set CHOSEN (tac $NOTES_FILE | bemenu -l 20 -p "Select note:")

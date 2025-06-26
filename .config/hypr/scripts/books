@@ -1,0 +1,26 @@
+#!/bin/bash
+# Script to open PDFs and EPUBs from your books collection with bemenu
+
+BOOKS_DIR="$HOME/Documents/books"
+
+# Use fd to find both PDFs and EPUBs in your books directory
+all_books=$(fd -e pdf -e epub . "$BOOKS_DIR" 2>/dev/null)
+
+# Create an associative array to map display names to full paths
+declare -A book_paths
+while IFS= read -r book_path; do
+    # Extract just the filename without path and extension
+    book_name=$(basename "$book_path" | sed 's/\.[^.]*$//')
+    book_paths["$book_name"]="$book_path"
+done <<< "$all_books"
+
+# Get just the book names for display in bemenu
+book_names=$(for name in "${!book_paths[@]}"; do echo "$name"; done | sort)
+
+# Present options with bemenu
+selected_name=$(echo "$book_names" | bemenu -i -p "Select Book" -l 15)
+
+if [ -n "$selected_name" ]; then
+    # Get the full path from the name and open with zathura
+    zathura "${book_paths[$selected_name]}" &
+fi
