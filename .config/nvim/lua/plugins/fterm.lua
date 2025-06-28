@@ -31,10 +31,10 @@ local yazi = fterm:new({
 -- 	lazygit:toggle()
 -- end)
 
-vim.keymap.set("n", "<Leader>n", function()
-	nnn:toggle()
-end)
+-- vim.keymap.set("n", "<Leader>n", function()
+-- 	nnn:toggle()
+-- end)
 
-vim.keymap.set("n", "<Leader>y", function()
+vim.keymap.set("n", "<Leader>n", function()
 	yazi:toggle()
 end)

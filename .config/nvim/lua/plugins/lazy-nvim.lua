@@ -1,33 +1,20 @@
 require("lazy").setup({
 	-- Lsp
-	{ "williamboman/mason.nvim" },
-	{ "williamboman/mason-lspconfig.nvim" },
 	{
-		"VonHeikemen/lsp-zero.nvim",
-		config = function()
-			require("plugins.zero")
-		end,
+		"mason-org/mason-lspconfig.nvim",
+		opts = {
+			ensure_installed = { "bashls", "pyright", "lua_ls" },
+		},
+		dependencies = {
+			{ "mason-org/mason.nvim", opts = {} },
+			"neovim/nvim-lspconfig",
+		},
 	},
 	{ "yioneko/nvim-vtsls" },
 	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { "saghen/blink.cmp" },
-		opts = {
-			servers = {
-				lua_ls = {},
-				bashls = {},
-				pyright = {},
-				vtsls = {},
-			},
-		},
-		config = function(_, opts)
-			local lspconfig = require("lspconfig")
-			for server, config in pairs(opts.servers) do
-				config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-				lspconfig[server].setup(config)
-			end
-		end,
 	},
 	{
 		"nvimdev/lspsaga.nvim",
@@ -151,8 +138,6 @@ require("lazy").setup({
 	{ "kyazdani42/nvim-web-devicons" },
 
 	-- Search related tools
-	{ "junegunn/fzf", build = "./install --all" },
-	{ "junegunn/fzf.vim" },
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -160,17 +145,6 @@ require("lazy").setup({
 			require("plugins.telescope")
 		end,
 	},
-	-- {
-	-- 	"danielfalk/smart-open.nvim",
-	-- 	branch = "0.2.x",
-	-- 	config = function()
-	-- 		require("telescope").load_extension("smart_open")
-	-- 	end,
-	-- 	dependencies = {
-	-- 		"kkharji/sqlite.lua",
-	-- 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	-- 	},
-	-- },
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{ "nvim-telescope/telescope-media-files.nvim" },
 	{ "nvim-telescope/telescope-live-grep-args.nvim" },
@@ -310,12 +284,6 @@ require("lazy").setup({
 		"rmagatti/alternate-toggler",
 		config = function()
 			require("plugins.toggler")
-		end,
-	},
-	{
-		"AckslD/nvim-neoclip.lua",
-		config = function()
-			require("neoclip").setup()
 		end,
 	},
 	{
