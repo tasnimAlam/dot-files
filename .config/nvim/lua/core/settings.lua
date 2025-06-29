@@ -26,11 +26,11 @@ o.timeoutlen = 500
 o.ttimeoutlen = 100
 o.lazyredraw = false
 o.mouse = ""
-if has("mac") == 1 then
-	o.clipboard = "unnamedplus"
-elseif has("unix") == 1 then
-	o.clipboard = "unnamedplus"
-end
+-- if has("mac") == 1 then
+-- 	o.clipboard = "unnamedplus"
+-- elseif has("unix") == 1 then
+-- 	o.clipboard = "unnamedplus"
+-- end
 
 -- buffer options
 bo.tabstop = 2

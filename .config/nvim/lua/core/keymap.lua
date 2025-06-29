@@ -122,3 +122,12 @@ map("n", "<Leader>oe", "<cmd>lua require('before').show_edits_in_telescope()<CR>
 -- Split join
 map("n", "<Leader>m", "<cmd>lua require('treesj').toggle()<CR>", {})
 
+-- Yank to system clipboard
+map("n", "<leader>y", '"+y', { noremap = true, silent = true })
+map("v", "<leader>y", '"+y', { noremap = true, silent = true })
+map("n", "<leader>Y", '"+Y', { noremap = true, silent = true })
+
+-- Paste from system clipboard
+map("n", "<leader>p", '"+p', { noremap = true, silent = true })
+map("n", "<leader>P", '"+P', { noremap = true, silent = true })
+map("v", "<leader>p", '"+p', { noremap = true, silent = true })
