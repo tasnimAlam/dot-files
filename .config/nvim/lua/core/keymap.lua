@@ -20,7 +20,6 @@ map("n", "<space>rn", "<cmd>Lspsaga rename<CR>", {})
 map("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", {})
 map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", {})
 map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", {})
--- map("n", "gd", "<cmd>Lspsaga goto_definition<CR>", {})
 
 -- Snippet config
 map("i", "<C-j>", "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'", { expr = true })
@@ -128,6 +127,5 @@ map("v", "<leader>y", '"+y', { noremap = true, silent = true })
 map("n", "<leader>Y", '"+Y', { noremap = true, silent = true })
 
 -- Paste from system clipboard
-map("n", "<leader>p", '"+p', { noremap = true, silent = true })
-map("n", "<leader>P", '"+P', { noremap = true, silent = true })
-map("v", "<leader>p", '"+p', { noremap = true, silent = true })
+map("n", "<leader>P", '"+p', { noremap = true, silent = true })
+map("v", "<leader>P", '"+p', { noremap = true, silent = true })
