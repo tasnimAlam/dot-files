@@ -5,7 +5,7 @@ map("n", "<Leader>w", ":w!<CR>", {})
 map("n", "<Leader>q", ":q!<CR>", {})
 map("n", "<Leader>p", "<cmd>lua require('conform').format()<CR>", {})
 map("i", "<C-a>", "<C-o>^", {})
-map("n", "<Esc>", ":noh<CR>", {})
+map("n", "<Esc>", ":noh<CR>", {silent = true})
 map("i", "<C-e>", "<C-o>$", {})
 
 -- Lsp mapping

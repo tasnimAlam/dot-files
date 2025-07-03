@@ -77,7 +77,7 @@ require("lazy").setup({
 				nerd_font_variant = "mono",
 			},
 			sources = {
-				default = { "lsp", "snippets", "path", "buffer", "cmdline" },
+				default = { "snippets", "lsp", "path", "buffer", "cmdline" },
 			},
 			snippets = {
 				preset = "luasnip",
