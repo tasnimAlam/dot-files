@@ -344,12 +344,7 @@ require("lazy").setup({
 		end,
 	},
 	{ "MunifTanjim/nui.nvim" },
-	-- {
-	-- 	"ahmedkhalf/project.nvim",
-	-- 	config = function()
-	-- 		require("project_nvim").setup({})
-	-- 	end,
-	-- },
+	
 	{
 		"aserowy/tmux.nvim",
 		config = function()
@@ -357,25 +352,7 @@ require("lazy").setup({
 		end,
 	},
 
-	-- -- Debugging
-	-- {
-	-- 	"mfussenegger/nvim-dap",
-	-- 	dependencies = {
-	-- 		"theHamsta/nvim-dap-virtual-text",
-	-- 		"rcarriga/nvim-dap-ui",
-	-- 		"nvim-telescope/telescope-dap.nvim",
-	-- 		{ "mxsdev/nvim-dap-vscode-js" },
-	-- 		{
-	-- 			"microsoft/vscode-js-debug",
-	-- 			lazy = true,
-	-- 			build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
-	-- 		},
-	-- 	},
-	-- 	config = function()
-	-- 		require("config.dap")
-	-- 	end,
-	-- },
-	-- { "tasnimAlam/px2rem.lua" },
+	
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
@@ -420,14 +397,7 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Rest API
-	-- {
-	-- 	"rest-nvim/rest.nvim",
-	-- 	dependencies = { "nvim-lua/plenary.nvim" },
-	-- 	config = function()
-	-- 		require("plugins.rest")
-	-- 	end,
-	-- },
+	
 	{
 		"bloznelis/before.nvim",
 		config = function()
