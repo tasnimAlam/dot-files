@@ -117,7 +117,7 @@ keymap("n", "<Leader>fr", "<cmd>GrugFar<CR>")
 keymap("n", "<C-A>", "<cmd>lua require('before').jump_to_last_edit()<CR>")
 keymap("n", "<C-S>", "<cmd>lua require('before').jump_to_next_edit()<CR>")
 keymap("n", "<Leader>oq", "<cmd>lua require('before').show_edits_in_quickfix()()<CR>")
-keyreymap("n", "<Leader>oe", "<cmd>lua require('before').show_edits_in_telescope()<CR>")
+keymap("n", "<Leader>oe", "<cmd>lua require('before').show_edits_in_telescope()<CR>")
 
 -- Split join
 keymap("n", "<Leader>m", "<cmd>lua require('treesj').toggle()<CR>")

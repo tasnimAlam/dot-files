@@ -32,3 +32,6 @@ require("transparent").setup({
 	},
 	exclude_groups = {}, -- table: groups you don't want to clear
 })
+
+require 'transparent'.clear_prefix("TabLine")
+require 'transparent'.clear_prefix("WildMenu") -- possibly not necessary
