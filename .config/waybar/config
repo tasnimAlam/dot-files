@@ -26,7 +26,7 @@
         "hyprland/window"
     ],
     "modules-right": [
-        "network",
+        "custom/network",
         "memory",
         "cpu",
         "pulseaudio",
@@ -101,12 +101,11 @@
         }
     },
 
-    "network": {
+    "custom/network": {
+        "exec": "/home/shourov/.config/waybar/network.sh",
+        "format": "{}",
         "interval": 5,
-        "format-wifi": "  {essid}  {bandwidthUpBits}  {bandwidthDownBits}", // Icon: wifi
-        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
-        "format-disconnected": "⚠  Disconnected",
-        "tooltip-format": "{ifname}: {ipaddr}"
+        "return-type": "json"
     },
 
     "hyprland/mode": {
