@@ -105,7 +105,8 @@
         "exec": "/home/shourov/.config/waybar/network.sh",
         "format": "{}",
         "interval": 5,
-        "return-type": "json"
+        "return-type": "json",
+        "tooltip": true
     },
 
     "hyprland/mode": {

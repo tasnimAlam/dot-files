@@ -62,6 +62,7 @@
 #memory,
 #mode,
 #network,
+#custom-network,
 #pulseaudio,
 #temperature,
 #tray {
@@ -144,11 +145,11 @@
   padding-bottom: 2px;
 }
 
-#network {
+#network , #custom-network{
   color: @red;
 }
 
-#network.disconnected {
+#network.disconnected , #custom-newtork.disconnected{
   color: @yellow;
 }
 
