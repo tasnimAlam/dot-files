@@ -5,13 +5,13 @@ hash = "75550a0b9562ad91a00159614e42dd1e"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-filter"
-rev = "5eea960"
-hash = "f660384d7ed12ecd456efed313453310"
+rev = "b886025"
+hash = "a9d553bd19a3cd7f4eab3abaac5d67ff"
 
 [[plugin.deps]]
 use = "DreamMaoMao/searchjump"
-rev = "fe884f4"
-hash = "b4c00ef6899a9563af8d577d0bb46998"
+rev = "7fafec3"
+hash = "5337bf545993d8c4dec2c229031f49d"
 
 [[plugin.deps]]
 use = "tasnimAlam/rotate-image"
@@ -19,14 +19,9 @@ rev = "26be45c"
 hash = "82d4dfc7647abac3ff687cd6c8281844"
 
 [[plugin.deps]]
-use = "dedukun/relative-motions"
-rev = "9d26460"
-hash = "6c0568cfa966a5d4ac496c926975a613"
-
-[[plugin.deps]]
 use = "ndtoan96/ouch"
-rev = "1ee69a5"
-hash = "63679f3daf8551ff8755be38b5ced0f"
+rev = "0742fff"
+hash = "2bd799b42b8e42b8ef100310be71f8d1"
 
 [[plugin.deps]]
 use = "Ape/open-with-cmd"
@@ -35,8 +30,8 @@ hash = "86e0312b01bc5762813c6c1d0517f073"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "5eea960"
-hash = "b3f1d6ec3721d4061aad5f69cddb0cf9"
+rev = "b886025"
+hash = "f10a14e823382d90fab5b3ee54cb38fe"
 
 [[plugin.deps]]
 use = "Lil-Dank/lazygit"
@@ -45,7 +40,7 @@ hash = "a1fa2b3e1826c3a34804ea8c548e9f80"
 
 [[plugin.deps]]
 use = "tasnimAlam/kdeconnect-send"
-rev = "cdaffd2"
+rev = "2079c86"
 hash = "1d4f13a6059be900380991fc931c1496"
 
 [[plugin.deps]]
@@ -60,18 +55,33 @@ hash = "cbce5906c0644dedda0c40bfc95c2678"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-paste"
-rev = "5eea960"
+rev = "b886025"
 hash = "a8050052e59f3952abe0b3e27a5843de"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "5eea960"
+rev = "b886025"
 hash = "56fdabc96fc1f4d53c96eb884b02a5be"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:chmod"
-rev = "5eea960"
-hash = "a030fe48d91b04341ad2fba9be957df"
+rev = "b886025"
+hash = "1adc12c2b2b025411ab61eb8f0879574"
+
+[[plugin.deps]]
+use = "dedukun/relative-motions"
+rev = "a603d9e"
+hash = "e02a788e5b8ae0fb47fd0193dda589cc"
+
+[[plugin.deps]]
+use = "Mr-Ples/command-palette"
+rev = "e5e6105"
+hash = "fee4f11556df389bd37341584c0fbcaf"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:toggle-pane"
+rev = "b886025"
+hash = "d6f60c24d8c0cf57a855bf46115b2502"
 
 [flavor]
 deps = []
