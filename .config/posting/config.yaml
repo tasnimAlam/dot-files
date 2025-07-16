@@ -1,0 +1,7 @@
+keymap:
+  quit: ctrl+q,ctrl+c
+  jump: ctrl+j
+  send-request: ctrl+space
+  focus-method: ctrl+m
+  open-in-pager: ctrl+b
+  open-in-editor: ctrl+o
