@@ -261,12 +261,12 @@ require("lazy").setup({
 	},
 
 	-- Helper
-	{
-		"max397574/better-escape.nvim",
-		config = function()
-			require("plugins.better-escape")
-		end,
-	},
+	-- {
+	-- 	"max397574/better-escape.nvim",
+	-- 	config = function()
+	-- 		require("plugins.better-escape")
+	-- 	end,
+	-- },
 	{
 		"abecodes/tabout.nvim",
 		config = function()
@@ -344,7 +344,7 @@ require("lazy").setup({
 		end,
 	},
 	{ "MunifTanjim/nui.nvim" },
-	
+
 	{
 		"aserowy/tmux.nvim",
 		config = function()
@@ -352,7 +352,6 @@ require("lazy").setup({
 		end,
 	},
 
-	
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
@@ -397,7 +396,6 @@ require("lazy").setup({
 		end,
 	},
 
-	
 	{
 		"bloznelis/before.nvim",
 		config = function()
@@ -850,5 +848,11 @@ require("lazy").setup({
 			global_keymaps_prefix = "<leader>R",
 			kulala_keymaps_prefix = "",
 		},
+	},
+	{
+		"mluders/comfy-line-numbers.nvim",
+		config = function()
+			require("plugins.comfy")
+		end,
 	},
 })

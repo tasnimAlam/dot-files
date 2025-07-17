@@ -29,9 +29,17 @@ require("transparent").setup({
 		"TelescopeNormal",
 		"TelescopeBorder",
 		"FloatBorder",
+		"Pmenu",
+		"PmenuSel",
+		"PmenuSbar",
+		"PmenuThumb",
+		"CmpItemAbbr",
+		"CmpItemAbbrMatch",
+		"CmpItemMenu",
+		"CmpBorder",
 	},
 	exclude_groups = {}, -- table: groups you don't want to clear
 })
 
-require 'transparent'.clear_prefix("TabLine")
-require 'transparent'.clear_prefix("WildMenu") -- possibly not necessary
+require("transparent").clear_prefix("TabLine")
+require("transparent").clear_prefix("WildMenu") -- possibly not necessary
