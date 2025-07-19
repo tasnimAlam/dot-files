@@ -1,9 +1,9 @@
 local function keymap(mode, lhs, rhs, opts)
-  local options = { noremap = true, silent = true }
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+	local options = { noremap = true, silent = true }
+	if opts then
+		options = vim.tbl_extend("force", options, opts)
+	end
+	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 vim.g.mapleader = " "
@@ -51,9 +51,6 @@ keymap("n", "<Leader>d", "<cmd>lua require('trouble').toggle('diagnostics')<CR>"
 -- Treehooper config
 keymap("n", "<Leader>v", "<cmd>lua require('tsht').nodes()<CR>")
 
--- Clipboard
-keymap("n", "<Leader>cc", "<cmd>lua require('telescope').extensions.neoclip.default()<CR>")
-
 -- Undo break points
 keymap("i", ",", ",<C-g>u", {})
 keymap("i", ".", ".<C-g>u", {})
@@ -71,8 +68,13 @@ keymap("i", "<Tab>", 'pumvisible() ? "<C-n>" : "<Tab>"', { expr = true })
 keymap("i", "<S-Tab>", 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true })
 keymap("i", "<CR>", 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true })
 
--- Telescope and fzf config
-keymap("n", "<Leader>mf", '<cmd>lua require("telescope").extensions.media_files.media_files()<CR>')
+-- File search and filter
+keymap(
+  "n",
+  "<Leader>mf",
+  '<cmd>lua Snacks.picker.files({ ft = {".mp4", ".mp3", ".jpg", ".png", ".gif", ".mkv"} })<CR>'
+)
+
 
 -- Buffer management
 keymap("n", "<Leader>,", "<C-^>", {})

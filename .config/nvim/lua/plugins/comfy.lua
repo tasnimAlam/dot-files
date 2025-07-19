@@ -86,5 +86,5 @@ require("comfy-line-numbers").setup({
 
 	-- Line numbers will be completely hidden for the following file/buffer types
 	hidden_file_types = { "undotree", "snacks_dashboard", "snacks" },
-	hidden_buffer_types = { "terminal", "nofile"},
+	hidden_buffer_types = { "terminal", "nofile", "prompt"},
 })

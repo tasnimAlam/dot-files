@@ -139,16 +139,6 @@ require("lazy").setup({
 
 	-- Search related tools
 	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("plugins.telescope")
-		end,
-	},
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	{ "nvim-telescope/telescope-media-files.nvim" },
-	{ "nvim-telescope/telescope-live-grep-args.nvim" },
-	{
 		"cbochs/grapple.nvim",
 		opts = {
 			scope = "git",
@@ -424,18 +414,18 @@ require("lazy").setup({
 			require("treesj").setup({})
 		end,
 	},
-	{
-		"EvWilson/spelunk.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim", -- For window drawing utilities
-			"nvim-telescope/telescope.nvim", -- Optional: for fuzzy search capabilities
-		},
-		config = function()
-			require("spelunk").setup({
-				enable_persist = true,
-			})
-		end,
-	},
+	-- {
+	-- 	"EvWilson/spelunk.nvim",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim", -- For window drawing utilities
+	-- 		"nvim-telescope/telescope.nvim", -- Optional: for fuzzy search capabilities
+	-- 	},
+	-- 	config = function()
+	-- 		require("spelunk").setup({
+	-- 			enable_persist = true,
+	-- 		})
+	-- 	end,
+	-- },
 	{
 		"folke/snacks.nvim",
 		priority = 1000,
@@ -544,6 +534,15 @@ require("lazy").setup({
 				"<leader>fc",
 				function()
 					Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+				end,
+				desc = "Find Config File",
+			},
+			{
+				"<leader>mf",
+				function()
+					Snacks.picker.files({
+						ft = { ".mp4", ".mov", ".mp3", ".jpg", ".png", ".gif", ".mkv", ".pdf", ".jpeg", ".webp" },
+					})
 				end,
 				desc = "Find Config File",
 			},
