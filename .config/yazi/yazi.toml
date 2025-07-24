@@ -6,6 +6,7 @@ sort_reverse = true
 [plugin]
 prepend_previewers = [
 	# Archive previewer
+	{ mime = "application/epub+zip",        run = "epub-preview" },
 	{ mime = "application/*zip",            run = "ouch" },
 	{ mime = "application/x-tar",           run = "ouch" },
 	{ mime = "application/x-bzip2",         run = "ouch" },

@@ -149,11 +149,6 @@ on   = [ ",", "," ]
 run  = "sort mtime --reverse"
 desc = "sort files by time"
 
-[[mgr.prepend_keymap]]
-on   = "l"
-run  = "plugin smart-enter"
-desc = "Enter the child directory, or open the file"
-
 [keys.normal]
 "yy" = "copy_path"
 
@@ -211,3 +206,13 @@ run = "plugin command-palette"
 on   = "P"
 run  = "plugin toggle-pane max-preview"
 desc = "Maximize or restore the preview pane"
+
+[[mgr.prepend_keymap]]
+on = [ "h" ]
+run = "plugin bypass reverse"
+desc = "Recursively enter parent directory, skipping parents with only a single subdirectory"
+
+[[mgr.prepend_keymap]]
+on = [ "l" ]
+run = "plugin bypass smart-enter"
+desc = "Open a file, or recursively enter child directory, skipping children with only a single subdirectory"

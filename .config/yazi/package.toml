@@ -5,8 +5,8 @@ hash = "75550a0b9562ad91a00159614e42dd1e"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-filter"
-rev = "b886025"
-hash = "a9d553bd19a3cd7f4eab3abaac5d67ff"
+rev = "de53d90"
+hash = "e56b7abf3c06e8ce496eadcca168c093"
 
 [[plugin.deps]]
 use = "DreamMaoMao/searchjump"
@@ -30,7 +30,7 @@ hash = "86e0312b01bc5762813c6c1d0517f073"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "b886025"
+rev = "de53d90"
 hash = "f10a14e823382d90fab5b3ee54cb38fe"
 
 [[plugin.deps]]
@@ -55,17 +55,12 @@ hash = "cbce5906c0644dedda0c40bfc95c2678"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-paste"
-rev = "b886025"
+rev = "de53d90"
 hash = "a8050052e59f3952abe0b3e27a5843de"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:smart-enter"
-rev = "b886025"
-hash = "56fdabc96fc1f4d53c96eb884b02a5be"
-
-[[plugin.deps]]
 use = "yazi-rs/plugins:chmod"
-rev = "b886025"
+rev = "de53d90"
 hash = "1adc12c2b2b025411ab61eb8f0879574"
 
 [[plugin.deps]]
@@ -80,8 +75,23 @@ hash = "fee4f11556df389bd37341584c0fbcaf"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "b886025"
+rev = "de53d90"
 hash = "d6f60c24d8c0cf57a855bf46115b2502"
+
+[[plugin.deps]]
+use = "Rolv-Apneseth/bypass"
+rev = "c1e5fcf"
+hash = "208e77480824f62558a5b037c8569d61"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+rev = "de53d90"
+hash = "56fdabc96fc1f4d53c96eb884b02a5be"
+
+[[plugin.deps]]
+use = "kirasok/epub-preview"
+rev = "2e8079e"
+hash = "92d5044ae6cd823443b180477cb60733"
 
 [flavor]
 deps = []
