@@ -1,0 +1,13 @@
+#!/usr/bin/env fish
+
+function toggle_wg0_connection
+    set -l conn_name "wg0"
+
+    if nmcli connection show "$conn_name" | grep -q "activated"
+        nmcli connection down "$conn_name"
+    else
+        nmcli connection up "$conn_name"
+    end
+end
+
+toggle_wg0_connection
