@@ -11,6 +11,10 @@
  * Keyframes
  * -------------------------------------------------------------------------- */
 
+* {
+  font-family: "JetBrains Mono", "Font Awesome 6 Free", monospace;
+}
+
 @keyframes blink-warning {
   70% {
     color: white;
@@ -145,11 +149,13 @@
   padding-bottom: 2px;
 }
 
-#network , #custom-network{
+#network,
+#custom-network {
   color: @red;
 }
 
-#network.disconnected , #custom-newtork.disconnected{
+#network.disconnected,
+#custom-newtork.disconnected {
   color: @yellow;
 }
 
