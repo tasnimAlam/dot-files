@@ -48,9 +48,9 @@
             "critical": 15
         },
         // Connected to AC
-        "format": "  {icon}  {capacity}%", // Icon: bolt
+        "format": " {icon} {capacity}%", // Icon: bolt
         // Not connected to AC
-        "format-discharging": "{icon}  {capacity}%",
+        "format-discharging": "{icon} {capacity}%",
         "format-icons": [
             "", // Icon: battery-full
             "", // Icon: battery-three-quarters
@@ -69,13 +69,13 @@
 
     "clock#date": {
       "interval": 10,
-      "format": "  {:%a %e %b}", // Icon: calendar-alt
+      "format": " {:%a%e %b}", // Icon: calendar-alt
       "tooltip-format": "{:%e %B %Y}"
     },
 
     "cpu": {
         "interval": 5,
-        "format": "  {usage}% ({load})", // Icon: microchip
+        "format": " {usage}% ({load})", // Icon: cpu
         "states": {
           "warning": 70,
           "critical": 90
@@ -86,7 +86,7 @@
       "exec": "hyprlandmsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
       // Interval set only as a fallback, as the value is updated by signal
       "interval": 30,
-      "format": "  {}", // Icon: keyboard
+      "format": " {}", // Icon: keyboard
       // Signal sent by Sway key binding (~/.config/hyprland/key-bindings)
       "signal": 1, // SIGHUP
       "tooltip": false
@@ -94,7 +94,7 @@
 
     "memory": {
         "interval": 5,
-        "format": "  {}%", // Icon: memory
+        "format": " {}%", // Icon: memory
         "states": {
             "warning": 70,
             "critical": 90
@@ -110,7 +110,7 @@
     },
 
     "hyprland/mode": {
-        "format": "<span style=\"italic\">  {}</span>", // Icon: expand-arrows-alt
+        "format": "<span style=\"italic\"> {}</span>", // Icon: expand-arrows-alt
         "tooltip": false
     },
 
@@ -128,8 +128,8 @@
 
     "pulseaudio": {
         //"scroll-step": 1,
-        "format": "{icon}  {volume}%",
-        "format-bluetooth": "{icon}  {volume}%",
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
         "format-muted": " 0%",
         "format-icons": {
             "headphones": "",
@@ -146,7 +146,7 @@
     "temperature": {
       "critical-threshold": 80,
       "interval": 5,
-      "format": "{icon}  {temperatureC}°C",
+      "format": "{icon} {temperatureC}°C",
       "format-icons": [
           "", // Icon: temperature-empty
           "", // Icon: temperature-quarter
