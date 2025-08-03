@@ -139,6 +139,20 @@ require("lazy").setup({
 
 	-- Search related tools
 	{
+		"dmtrKovalenko/fff.nvim",
+		build = "cargo build --release",
+		opts = {},
+		keys = {
+			{
+				"ff",
+				function()
+					require("fff").find_files()
+				end,
+				desc = "FFFind FFFiles",
+			},
+		},
+	},
+	{
 		"cbochs/grapple.nvim",
 		opts = {
 			scope = "git",
@@ -700,13 +714,13 @@ require("lazy").setup({
 				end,
 				desc = "Keymaps",
 			},
-			{
-				"<leader>ff",
-				function()
-					Snacks.picker.files()
-				end,
-				desc = "Find Files",
-			},
+			-- {
+			-- 	"<leader>ff",
+			-- 	function()
+			-- 		Snacks.picker.files()
+			-- 	end,
+			-- 	desc = "Find Files",
+			-- },
 			{
 				"<leader>fg",
 				function()

@@ -27,14 +27,6 @@ local yazi = fterm:new({
 	},
 })
 
--- vim.keymap.set("n", "<Leader>g", function()
--- 	lazygit:toggle()
--- end)
-
--- vim.keymap.set("n", "<Leader>n", function()
--- 	nnn:toggle()
--- end)
-
 vim.keymap.set("n", "<Leader>n", function()
 	yazi:toggle()
 end)
