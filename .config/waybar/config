@@ -69,7 +69,7 @@
 
     "clock#date": {
       "interval": 10,
-      "format": " {:%a%e %b}", // Icon: calendar-alt
+      "format": " {:%a %e %b}", // Icon: calendar-alt
       "tooltip-format": "{:%e %B %Y}"
     },
 
@@ -128,8 +128,8 @@
 
     "pulseaudio": {
         //"scroll-step": 1,
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}%",
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{icon}  {volume}%",
         "format-muted": " 0%",
         "format-icons": {
             "headphones": "",

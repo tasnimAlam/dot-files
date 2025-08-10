@@ -65,24 +65,31 @@ if iwgetid -r "$IFACE" > /dev/null 2>&1; then
     ESSID=$(iwgetid -r "$IFACE" 2>/dev/null || echo "Unknown")
     IP_ADDR=$(ip -4 addr show "$IFACE" 2>/dev/null | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | head -1)
     FORMAT="$ICON  $ESSID"
-    TOOLTIP="Download: $DOWNLOAD_SPEED\nUpload: $UPLOAD_SPEED\nInterface: $IFACE\nIP: $IP_ADDR"
+    TOOLTIP="Download: $DOWNLOAD_SPEED
+Upload: $UPLOAD_SPEED
+Interface: $IFACE
+IP: $IP_ADDR"
 else
     IP_ADDR=$(ip -4 addr show "$IFACE" 2>/dev/null | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | head -1)
     CIDR=$(ip -4 addr show "$IFACE" 2>/dev/null | grep -oP '(?<=inet\s)\d+(\.\d+){3}/\d+' | cut -d'/' -f2 | head -1)
     FORMAT="$ICON  $IFACE: $IP_ADDR/$CIDR"
-    TOOLTIP="Download: $DOWNLOAD_SPEED\nUpload: $UPLOAD_SPEED\nInterface: $IFACE\nIP: $IP_ADDR"
+    TOOLTIP="Download: $DOWNLOAD_SPEED
+Upload: $UPLOAD_SPEED
+Interface: $IFACE
+IP: $IP_ADDR"
 fi
 
 # Get public IP with better error handling
 PUBLIC_IP=$(timeout 3 curl -s --connect-timeout 2 ifconfig.co 2>/dev/null | grep -E '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$')
 if [ -n "$PUBLIC_IP" ]; then
-    TOOLTIP="$TOOLTIP\nPublic IP: $PUBLIC_IP"
+    TOOLTIP="$TOOLTIP
+Public IP: $PUBLIC_IP"
 fi
 
 # Escape the strings for JSON
 FORMAT_ESCAPED=$(json_escape "$FORMAT")
 
-# For tooltip, we need to manually escape quotes and backslashes, but keep \n as literal \n for JSON
-TOOLTIP_ESCAPED=$(printf '%s' "$TOOLTIP" | sed 's/\\/\\\\/g; s/"/\\"/g')
+# For tooltip, escape quotes, backslashes, and convert newlines to \n for JSON
+TOOLTIP_ESCAPED=$(printf '%s' "$TOOLTIP" | sed 's/\\/\\\\/g; s/"/\\"/g; s/$/\\n/' | tr -d '\n' | sed 's/\\n$//')
 
 echo "{\"text\": \"$FORMAT_ESCAPED\", \"tooltip\": \"$TOOLTIP_ESCAPED\"}"
