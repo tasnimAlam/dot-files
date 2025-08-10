@@ -1,7 +1,8 @@
 keymap:
   quit: ctrl+q,ctrl+c
-  jump: ctrl+j
-  send-request: ctrl+space
+  jump: ctrl+g
+  send-request: ctrl+r
   focus-method: ctrl+m
   open-in-pager: ctrl+b
   open-in-editor: ctrl+o
+  search-requests: ctrl+f
