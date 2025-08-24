@@ -80,7 +80,7 @@ keymap(
 keymap("n", "<Leader>,", "<C-^>", {})
 keymap("n", "<Leader>X", "<cmd>bufdo bwipeout<CR>")
 
-keymap("n", "<Leader>B", "<cmd>BufferLinePick<CR>")
+keymap("n", "<Leader>bb", "<cmd>BufferLinePick<CR>")
 keymap("n", "d>", "<cmd>BufferLineCloseRight<CR>")
 keymap("n", "d<", "<cmd>BufferLineCloseLeft<CR>")
 keymap("n", "g>", "<cmd>BufferLineMoveNext<CR>")
