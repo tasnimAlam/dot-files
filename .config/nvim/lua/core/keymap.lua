@@ -69,12 +69,7 @@ keymap("i", "<S-Tab>", 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true })
 keymap("i", "<CR>", 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true })
 
 -- File search and filter
-keymap(
-  "n",
-  "<Leader>mf",
-  '<cmd>lua Snacks.picker.files({ ft = {".mp4", ".mp3", ".jpg", ".png", ".gif", ".mkv"} })<CR>'
-)
-
+keymap("n", "<Leader>mf", '<cmd>lua Snacks.picker.files({ ft = {".mp4", ".mp3", ".jpg", ".png", ".gif", ".mkv"} })<CR>')
 
 -- Buffer management
 keymap("n", "<Leader>,", "<C-^>", {})
@@ -116,10 +111,9 @@ keymap("n", "<Leader>cl", "<cmd>Noice dismiss<CR>")
 keymap("n", "<Leader>fr", "<cmd>GrugFar<CR>")
 
 -- Before
-keymap("n", "<C-A>", "<cmd>lua require('before').jump_to_last_edit()<CR>")
-keymap("n", "<C-S>", "<cmd>lua require('before').jump_to_next_edit()<CR>")
+keymap("n", "<M-o>", "<cmd>lua require('before').jump_to_last_edit()<CR>")
+keymap("n", "<M-i>", "<cmd>lua require('before').jump_to_next_edit()<CR>")
 keymap("n", "<Leader>oq", "<cmd>lua require('before').show_edits_in_quickfix()()<CR>")
-keymap("n", "<Leader>oe", "<cmd>lua require('before').show_edits_in_telescope()<CR>")
 
 -- Split join
 keymap("n", "<Leader>m", "<cmd>lua require('treesj').toggle()<CR>")
@@ -132,3 +126,6 @@ keymap("n", "<leader>Y", '"+Y')
 -- Paste from system clipboard
 keymap("n", "<leader>P", '"+p')
 keymap("v", "<leader>P", '"+p')
+
+-- Dart config
+keymap("n", ";u", "<cmd>lua Dart.unmark({ type='all'})<CR>")
