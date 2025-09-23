@@ -13,10 +13,10 @@ vim.filetype.add({
 -- console log shortcut
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
-	callback = function()
-		vim.api.nvim_set_keymap("i", "cll", "console.log()<ESC><S-f>(a", { noremap = true, silent = true })
-		vim.api.nvim_set_keymap("v", "cll", "S(iconsole.log<ESC>", { noremap = true, silent = true })
-		vim.api.nvim_set_keymap("n", "cll", "yiwocll<ESC>p", { noremap = true, silent = true })
+		callback = function()
+		vim.keymap.set("i", "cll", "console.log()<ESC><S-f>(a", { desc = "Console log" })
+		vim.keymap.set("v", "cll", "S(iconsole.log<ESC>", { desc = "Console log" })
+		vim.keymap.set("n", "cll", "yiwocll<ESC>p", { desc = "Console log" })
 	end,
 })
 
