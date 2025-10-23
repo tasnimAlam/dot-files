@@ -35,7 +35,7 @@ desc = "Go to Documents folder"
 
 [[mgr.prepend_keymap]]
 on = [ "g", "p" ]
-run = "cd '~/Pictures/'"
+run = "cd '~/Pictures/screenshots/'"
 desc = "Go to Pictures folder" 
 
 [[mgr.prepend_keymap]]
@@ -93,7 +93,7 @@ run  = "plugin open-with-cmd"
 desc = "Open with command"
 
 [[mgr.prepend_keymap]]
-on   = "<C-n>"
+on   = "<A-d>"
 run = '''
     shell 'ripdrag "$@" -x -a 2>/dev/null &' --confirm
 ''' 
