@@ -1,0 +1,14 @@
+#!/usr/bin/env fish
+
+set search_dirs "$HOME/Desktop" "$HOME/Documents" "$HOME/Pictures" "$HOME/Videos" "$HOME/.config"
+
+set selected_file (fd . $search_dirs --type f --hidden --exclude .git | fzf --prompt="Select file: ")
+
+if test -n "$selected_file"
+    # Launch in background and detach from terminal
+    nohup xdg-open "$selected_file" >/dev/null 2>&1 &
+    disown
+end
+
+# Exit cleanly to close the terminal
+exit 0
