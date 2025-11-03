@@ -421,18 +421,6 @@ require("lazy").setup({
 			require("treesj").setup({})
 		end,
 	},
-	-- {
-	-- 	"EvWilson/spelunk.nvim",
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim", -- For window drawing utilities
-	-- 		"nvim-telescope/telescope.nvim", -- Optional: for fuzzy search capabilities
-	-- 	},
-	-- 	config = function()
-	-- 		require("spelunk").setup({
-	-- 			enable_persist = true,
-	-- 		})
-	-- 	end,
-	-- },
 	{
 		"folke/snacks.nvim",
 		priority = 1000,
@@ -471,6 +459,10 @@ require("lazy").setup({
 							end,
 						})
 					end,
+				},
+				sources = {
+					gh_issue = {},
+					gh_pr = {},
 				},
 			},
 			dashboard = {
@@ -707,17 +699,10 @@ require("lazy").setup({
 				end,
 				desc = "Keymaps",
 			},
-			-- {
-			-- 	"<leader>ff",
-			-- 	function()
-			-- 		Snacks.picker.files()
-			-- 	end,
-			-- 	desc = "Find Files",
-			-- },
 			{
-				"<leader>fg",
+				"<leader>gf",
 				function()
-					Snacks.picker.git_files()
+					Snacks.picker.git_diff()
 				end,
 				desc = "Find Git Files",
 			},
