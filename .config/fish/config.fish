@@ -8,7 +8,7 @@ set -gx BROWSER brave
 set -gx LC_ALL en_US.UTF-8
 set -gx DMENU_BLUETOOTH_LAUNCHER bemenu
 set -gx FM_OPENER emacs 
-set -gx TERMINAL kitty 
+set -gx TERMINAL ghostty 
 
 set -x GEM_HOME (gem env user_gemhome)
 set -x PATH $PATH $GEM_HOME/bin
@@ -33,10 +33,21 @@ set fzf_preview_dir_cmd exa --all --color=always
 set fzf_fd_opts --hidden --exclude=.git
 set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
 
-set -x FZF_DEFAULT_OPTS "--reverse --bind 'ctrl-y:execute-silent(printf {} | cut -f 2- | wl-copy --trim-newline)'"
+set -x FZF_DEFAULT_OPTS "--reverse --bind 'ctrl-y:execute-silent(printf {} | cut -f 2- | wl-copy --trim-newline),ctrl-k:preview-half-page-up,ctrl-j:preview-half-page-down'"
 set -gx FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix"
 set -gx FZF_CTRL_T_OPTS " --walker-skip .git,node_modules,target --preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 set -gx FZF_ALT_C_OPTS " --walker-skip .git,node_modules,target --preview 'tree -C {}'"
+
+set -gx ATAC_KEY_BINDINGS "~/.config/atac/vim_key_bindings.toml"
+set -gx ATAC_THEME "~/.config/atac/catppuccin_mocha.toml"
+
+set -gx POSTING_PAGER "fx"
+set -gx POSTING_EDITOR "nvim"
+
+# Android development
+set -gx ANDROID_HOME $HOME/android-sdk
+set -gx PATH $PATH $ANDROID_HOME/platform-tools
+set -gx JAVA_HOME /usr/lib/jvm/java-17-openjdk
 
 # Set path 
 fish_add_path ~/bin
@@ -50,13 +61,10 @@ fish_add_path ~/.composer/vendor/bin
 fish_add_path ~/.deno/bin/
 fish_add_path ~/go/bin/
 fish_add_path ~/Downloads/adb-fastboot/
+fish_add_path /opt/flutter/bin/
 
-if test "$os" = Linux
-    fish_add_path ~/Documents/dot-files/scripts/
-end
 if test "$os" = Darwin
     fish_add_path /opt/homebrew/bin /opt/homebrew/sbin
-    fish_add_path ~/Projects/scripts/
 end
 
 
@@ -81,7 +89,8 @@ set -x NNN_COLORS "#04020301;4231"
 set -x NNN_FCOLORS "$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$UNKNOWN"
 # set -x NNN_PREFER_SELECTION 1
 
-set -x CHROME_BIN /usr/bin/chromium
+set -x CHROME_BIN /usr/bin/brave
+set -x CHROME_EXECUTABLE /usr/bin/brave
 
 
 if test "$os" = Linux
@@ -103,8 +112,12 @@ end
 abbr --add --global zlweb "zellij --session webapp --layout ~/.config/zellij/webapp.kdl"
 abbr --add --global zlui "zellij --session ui --layout ~/.config/zellij/ui.kdl"
 
+# Search web 
+abbr --add --global sgg "s -p google"
+abbr --add --global sdd "s -p duckduckgo"
+
 # Zoxide init
-zoxide init fish | source
+# zoxide init fish | source
 
 # Starship init
 starship init fish | source
@@ -115,3 +128,8 @@ starship init fish | source
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+fish_add_path $HOME/.local/bin
+
+# opencode
+fish_add_path /home/shourov/.opencode/bin
