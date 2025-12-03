@@ -1,0 +1,69 @@
+[[plugin.deps]]
+use = "tasnimAlam/thumbnail"
+rev = "50d24b8"
+hash = "59ab6275308202d17e3b5383d03ce5b4"
+
+[[plugin.deps]]
+use = "DreamMaoMao/searchjump"
+rev = "7fafec3"
+hash = "5337bf545993d8c4dec2c229031f49d"
+
+[[plugin.deps]]
+use = "tasnimAlam/rotate-image"
+rev = "9d61146"
+hash = "409b403a7b7ed009fae98e8526c0b2c8"
+
+[[plugin.deps]]
+use = "dedukun/relative-motions"
+rev = "a603d9e"
+hash = "e02a788e5b8ae0fb47fd0193dda589cc"
+
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "cfb9140"
+hash = "b5067143415bd2d46c0dfa57319ddcef"
+
+[[plugin.deps]]
+use = "Ape/open-with-cmd"
+rev = "433cf30"
+hash = "86e0312b01bc5762813c6c1d0517f073"
+
+[[plugin.deps]]
+use = "Lil-Dank/lazygit"
+rev = "8f37dc5"
+hash = "ee71543790f0ce3951161045a3787abd"
+
+[[plugin.deps]]
+use = "tasnimAlam/kdeconnect-send"
+rev = "2079c86"
+hash = "1d4f13a6059be900380991fc931c1496"
+
+[[plugin.deps]]
+use = "lpanebr/yazi-plugins:first-non-directory"
+rev = "ca18a2c"
+hash = "5c20ffa5171dab34042e03d273dddc5b"
+
+[[plugin.deps]]
+use = "kirasok/epub-preview"
+rev = "2e8079e"
+hash = "92d5044ae6cd823443b180477cb60733"
+
+[[plugin.deps]]
+use = "Mr-Ples/command-palette"
+rev = "e5e6105"
+hash = "fee4f11556df389bd37341584c0fbcaf"
+
+[[plugin.deps]]
+use = "DreamMaoMao/bookmarks"
+rev = "fa65ba2"
+hash = "cbce5906c0644dedda0c40bfc95c2678"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:mount"
+rev = "eaf6920"
+hash = "4fccaaf10c36dc2466e2438a386ff017"
+
+[[flavor.deps]]
+use = "Chromium-3-Oxide/everforest-medium"
+rev = "0158f0f"
+hash = "dbbbfe681e156c28303efb1f44b6cbc4"
