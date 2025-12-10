@@ -87,6 +87,20 @@ require("lazy").setup({
 			},
 			sources = {
 				default = { "snippets", "lsp", "path", "buffer", "cmdline" },
+				providers = {
+					snippets = {
+						score_offset = 100, -- Highest priority
+					},
+					lsp = {
+						score_offset = 0,
+					},
+					path = {
+						score_offset = 0,
+					},
+					buffer = {
+						score_offset = -10,
+					},
+				},
 			},
 			snippets = {
 				preset = "luasnip",
