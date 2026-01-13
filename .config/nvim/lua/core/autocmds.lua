@@ -1,29 +1,33 @@
--- Highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
+local api = vim.api
+
+local augroup = api.nvim_create_augroup("core_autocmds", { clear = true })
+
+api.nvim_create_autocmd("TextYankPost", {
+	group = augroup,
+	desc = "Highlight yanked text",
 	callback = function()
-		vim.highlight.on_yank()
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
 	end,
 })
 
--- Enable hyprland treesitter
-vim.filetype.add({
-	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
-})
-
--- console log shortcut
-vim.api.nvim_create_autocmd("FileType", {
+api.nvim_create_autocmd("FileType", {
+	group = augroup,
+	desc = "JS/TS console.log shortcut",
 	pattern = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
-		callback = function()
-		vim.keymap.set("i", "cll", "console.log()<ESC><S-f>(a", { desc = "Console log" })
-		vim.keymap.set("v", "cll", "S(iconsole.log<ESC>", { desc = "Console log" })
-		vim.keymap.set("n", "cll", "yiwocll<ESC>p", { desc = "Console log" })
+	callback = function(ev)
+		local opts = { buffer = ev.buf, desc = "Console log" }
+		vim.keymap.set("i", "cll", "console.log()<ESC><S-f>(a", opts)
+		vim.keymap.set("v", "cll", "S(iconsole.log<ESC>", opts)
+		vim.keymap.set("n", "cll", "yiwocll<ESC>p", opts)
 	end,
 })
 
--- Px to rem convert
-vim.api.nvim_create_user_command("Px", function(opt)
-	if opt.args then
-		local result = opt.args / 16
-		print(string.format("%.2f rem", result))
+api.nvim_create_user_command("Px", function(opt)
+	local px = tonumber(opt.args)
+	if not px then
+		vim.notify("Px: provide a number (e.g. :Px 16)", vim.log.levels.ERROR)
+		return
 	end
-end, { nargs = 1 })
+
+	vim.notify(string.format("%.2f rem", px / 16))
+end, { nargs = 1, desc = "Convert px to rem" })

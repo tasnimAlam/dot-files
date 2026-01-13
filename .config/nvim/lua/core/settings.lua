@@ -1,49 +1,42 @@
-local o = vim.o
-local wo = vim.wo
-local bo = vim.bo
-local has = vim.fn.has
+local opt = vim.opt
 
--- global options
-o.swapfile = false
-o.backup = false
-o.writebackup = false
-o.updatetime = 300
-o.hlsearch = true
-o.shiftwidth = 2
-o.laststatus = 2
-o.showmode = false
-o.foldlevel = 20
-o.regexpengine = 0
-o.timeout = true
-o.ttimeout = true
-o.scrolloff = 8
-o.termguicolors = true
-o.background = "dark"
-o.completeopt = "noinsert"
-o.tabstop = 2
-o.hidden = true
-o.timeoutlen = 500
-o.ttimeoutlen = 100
-o.lazyredraw = false
-o.mouse = ""
--- if has("mac") == 1 then
--- 	o.clipboard = "unnamedplus"
--- elseif has("unix") == 1 then
--- 	o.clipboard = "unnamedplus"
--- end
+-- Global options
+opt.swapfile = false
+opt.backup = false
+opt.writebackup = false
+opt.updatetime = 300
+opt.hlsearch = true
 
--- buffer options
-bo.tabstop = 2
-bo.expandtab = true
-bo.swapfile = false
-bo.syntax = "on"
-bo.modifiable = true
+opt.shiftwidth = 2
+opt.tabstop = 2
+opt.expandtab = true
 
--- window options
-wo.signcolumn = "yes"
-wo.cursorline = true
-wo.cursorlineopt = "number"
-wo.foldmethod = "expr"
-wo.number = true
-wo.relativenumber = true
-wo.colorcolumn = "80"
+opt.laststatus = 3
+opt.showmode = false
+
+opt.foldlevel = 20
+opt.regexpengine = 0
+
+opt.timeout = true
+opt.timeoutlen = 500
+opt.ttimeout = true
+opt.ttimeoutlen = 100
+
+opt.scrolloff = 8
+opt.termguicolors = true
+opt.background = "dark"
+
+-- blink-cmp friendly baseline
+opt.completeopt = { "menuone", "noselect" }
+
+opt.lazyredraw = false
+opt.mouse = ""
+
+-- Window options (defaults)
+opt.signcolumn = "yes"
+opt.cursorline = true
+opt.cursorlineopt = "number"
+opt.foldmethod = "expr"
+opt.number = true
+opt.relativenumber = true
+opt.colorcolumn = "80"

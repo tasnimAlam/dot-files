@@ -111,6 +111,7 @@ require("lazy").setup({
 					require("luasnip").lsp_expand(snippet)
 					require("luasnip.loaders.from_vscode").lazy_load()
 					require("luasnip").filetype_extend("typescript", { "javascript" })
+					require("luasnip").filetype_extend("typescriptreact", { "javascript", "typescript" })
 				end,
 				active = function(filter)
 					if filter and filter.direction then
@@ -156,10 +157,11 @@ require("lazy").setup({
 			require("plugins.buffer")
 		end,
 	},
-	{
-		"iofq/dart.nvim",
-		opts = {},
-	},
+	-- {
+	-- 	"iofq/dart.nvim",
+	-- 	opts = {},
+	-- },
+	{ "serhez/bento.nvim", opts = {} },
 
 	-- Icons
 	{ "kyazdani42/nvim-web-devicons" },
@@ -449,8 +451,8 @@ require("lazy").setup({
 						keys = {
 							["<a-s>"] = { "flash", mode = { "n", "i" } },
 							["s"] = { "flash" },
-							["<S-k>"] = { "preview_scroll_up", mode = { "i" } },
-							["<S-j>"] = { "preview_scroll_down", mode = { "i" } },
+							["<a-k>"] = { "preview_scroll_up", mode = { "i" } },
+							["<a-j>"] = { "preview_scroll_down", mode = { "i" } },
 						},
 					},
 				},

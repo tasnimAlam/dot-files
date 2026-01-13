@@ -21,6 +21,7 @@ require("plugins.lazy-nvim")
 -- Load all other modules after that
 local core_modules = {
 	"core.settings",
+	"core.filetypes",
 	"core.autocmds",
 	"core.keymap",
 }
