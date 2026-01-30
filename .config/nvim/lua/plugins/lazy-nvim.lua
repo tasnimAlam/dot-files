@@ -193,6 +193,18 @@ require("lazy").setup({
 			{ "<leader>4", "<cmd>Grapple select index=4<cr>", desc = "Grapple select 4" },
 		},
 	},
+	-- Lazy.nvim with snacks.nvim
+	{
+		"2kabhishek/seeker.nvim",
+		dependencies = { "folke/snacks.nvim" },
+		cmd = { "Seeker" },
+		keys = {
+			{ "<leader>fa", ":Seeker files<CR>", desc = "Seek Files" },
+			{ "<leader>ff", ":Seeker git_files<CR>", desc = "Seek Git Files" },
+			{ "<leader>fg", ":Seeker grep<CR>", desc = "Seek Grep" },
+		},
+		opts = {},
+	},
 
 	-- Snippets
 	{ "rafamadriz/friendly-snippets" },
