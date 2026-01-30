@@ -60,9 +60,20 @@ require("lazy").setup({
 	},
 	{
 		"numToStr/Comment.nvim",
+		dependencies = {
+			"JoosepAlviste/nvim-ts-context-commentstring",
+		},
 		config = function()
-			require("Comment").setup()
+			require("Comment").setup({
+				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+			})
 		end,
+	},
+	{
+		"folke/ts-comments.nvim",
+		opts = {},
+		event = "VeryLazy",
+		enabled = vim.fn.has("nvim-0.10.0") == 1,
 	},
 	{ "nvim-lua/plenary.nvim" },
 
@@ -157,10 +168,6 @@ require("lazy").setup({
 			require("plugins.buffer")
 		end,
 	},
-	-- {
-	-- 	"iofq/dart.nvim",
-	-- 	opts = {},
-	-- },
 	{ "serhez/bento.nvim", opts = {} },
 
 	-- Icons
@@ -199,7 +206,15 @@ require("lazy").setup({
 			require("luasnip").filetype_extend("typescript", { "javascript" })
 		end,
 	},
-	{ "JoosepAlviste/nvim-ts-context-commentstring", ft = { "js", "jsx", "ts", "tsx" } },
+	{
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		ft = { "js", "jsx", "ts", "tsx" },
+	},
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
+	},
 	{
 		"lewis6991/gitsigns.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
