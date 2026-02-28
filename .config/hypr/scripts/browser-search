@@ -1,0 +1,7 @@
+#!/bin/bash
+
+text=$(echo "" | bemenu --fn monospace 16 -i -p "Search:")
+
+if [[ "$text" ]]; then
+  s -p duckduckgo $text
+fi
