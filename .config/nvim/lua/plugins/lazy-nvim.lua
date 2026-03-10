@@ -357,14 +357,6 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"iamcco/markdown-preview.nvim",
-		build = "cd app && npm install",
-		config = function()
-			vim.g.mkdp_filetypes = { "markdown" }
-		end,
-		ft = { "markdown" },
-	},
-	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		enabled = true,
@@ -448,13 +440,12 @@ require("lazy").setup({
 		opts = { useDefaults = true },
 	},
 	{
-		"MeanderingProgrammer/markdown.nvim",
-		name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		config = function()
-			require("render-markdown").setup({
-				enabled = false,
-			})
+		"barrettruth/preview.nvim",
+		init = function()
+			vim.g.preview = {
+				markdown = true,
+				github = true,
+			}
 		end,
 	},
 	{
