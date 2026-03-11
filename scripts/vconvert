@@ -1,0 +1,218 @@
+#!/usr/bin/env bash
+# Bemenu-powered video converter
+# Supports: gif, mp4, webm, mkv, avi, mov, mp3, wav, flac
+
+set -euo pipefail
+
+# ── helpers ──────────────────────────────────────────────────────────────────
+BM() {
+	bemenu --prompt "$1" \
+		--list "${2:-15}" \
+		--ignorecase
+}
+
+# ── dependencies ────────────────────────────────────────────────────────────
+for cmd in ffmpeg bemenu; do
+	command -v "$cmd" &>/dev/null || {
+		echo "'$cmd' is not installed."
+		exit 1
+	}
+done
+
+# ── pick input file ──────────────────────────────────────────────────────────
+VIDEO_EXTENSIONS="mp4|mkv|avi|mov|webm|wmv|flv|m4v|gif|mp3|wav|flac|aac|ogg"
+
+INPUT_FILE=$(find "$HOME/Downloads/" "$HOME/Videos/" -maxdepth 3 -type f |
+	grep -iE "\.($VIDEO_EXTENSIONS)$" |
+	sort |
+	BM "Select input file > " 20) || {
+	echo "Cancelled."
+	exit 0
+}
+
+[[ -z "$INPUT_FILE" ]] && {
+	echo "Cancelled."
+	exit 0
+}
+echo "Input : $INPUT_FILE"
+
+# ── pick output format ───────────────────────────────────────────────────────
+FORMAT=$(printf \
+	"gif\nmp4\nwebm\nmkv\navi\nmov\nmp3\nwav\nflac" |
+	BM "Select output format > " 9) || {
+	echo "Cancelled."
+	exit 0
+}
+
+[[ -z "$FORMAT" ]] && {
+	echo "Cancelled."
+	exit 0
+}
+FORMAT=$(echo "$FORMAT" | awk '{print $1}')
+echo "Format: $FORMAT"
+
+# ── optional: trim ───────────────────────────────────────────────────────────
+START_TIME=$(echo "" | BM "Start time (HH:MM:SS or blank to skip): " 0) || true
+DURATION=$(echo "" | BM "Duration (seconds or blank to skip): " 0) || true
+
+TRIM_ARGS=()
+[[ -n "$START_TIME" ]] && TRIM_ARGS+=(-ss "$START_TIME")
+[[ -n "$DURATION" ]] && TRIM_ARGS+=(-t "$DURATION")
+
+# ── optional: scale ───────────────────────────────────────────────────────────
+WIDTH=$(echo "" | BM "Width in px (blank = original, e.g. 640): " 0) || true
+SCALE=${WIDTH:-0} # 0 = keep original
+
+# ── optional: fps (gif/video only) ───────────────────────────────────────────
+FPS=15
+if [[ "$FORMAT" != mp3 && "$FORMAT" != wav && "$FORMAT" != flac ]]; then
+	USER_FPS=$(echo "" | BM "FPS (blank = 15): " 0) || true
+	[[ -n "$USER_FPS" ]] && FPS="$USER_FPS"
+fi
+
+# ── build output filename ─────────────────────────────────────────────────────
+BASENAME=$(basename "$INPUT_FILE")
+STEM="${BASENAME%.*}"
+DEFAULT_OUTPUT="${STEM}_converted.${FORMAT}"
+USER_OUTPUT=$(echo "" | BM "Output filename (blank = ${DEFAULT_OUTPUT}): " 0) || true
+if [[ -n "$USER_OUTPUT" ]]; then
+	USER_STEM="${USER_OUTPUT%.*}"
+	OUTPUT_FILE="${USER_STEM}.${FORMAT}"
+else
+	OUTPUT_FILE="$DEFAULT_OUTPUT"
+fi
+
+# ── confirm ───────────────────────────────────────────────────────────────────
+SUMMARY="Input: $INPUT_FILE | Output: $OUTPUT_FILE | Format: $FORMAT"
+[[ -n "$START_TIME" ]] && SUMMARY+=" | Start: $START_TIME"
+[[ -n "$DURATION" ]] && SUMMARY+=" | Duration: ${DURATION}s"
+[[ "$SCALE" != "0" ]] && SUMMARY+=" | Width: ${SCALE}px"
+[[ "$FORMAT" != mp3 && "$FORMAT" != wav && "$FORMAT" != flac ]] && SUMMARY+=" | FPS: $FPS"
+
+CONFIRM=$(printf "Yes — proceed\nNo — cancel" |
+	BM "$SUMMARY  |  Proceed? " 2) || {
+	echo "Cancelled."
+	exit 0
+}
+
+[[ "$CONFIRM" != Yes* ]] && {
+	echo "Cancelled."
+	exit 0
+}
+
+# ── build scale filter ────────────────────────────────────────────────────────
+if [[ "$SCALE" != "0" ]]; then
+	SCALE_FILTER="scale=${SCALE}:-1:flags=lanczos"
+else
+	SCALE_FILTER="scale=iw:-1:flags=lanczos" # keep original
+fi
+
+# ── convert ───────────────────────────────────────────────────────────────────
+case "$FORMAT" in
+
+gif)
+	PALETTE=$(mktemp /tmp/palette_XXXXXX.png)
+	echo "Generating palette…"
+	ffmpeg -hide_banner -loglevel warning \
+		"${TRIM_ARGS[@]}" \
+		-i "$INPUT_FILE" \
+		-vf "${SCALE_FILTER},fps=${FPS},palettegen=stats_mode=diff" \
+		-y "$PALETTE"
+
+	echo "Rendering GIF…"
+	ffmpeg -hide_banner -loglevel warning \
+		"${TRIM_ARGS[@]}" \
+		-i "$INPUT_FILE" -i "$PALETTE" \
+		-lavfi "${SCALE_FILTER},fps=${FPS} [x]; [x][1:v] paletteuse=dither=bayer:bayer_scale=5" \
+		-loop 0 \
+		-y "$OUTPUT_FILE"
+	rm -f "$PALETTE"
+	;;
+
+mp4)
+	ffmpeg -hide_banner -loglevel warning \
+		"${TRIM_ARGS[@]}" \
+		-i "$INPUT_FILE" \
+		-vf "${SCALE_FILTER},fps=${FPS}" \
+		-c:v libx264 -crf 23 -preset fast \
+		-c:a aac -b:a 128k \
+		-movflags +faststart \
+		-y "$OUTPUT_FILE"
+	;;
+
+webm)
+	ffmpeg -hide_banner -loglevel warning \
+		"${TRIM_ARGS[@]}" \
+		-i "$INPUT_FILE" \
+		-vf "${SCALE_FILTER},fps=${FPS}" \
+		-c:v libvpx-vp9 -crf 30 -b:v 0 \
+		-c:a libopus -b:a 96k \
+		-y "$OUTPUT_FILE"
+	;;
+
+mkv)
+	ffmpeg -hide_banner -loglevel warning \
+		"${TRIM_ARGS[@]}" \
+		-i "$INPUT_FILE" \
+		-vf "${SCALE_FILTER},fps=${FPS}" \
+		-c:v libx264 -crf 23 -preset fast \
+		-c:a copy \
+		-y "$OUTPUT_FILE"
+	;;
+
+avi)
+	ffmpeg -hide_banner -loglevel warning \
+		"${TRIM_ARGS[@]}" \
+		-i "$INPUT_FILE" \
+		-vf "${SCALE_FILTER},fps=${FPS}" \
+		-c:v mpeg4 -qscale:v 4 \
+		-c:a mp3 -b:a 128k \
+		-y "$OUTPUT_FILE"
+	;;
+
+mov)
+	ffmpeg -hide_banner -loglevel warning \
+		"${TRIM_ARGS[@]}" \
+		-i "$INPUT_FILE" \
+		-vf "${SCALE_FILTER},fps=${FPS}" \
+		-c:v libx264 -crf 23 -preset fast \
+		-c:a aac -b:a 128k \
+		-y "$OUTPUT_FILE"
+	;;
+
+mp3)
+	ffmpeg -hide_banner -loglevel warning \
+		"${TRIM_ARGS[@]}" \
+		-i "$INPUT_FILE" \
+		-vn -c:a libmp3lame -q:a 2 \
+		-y "$OUTPUT_FILE"
+	;;
+
+wav)
+	ffmpeg -hide_banner -loglevel warning \
+		"${TRIM_ARGS[@]}" \
+		-i "$INPUT_FILE" \
+		-vn -c:a pcm_s16le \
+		-y "$OUTPUT_FILE"
+	;;
+
+flac)
+	ffmpeg -hide_banner -loglevel warning \
+		"${TRIM_ARGS[@]}" \
+		-i "$INPUT_FILE" \
+		-vn -c:a flac \
+		-y "$OUTPUT_FILE"
+	;;
+
+*)
+	echo "Unknown format: $FORMAT"
+	exit 1
+	;;
+esac
+
+# ── done ─────────────────────────────────────────────────────────────────────
+SIZE=$(du -sh "$OUTPUT_FILE" | cut -f1)
+echo ""
+echo "Done!  →  $OUTPUT_FILE  ($SIZE)"
+command -v notify-send &>/dev/null &&
+	notify-send "Conversion Complete" "$OUTPUT_FILE  ($SIZE)"
