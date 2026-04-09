@@ -1,10 +1,10 @@
 # /home/shourov/.config/tmuxinator/web.yml
 
-name: nest
-root: ~/Documents/test-rust
+name: rust
+root: ~/Documents/rustlings
 windows:
   - editor:
       layout: even-horizontal
       panes:
-        - nvim src/main.rs
-        - cargo watch -x run
+        - nvim
+        - rustlings watch

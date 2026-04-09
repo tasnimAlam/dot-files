@@ -1,7 +1,7 @@
-# /home/shourov/.config/tmuxinator/web.yml
+# /home/shourov/.config/tmuxinator/boil.yml
 
-name: ui
-root: ~/Documents/ui2
+name: boil
+root: ~/Documents/react-boilerplate-ts
 
 # Optional tmux socket
 # socket_name: foo
@@ -48,5 +48,5 @@ windows:
   - yarn:
       layout: even-horizontal
       panes:
-        - yarn cloud
+        - yarn dev
   - nvim: nvim

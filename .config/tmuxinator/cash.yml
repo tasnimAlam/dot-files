@@ -1,0 +1,10 @@
+# /home/shourov/.config/tmuxinator/web.yml
+name: cash
+root: ~/Documents/cashFlowr/
+windows:
+  - server:
+      layout: even-horizontal
+      panes:
+        - django: source backend/venv/bin/activate.fish && cd backend && python manage.py runserver
+        - frontend: cd ./frontend && npm run dev
+  - editor: nvim

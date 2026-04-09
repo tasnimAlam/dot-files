@@ -1,0 +1,9 @@
+name: todo
+root: ~/Documents/todo-bazar/
+
+windows:
+  - editor:
+      layout: even-horizontal
+      panes:
+        - nvim index.mjs
+        - nodemon index.mjs

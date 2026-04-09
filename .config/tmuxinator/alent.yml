@@ -1,7 +1,7 @@
-# /home/shourov/.config/tmuxinator/web.yml
+# /home/shourov/.config/tmuxinator/alent.yml
 
-name: ui
-root: ~/Documents/ui2
+name: alent
+root: ~/Documents/kilnclient/
 
 # Optional tmux socket
 # socket_name: foo
@@ -48,5 +48,5 @@ windows:
   - yarn:
       layout: even-horizontal
       panes:
-        - yarn cloud
-  - nvim: nvim
+        - npm run dev -- --port 3000
+  - code: nvim
