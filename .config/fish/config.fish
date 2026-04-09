@@ -131,5 +131,8 @@ set --export PATH $BUN_INSTALL/bin $PATH
 
 fish_add_path $HOME/.local/bin
 
+# tmux sessions
+fish_add_path $HOME/.tmux/plugins/tmux-session-wizard/bin
+
 # opencode
 fish_add_path /home/shourov/.opencode/bin
