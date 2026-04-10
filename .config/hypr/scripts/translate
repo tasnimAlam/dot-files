@@ -1,0 +1,24 @@
+#!/usr/bin/env fish
+
+set input (echo "" | bemenu --fn "monospace 14" -i -p "Translate to Bengali:")
+
+if test -n "$input"
+    set encoded (python3 -c "import urllib.parse, sys; print(urllib.parse.quote(sys.argv[1]))" "$input")
+    set response (curl -s -H "User-Agent: Mozilla/5.0" "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=bn&dt=t&q=$encoded&dt=at")
+    set translations (python3 -c "
+import sys, json
+data = json.loads(sys.argv[1])
+main = ''.join(seg[0] for seg in data[0] if seg[0])
+results = [main]
+try:
+    alts = data[5][0][2]
+    for alt in alts[:3]:
+        if alt[0] and alt[0] != main:
+            results.append(alt[0])
+except:
+    pass
+print(', '.join(results[:3]))
+" "$response")
+
+    echo "$translations" | bemenu --fn "monospace 14" -i -p "Bengali:"
+end
