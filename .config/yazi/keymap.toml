@@ -44,14 +44,9 @@ run = "cd '~/Documents/dot-files/'"
 desc = "Go to dot files git folder" 
 
 [[mgr.prepend_keymap]]
-on = [ "g", "w" ]
-run = "cd '~/Documents/sports-cloud-webapp'"
-desc = "Go to webapp folder" 
-
-[[mgr.prepend_keymap]]
-on = [ "g", "u" ]
-run = "cd '~/Documents/ui2'"
-desc = "Go to ui2 folder" 
+on = [ "g", "k" ]
+run = "cd '~/Documents/kilnclient/'"
+desc = "Go to kilncient folder" 
 
 [[mgr.prepend_keymap]]
 on = [ "g", "r" ]
@@ -98,11 +93,6 @@ desc = "Drag and drop"
 on   = "n"
 run  = "plugin next-file-type"
 desc = "Jump to next file type"
-
-[[mgr.prepend_keymap]]
-on = "V"
-run = "plugin pdfsearch --args"
-desc = "Search PDFs for text"
 
 [[mgr.prepend_keymap]]
 on   = ["c", "m"]
@@ -201,3 +191,13 @@ run = "plugin command-palette"
 on   = "P"
 run  = "plugin toggle-pane max-preview"
 desc = "Maximize or restore the preview pane"
+
+[[mgr.prepend_keymap]]
+on   = "V"
+run  = "plugin video-duration"
+desc = "Show total video duration"
+
+[[mgr.prepend_keymap]]
+on   = "*"
+run  = "shell -- chmod +x %h"
+desc = "Chmod +x hovered file"

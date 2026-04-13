@@ -1,12 +1,12 @@
 [[plugin.deps]]
 use = "tasnimAlam/thumbnail"
-rev = "50d24b8"
-hash = "59ab6275308202d17e3b5383d03ce5b4"
+rev = "ec7bdf4"
+hash = "eb2403e88274cddc692ed21b7b72a1d1"
 
 [[plugin.deps]]
 use = "DreamMaoMao/searchjump"
-rev = "7fafec3"
-hash = "5337bf545993d8c4dec2c229031f49d"
+rev = "cab627c"
+hash = "4df5f3783cbbfed60466f1aa9bc45b5e"
 
 [[plugin.deps]]
 use = "tasnimAlam/rotate-image"
@@ -20,18 +20,18 @@ hash = "e02a788e5b8ae0fb47fd0193dda589cc"
 
 [[plugin.deps]]
 use = "ndtoan96/ouch"
-rev = "cfb9140"
-hash = "b5067143415bd2d46c0dfa57319ddcef"
+rev = "406ce6c"
+hash = "f5afc904d5106ee368c8aa2ded43bd74"
 
 [[plugin.deps]]
 use = "Ape/open-with-cmd"
-rev = "433cf30"
-hash = "86e0312b01bc5762813c6c1d0517f073"
+rev = "e3d430f"
+hash = "d29c1ffa99099181faf8c01d1f59aa4c"
 
 [[plugin.deps]]
 use = "Lil-Dank/lazygit"
-rev = "8f37dc5"
-hash = "ee71543790f0ce3951161045a3787abd"
+rev = "8c4086c"
+hash = "85316b5e9abeae2531d3e5d02a094381"
 
 [[plugin.deps]]
 use = "tasnimAlam/kdeconnect-send"
@@ -46,7 +46,7 @@ hash = "5c20ffa5171dab34042e03d273dddc5b"
 [[plugin.deps]]
 use = "kirasok/epub-preview"
 rev = "2e8079e"
-hash = "92d5044ae6cd823443b180477cb60733"
+hash = "46037d1e5d2e1fa7e155babbf8e49812"
 
 [[plugin.deps]]
 use = "Mr-Ples/command-palette"
@@ -55,15 +55,20 @@ hash = "fee4f11556df389bd37341584c0fbcaf"
 
 [[plugin.deps]]
 use = "DreamMaoMao/bookmarks"
-rev = "fa65ba2"
-hash = "cbce5906c0644dedda0c40bfc95c2678"
+rev = "43e20e7"
+hash = "5f8014ccda62776c3748b7688ec86ca"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "eaf6920"
-hash = "4fccaaf10c36dc2466e2438a386ff017"
+rev = "7749958"
+hash = "77e20b071404f97c09d3f9afdb9482e0"
+
+[[plugin.deps]]
+use = "tasnimAlam/video-duration"
+rev = "48a54d8"
+hash = "67af1bc4417dc19b3d776bcc342a9bdc"
 
 [[flavor.deps]]
 use = "Chromium-3-Oxide/everforest-medium"
-rev = "0158f0f"
-hash = "dbbbfe681e156c28303efb1f44b6cbc4"
+rev = "5f9200c"
+hash = "d33fbfce4e5dbc044e289d34fdede65d"
