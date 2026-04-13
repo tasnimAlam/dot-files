@@ -1,0 +1,19 @@
+{
+  "name": "Zoxide",
+  "description": "Jump to frequently used directories",
+  "icon": "folder_special",
+  "handler": {
+    "type": "socket",
+    "command": "python3 handler.py"
+  },
+  "daemon": {
+    "enabled": true,
+    "background": true,
+    "restartOnCrash": true
+  },
+  "indexOnly": true,
+  "supportedPlatforms": [
+    "niri",
+    "hyprland"
+  ]
+}

@@ -1,0 +1,142 @@
+#!/bin/bash
+# launch-webapp - Launch a URL as a standalone web app window, or focus if already open
+# Usage: launch-webapp [--floating] <url>
+
+floating=false
+if [[ "$1" == "--floating" ]]; then
+    floating=true
+    shift
+fi
+
+if [[ -z "$1" ]]; then
+    echo "Usage: launch-webapp [--floating] <url>"
+    exit 1
+fi
+
+url="$1"
+
+# Extract domain from URL for window matching
+# Handles: https://example.com/path -> example.com
+domain=$(echo "$url" | sed -E 's|^https?://||; s|/.*||; s|:.*||')
+
+# Generate expected webapp window app_id pattern
+# Chromium pattern: {browser}-{domain}__-Default (e.g., msedge-github.com__-Default)
+get_webapp_pattern() {
+    local browser_name="$1"
+    case "$browser_name" in
+        *edge*|*Edge*) echo "msedge-${domain}__" ;;
+        *chrome*|*Chrome*) echo "chrome-${domain}__" ;;
+        *chromium*|*Chromium*) echo "chromium-${domain}__" ;;
+        *brave*|*Brave*) echo "brave-${domain}__" ;;
+        *vivaldi*|*Vivaldi*) echo "vivaldi-${domain}__" ;;
+        *opera*|*Opera*) echo "opera-${domain}__" ;;
+        *thorium*|*Thorium*) echo "thorium-${domain}__" ;;
+        *) echo "${domain}" ;;
+    esac
+}
+
+# Try to focus existing webapp window
+# Returns 0 if window was focused, 1 if not found
+focus_existing_window() {
+    local pattern="$1"
+    
+    # Try Niri first
+    if [[ -n "$NIRI_SOCKET" ]] && command -v niri &>/dev/null; then
+        local window_id
+        window_id=$(niri msg -j windows 2>/dev/null | jq -r ".[] | select(.app_id | test(\"$pattern\"; \"i\")) | .id" | head -1)
+        if [[ -n "$window_id" ]]; then
+            niri msg action focus-window --id "$window_id" &>/dev/null
+            return 0
+        fi
+    fi
+    
+    # Try Hyprland
+    if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]] && command -v hyprctl &>/dev/null; then
+        local window_addr
+        window_addr=$(hyprctl clients -j 2>/dev/null | jq -r ".[] | select(.class | test(\"$pattern\"; \"i\")) | .address" | head -1)
+        if [[ -n "$window_addr" ]]; then
+            hyprctl dispatch focuswindow "address:$window_addr" &>/dev/null
+            return 0
+        fi
+    fi
+    
+    return 1
+}
+
+browser=$(xdg-settings get default-web-browser 2>/dev/null)
+
+# Only Chromium-based browsers support --app flag
+browser_lower="${browser,,}"
+is_chromium=false
+
+case "$browser_lower" in
+*chrome* | *chromium* | *brave* | *edge* | *opera* | *vivaldi* | *thorium* | *arc*)
+    is_chromium=true
+    ;;
+esac
+
+if [[ "$is_chromium" != "true" ]]; then
+    browser="chromium.desktop"
+fi
+
+# Check for existing window and focus it (skip for floating mode - always open new)
+if [[ "$floating" != "true" ]]; then
+    pattern=$(get_webapp_pattern "$browser")
+    if focus_existing_window "$pattern"; then
+        exit 0
+    fi
+fi
+
+# Search paths for .desktop files (including Flatpak)
+search_paths=(
+    "$HOME/.local/share/applications/$browser"
+    "$HOME/.local/share/flatpak/exports/share/applications/$browser"
+    "$HOME/.nix-profile/share/applications/$browser"
+    "/var/lib/flatpak/exports/share/applications/$browser"
+    "/usr/share/applications/$browser"
+)
+
+# Find the .desktop file
+desktop_file=""
+for path in "${search_paths[@]}"; do
+    if [[ -f "$path" ]]; then
+        desktop_file="$path"
+        break
+    fi
+done
+
+if [[ -z "$desktop_file" ]]; then
+    echo "Could not find desktop file for $browser"
+    exit 1
+fi
+
+# Check if it's a Flatpak app
+if grep -q "^Exec=.*flatpak run" "$desktop_file"; then
+    # Extract Flatpak app ID (e.g., com.microsoft.Edge, com.google.Chrome)
+    app_id=$(grep "^Exec=" "$desktop_file" | head -1 | sed -n 's/.*flatpak run .* \(com\.[a-zA-Z0-9._-]*\|org\.[a-zA-Z0-9._-]*\|io\.[a-zA-Z0-9._-]*\).*/\1/p')
+    if [[ -z "$app_id" ]]; then
+        # Fallback: use desktop file basename
+        app_id=$(basename "$desktop_file" .desktop)
+    fi
+    setsid flatpak run "$app_id" --app="$url" &>/dev/null &
+else
+    # Native app - extract executable
+    browser_exec=$(sed -n 's/^Exec=\([^ ]*\).*/\1/p' "$desktop_file" | head -1)
+    if [[ -z "$browser_exec" ]]; then
+        echo "Could not find browser executable in $desktop_file"
+        exit 1
+    fi
+    setsid "$browser_exec" --app="$url" &>/dev/null &
+fi
+
+# If floating mode requested, wait for window and toggle floating + center
+if [[ "$floating" == "true" ]]; then
+    sleep 0.5
+    if [[ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
+        hyprctl dispatch togglefloating &>/dev/null
+        hyprctl dispatch centerwindow &>/dev/null
+    elif [[ -n "$NIRI_SOCKET" ]]; then
+        niri msg action toggle-window-floating &>/dev/null
+        niri msg action center-window &>/dev/null
+    fi
+fi

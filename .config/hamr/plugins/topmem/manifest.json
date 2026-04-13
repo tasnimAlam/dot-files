@@ -1,0 +1,20 @@
+{
+  "name": "Top Memory",
+  "description": "Processes sorted by memory usage",
+  "icon": "memory",
+  "handler": {
+    "type": "socket",
+    "command": "python3 handler.py"
+  },
+  "daemon": {
+    "enabled": true,
+    "background": false,
+    "restartOnCrash": true
+  },
+  "supportedPlatforms": [
+    "niri",
+    "hyprland",
+    "macos",
+    "windows"
+  ]
+}

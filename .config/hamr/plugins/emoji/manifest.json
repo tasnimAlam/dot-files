@@ -1,0 +1,19 @@
+{
+  "name": "Emoji",
+  "description": "Search and copy emojis",
+  "icon": "emoji_emotions",
+  "handler": {
+    "type": "socket",
+    "command": "python3 handler.py"
+  },
+  "daemon": {
+    "enabled": true,
+    "background": true,
+    "restartOnCrash": true
+  },
+  "frecency": "plugin",
+  "supportedPlatforms": [
+    "niri",
+    "hyprland"
+  ]
+}

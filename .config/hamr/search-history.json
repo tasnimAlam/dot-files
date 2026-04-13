@@ -1,0 +1,1767 @@
+{
+  "history": [
+    {
+      "type": "workflowExecution",
+      "key": "calculate:Calculate: asdf = 86400 ns²",
+      "name": "Calculate: asdf = 86400 ns²",
+      "workflowId": "calculate",
+      "workflowName": "Calculate",
+      "command": [
+        "wl-copy",
+        "86400 ns²"
+      ],
+      "entryPoint": null,
+      "icon": "calculate",
+      "iconType": "material",
+      "thumbnail": "",
+      "keepOpen": false,
+      "count": 1,
+      "lastUsed": 1775716116607,
+      "recentSearchTerms": [
+        "asdf"
+      ],
+      "hourSlotCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "1": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {},
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 0,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2026-04-09"
+    },
+    {
+      "type": "workflowExecution",
+      "key": "calculate:Calculate: 1 dollar to bdt = ৳122.7481567",
+      "name": "Calculate: 1 dollar to bdt = ৳122.7481567",
+      "workflowId": "calculate",
+      "workflowName": "Calculate",
+      "command": [
+        "wl-copy",
+        "৳122.7481567"
+      ],
+      "entryPoint": null,
+      "icon": "calculate",
+      "iconType": "material",
+      "thumbnail": "",
+      "keepOpen": false,
+      "count": 1,
+      "lastUsed": 1775716079359,
+      "recentSearchTerms": [
+        "1 dollar to bdt"
+      ],
+      "hourSlotCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "1": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {},
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 0,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2026-04-09"
+    },
+    {
+      "type": "workflowExecution",
+      "key": "calculate:Calculate: 23*23 = 529",
+      "name": "Calculate: 23*23 = 529",
+      "workflowId": "calculate",
+      "workflowName": "Calculate",
+      "command": [
+        "wl-copy",
+        "529"
+      ],
+      "entryPoint": null,
+      "icon": "calculate",
+      "iconType": "material",
+      "thumbnail": "",
+      "keepOpen": false,
+      "count": 1,
+      "lastUsed": 1775716059949,
+      "recentSearchTerms": [
+        "23*23"
+      ],
+      "hourSlotCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "1": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {},
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 0,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2026-04-09"
+    },
+    {
+      "type": "app",
+      "name": "blueman-manager",
+      "count": 1,
+      "lastUsed": 1775556472302,
+      "recentSearchTerms": [
+        "bluetoo"
+      ],
+      "hourSlotCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {},
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 0,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2026-04-07"
+    },
+    {
+      "type": "app",
+      "name": "org.mozilla.Thunderbird",
+      "count": 1,
+      "lastUsed": 1775546372984,
+      "recentSearchTerms": [
+        "thund"
+      ],
+      "hourSlotCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {},
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 0,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2026-04-07"
+    },
+    {
+      "type": "workflowExecution",
+      "key": "calculate:Calculate: 23*234 = 5382",
+      "name": "Calculate: 23*234 = 5382",
+      "workflowId": "calculate",
+      "workflowName": "Calculate",
+      "command": [
+        "wl-copy",
+        "5382"
+      ],
+      "entryPoint": null,
+      "icon": "calculate",
+      "iconType": "material",
+      "thumbnail": "",
+      "keepOpen": false,
+      "count": 1,
+      "lastUsed": 1773645809219,
+      "recentSearchTerms": [
+        "23*234"
+      ],
+      "hourSlotCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {},
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 0,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2026-03-16"
+    },
+    {
+      "type": "workflow",
+      "name": "calculate",
+      "count": 4,
+      "lastUsed": 1775716092897,
+      "recentSearchTerms": [
+        "cal"
+      ],
+      "hourSlotCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        1,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "1": 3,
+        "2": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 4
+      },
+      "launchedAfter": {},
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 0,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2026-04-09"
+    },
+    {
+      "type": "workflowExecution",
+      "key": "emoji:🥉 3rd place medal award third",
+      "name": "🥉 3rd place medal award third",
+      "workflowId": "emoji",
+      "workflowName": "Emoji",
+      "command": [
+        "wl-copy",
+        "🥉"
+      ],
+      "entryPoint": null,
+      "icon": "🥉",
+      "iconType": "text",
+      "thumbnail": "",
+      "keepOpen": false,
+      "count": 1,
+      "lastUsed": 1773645726568,
+      "recentSearchTerms": [
+        "3"
+      ],
+      "hourSlotCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {},
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 0,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2026-03-16"
+    },
+    {
+      "type": "app",
+      "name": "emacsclient",
+      "count": 1,
+      "lastUsed": 1768288691399,
+      "recentSearchTerms": [
+        "ema"
+      ],
+      "hourSlotCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "4": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {},
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 0,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2026-01-13"
+    },
+    {
+      "type": "webSearch",
+      "name": "=2+32",
+      "count": 1,
+      "lastUsed": 1766949441174,
+      "recentSearchTerms": [
+        "=2+32"
+      ],
+      "hourSlotCounts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {},
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 1,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2025-12-28"
+    },
+    {
+      "type": "webSearch",
+      "name": "2+34",
+      "count": 1,
+      "lastUsed": 1766949431903,
+      "recentSearchTerms": [
+        "2+34"
+      ],
+      "hourSlotCounts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {},
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 1,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2025-12-28"
+    },
+    {
+      "type": "webSearch",
+      "name": "sqrt(2)",
+      "count": 1,
+      "lastUsed": 1766949291061,
+      "recentSearchTerms": [
+        "sqrt(2)"
+      ],
+      "hourSlotCounts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {
+        "kitty": 1
+      },
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 1,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2025-12-28"
+    },
+    {
+      "type": "workflowExecution",
+      "key": "hyprland:Go to Workspace 2",
+      "name": "Go to Workspace 2",
+      "workflowId": "hyprland",
+      "workflowName": "hyprland",
+      "command": [
+        "hyprctl",
+        "dispatch",
+        "workspace",
+        "2"
+      ],
+      "entryPoint": null,
+      "icon": "looks_two",
+      "iconType": "material",
+      "thumbnail": "",
+      "keepOpen": false,
+      "count": 2,
+      "lastUsed": 1773645724663,
+      "recentSearchTerms": [
+        "2",
+        "w2"
+      ],
+      "hourSlotCounts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 1,
+        "4": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 2
+      },
+      "launchedAfter": {
+        "kitty": 1
+      },
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 1,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2026-03-16"
+    },
+    {
+      "type": "workflowExecution",
+      "key": "hyprland:Go to Workspace 4",
+      "name": "Go to Workspace 4",
+      "workflowId": "hyprland",
+      "workflowName": "hyprland",
+      "command": [
+        "hyprctl",
+        "dispatch",
+        "workspace",
+        "4"
+      ],
+      "entryPoint": null,
+      "icon": "looks_4",
+      "iconType": "material",
+      "thumbnail": "",
+      "keepOpen": false,
+      "count": 2,
+      "lastUsed": 1766949216459,
+      "recentSearchTerms": [
+        "w4",
+        "workspace 4"
+      ],
+      "hourSlotCounts": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 2
+      },
+      "monitorCounts": {
+        "eDP-1": 2
+      },
+      "launchedAfter": {
+        "kitty": 2
+      },
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 2,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2025-12-28"
+    },
+    {
+      "type": "workflowExecution",
+      "key": "hyprland:Go to the next tab.",
+      "name": "Go to the next tab.",
+      "workflowId": "hyprland",
+      "workflowName": "hyprland",
+      "command": [
+        "hyprctl",
+        "dispatch",
+        "global",
+        "org.chromium.Chromium:43EBA5871FA909774D034CAA9628E0E8-nextTab"
+      ],
+      "entryPoint": null,
+      "icon": "keyboard",
+      "iconType": "material",
+      "thumbnail": "",
+      "keepOpen": false,
+      "count": 1,
+      "lastUsed": 1766949165294,
+      "recentSearchTerms": [
+        "go to 4"
+      ],
+      "hourSlotCounts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {
+        "kitty": 1
+      },
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 1,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2025-12-28"
+    },
+    {
+      "type": "workflowExecution",
+      "key": "hyprland:Swap Right",
+      "name": "Swap Right",
+      "workflowId": "hyprland",
+      "workflowName": "hyprland",
+      "command": [
+        "hyprctl",
+        "dispatch",
+        "swapwindow",
+        "r"
+      ],
+      "entryPoint": null,
+      "icon": "swap_horiz",
+      "iconType": "material",
+      "thumbnail": "",
+      "keepOpen": false,
+      "count": 1,
+      "lastUsed": 1766949145120,
+      "recentSearchTerms": [
+        "swap right"
+      ],
+      "hourSlotCounts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {
+        "kitty": 1
+      },
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 1,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2025-12-28"
+    },
+    {
+      "type": "workflowExecution",
+      "key": "emoji:🌔 waxing gibbous moon nature nig",
+      "name": "🌔 waxing gibbous moon nature nig",
+      "workflowId": "emoji",
+      "workflowName": "emoji",
+      "command": [
+        "wl-copy",
+        "🌔"
+      ],
+      "entryPoint": null,
+      "icon": "🌔",
+      "iconType": "text",
+      "thumbnail": "",
+      "keepOpen": false,
+      "count": 1,
+      "lastUsed": 1766949137003,
+      "recentSearchTerms": [
+        "swap reigh"
+      ],
+      "hourSlotCounts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {
+        "kitty": 1
+      },
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 1,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2025-12-28"
+    },
+    {
+      "type": "workflowExecution",
+      "key": "hyprland:Swap Left",
+      "name": "Swap Left",
+      "workflowId": "hyprland",
+      "workflowName": "hyprland",
+      "command": [
+        "hyprctl",
+        "dispatch",
+        "swapwindow",
+        "l"
+      ],
+      "entryPoint": null,
+      "icon": "swap_horiz",
+      "iconType": "material",
+      "thumbnail": "",
+      "keepOpen": false,
+      "count": 2,
+      "lastUsed": 1766949140861,
+      "recentSearchTerms": [
+        "swap left"
+      ],
+      "hourSlotCounts": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 2
+      },
+      "monitorCounts": {
+        "eDP-1": 2
+      },
+      "launchedAfter": {
+        "kitty": 2
+      },
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 2,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2025-12-28"
+    },
+    {
+      "type": "workflowExecution",
+      "key": "hyprland:Close Window",
+      "name": "Close Window",
+      "workflowId": "hyprland",
+      "workflowName": "hyprland",
+      "command": [
+        "hyprctl",
+        "dispatch",
+        "killactive"
+      ],
+      "entryPoint": null,
+      "icon": "close",
+      "iconType": "material",
+      "thumbnail": "",
+      "keepOpen": false,
+      "count": 2,
+      "lastUsed": 1766949123819,
+      "recentSearchTerms": [
+        "close window"
+      ],
+      "hourSlotCounts": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 2
+      },
+      "monitorCounts": {
+        "eDP-1": 2
+      },
+      "launchedAfter": {
+        "kitty": 2
+      },
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 2,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2025-12-28"
+    },
+    {
+      "type": "workflowExecution",
+      "key": "hyprland:Toggle Floating",
+      "name": "Toggle Floating",
+      "workflowId": "hyprland",
+      "workflowName": "hyprland",
+      "command": [
+        "hyprctl",
+        "dispatch",
+        "togglefloating"
+      ],
+      "entryPoint": null,
+      "icon": "picture_in_picture",
+      "iconType": "material",
+      "thumbnail": "",
+      "keepOpen": false,
+      "count": 6,
+      "lastUsed": 1773645744638,
+      "recentSearchTerms": [
+        "g",
+        "go to ",
+        "toggle floating"
+      ],
+      "hourSlotCounts": [
+        0,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 6
+      },
+      "monitorCounts": {
+        "eDP-1": 6
+      },
+      "launchedAfter": {
+        "kitty": 4
+      },
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 6,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2026-03-16"
+    },
+    {
+      "type": "webSearch",
+      "name": "facebook.com",
+      "count": 1,
+      "lastUsed": 1766948856687,
+      "recentSearchTerms": [
+        "facebook.com"
+      ],
+      "hourSlotCounts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {
+        "kitty": 1
+      },
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 1,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2025-12-28"
+    },
+    {
+      "type": "webSearch",
+      "name": "aliexpress",
+      "count": 1,
+      "lastUsed": 1766948842725,
+      "recentSearchTerms": [
+        "aliexpress"
+      ],
+      "hourSlotCounts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {
+        "kitty": 1
+      },
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 1,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2025-12-28"
+    },
+    {
+      "type": "webSearch",
+      "name": "webappp",
+      "count": 1,
+      "lastUsed": 1766948836823,
+      "recentSearchTerms": [
+        "webappp"
+      ],
+      "hourSlotCounts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {
+        "kitty": 1
+      },
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 1,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2025-12-28"
+    },
+    {
+      "type": "workflowExecution",
+      "key": "emoji:🔳 white square button shape inpu",
+      "name": "🔳 white square button shape inpu",
+      "workflowId": "emoji",
+      "workflowName": "emoji",
+      "command": [
+        "wl-copy",
+        "🔳"
+      ],
+      "entryPoint": null,
+      "icon": "🔳",
+      "iconType": "text",
+      "thumbnail": "",
+      "keepOpen": false,
+      "count": 1,
+      "lastUsed": 1766948832952,
+      "recentSearchTerms": [
+        "webapp"
+      ],
+      "hourSlotCounts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {
+        "kitty": 1
+      },
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 1,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2025-12-28"
+    },
+    {
+      "type": "app",
+      "name": "kitty",
+      "count": 1,
+      "lastUsed": 1766948823774,
+      "recentSearchTerms": [
+        "kitty"
+      ],
+      "hourSlotCounts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {
+        "brave-browser": 1
+      },
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 1,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2025-12-28"
+    },
+    {
+      "type": "workflowExecution",
+      "key": "emoji:🪁 kite wind fly",
+      "name": "🪁 kite wind fly",
+      "workflowId": "emoji",
+      "workflowName": "emoji",
+      "command": [
+        "wl-copy",
+        "🪁"
+      ],
+      "entryPoint": null,
+      "icon": "🪁",
+      "iconType": "text",
+      "thumbnail": "",
+      "keepOpen": false,
+      "count": 1,
+      "lastUsed": 1766948817461,
+      "recentSearchTerms": [
+        "kit"
+      ],
+      "hourSlotCounts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 1
+      },
+      "launchedAfter": {
+        "brave-browser": 1
+      },
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 1,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2025-12-28"
+    },
+    {
+      "type": "app",
+      "name": "brave-browser",
+      "count": 3,
+      "lastUsed": 1767169181031,
+      "recentSearchTerms": [
+        "brave"
+      ],
+      "hourSlotCounts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "dayOfWeekCounts": [
+        1,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workspaceCounts": {
+        "2": 2,
+        "4": 1
+      },
+      "monitorCounts": {
+        "eDP-1": 3
+      },
+      "launchedAfter": {
+        "brave-browser": 1
+      },
+      "sessionStartCount": 0,
+      "resumeFromIdleCount": 0,
+      "launchFromEmptyCount": 1,
+      "consecutiveDays": 1,
+      "lastConsecutiveDate": "2025-12-31"
+    },
+    {
+      "type": "windowFocus",
+      "key": "windowFocus:emacsclient",
+      "appId": "emacsclient",
+      "appName": "Emacs (Client)",
+      "windowTitle": "*doom* – Doom Emacs",
+      "iconName": "emacs",
+      "count": 1,
+      "lastUsed": 1768288691399
+    },
+    {
+      "type": "windowFocus",
+      "key": "windowFocus:brave-browser",
+      "appId": "brave-browser",
+      "appName": "Brave",
+      "windowTitle": "4. GitHub - Brave",
+      "iconName": "brave-desktop",
+      "count": 3,
+      "lastUsed": 1767169181031
+    }
+  ]
+}

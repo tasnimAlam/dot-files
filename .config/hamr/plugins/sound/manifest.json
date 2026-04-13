@@ -1,0 +1,19 @@
+{
+  "name": "Sound",
+  "description": "System volume controls",
+  "icon": "volume_up",
+  "handler": {
+    "type": "socket",
+    "command": "python3 handler.py"
+  },
+  "daemon": {
+    "enabled": true,
+    "background": true,
+    "restartOnCrash": true,
+    "maxRestarts": 5
+  },
+  "supportedPlatforms": [
+    "niri",
+    "hyprland"
+  ]
+}

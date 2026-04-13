@@ -1,0 +1,14 @@
+{
+  "name": "Dictionary",
+  "description": "Look up word definitions",
+  "icon": "menu_book",
+  "handler": {
+    "type": "stdio",
+    "command": "python3 handler.py"
+  },
+  "frecency": "plugin",
+  "supportedPlatforms": [
+    "niri",
+    "hyprland"
+  ]
+}

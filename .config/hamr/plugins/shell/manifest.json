@@ -1,0 +1,21 @@
+{
+  "name": "Shell",
+  "description": "Run commands and search shell history",
+  "icon": "terminal",
+  "handler": {
+    "type": "stdio",
+    "command": "python3 handler.py"
+  },
+  "frecency": "plugin",
+  "daemon": {
+    "enabled": true,
+    "background": true
+  },
+  "index": {
+    "enabled": true
+  },
+  "supportedPlatforms": [
+    "niri",
+    "hyprland"
+  ]
+}

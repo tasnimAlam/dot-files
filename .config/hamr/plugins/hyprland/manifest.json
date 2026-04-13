@@ -1,0 +1,16 @@
+{
+  "name": "Hyprland",
+  "description": "Window management and Hyprland dispatchers",
+  "icon": "desktop_windows",
+  "supportedPlatforms": [
+    "hyprland"
+  ],
+  "handler": {
+    "type": "socket",
+    "command": "python3 handler.py"
+  },
+  "daemon": {
+    "enabled": true,
+    "background": true
+  }
+}

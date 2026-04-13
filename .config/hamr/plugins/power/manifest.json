@@ -1,0 +1,17 @@
+{
+  "name": "Power",
+  "description": "System power and session controls",
+  "icon": "power_settings_new",
+  "handler": {
+    "type": "stdio",
+    "command": "python3 handler.py"
+  },
+  "daemon": {
+    "enabled": true,
+    "background": true
+  },
+  "supportedPlatforms": [
+    "niri",
+    "hyprland"
+  ]
+}

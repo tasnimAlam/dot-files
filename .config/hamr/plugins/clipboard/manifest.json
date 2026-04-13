@@ -1,0 +1,19 @@
+{
+  "name": "Clipboard",
+  "description": "Browse and manage clipboard history",
+  "icon": "content_paste",
+  "handler": {
+    "type": "socket",
+    "command": "python3 handler.py"
+  },
+  "daemon": {
+    "enabled": true,
+    "background": true,
+    "restartOnCrash": true
+  },
+  "frecency": "plugin",
+  "supportedPlatforms": [
+    "niri",
+    "hyprland"
+  ]
+}
