@@ -1,0 +1,56 @@
+# Wayle configuration file
+
+[styling]
+theme-provider = "wayle"
+
+[styling.palette]
+bg       = "#1e1e2e"   # Base
+surface  = "#313244"   # Surface0
+elevated = "#45475a"   # Surface1
+fg       = "#cdd6f4"   # Text
+fg-muted = "#7f849c"   # Overlay1
+primary  = "#cba6f7"   # Mauve
+blue     = "#89b4fa"   # Blue
+green    = "#a6e3a1"   # Green
+red      = "#f38ba8"   # Red
+yellow   = "#f9e2af"   # Yellow
+
+[bar]
+padding = 0.25
+button-variant = "basic"
+
+[[bar.layout]]
+monitor = "*"
+left = ["hyprland-workspaces", "window-title"]
+center = []
+right = ["ram", "cpu", "battery", "bluetooth", "network", "volume", "clock", "systray"]
+
+[modules.hyprland-workspaces]
+show-special = false
+
+[modules.ram]
+icon-name = "md-memory-symbolic"
+
+[modules.cpu]
+icon-name = "md-speed-symbolic"
+
+[modules.bluetooth]
+disconnected-icon = "md-bluetooth-symbolic"
+connected-icon    = "md-bluetooth_connected-symbolic"
+searching-icon    = "md-bluetooth_searching-symbolic"
+disabled-icon     = "md-bluetooth_disabled-symbolic"
+
+[modules.network]
+wifi-signal-icons    = ["md-network_wifi_1_bar-symbolic", "md-network_wifi_2_bar-symbolic", "md-network_wifi_3_bar-symbolic", "md-network_wifi-symbolic"]
+wifi-connected-icon  = "md-network_wifi-symbolic"
+wifi-disabled-icon   = "md-signal_wifi_off-symbolic"
+wifi-offline-icon    = "md-signal_wifi_statusbar_not_connected-symbolic"
+wired-connected-icon = "md-settings_ethernet-symbolic"
+
+[modules.volume]
+level-icons = ["md-volume_mute-symbolic", "md-volume_down-symbolic", "md-volume_up-symbolic"]
+icon-muted  = "md-volume_off-symbolic"
+
+[modules.clock]
+format    = "%a %d %b   %I:%M:%S %p"
+icon-name = "md-schedule-symbolic"
