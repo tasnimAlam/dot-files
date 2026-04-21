@@ -40,3 +40,6 @@ opt.foldmethod = "expr"
 opt.number = true
 opt.relativenumber = true
 opt.colorcolumn = "80"
+
+-- Cmd
+vim.cmd.packadd("nvim.undotree")
