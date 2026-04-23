@@ -1,0 +1,3 @@
+#!/bin/sh
+query=$(printf '' | bemenu -p 'Search:') || exit
+[ -n "$query" ] && s -p duckduckgo "$query"
