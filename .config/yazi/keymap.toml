@@ -100,11 +100,6 @@ run  = "plugin chmod"
 desc = "Chmod on selected files"
 
 [[mgr.prepend_keymap]]
-on   = "F"
-run  = "plugin smart-filter"
-desc = "Smart filter"
-
-[[mgr.prepend_keymap]]
 on   = "W"
 run  = "plugin kdeconnect-send"
 desc = "Send files"
@@ -201,3 +196,21 @@ desc = "Show total video duration"
 on   = "*"
 run  = "shell -- chmod +x %h"
 desc = "Chmod +x hovered file"
+
+[[mgr.prepend_keymap]]
+on = "{"
+run = "plugin nextension bwd"
+
+[[mgr.prepend_keymap]]
+on = "}" 
+run = "plugin nextension fwd"
+
+[[mgr.prepend_keymap]]
+on = [ "F" ]
+run = "plugin file-actions -- --around "
+desc= "Perform actions on selected files"
+
+[[mgr.prepend_keymap]]
+on = "<C-r>" 
+run = "plugin duck-radar"
+desc = "Duck Radar - Recent Files"

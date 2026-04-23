@@ -68,6 +68,31 @@ use = "tasnimAlam/video-duration"
 rev = "48a54d8"
 hash = "67af1bc4417dc19b3d776bcc342a9bdc"
 
+[[plugin.deps]]
+use = "yazi-rs/plugins:chmod"
+rev = "ac82af3"
+hash = "f0c8c378184d5f8abd1b095a443d336d"
+
+[[plugin.deps]]
+use = "alberti42/faster-piper"
+rev = "8b794bf"
+hash = "fac71f8ce9447ad509b5aad9e0d8c694"
+
+[[plugin.deps]]
+use = "AminurAlam/yazi-plugins:nextension"
+rev = "e2b0734"
+hash = "a0c70444f5376fbbd93760d516fd204"
+
+[[plugin.deps]]
+use = "BBOOXX/file-actions"
+rev = "72ba0aa"
+hash = "e4d6ed1feedd23e569ce28acbd5b7d27"
+
+[[plugin.deps]]
+use = "nsavvide/duck-radar"
+rev = "1369263"
+hash = "e2bc665fae0f6fd61898c0d442a920d6"
+
 [[flavor.deps]]
 use = "Chromium-3-Oxide/everforest-medium"
 rev = "5f9200c"

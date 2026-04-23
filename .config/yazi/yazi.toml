@@ -14,4 +14,13 @@ prepend_previewers = [
 	{ mime = "application/x-rar",           run = "ouch" },
   { mime = "application/x-xz",            run = "ouch" },
 	{ mime = "application/xz",              run = "ouch" },
+  { url = "*.md",     run = 'faster-piper --rely-on-preloader' },
+  { url = "*.tar*",   run = 'faster-piper --rely-on-preloader --format=url' },
+  { url = "*.txt.gz", run = 'faster-piper --rely-on-preloader' },
+]
+
+prepend_preloaders = [
+  { url = "*.md",     run = 'faster-piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dracula -- "$1"' },
+  { url = "*.tar*",   run = 'faster-piper -- tar tf "$1"' },
+  { url = "*.txt.gz", run = 'faster-piper -- gzip -dc "$1"' },
 ]
