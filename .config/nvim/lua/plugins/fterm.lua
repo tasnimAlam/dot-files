@@ -27,6 +27,6 @@ local yazi = fterm:new({
 	},
 })
 
-vim.keymap.set("n", "<Leader>n", function()
-	yazi:toggle()
-end, { desc = "Toggle Yazi" })
+-- vim.keymap.set("n", "<Leader>n", function()
+-- 	yazi:toggle()
+-- end, { desc = "Toggle Yazi" })
