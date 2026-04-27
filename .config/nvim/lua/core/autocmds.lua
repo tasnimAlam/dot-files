@@ -31,3 +31,10 @@ api.nvim_create_user_command("Px", function(opt)
 
 	vim.notify(string.format("%.2f rem", px / 16))
 end, { nargs = 1, desc = "Convert px to rem" })
+
+-- Enable ui2 for cmdline/messages
+vim.api.nvim_create_autocmd("UIEnter", {
+	callback = function()
+		require("vim._core.ui2").enable({ msg = { targets = "cmd" } })
+	end,
+})

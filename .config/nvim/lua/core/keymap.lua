@@ -28,6 +28,8 @@ end, { silent = false, desc = "Format" })
 map("i", "<C-a>", "<C-o>^", { desc = "Start of line" })
 map("i", "<C-e>", "<C-o>$", { desc = "End of line" })
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "No highlight" })
+map("n", "<Leader>u", "<cmd>Undotree<CR>", { desc = "Toggle undotree" })
+map("n", "<Leader>re", "<cmd>restart<CR>", { desc = "Restart neovim" })
 
 -- Keep search results centered
 map("n", "n", "nzzzv", { desc = "Next search center" })
