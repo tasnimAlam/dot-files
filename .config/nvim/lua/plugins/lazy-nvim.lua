@@ -174,25 +174,25 @@ require("lazy").setup({
 	{ "kyazdani42/nvim-web-devicons" },
 
 	-- Search related tools
-	{
-		"cbochs/grapple.nvim",
-		opts = {
-			scope = "git",
-		},
-		event = { "BufReadPost", "BufNewFile" },
-		cmd = "Grapple",
-		keys = {
-			{ "<leader>M", "<cmd>Grapple toggle<cr>", desc = "Grapple toggle tag" },
-			{ "<leader>j", "<cmd>Grapple toggle_tags<cr>", desc = "Grapple toggle tags" },
-			{ "<leader>K", "<cmd>Grapple toggle_scopes<cr>", desc = "Grapple toggle scopes" },
-			{ "<leader>j", "<cmd>Grapple cycle forward<cr>", desc = "Grapple cycle forward" },
-			{ "<leader>k", "<cmd>Grapple cycle backward<cr>", desc = "Grapple cycle backward" },
-			{ "<leader>1", "<cmd>Grapple select index=1<cr>", desc = "Grapple select 1" },
-			{ "<leader>2", "<cmd>Grapple select index=2<cr>", desc = "Grapple select 2" },
-			{ "<leader>3", "<cmd>Grapple select index=3<cr>", desc = "Grapple select 3" },
-			{ "<leader>4", "<cmd>Grapple select index=4<cr>", desc = "Grapple select 4" },
-		},
-	},
+	-- {
+	-- 	"cbochs/grapple.nvim",
+	-- 	opts = {
+	-- 		scope = "git",
+	-- 	},
+	-- 	event = { "BufReadPost", "BufNewFile" },
+	-- 	cmd = "Grapple",
+	-- 	keys = {
+	-- 		{ "<leader>M", "<cmd>Grapple toggle<cr>", desc = "Grapple toggle tag" },
+	-- 		{ "<leader>j", "<cmd>Grapple toggle_tags<cr>", desc = "Grapple toggle tags" },
+	-- 		{ "<leader>K", "<cmd>Grapple toggle_scopes<cr>", desc = "Grapple toggle scopes" },
+	-- 		{ "<leader>j", "<cmd>Grapple cycle forward<cr>", desc = "Grapple cycle forward" },
+	-- 		{ "<leader>k", "<cmd>Grapple cycle backward<cr>", desc = "Grapple cycle backward" },
+	-- 		{ "<leader>1", "<cmd>Grapple select index=1<cr>", desc = "Grapple select 1" },
+	-- 		{ "<leader>2", "<cmd>Grapple select index=2<cr>", desc = "Grapple select 2" },
+	-- 		{ "<leader>3", "<cmd>Grapple select index=3<cr>", desc = "Grapple select 3" },
+	-- 		{ "<leader>4", "<cmd>Grapple select index=4<cr>", desc = "Grapple select 4" },
+	-- 	},
+	-- },
 	-- Lazy.nvim with snacks.nvim
 	{
 		"2kabhishek/seeker.nvim",
@@ -225,7 +225,9 @@ require("lazy").setup({
 	{
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {},
+		opts = {
+			filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+		},
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -338,10 +340,9 @@ require("lazy").setup({
 	{ "windwp/nvim-autopairs", event = "InsertEnter", config = true },
 	{ "mattn/emmet-vim" },
 	{
-		"norcalli/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup()
-		end,
+		"catgoose/nvim-colorizer.lua",
+		event = "BufReadPre",
+		opts = {},
 	},
 	{ "kevinhwang91/nvim-bqf" },
 	{
