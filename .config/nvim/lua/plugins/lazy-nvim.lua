@@ -3,14 +3,27 @@ require("lazy").setup({
 	{
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
-			ensure_installed = { "bashls", "pyright", "lua_ls" },
+			ensure_installed = { "bashls", "pyright", "lua_ls", "vtsls" },
+			automatic_enable = {
+				exclude = { "ts_ls" },
+			},
 		},
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = {} },
 			"neovim/nvim-lspconfig",
 		},
 	},
-	{ "yioneko/nvim-vtsls" },
+	{
+		"yioneko/nvim-vtsls",
+		config = function()
+			vim.lsp.config("vtsls", {
+				cmd = { "vtsls", "--stdio" },
+				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+				root_markers = { "tsconfig.json", "package.json", "jsconfig.json", ".git" },
+			})
+			vim.lsp.enable("vtsls")
+		end,
+	},
 	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
@@ -221,13 +234,6 @@ require("lazy").setup({
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		ft = { "js", "jsx", "ts", "tsx" },
-	},
-	{
-		"pmizio/typescript-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {
-			filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-		},
 	},
 	{
 		"lewis6991/gitsigns.nvim",
