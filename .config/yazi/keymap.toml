@@ -90,14 +90,16 @@ run = '''
 desc = "Drag and drop"
 
 [[mgr.prepend_keymap]]
-on   = "n"
-run  = "plugin next-file-type"
-desc = "Jump to next file type"
-
-[[mgr.prepend_keymap]]
 on   = ["c", "m"]
 run  = "plugin chmod"
 desc = "Chmod on selected files"
+
+[[mgr.prepend_keymap]]
+on   = ["*"]
+run  =  '''
+     shell 'chmod +x "$@"' --confirm
+'''
+desc = "Make selected files executable"
 
 [[mgr.prepend_keymap]]
 on   = "W"
@@ -178,7 +180,7 @@ run = "plugin relative-motions 9"
 desc = "Move in relative steps"
 
 [[mgr.prepend_keymap]]
-on = ["`"]
+on = ["<C-S-p>"]
 desc = "Command palette (fzf)"
 run = "plugin command-palette"
 
@@ -214,3 +216,19 @@ desc= "Perform actions on selected files"
 on = "<C-r>" 
 run = "plugin duck-radar"
 desc = "Duck Radar - Recent Files"
+
+[[mgr.prepend_keymap]]
+on  = "y"
+run = [ 'shell -- for path in %s; do echo "file://$path"; done | wl-copy -t text/uri-list', "yank" ]
+
+[[mgr.prepend_keymap]]
+on  = [ "y", "i" ]
+run = [ 'shell -- wl-copy -t "$(file -b --mime-type "$1")" < "$1"', "yank" ]
+desc = "Copy image data to clipboard"
+
+[[mgr.prepend_keymap]]
+on  = "<C-m>"
+run = '''shell --
+	paths=$(for p in %s; do echo "$p"; done | paste -s -d,)
+	thunderbird -compose "attachment='$paths'"
+'''
