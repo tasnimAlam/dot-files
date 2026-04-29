@@ -1,8 +1,12 @@
-require("alternate-toggler").setup {
+require("alternate-toggler").setup({
 	alternates = {
-		["==="] = "!==",
-		["=="] = "!=",
-		["start"] = "end",
-		["left"] = "right",
-	}
-}
+		{ "true", "false" },
+		{ "Yes", "No" },
+		{ "==", "!=" },
+		{ "===", "!==" },
+		{ "public", "private", "protected" },
+		{ "left", "right" },
+		{ "start", "end" },
+		{ "on", "off" },
+	},
+})
