@@ -450,8 +450,12 @@ require("lazy").setup({
 		"barrettruth/preview.nvim",
 		init = function()
 			vim.g.preview = {
-				markdown = true,
-				github = true,
+				github = {
+					output = function(ctx)
+						return "/tmp/" .. vim.fn.fnamemodify(ctx.file, ":t:r") .. ".html"
+					end,
+					open = { os.getenv("BROWSER") },
+				},
 			}
 		end,
 	},
