@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Directories to search
+directories=("$HOME/Music" "$HOME/Documents" "$HOME/Downloads" "$HOME/Pictures" "$HOME/Videos")
+
+# Directories to skip even when not listed in a .gitignore.
+# (rg already honors .gitignore/.ignore/.rgignore by default.)
+ignored_dirs="!{node_modules,.git,__pycache__,.venv,venv,.cache,target,dist,build,vendor}"
+
+# File-type filters (toggled with Alt-key shortcuts inside fzf)
+img_glob="*.{jpg,jpeg,JPG,JPEG,png,PNG,gif,webp,bmp,svg,heic,tiff}"
+vid_glob="*.{mp4,mkv,avi,mov,webm,flv,wmv,m4v}"
+aud_glob="*.{mp3,flac,wav,ogg,m4a,aac,opus}"
+doc_glob="*.{pdf,doc,docx,odt,xls,xlsx,ppt,pptx,md,epub}"
+default_exclude="!*.{srt,rar,txt,zip,nfo}"
+
+base="rg -i --no-messages --files ${directories[*]} -g '$ignored_dirs'"
+
+tmpfile=$(mktemp)
+trap 'rm -f "$tmpfile"' EXIT
+
+ghostty -e bash -c "
+$base -g '$default_exclude' | fzf \
+    --prompt 'fd: ' \
+    --header 'M-a: all | M-i: images | M-v: videos | M-m: music | M-d: docs' \
+    --bind \"alt-a:reload($base -g '$default_exclude')\" \
+    --bind \"alt-i:reload($base -g '$img_glob')\" \
+    --bind \"alt-v:reload($base -g '$vid_glob')\" \
+    --bind \"alt-m:reload($base -g '$aud_glob')\" \
+    --bind \"alt-d:reload($base -g '$doc_glob')\" \
+    > '$tmpfile'
+"
+
+selected_file=$(cat "$tmpfile")
+[ -n "$selected_file" ] && xdg-open "$selected_file"
