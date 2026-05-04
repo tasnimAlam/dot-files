@@ -25,3 +25,8 @@ prepend_preloaders = [
   { url = "*.tar*",   run = 'faster-piper -- tar tf "$1"' },
   { url = "*.txt.gz", run = 'faster-piper -- gzip -dc "$1"' },
 ]
+
+prepend_fetchers = [
+ { id = "git", url = "*",  run = "git", group = "git" },
+ { id = "git", url = "*/", run = "git", group = "git" },
+]
