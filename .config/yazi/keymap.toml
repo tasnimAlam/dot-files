@@ -232,3 +232,9 @@ run = '''shell --
 	paths=$(for p in %s; do echo "$p"; done | paste -s -d,)
 	thunderbird -compose "attachment='$paths'"
 '''
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "m" ]
+run  = "plugin vcs-files"
+desc = "Show Git file changes"
+
