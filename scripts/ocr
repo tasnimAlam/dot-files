@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+tmpfile=$(mktemp /tmp/screenshot-ocr-XXXXXX.png)
+
+grim -g "$(slurp)" "$tmpfile" && echo "Screenshot saved to $tmpfile"
+
+tesseract "$tmpfile" - -l eng+ben 2>/dev/null | wl-copy
+
+copied_text=$(wl-paste)
+truncated_text="${copied_text:0:50}$([ ${#copied_text} -gt 50 ] && echo "..." || echo "")"
+notify-send "OCR Complete" "Text copied to clipboard: $truncated_text"
+
+mv "$tmpfile" "$HOME/Pictures/screenshots/"
