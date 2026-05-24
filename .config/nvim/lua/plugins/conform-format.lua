@@ -12,5 +12,6 @@ require("conform").setup({
 		html = { "prettierd" },
 		htmlangular = { "prettierd" },
 		rust = { "rustfmt" },
+		go = { "goimports", "gofmt" },
 	},
 })

@@ -76,7 +76,7 @@ end, { desc = "Media files" })
 -- Buffer management
 map("n", "<Leader>,", "<C-^>", { desc = "Alternate buffer" })
 map("n", "<Leader>X", "<cmd>bufdo bwipeout<CR>", { desc = "Close all" })
-map("n", "<Leader>bb", "<cmd>BufferLinePick<CR>", { desc = "Pick buffer" })
+map("n", ";", "<cmd>BufferLinePick<CR>", { desc = "Pick buffer" })
 map("n", "d>", "<cmd>BufferLineCloseRight<CR>", { desc = "Close right" })
 map("n", "d<", "<cmd>BufferLineCloseLeft<CR>", { desc = "Close left" })
 map("n", "g>", "<cmd>BufferLineMoveNext<CR>", { desc = "Move next" })
@@ -210,3 +210,9 @@ api.nvim_create_autocmd("LspAttach", {
 		)
 	end,
 })
+
+-- Diffview
+map("n", "<leader>gd", "<cmd>DiffviewOpen<cr>")
+map("n", "<leader>gh", "<cmd>DiffviewFileHistory %<cr>") -- current file history
+map("n", "<leader>gH", "<cmd>DiffviewFileHistory<cr>") -- repo history
+map("n", "<leader>gc", "<cmd>DiffviewClose<cr>")

@@ -181,7 +181,6 @@ require("lazy").setup({
 			require("plugins.buffer")
 		end,
 	},
-	{ "serhez/bento.nvim", opts = {} },
 
 	-- Icons
 	{ "kyazdani42/nvim-web-devicons" },
@@ -653,13 +652,13 @@ require("lazy").setup({
 				end,
 				desc = "Dismiss All Notifications",
 			},
-			{
-				"<c-/>",
-				function()
-					Snacks.terminal()
-				end,
-				desc = "Toggle Terminal",
-			},
+			-- {
+			-- 	"<c-/>",
+			-- 	function()
+			-- 		Snacks.terminal()
+			-- 	end,
+			-- 	desc = "Toggle Terminal",
+			-- },
 			{
 				"<c-_>",
 				function()
@@ -939,10 +938,7 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{
-		"esmuellert/vscode-diff.nvim",
-		dependencies = { "MunifTanjim/nui.nvim" },
-	},
+  { "sindrets/diffview.nvim"},
 	{
 		"mikavilpas/yazi.nvim",
 		version = "*", -- use the latest stable version
@@ -984,6 +980,15 @@ require("lazy").setup({
 			--
 			-- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
 			vim.g.loaded_netrwPlugin = 1
+		end,
+	},
+	{
+		"greggh/claude-code.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- Required for git operations
+		},
+		config = function()
+			require("plugins.claude")
 		end,
 	},
 })
