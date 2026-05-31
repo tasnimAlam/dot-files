@@ -9,6 +9,8 @@ set -gx LC_ALL en_US.UTF-8
 set -gx DMENU_BLUETOOTH_LAUNCHER bemenu
 set -gx FM_OPENER emacs 
 set -gx TERMINAL ghostty 
+set -gx TERMCMD 'foot -T "terminal filechooser"'
+set -gx GTK_THEME Adwaita:dark
 
 set -x GEM_HOME (gem env user_gemhome)
 set -x PATH $PATH $GEM_HOME/bin
@@ -136,3 +138,5 @@ fish_add_path $HOME/.tmux/plugins/tmux-session-wizard/bin
 
 # opencode
 fish_add_path /home/shourov/.opencode/bin
+
+
