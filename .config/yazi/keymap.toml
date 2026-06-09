@@ -1,5 +1,5 @@
 [[mgr.prepend_keymap]]
-on   = ["C"]
+on   = ["c","z"]
 run  = "plugin ouch"
 desc = "Compress with ouch"
 
@@ -51,6 +51,7 @@ desc = "Go to kilncient folder"
 [[mgr.prepend_keymap]]
 on = [ "g", "r" ]
 run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"'
+desc = "Go to git root folder" 
 
 [[mgr.prepend_keymap]]
 on   = "T"
@@ -234,7 +235,7 @@ run = '''shell --
 '''
 
 [[mgr.prepend_keymap]]
-on   = [ "g", "m" ]
+on   = [ "g","c" ]
 run  = "plugin vcs-files"
 desc = "Show Git file changes"
 
