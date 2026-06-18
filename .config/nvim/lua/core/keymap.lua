@@ -216,3 +216,9 @@ map("n", "<leader>gd", "<cmd>DiffviewOpen<cr>")
 map("n", "<leader>gh", "<cmd>DiffviewFileHistory %<cr>") -- current file history
 map("n", "<leader>gH", "<cmd>DiffviewFileHistory<cr>") -- repo history
 map("n", "<leader>gc", "<cmd>DiffviewClose<cr>")
+
+-- Quickbuf
+map("n", "<Tab>", "<cmd>QuickBuf<CR>", { desc = "QuickBuf" })
+map("n", "<leader><S-t>", "<cmd>QuickBufPinToggle<CR>", { desc = "Pin toggle" })
+map("n", "<S-h>", "<cmd>QuickBufPrevPinned<CR>", { desc = "Prev pinned buffer" })
+map("n", "<S-l>", "<cmd>QuickBufNextPinned<CR>", { desc = "Next pinned buffer" })

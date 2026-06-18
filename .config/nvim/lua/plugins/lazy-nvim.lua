@@ -181,6 +181,17 @@ require("lazy").setup({
 			require("plugins.buffer")
 		end,
 	},
+	{
+		"tjgao/quickbuf.nvim",
+		config = function()
+			require("quickbuf").setup({
+				window = {
+					width = 0.6,
+					height = 0.5,
+				},
+			})
+		end,
+	},
 
 	-- Icons
 	{ "kyazdani42/nvim-web-devicons" },
@@ -938,7 +949,7 @@ require("lazy").setup({
 			})
 		end,
 	},
-  { "sindrets/diffview.nvim"},
+	{ "sindrets/diffview.nvim" },
 	{
 		"mikavilpas/yazi.nvim",
 		version = "*", -- use the latest stable version
