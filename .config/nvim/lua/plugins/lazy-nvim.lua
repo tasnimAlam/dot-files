@@ -153,12 +153,63 @@ require("lazy").setup({
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
+		dependencies = {
+			{ "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
+		},
+		init = function()
+			vim.api.nvim_create_autocmd("FileType", {
+				callback = function()
+					-- Enable treesitter highlighting and disable regex syntax
+					pcall(vim.treesitter.start)
+					-- Enable treesitter-based indentation
+					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end,
+			})
+
+			local ensureInstalled = {
+				"bash",
+				"c",
+				"css",
+				"diff",
+				"dockerfile",
+				"gitcommit",
+				"gitignore",
+				"go",
+				"html",
+				"javascript",
+				"jsdoc",
+				"json",
+				"jsonc",
+				"lua",
+				"luadoc",
+				"markdown",
+				"markdown_inline",
+				"python",
+				"query",
+				"regex",
+				"rust",
+				"scss",
+				"toml",
+				"tsx",
+				"typescript",
+				"vim",
+				"vimdoc",
+				"yaml",
+			}
+			local alreadyInstalled = require("nvim-treesitter.config").get_installed()
+			local parsersToInstall = vim.iter(ensureInstalled)
+				:filter(function(parser)
+					return not vim.tbl_contains(alreadyInstalled, parser)
+				end)
+				:totable()
+			require("nvim-treesitter").install(parsersToInstall)
+		end,
 		build = ":TSUpdate",
 		config = function()
 			require("plugins.treesitter")
 		end,
 	},
-	{ "nvim-treesitter/nvim-treesitter-textobjects" },
 	{
 		"windwp/nvim-ts-autotag",
 		config = function()
