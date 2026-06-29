@@ -3,7 +3,7 @@
 SECOND_MONITOR=$(hyprctl monitors -j | jq '.[1].name' | tr -d '"')
 
 if [[ $(hyprctl activewindow | rg monitor | awk '{print $2}') -eq 0 ]]; then
-	hyprctl dispatch movewindow mon:$SECOND_MONITOR
+	hyprctl dispatch "hl.dsp.window.move({ monitor = \"$SECOND_MONITOR\" })"
 else
-	hyprctl dispatch movewindow mon:eDP-1
+	hyprctl dispatch "hl.dsp.window.move({ monitor = \"eDP-1\" })"
 fi

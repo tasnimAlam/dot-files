@@ -1,0 +1,14 @@
+#!/bin/sh
+# run-or-raise <class-regex> <launch-shell-command>
+# Focus an existing window matching <class-regex>, otherwise launch it.
+# Replaces the `raise` tool, which is broken under the Hyprland Lua config
+# (it shells out to the old `hyprctl dispatch focuswindow ...` syntax that the
+# Lua config no longer understands).
+class="$1"
+launch="$2"
+
+if hyprctl clients -j | jq -e --arg c "$class" 'any(.[]; .class | test($c))' >/dev/null 2>&1; then
+    hyprctl dispatch "hl.dsp.focus({ window = \"class:$class\" })"
+else
+    setsid -f sh -c "$launch" >/dev/null 2>&1
+fi

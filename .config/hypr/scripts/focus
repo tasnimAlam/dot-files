@@ -3,8 +3,8 @@
 set SECOND_MONITOR (hyprctl monitors -j | jq '.[1].name' | string trim -c '"')
 
 if test (hyprctl monitors -j | jq '.[] | select(.focused == true).id') -eq 0
-  hyprctl dispatch focusmonitor $SECOND_MONITOR
-else 
-  hyprctl dispatch focusmonitor eDP-1
+  hyprctl dispatch "hl.dsp.focus({ monitor = \"$SECOND_MONITOR\" })"
+else
+  hyprctl dispatch "hl.dsp.focus({ monitor = \"eDP-1\" })"
 end
   
