@@ -1053,4 +1053,9 @@ require("lazy").setup({
 			require("plugins.claude")
 		end,
 	},
+	{
+		"nemanjamalesija/smart-paste.nvim",
+		event = "VeryLazy",
+		config = true,
+	},
 })
