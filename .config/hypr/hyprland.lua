@@ -257,7 +257,7 @@ hl.bind(mainMod .. " + CTRL + O", hl.dsp.exec_cmd("~/.config/hypr/scripts/bookma
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + CTRL + P", hl.dsp.exec_cmd("bemenu-run -i"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(terminal .. " -e nvim ~/notes.txt"))
-hl.bind(mainMod .. " + O", hl.dsp.focus({ monitor = "+1" })) -- was split-changemonitor next (dropped in lua pkg)
+hl.bind(mainMod .. " + O", hl.dsp.window.move({ monitor = "+1", follow = true })) -- was split-changemonitor next: move active window to next monitor
 hl.bind(mainMod .. " + SEMICOLON", hl.dsp.exec_cmd("~/.config/hypr/scripts/focus"))
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("~/.config/hypr/scripts/browser-search"))
 
