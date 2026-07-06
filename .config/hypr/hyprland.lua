@@ -99,7 +99,7 @@ hl.config({
 			inactive_border = "rgba(595959aa)",
 		},
 
-		layout = "dwindle", -- master / dwindle / scrolling / monocle
+		layout = "master", -- master / dwindle / scrolling / monocle
 
 		allow_tearing = false,
 	},
@@ -235,9 +235,9 @@ hl.bind(mainMod .. " + TAB", hl.dsp.focus({ last = true })) -- closest to focusc
 -- Window management
 hl.bind(mainMod .. " + W", hl.dsp.window.close())
 hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen())
-hl.bind(mainMod .. " + SPACE", hl.dsp.window.swap({ next = true }))
+hl.bind(mainMod .. " + SPACE", hl.dsp.window.swap({ next = true })) -- for master
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.layout("swapwithmaster"))
-hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.layout("togglesplit"))
+-- hl.bind(mainMod .. " + SPACE", hl.dsp.layout("togglesplit")) -- for dwindle
 hl.bind(mainMod .. " + CTRL + F", hl.dsp.window.float({ action = "toggle" }))
 
 -- Window movement
@@ -273,7 +273,12 @@ hl.bind(mainMod .. " + CTRL + P", hl.dsp.exec_cmd("bemenu-run -i"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(terminal .. " -e nvim ~/notes.txt"))
 hl.bind(mainMod .. " + O", hl.dsp.window.move({ monitor = "+1", follow = true })) -- was split-changemonitor next: move active window to next monitor
 hl.bind(mainMod .. " + SEMICOLON", hl.dsp.exec_cmd("~/.config/hypr/scripts/focus"))
-hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("~/.config/hypr/scripts/browser-search"))
+hl.bind(
+	mainMod .. " + F",
+	hl.dsp.exec_cmd(
+		[[hyprctl clients -j | jq -e 'any(.[]; .class | test("brave-browser"))' >/dev/null 2>&1 && hyprctl dispatch "hl.dsp.focus({ window = \"class:brave-browser\" })"; ~/.config/hypr/scripts/browser-search]]
+	)
+)
 
 -- === WORKSPACE MANAGEMENT ===
 
@@ -339,7 +344,6 @@ hl.bind(mainMod .. " + CTRL + M", hl.dsp.exec_cmd("~/.config/hypr/scripts/man"))
 hl.bind(mainMod .. " + CTRL + SEMICOLON", hl.dsp.exec_cmd("~/.config/hypr/scripts/record"))
 hl.bind(mainMod .. " + ALT + P", hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot"))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("~/.config/hypr/scripts/translate"))
-hl.bind(mainMod .. " + ALT + S", hl.dsp.exec_cmd("~/.config/hypr/scripts/dmenu-search"))
 
 -- Notes system
 hl.bind(mainMod .. " + CTRL + N", hl.dsp.exec_cmd("~/.config/hypr/scripts/quicknote"))
@@ -374,46 +378,6 @@ hl.define_submap("power", function()
 	hl.bind("escape", hl.dsp.submap("reset"))
 end)
 
--- Cursor mode (similar to Mouse mode in Sway). Enter with SUPER + g.
-hl.bind(mainMod .. " + g", function()
-	hl.exec_cmd("hyprctl keyword cursor:inactive_timeout 0; hyprctl keyword cursor:hide_on_key_press false")
-	hl.dispatch(hl.dsp.submap("cursor"))
-end)
-
-hl.define_submap("cursor", function()
-	-- Jump cursor to a position (wl-kbptr), re-entering the submap when done
-	hl.bind(
-		"a",
-		hl.dsp.exec_cmd(
-			[[hyprctl dispatch 'hl.dsp.submap("reset")' && wl-kbptr && hyprctl dispatch 'hl.dsp.submap("cursor")']]
-		)
-	)
-
-	-- Cursor movement
-	hl.bind("j", hl.dsp.exec_cmd("wlrctl pointer move 0 10"), { repeating = true })
-	hl.bind("k", hl.dsp.exec_cmd("wlrctl pointer move 0 -10"), { repeating = true })
-	hl.bind("l", hl.dsp.exec_cmd("wlrctl pointer move 10 0"), { repeating = true })
-	hl.bind("h", hl.dsp.exec_cmd("wlrctl pointer move -10 0"), { repeating = true })
-
-	-- Mouse clicks
-	hl.bind("comma", hl.dsp.exec_cmd("wlrctl pointer click left"))
-	hl.bind("m", hl.dsp.exec_cmd("wlrctl pointer click middle"))
-	hl.bind("period", hl.dsp.exec_cmd("wlrctl pointer click right"))
-
-	-- Scroll up/down
-	hl.bind("e", hl.dsp.exec_cmd("wlrctl pointer scroll 10 0"), { repeating = true })
-	hl.bind("r", hl.dsp.exec_cmd("wlrctl pointer scroll -10 0"), { repeating = true })
-
-	-- Scroll left/right
-	hl.bind("t", hl.dsp.exec_cmd("wlrctl pointer scroll 0 -10"), { repeating = true })
-	hl.bind("g", hl.dsp.exec_cmd("wlrctl pointer scroll 0 10"), { repeating = true })
-
-	-- Exit cursor submap
-	hl.bind("escape", function()
-		hl.exec_cmd("hyprctl keyword cursor:inactive_timeout 3; hyprctl keyword cursor:hide_on_key_press true")
-		hl.dispatch(hl.dsp.submap("reset"))
-	end)
-end)
 
 --------------------------------
 ---- WINDOW & LAYER RULES ------
