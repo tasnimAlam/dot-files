@@ -133,9 +133,6 @@ require("lazy").setup({
 				-- https://www.lazyvim.org/extras/coding/luasnip#blinkcmp-optional
 				expand = function(snippet)
 					require("luasnip").lsp_expand(snippet)
-					require("luasnip.loaders.from_vscode").lazy_load()
-					require("luasnip").filetype_extend("typescript", { "javascript" })
-					require("luasnip").filetype_extend("typescriptreact", { "javascript", "typescript" })
 				end,
 				active = function(filter)
 					if filter and filter.direction then
@@ -289,7 +286,10 @@ require("lazy").setup({
 		dependencies = { "rafamadriz/friendly-snippets" },
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load()
-			require("luasnip").filetype_extend("typescript", { "javascript" })
+			local ls = require("luasnip")
+			ls.filetype_extend("typescript", { "javascript" })
+			ls.filetype_extend("javascriptreact", { "javascript" })
+			ls.filetype_extend("typescriptreact", { "typescript", "javascript", "javascriptreact" })
 		end,
 	},
 	{
