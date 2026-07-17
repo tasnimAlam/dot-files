@@ -34,15 +34,18 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Documents/org/")
 
-;; Org capture templates: everything goes into ~/org/todo.org
+;; Org capture templates: everything goes into ~/Documents/org/todo.org
 (after! org
+  (setq org-reverse-note-order nil)
   (setq org-capture-templates
-        '(("t" "Task" entry (file+headline "~/org/todo.org" "Inbox")
-           "* TODO %?\n  %U\n  %a")
-          ("n" "Note" entry (file+headline "~/org/todo.org" "Notes")
-           "* %?\n  %U"))))
+        '(("t" "Task" entry (file "~/Documents/org/todo.org")
+           "* TODO %?\n  %U\n  %a"
+           :prepend nil)
+          ("n" "Note" entry (file "~/Documents/org/todo.org")
+           "* %?\n  %U"
+           :prepend nil))))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
