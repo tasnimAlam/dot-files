@@ -3,7 +3,7 @@ require("lazy").setup({
 	{
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
-			ensure_installed = { "bashls", "pyright", "lua_ls", "vtsls" },
+			ensure_installed = { "bashls", "pyright", "ruff", "lua_ls", "vtsls", "yamlls" },
 			automatic_enable = {
 				exclude = { "ts_ls" },
 			},
@@ -28,6 +28,9 @@ require("lazy").setup({
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { "saghen/blink.cmp" },
+		config = function()
+			require("plugins.lsp")
+		end,
 	},
 	{
 		"nvimdev/lspsaga.nvim",
@@ -533,8 +536,11 @@ require("lazy").setup({
 		lazy = false,
 		---@type snacks.Config
 		opts = {
+			image = {
+				enabled = true,
+				doc = { enabled = true, inline = true },
+			},
 			bigfile = { enabled = true },
-			quickfile = {},
 			picker = {
 				win = {
 					input = {
@@ -1057,5 +1063,14 @@ require("lazy").setup({
 		"nemanjamalesija/smart-paste.nvim",
 		event = "VeryLazy",
 		config = true,
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		build = "cd app && yarn install",
+		init = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
 	},
 })

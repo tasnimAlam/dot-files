@@ -1,7 +1,7 @@
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
-		python = { "ruff" },
+		python = { "ruff_organize_imports", "ruff_format" },
 		javascript = { "prettierd" },
 		javascriptreact = { "prettierd" },
 		typescript = { "prettierd" },
@@ -10,6 +10,7 @@ require("conform").setup({
 		css = { "prettierd" },
 		scss = { "prettierd" },
 		html = { "prettierd" },
+		yaml = { "prettierd" },
 		htmlangular = { "prettierd" },
 		rust = { "rustfmt" },
 		go = { "goimports", "gofmt" },

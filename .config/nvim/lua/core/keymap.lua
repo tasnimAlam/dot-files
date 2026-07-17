@@ -160,13 +160,6 @@ map("n", "<leader>Y", '"+Y', { desc = "Yank line" })
 map("n", "<leader>P", '"+p', { desc = "Paste" })
 map("v", "<leader>P", '"+p', { desc = "Paste" })
 
--- Dart
-map("n", ";u", function()
-	if Dart and Dart.unmark then
-		Dart.unmark({ type = "all" })
-	end
-end, { desc = "Dart unmark" })
-
 -- LSP (buffer-local)
 local lsp_group = api.nvim_create_augroup("core_lsp_keymaps", { clear = true })
 api.nvim_create_autocmd("LspAttach", {
