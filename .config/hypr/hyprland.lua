@@ -236,6 +236,7 @@ hl.bind(mainMod .. " + TAB", hl.dsp.focus({ last = true })) -- closest to focusc
 hl.bind(mainMod .. " + W", hl.dsp.window.close())
 hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + SPACE", hl.dsp.window.swap({ next = true })) -- for master
+hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.layout("orientationcycle left top"))
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.layout("swapwithmaster"))
 -- hl.bind(mainMod .. " + SPACE", hl.dsp.layout("togglesplit")) -- for dwindle
 hl.bind(mainMod .. " + CTRL + F", hl.dsp.window.float({ action = "toggle" }))
