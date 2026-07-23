@@ -191,11 +191,6 @@ run  = "plugin toggle-pane max-preview"
 desc = "Maximize or restore the preview pane"
 
 [[mgr.prepend_keymap]]
-on   = "V"
-run  = "plugin video-duration"
-desc = "Show total video duration"
-
-[[mgr.prepend_keymap]]
 on   = "*"
 run  = "shell -- chmod +x %h"
 desc = "Chmod +x hovered file"
@@ -239,3 +234,7 @@ on   = [ "g","c" ]
 run  = "plugin vcs-files"
 desc = "Show Git file changes"
 
+[[mgr.prepend_keymap]]
+on = [ "g", "s" ]
+run  = "plugin what-size"
+desc = "Calc size of selection or cwd"
