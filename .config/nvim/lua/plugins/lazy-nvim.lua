@@ -1051,13 +1051,60 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"greggh/claude-code.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim", -- Required for git operations
+		"coder/claudecode.nvim",
+		dependencies = { "folke/snacks.nvim" },
+		opts = {
+			terminal = {
+				provider = "snacks",
+				snacks_win_opts = {
+					position = "float",
+					width = 0.9,
+					height = 0.9,
+					border = "rounded",
+				},
+			},
 		},
-		config = function()
-			require("plugins.claude")
-		end,
+		config = true,
+		-- `cmd` lets lazy.nvim create command stubs that load the plugin on first use,
+		-- so `:ClaudeCode` and friends work on a fresh start. Without it, a keys-only
+		-- spec defers loading until a <leader>a* mapping is pressed and the commands
+		-- would not exist yet.
+		cmd = {
+			"ClaudeCode",
+			"ClaudeCodeFocus",
+			"ClaudeCodeSelectModel",
+			"ClaudeCodeAdd",
+			"ClaudeCodeSend",
+			"ClaudeCodeTreeAdd",
+			"ClaudeCodeStatus",
+			"ClaudeCodeStart",
+			"ClaudeCodeStop",
+			"ClaudeCodeOpen",
+			"ClaudeCodeClose",
+			"ClaudeCodeDiffAccept",
+			"ClaudeCodeDiffDeny",
+			"ClaudeCodeCloseAllDiffs",
+		},
+		keys = {
+			{ "<leader>c", nil, desc = "AI/Claude Code" },
+			{ "<leader>cc", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+			{ "<leader>cc", "<C-\\><C-n><cmd>ClaudeCode<cr>", mode = "t", desc = "Toggle Claude" },
+			{ "<leader>cf", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+			{ "<leader>cr", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+			{ "<leader>cC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+			{ "<leader>cm", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
+			{ "<leader>cb", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+			{ "<leader>cs", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+			{
+				"<leader>cs",
+				"<cmd>ClaudeCodeTreeAdd<cr>",
+				desc = "Add file",
+				ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw", "snacks_picker_list" },
+			},
+			-- Diff management
+			{ "<leader>ca", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+			{ "<leader>cd", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+		},
 	},
 	{
 		"nemanjamalesija/smart-paste.nvim",
