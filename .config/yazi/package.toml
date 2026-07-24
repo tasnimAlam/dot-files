@@ -83,6 +83,11 @@ use = "pirafrank/what-size"
 rev = "179ebf6"
 hash = "57056b9728006881d580ccabe8154a9c"
 
+[[plugin.deps]]
+use = "terrakok/split-tabs"
+rev = "da25bc0"
+hash = "108ee3048ba3a0d1ba77df7c41bcb7fe"
+
 [[flavor.deps]]
 use = "Chromium-3-Oxide/everforest-medium"
 rev = "e1ead7b"

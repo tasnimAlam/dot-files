@@ -238,3 +238,18 @@ desc = "Show Git file changes"
 on = [ "g", "s" ]
 run  = "plugin what-size"
 desc = "Calc size of selection or cwd"
+
+[[mgr.prepend_keymap]]
+on = ["\\"]
+run = "plugin split-tabs spl_toggle"
+desc = "Split-tabs: toggle split tabs mode"
+
+[[mgr.prepend_keymap]]
+on = ["<Tab>"]
+run = "plugin split-tabs spl_switch_tab"
+desc = "Split-tabs: switch to the other pane"
+
+[[mgr.prepend_keymap]]
+on = ["<A-p>"]
+run = "plugin split-tabs spl_preview"
+desc = "Split-tabs: toggle preview pane"
