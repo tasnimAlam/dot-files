@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name:useEffect
-# key:eff
-# --
-useEffect(() => {
-    $0
-})

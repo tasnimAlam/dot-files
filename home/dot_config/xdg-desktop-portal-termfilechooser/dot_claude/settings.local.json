@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(systemctl --user restart xdg-desktop-portal-termfilechooser xdg-desktop-portal)",
+      "Bash(systemctl --user is-active xdg-desktop-portal xdg-desktop-portal-termfilechooser)"
+    ]
+  }
+}

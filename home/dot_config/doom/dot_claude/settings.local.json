@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//home/shourov/Documents/**)",
+      "Bash(git -C /home/shourov/Documents rev-parse --show-toplevel)",
+      "Read(//home/shourov/Documents/org/**)"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+# /home/shourov/.config/tmuxinator/alent.yml
+
+name: alent
+root: ~/Documents/documentation/
+
+windows:
+  - yazi: yazi
+  - code: nvim

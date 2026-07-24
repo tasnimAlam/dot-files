@@ -1,0 +1,87 @@
+{
+  "editorMode": "vim",
+  "enabledPlugins": {
+    "caveman@caveman": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "ponytail@ponytail": true
+  },
+  "extraKnownMarketplaces": {
+    "caveman": {
+      "source": {
+        "repo": "JuliusBrussee/caveman",
+        "source": "github"
+      }
+    },
+    "ponytail": {
+      "source": {
+        "repo": "DietrichGebert/ponytail",
+        "source": "github"
+      }
+    }
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "atuin hook claude-code",
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "hooks": [
+          {
+            "command": "atuin hook claude-code",
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "atuin hook claude-code",
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "\"/home/shourov/.local/share/fnm/node-versions/v24.3.0/installation/bin/node\" \"/home/shourov/.claude/hooks/caveman-activate.js\"",
+            "statusMessage": "Loading caveman mode...",
+            "timeout": 5,
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "command": "\"/home/shourov/.local/share/fnm/node-versions/v24.3.0/installation/bin/node\" \"/home/shourov/.claude/hooks/caveman-mode-tracker.js\"",
+            "statusMessage": "Tracking caveman mode...",
+            "timeout": 5,
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  },
+  "model": "opus[1m]",
+  "statusLine": {
+    "command": "bash /home/shourov/.claude/statusline.sh",
+    "type": "command"
+  },
+  "tui": "fullscreen"
+}

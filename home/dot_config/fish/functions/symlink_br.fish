@@ -1,0 +1,1 @@
+/home/shourov/.local/share/broot/launcher/fish/br.fish

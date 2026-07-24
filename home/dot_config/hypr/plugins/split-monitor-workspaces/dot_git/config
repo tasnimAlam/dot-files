@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = https://github.com/zjeffer/split-monitor-workspaces
+	fetch = +refs/heads/release/0.55.x:refs/remotes/origin/release/0.55.x
+[branch "release/0.55.x"]
+	remote = origin
+	merge = refs/heads/release/0.55.x

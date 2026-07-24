@@ -1,0 +1,6 @@
+# generated / machine-local noise — never sync
+.config/**/node_modules
+.config/**/__pycache__
+.config/fish/fish_variables*
+**/*.bak
+**/*.log

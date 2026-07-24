@@ -1,0 +1,151 @@
+set os (uname)
+set -U fish_greeting ""
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+set -gx EDITOR nvim
+set -gx BROWSER brave
+set -gx LC_ALL en_US.UTF-8
+set -gx DMENU_BLUETOOTH_LAUNCHER bemenu
+set -gx FM_OPENER emacs 
+set -gx TERMINAL ghostty 
+set -gx TERMCMD 'foot -T "terminal filechooser"'
+set -gx GTK_THEME Adwaita:dark
+
+set -x GEM_HOME (gem env user_gemhome)
+set -x PATH $PATH $GEM_HOME/bin
+
+set -x GTK_MODULES gail:atk-bridge
+set -x OOO_FORCE_DESKTOP gnome
+set -x GNOME_ACCESSIBILITY 1
+set -x QT_ACCESSIBILITY 1
+set -x QT_LINUX_ACCESSIBILITY_ALWAYS_ON 1
+set -Ux PATH /usr/lib/uutils-coreutils:$PATH
+
+# Fzf config
+
+set -Ux fifc_editor nvim
+set fish_key_bindings fish_user_key_bindings
+fzf_configure_bindings --variables=\e\cv
+bind -M insert \cp up-or-search
+bind -M insert \cn down-or-search
+
+set fzf_preview_file_cmd cat
+set fzf_preview_dir_cmd exa --all --color=always
+set fzf_fd_opts --hidden --exclude=.git
+set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
+
+set -x FZF_DEFAULT_OPTS "--reverse --bind 'ctrl-y:execute-silent(printf {} | cut -f 2- | wl-copy --trim-newline),ctrl-k:preview-half-page-up,ctrl-j:preview-half-page-down'"
+set -gx FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix"
+set -gx FZF_CTRL_T_OPTS " --walker-skip .git,node_modules,target --preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+set -gx FZF_ALT_C_OPTS " --walker-skip .git,node_modules,target --preview 'tree -C {}'"
+
+set -gx ATAC_KEY_BINDINGS "~/.config/atac/vim_key_bindings.toml"
+set -gx ATAC_THEME "~/.config/atac/catppuccin_mocha.toml"
+
+set -gx POSTING_PAGER "fx"
+set -gx POSTING_EDITOR "nvim"
+
+# Android development
+set -gx ANDROID_HOME $HOME/android-sdk
+set -gx PATH $PATH $ANDROID_HOME/platform-tools
+set -gx JAVA_HOME /usr/lib/jvm/java-17-openjdk
+
+# Set path 
+fish_add_path ~/bin
+fish_add_path /usr/local/bin /usr/local/sbin
+fish_add_path ~/.local/bin/
+fish_add_path ~/.config/emacs/bin/
+fish_add_path ~/.config/doom//bin/
+fish_add_path ~/.cargo/bin
+fish_add_path ~/.yarn/bin ~/.config/yarn/global/node_modules/.bin ~/.npm-global/bin
+fish_add_path ~/.composer/vendor/bin
+fish_add_path ~/.deno/bin/
+fish_add_path ~/go/bin/
+fish_add_path ~/Downloads/adb-fastboot/
+fish_add_path /opt/flutter/bin/
+
+if test "$os" = Darwin
+    fish_add_path /opt/homebrew/bin /opt/homebrew/sbin
+end
+
+
+# NNN config
+set -x NNN_FIFO "/tmp/nnn.fifo"
+set -x NNN_PLUG "f:fzopen;m:send_email;u:getplugs;p:preview-tui;c:croc_send;h:nmount;t:thumbnail;d:dragdrop;i:ipinfo;k:pskill;j:autojump;e:-!sudo -E nvim $nnn*;E:suedit;s:x2sel"
+
+# Colors
+set BLK 03
+set CHR 03
+set DIR 04
+set EXE 02
+set REG 07
+set HARDLINK 05
+set SYMLINK 05
+set MISSING 08
+set ORPHAN 01
+set FIFO 06
+set SOCK 03
+set UNKNOWN 01
+set -x NNN_COLORS "#04020301;4231"
+set -x NNN_FCOLORS "$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$UNKNOWN"
+# set -x NNN_PREFER_SELECTION 1
+
+set -x CHROME_BIN /usr/bin/brave
+set -x CHROME_EXECUTABLE /usr/bin/brave
+
+
+if test "$os" = Linux
+    set -x NNN_BMS "d:~/Downloads/;w:~/Documents/sports-cloud-webapp;u:~/Documents/ui2/;r:~/Documents/rust-projects/rust_test/;.:~/Documents/dot-files/;p:~/Pictures/;v:~/Videos/tutorials/"
+end
+
+if test "$os" = Darwin
+    set -x NNN_BMS "d:~/Downloads/;w:~/Documents/sports-cloud-webapp;u:~/Documents/ui2/;r:~/Projects/rust-projects/rust_test/;.:~/Projects/dot-files/"
+end
+
+# Bemenu 
+set -gx BEMENU_OPTS "--fn 'monospace 12' -H30"
+
+
+#  Abbreviations
+if status --is-interactive
+    abbr --add --global kll kill -9
+end
+abbr --add --global zlweb "zellij --session webapp --layout ~/.config/zellij/webapp.kdl"
+abbr --add --global zlui "zellij --session ui --layout ~/.config/zellij/ui.kdl"
+
+# Search web 
+abbr --add --global sgg "s -p google"
+abbr --add --global sdd "s -p duckduckgo"
+
+# Zoxide init
+# zoxide init fish | source
+
+# Starship init
+starship init fish | source
+
+# pnpm
+set -gx PNPM_HOME "/home/shourov/.local/share/pnpm"
+if not string match -q -- "$PNPM_HOME/bin" $PATH
+    set -gx PATH "$PNPM_HOME/bin" $PATH
+end
+# pnpm end
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
+
+fish_add_path $HOME/.local/bin
+
+# tmux sessions
+fish_add_path $HOME/.tmux/plugins/tmux-session-wizard/bin
+
+# opencode
+fish_add_path /home/shourov/.opencode/bin
+
+# fzf complete
+bind -M insert \t __fzf_complete
+
+if status is-interactive
+    atuin init fish | source
+end
