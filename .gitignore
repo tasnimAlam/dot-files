@@ -1,1 +1,4 @@
 tags
+
+# TPM clones plugins here; they are installed by tmux.conf's bootstrap, not tracked.
+.config/tmux/plugins/
