@@ -1,0 +1,18 @@
+#!/usr/bin/env fish
+
+# Pick a tmux/tmuxinator session with bemenu and switch the running tmux
+# client to it. Intended to be run from a Hyprland keybind or app launcher,
+# i.e. outside tmux, which is why `sesh connect` needs --switch rather than
+# attaching.
+
+set session (sesh list -t -T -d -H | bemenu -i -l 10 -p "Sesh sessions")
+
+# bemenu cancelled (Esc) -> nothing selected, bail out
+if test -z "$session"
+    exit 0
+end
+
+sesh connect --switch "$session"
+
+# The client switched, but the terminal hosting it may not be focused.
+hyprctl dispatch 'hl.dsp.focus({ window = "class:com.mitchellh.ghostty" })'
