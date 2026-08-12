@@ -2,3 +2,11 @@ tags
 
 # TPM clones plugins here; they are installed by tmux.conf's bootstrap, not tracked.
 .config/tmux/plugins/
+
+# Yazi plugins and flavors are installed by `ya pack -i` from package.toml, and the
+# tasnimAlam/* ones are cloned from their own repos. Only the hand-written plugins
+# below are part of this config.
+.config/yazi/plugins/*
+!.config/yazi/plugins/folder-rules.yazi/
+!.config/yazi/plugins/smart-tab/
+.config/yazi/flavors/
