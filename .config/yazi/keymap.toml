@@ -109,11 +109,6 @@ run  = "plugin rotate-image"
 desc = "Rotate selected images"
 
 [[mgr.prepend_keymap]]
-on   = [ "i" ]
-run = "plugin searchjump"
-desc = "searchjump mode"
-
-[[mgr.prepend_keymap]]
 on   = [ "g", "i" ]
 run  = "plugin lazygit"
 desc = "run lazygit"
