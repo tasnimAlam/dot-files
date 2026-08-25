@@ -85,9 +85,7 @@ desc = "Open with command"
 
 [[mgr.prepend_keymap]]
 on   = "<A-d>"
-run = '''
-    shell 'ripdrag "$@" -x -a 2>/dev/null &' --confirm
-''' 
+run  = 'shell -- ripdrag %s -x -a 2>/dev/null &'
 desc = "Drag and drop"
 
 [[mgr.prepend_keymap]]
@@ -96,10 +94,8 @@ run  = "plugin chmod"
 desc = "Chmod on selected files"
 
 [[mgr.prepend_keymap]]
-on   = ["*"]
-run  =  '''
-     shell 'chmod +x "$@"' --confirm
-'''
+on   = "*"
+run  = 'shell -- chmod +x %s'
 desc = "Make selected files executable"
 
 [[mgr.prepend_keymap]]
@@ -191,11 +187,6 @@ run  = "plugin toggle-pane max-preview"
 desc = "Maximize or restore the preview pane"
 
 [[mgr.prepend_keymap]]
-on   = "*"
-run  = "shell -- chmod +x %h"
-desc = "Chmod +x hovered file"
-
-[[mgr.prepend_keymap]]
 on = "{"
 run = "plugin nextension bwd"
 
@@ -219,7 +210,7 @@ run = [ 'shell -- for path in %s; do echo "file://$path"; done | wl-copy -t text
 
 [[mgr.prepend_keymap]]
 on  = [ "y", "i" ]
-run = [ 'shell -- wl-copy -t "$(file -b --mime-type "$1")" < "$1"', "yank" ]
+run = [ 'shell -- f=%s; wl-copy -t "$(file -b --mime-type "$f")" < "$f"', "yank" ]
 desc = "Copy image data to clipboard"
 
 [[mgr.prepend_keymap]]
