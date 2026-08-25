@@ -205,7 +205,7 @@ run = "plugin nextension fwd"
 
 [[mgr.prepend_keymap]]
 on = [ "F" ]
-run = "plugin file-actions -- --around "
+run = "plugin file-actions -- --around --filter"
 desc= "Perform actions on selected files"
 
 [[mgr.prepend_keymap]]
