@@ -1,7 +1,8 @@
-gtk-titlebar = false
+font-family = JetBrainsMono Nerd Font
 font-size = 14
-theme = Catppuccin Frappe
 
+gtk-titlebar = false
+theme = Catppuccin Frappe
 
 background-opacity = 0.7
 background-blur-radius = 60
