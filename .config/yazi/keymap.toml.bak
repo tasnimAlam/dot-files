@@ -100,14 +100,8 @@ desc = "Make selected files executable"
 
 [[mgr.prepend_keymap]]
 on   = "W"
-run  = "plugin localsend"
-desc = "Send files via LocalSend"
-
-# kdeconnect-send lost its "W" binding to localsend; rebind it if you still want it.
-# [[mgr.prepend_keymap]]
-# on   = "K"
-# run  = "plugin kdeconnect-send"
-# desc = "Send files via KDE Connect"
+run  = "plugin kdeconnect-send"
+desc = "Send files"
 
 [[mgr.prepend_keymap]]
 on   = "R"
@@ -200,8 +194,3 @@ desc = "Split-tabs: switch to the other pane"
 on = ["<A-p>"]
 run = "plugin split-tabs spl_preview"
 desc = "Split-tabs: toggle preview pane"
-
-[[mgr.prepend_keymap]]
-on = ["<C-l>"]
-run = "plugin localsend"
-desc = "Send files via LocalSend"
