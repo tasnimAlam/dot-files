@@ -3,22 +3,39 @@
 set input (echo "" | bemenu --fn "monospace 14" -i -p "Translate to Bengali:")
 
 if test -n "$input"
-    set encoded (python3 -c "import urllib.parse, sys; print(urllib.parse.quote(sys.argv[1]))" "$input")
-    set response (curl -s -H "User-Agent: Mozilla/5.0" "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=bn&dt=t&q=$encoded&dt=at")
-    set translations (python3 -c "
-import sys, json
-data = json.loads(sys.argv[1])
-main = ''.join(seg[0] for seg in data[0] if seg[0])
-results = [main]
+    set translations (python3 -c '
+import json, sys, urllib.parse, urllib.request
+
+q = urllib.parse.urlencode({"client": "dict-chrome-ex", "sl": "auto", "tl": "bn",
+                            "dt": "t", "q": sys.argv[1]}) + "&dt=bd&dt=at"
+req = urllib.request.Request("https://clients5.google.com/translate_a/single?" + q,
+                             headers={"User-Agent": "Mozilla/5.0"})
 try:
-    alts = data[5][0][2]
-    for alt in alts[:3]:
-        if alt[0] and alt[0] != main:
-            results.append(alt[0])
-except:
+    data = json.load(urllib.request.urlopen(req, timeout=10))
+except Exception as e:
+    print("error: %s" % e)
+    sys.exit()
+
+results = ["".join(seg[0] for seg in data[0] if seg[0])]
+
+def add(word):
+    if word and word not in results:
+        results.append(word)
+
+# dictionary senses (dt=bd), present for single words
+for entry in (data[1] or []):
+    for word in entry[1]:
+        add(word)
+
+# alternative translations (dt=at), present for phrases
+try:
+    for alt in data[5][0][2]:
+        add(alt[0])
+except (IndexError, TypeError):
     pass
-print(', '.join(results[:3]))
-" "$response")
+
+print(", ".join(results[:5]))
+' "$input")
 
     echo "$translations" | bemenu --fn "monospace 14" -i -p "Bengali:"
 end
