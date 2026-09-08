@@ -1,0 +1,34 @@
+#!/bin/sh
+# Pick an upcoming Google Meet (today/tomorrow) from bemenu, open it in the default browser.
+# Shows the cached agenda instantly, then refreshes it in the background for next time.
+set -eu
+
+cache="${XDG_CACHE_HOME:-$HOME/.cache}/gcal.tsv"
+
+fetch() {
+	gcalcli agenda today tomorrow --tsv --details conference --nodeclined >"$cache.tmp" 2>/dev/null &&
+		mv "$cache.tmp" "$cache"
+}
+
+# Cache is only valid for the day it was written (the range is "today tomorrow").
+if [ "${1-}" = "-r" ] || [ ! -s "$cache" ] || [ "$(date -r "$cache" +%F)" != "$(date +%F)" ]; then
+	fetch
+else
+	fetch >/dev/null 2>&1 &
+fi
+
+# tsv columns: start_date start_time end_date end_time entry_type uri title
+data=$(awk -F'\t' -v today="$(date +%F)" -v now="$(date '+%F %H:%M')" '
+	NR>1 && $5=="video" && $6 ~ /^http/ && ($3 " " $4) >= now {
+		printf "%s %s  %s\t%s\n", ($1==today ? "today" : substr($1,6)), $2, $7, $6
+	}' "$cache")
+
+[ -n "$data" ] || { printf '%s\n' "no upcoming meetings" | bemenu -p gcal >/dev/null; exit 0; }
+
+label=$(printf '%s\n' "$data" | cut -f1 | bemenu -l 10 -p "meet")
+[ -n "$label" ] || exit 0
+
+url=$(printf '%s\n' "$data" | awk -F'\t' -v l="$label" '$1==l {print $2; exit}')
+[ -n "$url" ] || exit 1
+
+exec xdg-open "$url"
