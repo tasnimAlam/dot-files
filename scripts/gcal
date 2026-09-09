@@ -20,7 +20,10 @@ fi
 # tsv columns: start_date start_time end_date end_time entry_type uri title
 data=$(awk -F'\t' -v today="$(date +%F)" -v now="$(date '+%F %H:%M')" '
 	NR>1 && $5=="video" && $6 ~ /^http/ && ($3 " " $4) >= now {
-		printf "%s %s  %s\t%s\n", ($1==today ? "today" : substr($1,6)), $2, $7, $6
+		h = substr($2,1,2) + 0
+		ampm = (h < 12 ? "AM" : "PM")
+		h = h % 12; if (h == 0) h = 12
+		printf "%s %d:%s%s  %s\t%s\n", ($1==today ? "today" : substr($1,6)), h, substr($2,4,2), ampm, $7, $6
 	}' "$cache")
 
 [ -n "$data" ] || { printf '%s\n' "no upcoming meetings" | bemenu -p gcal >/dev/null; exit 0; }
