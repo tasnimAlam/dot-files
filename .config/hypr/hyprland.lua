@@ -62,6 +62,8 @@ end)
 hl.env("HYPRCURSOR_THEME", "rose-pine-hyprcursor")
 hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("QT_QPA_PLATFORMTHEME", "qt5ct") -- change to qt6ct if you have that
+-- Match bemenu's line height to the wayle-rs bar height (46px).
+hl.env("BEMENU_OPTS", "--fn 'JetBrainsMono 14' -H46")
 
 ---------------
 ---- INPUT ----
