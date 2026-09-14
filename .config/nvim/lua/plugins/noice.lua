@@ -1,5 +1,8 @@
 require("noice").setup({
 	lsp = {
+		-- Pyright emits a $/progress token per analysis pass, so typing stacks a
+		-- column of "pyright" messages in the bottom-right mini view.
+		progress = { enabled = false },
 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 		override = {
 			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
