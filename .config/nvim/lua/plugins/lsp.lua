@@ -15,8 +15,20 @@ vim.diagnostic.config({
 
 -- Python: pyright for types/completion, ruff for lint/imports/formatting
 vim.lsp.config("pyright", {
+	-- Pyright re-analyzes the file on every didChange. 150ms (the Neovim default)
+	-- means a burst of full analyses while typing.
+	flags = { debounce_text_changes = 500 },
 	settings = {
 		pyright = { disableOrganizeImports = true },
+		python = {
+			analysis = {
+				-- Each completion request otherwise scans all of site-packages for
+				-- auto-import candidates, once per character typed.
+				autoImportCompletions = false,
+				diagnosticMode = "openFilesOnly",
+				useLibraryCodeForTypes = true,
+			},
+		},
 	},
 })
 

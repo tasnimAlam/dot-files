@@ -953,12 +953,6 @@ require("lazy").setup({
 		},
 	},
 	{
-		"mluders/comfy-line-numbers.nvim",
-		config = function()
-			require("plugins.comfy")
-		end,
-	},
-	{
 		"nvim-mini/mini.clue",
 		version = "*",
 		config = function()
@@ -1054,6 +1048,7 @@ require("lazy").setup({
 		"coder/claudecode.nvim",
 		dependencies = { "folke/snacks.nvim" },
 		opts = {
+			focus_after_send = true,
 			terminal = {
 				provider = "snacks",
 				snacks_win_opts = {
