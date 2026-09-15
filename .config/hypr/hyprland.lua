@@ -400,6 +400,7 @@ hl.window_rule({ name = "foot-window", match = { class = "^(foot)$" }, workspace
 hl.window_rule({ name = "email-window", match = { class = "^(org.mozilla.Thunderbird)$" }, workspace = "8" })
 hl.window_rule({ name = "gimp-window", match = { class = "^(.*gimp.*)$" }, workspace = "9", float = true })
 hl.window_rule({ name = "pdf-window", match = { class = "^(org.pwmt.zathura)$" }, workspace = "10" })
+hl.window_rule({ name = "epub-window", match = { class = "^(com.github.johnfactotum.Foliate)$" }, workspace = "10" })
 hl.window_rule({ name = "chrome-window", match = { class = "^(Chromium)$" }, workspace = "2" })
 hl.window_rule({ name = "firefox-window", match = { class = "^(firefox)$" }, workspace = "2" })
 hl.window_rule({ name = "crank-window", match = { class = "^(crankshaft)$" }, workspace = "10", fullscreen = true })
