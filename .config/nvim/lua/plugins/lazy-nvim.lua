@@ -3,7 +3,7 @@ require("lazy").setup({
 	{
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
-			ensure_installed = { "bashls", "pyright", "ruff", "lua_ls", "vtsls", "yamlls" },
+			ensure_installed = { "bashls", "ty", "ruff", "lua_ls", "vtsls", "yamlls" },
 			automatic_enable = {
 				exclude = { "ts_ls" },
 			},
@@ -1114,5 +1114,14 @@ require("lazy").setup({
 			vim.g.mkdp_filetypes = { "markdown" }
 		end,
 		ft = { "markdown" },
+	},
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {},
 	},
 })

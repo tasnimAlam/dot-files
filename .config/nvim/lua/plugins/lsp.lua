@@ -13,7 +13,7 @@ vim.diagnostic.config({
 	float = { border = "single" },
 })
 
--- Find the interpreter for a project so pyright resolves its dependencies.
+-- Find the interpreter for a project so ty resolves its dependencies.
 -- Without one it falls back to the python on PATH, which has no project packages
 -- installed, and every third-party import is reported as unresolved.
 -- The project-local venv is checked before $VIRTUAL_ENV on purpose: opening
@@ -31,13 +31,10 @@ local function venv_python(root)
 	end
 end
 
--- Python: pyright for types/completion, ruff for lint/imports/formatting
-vim.lsp.config("pyright", {
-	-- Pyright re-analyzes the file on every didChange. 150ms (the Neovim default)
-	-- means a burst of full analyses while typing.
-	flags = { debounce_text_changes = 500 },
+-- Python: ty for types/completion, ruff for lint/imports/formatting
+vim.lsp.config("ty", {
 	settings = {
-		pyright = { disableOrganizeImports = true },
+		ty = {},
 	},
 	before_init = function(_, config)
 		local python = config.root_dir and venv_python(config.root_dir)
@@ -45,8 +42,10 @@ vim.lsp.config("pyright", {
 			-- Mutate in place. vim.lsp.Client captures `config.settings` by reference
 			-- when it is constructed, which happens before this callback runs, so
 			-- reassigning config.settings here would never reach the client.
-			config.settings.python =
-				vim.tbl_deep_extend("force", config.settings.python or {}, { pythonPath = python })
+			-- `configuration` mirrors ty.toml and overrides any on-disk config.
+			config.settings.ty = vim.tbl_deep_extend("force", config.settings.ty, {
+				configuration = { environment = { python = python } },
+			})
 		end
 	end,
 })
