@@ -41,9 +41,9 @@ end
 
 hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprpaper")
-	hl.exec_cmd("mako")
+	-- hl.exec_cmd("mako")
 	-- hl.exec_cmd("waybar")
-	hl.exec_cmd("systemctl --user start wayle.service")
+	-- hl.exec_cmd("systemctl --user start wayle.service")
 	hl.exec_cmd("hypridle")
 	hl.exec_cmd("kdeconnectd")
 	hl.exec_cmd("systemctl start fprintd")
@@ -53,6 +53,8 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("wl-paste --type text --watch cliphist store") -- store only text data
 	hl.exec_cmd("wl-paste --type image --watch cliphist store") -- store only image data
 	hl.exec_cmd("nmcli connection down wg0") -- turn off vpn
+	hl.exec_cmd("systemctl --user start hyprpolkitagent")
+	hl.exec_cmd("noctalia")
 end)
 
 -------------------------------
@@ -273,7 +275,7 @@ hl.bind(mainMod .. " + B", runOrRaise("brave-browser", "brave"))
 hl.bind(mainMod .. " + CTRL + O", hl.dsp.exec_cmd("~/.config/hypr/scripts/bookmarks"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + CTRL + P", hl.dsp.exec_cmd("bemenu-run -i"))
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(terminal .. " -e nvim ~/notes.txt"))
+-- hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(terminal .. " -e nvim ~/notes.txt"))
 hl.bind(mainMod .. " + O", hl.dsp.window.move({ monitor = "+1", follow = true })) -- was split-changemonitor next: move active window to next monitor
 hl.bind(mainMod .. " + SEMICOLON", hl.dsp.exec_cmd("~/.config/hypr/scripts/focus"))
 hl.bind(
@@ -296,6 +298,8 @@ for i = 1, 10 do
 		hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 	end
 end
+hl.bind(mainMod .. " + semicolon", smw.workspace("10"))
+hl.bind(mainMod .. " + N", smw.workspace("1"))
 
 -- Special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
@@ -381,7 +385,6 @@ hl.define_submap("power", function()
 	hl.bind("escape", hl.dsp.submap("reset"))
 end)
 
-
 --------------------------------
 ---- WINDOW & LAYER RULES ------
 --------------------------------
@@ -410,3 +413,41 @@ hl.window_rule({ name = "emulator-window", match = { class = "^(Emulator)$" }, f
 
 -- Vicinae blur
 hl.layer_rule({ name = "vicinae-blur", match = { namespace = "vicinae" }, blur = true, ignore_alpha = 0 })
+
+-- Noctalia
+hl.config({
+	general = {
+		gaps_in = 5,
+		gaps_out = 10,
+	},
+
+	decoration = {
+		rounding = 20,
+		rounding_power = 2,
+
+		shadow = {
+			enabled = true,
+			range = 4,
+			render_power = 3,
+			color = 0xee1a1a1a,
+		},
+
+		blur = {
+			enabled = true,
+			size = 3,
+			passes = 2,
+			vibrancy = 0.1696,
+		},
+	},
+})
+
+hl.layer_rule({
+	name = "noctalia",
+	match = {
+		namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd|window-switcher)$",
+	},
+	no_anim = true,
+	ignore_alpha = 0.5,
+	blur = true,
+	blur_popups = true,
+})
