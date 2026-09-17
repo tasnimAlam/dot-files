@@ -13,3 +13,6 @@ glyph = "apps"
 
 [widget.media]
 hide_when_no_media = true
+
+[widget.clock]
+format = "{:%a  %-I:%M %p}"
