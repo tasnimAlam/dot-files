@@ -1,12 +1,12 @@
 [bar.top]
 thickness = 40
 background_opacity = 0.6
-scale = 1.2
+scale = 1.15  
 margin_ends = 2
 capsule = true
 start = ["launcher", "workspaces"]
-center = ["clock", "media"]
-end = ["battery", "bluetooth", "network", "volume", "tray", "session","notifications"]
+center = ["media"]
+end = ["weather","battery", "volume", "bluetooth","network","clock", "tray", "session","notifications"]
 
 [widget.launcher]
 glyph = "apps"
@@ -16,3 +16,9 @@ hide_when_no_media = true
 
 [widget.clock]
 format = "{:%a  %-I:%M %p}"
+
+[widget.bluetooth]
+show_label = true
+
+[widget.weather]
+show_condition = false
