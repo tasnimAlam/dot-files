@@ -330,30 +330,20 @@ end
 -- === SYSTEM CONTROLS ===
 
 -- Volume control
--- For hyprland native
--- hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ +5%"))
--- hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ -5%"))
--- hl.bind("XF86AudioMute", hl.dsp.exec_cmd("pactl set-sink-mute @DEFAULT_SINK@ toggle"))
--- hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("pactl set-source-mute @DEFAULT_SOURCE@ toggle"))
--- hl.bind(mainMod .. " + bracketright", hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ +5%"))
--- hl.bind(mainMod .. " + bracketleft", hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ -5%"))
--- hl.bind(mainMod .. " + backslash", hl.dsp.exec_cmd("amixer set Master toggle"))
-
--- For noctalia
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. "volume-up"))
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(ipc .. "volume-down"))
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd(ipc .. "volume-mute"))
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(ipc .. "mic-mute"))
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(ipc .. "brightness-up"))
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. "brightness-down"))
-hl.bind(mainMod .. " + bracketright", hl.dsp.exec_cmd(ipc .. "volume-up"))
-hl.bind(mainMod .. " + bracketleft", hl.dsp.exec_cmd(ipc .. "volume-down"))
-hl.bind(mainMod .. " + backslash", hl.dsp.exec_cmd(ipc .. "volume-mute"))
-
-
--- Brightness control
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("lux -a 5%"))
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("lux -s 5%"))
+-- Media keys and their SUPER equivalents both go through noctalia, which changes
+-- the level and draws the OSD in one call (so no separate pactl/amixer bind).
+for _, m in ipairs({
+	{ "volume-up", "XF86AudioRaiseVolume", mainMod .. " + bracketright" },
+	{ "volume-down", "XF86AudioLowerVolume", mainMod .. " + bracketleft" },
+	{ "volume-mute", "XF86AudioMute", mainMod .. " + backslash" },
+	{ "mic-mute", "XF86AudioMicMute" },
+	{ "brightness-up", "XF86MonBrightnessUp" },
+	{ "brightness-down", "XF86MonBrightnessDown" },
+}) do
+	for i = 2, #m do
+		hl.bind(m[i], hl.dsp.exec_cmd(ipc .. m[1]))
+	end
+end
 
 -- System functions
 hl.bind(mainMod .. " + CTRL + Q", hl.dsp.exit())
