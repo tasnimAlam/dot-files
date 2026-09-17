@@ -1,0 +1,15 @@
+[bar.top]
+thickness = 40
+background_opacity = 0.6
+scale = 1.2
+margin_ends = 2
+capsule = true
+start = ["launcher", "workspaces"]
+center = ["clock", "media"]
+end = ["battery", "bluetooth", "network", "volume", "tray", "session","notifications"]
+
+[widget.launcher]
+glyph = "apps"
+
+[widget.media]
+hide_when_no_media = true
