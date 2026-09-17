@@ -27,6 +27,7 @@ local terminal = "ghostty"
 local fileManager = "yazi"
 local menu = "vicinae toggle"
 local mainMod = "SUPER"
+local ipc = "noctalia msg "
 
 -- Run-or-raise helper. Replaces the `raise` tool, which is broken under the Lua
 -- config (it emits old-syntax `hyprctl dispatch focuswindow ...`). Our script
@@ -61,11 +62,18 @@ end)
 ---- ENVIRONMENT VARIABLES ----
 -------------------------------
 
+-- bemenu-run scans Hyprland's own PATH, which misses the dirs that only exist in
+-- fish's fish_user_paths (e.g. the gcal script) and ~/.local/bin (gcalcli).
+local path_extra = os.getenv("HOME") .. "/Documents/dot-files/scripts:" .. os.getenv("HOME") .. "/.local/bin"
+if not os.getenv("PATH"):find(path_extra, 1, true) then
+	hl.env("PATH", path_extra .. ":" .. os.getenv("PATH"))
+end
+
 hl.env("HYPRCURSOR_THEME", "rose-pine-hyprcursor")
 hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("QT_QPA_PLATFORMTHEME", "qt5ct") -- change to qt6ct if you have that
--- Match bemenu's line height to the wayle-rs bar height (46px).
-hl.env("BEMENU_OPTS", "--fn 'JetBrainsMono 14' -H46")
+-- Match bemenu's line height to the noctalia bar height (40px).
+hl.env("BEMENU_OPTS", "--fn 'JetBrainsMono 14' -H40")
 
 ---------------
 ---- INPUT ----
@@ -322,13 +330,26 @@ end
 -- === SYSTEM CONTROLS ===
 
 -- Volume control
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ +5%"))
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ -5%"))
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("pactl set-sink-mute @DEFAULT_SINK@ toggle"))
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("pactl set-source-mute @DEFAULT_SOURCE@ toggle"))
-hl.bind(mainMod .. " + bracketright", hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ +5%"))
-hl.bind(mainMod .. " + bracketleft", hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ -5%"))
-hl.bind(mainMod .. " + backslash", hl.dsp.exec_cmd("amixer set Master toggle"))
+-- For hyprland native
+-- hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ +5%"))
+-- hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ -5%"))
+-- hl.bind("XF86AudioMute", hl.dsp.exec_cmd("pactl set-sink-mute @DEFAULT_SINK@ toggle"))
+-- hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("pactl set-source-mute @DEFAULT_SOURCE@ toggle"))
+-- hl.bind(mainMod .. " + bracketright", hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ +5%"))
+-- hl.bind(mainMod .. " + bracketleft", hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ -5%"))
+-- hl.bind(mainMod .. " + backslash", hl.dsp.exec_cmd("amixer set Master toggle"))
+
+-- For noctalia
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. "volume-up"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(ipc .. "volume-down"))
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(ipc .. "volume-mute"))
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(ipc .. "mic-mute"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(ipc .. "brightness-up"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. "brightness-down"))
+hl.bind(mainMod .. " + bracketright", hl.dsp.exec_cmd(ipc .. "volume-up"))
+hl.bind(mainMod .. " + bracketleft", hl.dsp.exec_cmd(ipc .. "volume-down"))
+hl.bind(mainMod .. " + backslash", hl.dsp.exec_cmd(ipc .. "volume-mute"))
+
 
 -- Brightness control
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("lux -a 5%"))
@@ -336,7 +357,8 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("lux -s 5%"))
 
 -- System functions
 hl.bind(mainMod .. " + CTRL + Q", hl.dsp.exit())
-hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("hyprlock"))
+-- hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd(ipc .. "session lock"))
 
 -- === SPECIAL FEATURES & TOOLS ===
 
