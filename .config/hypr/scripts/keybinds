@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Show every Hyprland keybind that carries a description.
+# The config sets `description` on each bind, so this list is generated from the
+# live binds rather than maintained by hand.
+
+hyprctl binds -j \
+	| jq -r '.[] | select(.description != "") | "\(.modmask)\t\(.key)\t\(.description)"' \
+	| awk -F'\t' '{
+		m = $1; mods = "";
+		if (int(m / 64) % 2) mods = mods "SUPER+";
+		if (int(m /  4) % 2) mods = mods "CTRL+";
+		if (int(m /  8) % 2) mods = mods "ALT+";
+		if (int(m /  1) % 2) mods = mods "SHIFT+";
+		printf "%-26s %s\n", mods $2, $3;
+	}' \
+	| sort -u \
+	| bemenu -i -l 20 -p "Keybindings:" >/dev/null

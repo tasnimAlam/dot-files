@@ -234,167 +234,182 @@ end
 ---------------------
 ---- KEYBINDINGS ----
 ---------------------
+--
+-- Tier = semantic, so a bind can be derived instead of recalled:
+--
+--   SUPER           act on the focused window, or reach a daily app
+--   SUPER + SHIFT   the same thing, taking the window along
+--   SUPER + CTRL    system / settings panel
+--   SUPER + ALT     utility script (the dmenu tools)
+--   submaps         modal operations (resize, power)
+--   bare XF86*      hardware; always locked + repeating
+--
+-- Keysyms are lowercase throughout. Hyprland stores the spelling literally, so
+-- `SEMICOLON` and `semicolon` register as two separate, independent binds.
 
--- === BASIC NAVIGATION & WINDOW MANAGEMENT ===
+local script = "~/.config/hypr/scripts/"
 
--- Window focus and movement
-hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "l" }))
-hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "d" }))
-hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "u" }))
-hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "r" }))
-hl.bind(mainMod .. " + TAB", hl.dsp.focus({ last = true })) -- closest to focuscurrentorlast
+-- hl.bind plus a mandatory description, which is what lets the SUPER+CTRL+K
+-- cheatsheet generate itself from `hyprctl binds -j`.
+local function bind(keys, action, desc, opts)
+	opts = opts or {}
+	opts.description = desc
+	hl.bind(keys, action, opts)
+end
 
--- Window management
-hl.bind(mainMod .. " + W", hl.dsp.window.close())
-hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen())
-hl.bind(mainMod .. " + SPACE", hl.dsp.window.swap({ next = true })) -- for master
-hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.layout("orientationcycle left top"))
-hl.bind(mainMod .. " + SHIFT + M", hl.dsp.layout("swapwithmaster"))
--- hl.bind(mainMod .. " + SPACE", hl.dsp.layout("togglesplit")) -- for dwindle
-hl.bind(mainMod .. " + CTRL + F", hl.dsp.window.float({ action = "toggle" }))
+-- === SUPER / SUPER+SHIFT: focus and move ===
 
--- Window movement
-hl.bind(mainMod .. " + ALT + H", hl.dsp.window.move({ direction = "l" }))
-hl.bind(mainMod .. " + ALT + J", hl.dsp.window.move({ direction = "d" }))
-hl.bind(mainMod .. " + ALT + K", hl.dsp.window.move({ direction = "u" }))
-hl.bind(mainMod .. " + ALT + L", hl.dsp.window.move({ direction = "r" }))
+-- Arrows are bound alongside hjkl; sway and i3 both ship both, and it costs
+-- nothing to serve either habit.
+for _, d in ipairs({
+	{ letter = "h", arrow = "left", dir = "l", label = "left" },
+	{ letter = "j", arrow = "down", dir = "d", label = "down" },
+	{ letter = "k", arrow = "up", dir = "u", label = "up" },
+	{ letter = "l", arrow = "right", dir = "r", label = "right" },
+}) do
+	for _, key in ipairs({ d.letter, d.arrow }) do
+		bind(mainMod .. " + " .. key, hl.dsp.focus({ direction = d.dir }), "Focus " .. d.label)
+		bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ direction = d.dir }), "Move window " .. d.label)
+	end
+end
 
--- Window resizing
-hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.resize({ x = -40, y = 0, relative = true }))
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.resize({ x = 0, y = 40, relative = true }))
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.resize({ x = 0, y = -40, relative = true }))
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.resize({ x = 40, y = 0, relative = true }))
+-- === SUPER: window verbs ===
 
--- Monitor focus
-hl.bind(mainMod .. " + COMMA", hl.dsp.focus({ monitor = 0 }))
-hl.bind(mainMod .. " + PERIOD", hl.dsp.focus({ monitor = 1 }))
-hl.bind(
-	"CTRL + semicolon",
-	hl.dsp.exec_cmd(
-		[[cur=$(hyprctl activeworkspace -j | jq .id); [ "$cur" = 1 ] && t=2 || t=1; hyprctl dispatch "hl.dsp.focus({ workspace = $t })"]]
-	)
-)
+bind(mainMod .. " + tab", hl.dsp.focus({ last = true }), "Focus last window")
+bind(mainMod .. " + w", hl.dsp.window.close(), "Close window")
+bind(mainMod .. " + m", hl.dsp.window.fullscreen(), "Fullscreen")
+bind(mainMod .. " + r", hl.dsp.submap("resize"), "Resize mode")
+bind(mainMod .. " + SHIFT + space", hl.dsp.window.swap({ next = true }), "Swap with next window")
+bind(mainMod .. " + SHIFT + m", hl.dsp.layout("swapwithmaster"), "Swap with master")
 
--- === APPLICATION LAUNCHERS & PROGRAMS ===
+-- === SUPER: daily apps ===
 
-hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + E", runOrRaise("foot", "foot -e " .. fileManager))
-hl.bind(mainMod .. " + B", runOrRaise("brave-browser", "brave"))
-hl.bind(mainMod .. " + CTRL + O", hl.dsp.exec_cmd("~/.config/hypr/scripts/bookmarks"))
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + CTRL + P", hl.dsp.exec_cmd("bemenu-run -i"))
--- hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(terminal .. " -e nvim ~/notes.txt"))
-hl.bind(mainMod .. " + O", hl.dsp.window.move({ monitor = "+1", follow = true })) -- was split-changemonitor next: move active window to next monitor
-hl.bind(mainMod .. " + SEMICOLON", hl.dsp.exec_cmd("~/.config/hypr/scripts/focus"))
-hl.bind(
-	mainMod .. " + F",
+bind(mainMod .. " + return", hl.dsp.exec_cmd(terminal), "Terminal")
+bind(mainMod .. " + space", hl.dsp.exec_cmd(menu), "Launcher")
+bind(mainMod .. " + e", runOrRaise("foot", "foot -e " .. fileManager), "File manager")
+bind(mainMod .. " + b", runOrRaise("brave-browser", "brave"), "Browser")
+bind(mainMod .. " + v", hl.dsp.exec_cmd("cliphist list | bemenu -l10 | cliphist decode | wl-copy"), "Clipboard history")
+bind(mainMod .. " + equal", hl.dsp.exec_cmd(script .. "menu-calc"), "Calculator")
+bind(mainMod .. " + p", hl.dsp.exec_cmd("bemenu-run -i"), "Run command")
+bind(mainMod .. " + t", hl.dsp.exec_cmd(script .. "translate"), "Translate")
+bind(
+	mainMod .. " +  f",
 	hl.dsp.exec_cmd(
 		[[hyprctl clients -j | jq -e 'any(.[]; .class | test("brave-browser"))' >/dev/null 2>&1 && hyprctl dispatch "hl.dsp.focus({ window = \"class:brave-browser\" })"; ~/.config/hypr/scripts/browser-search]]
-	)
+	),
+	"Search in browser"
 )
 
--- === WORKSPACE MANAGEMENT ===
 
--- Switch / move-to workspace N on the focused monitor (via split-monitor-workspaces)
+-- === Monitors ===
+
+bind(mainMod .. " + comma", hl.dsp.focus({ monitor = 0 }), "Focus monitor 1")
+bind(mainMod .. " + period", hl.dsp.focus({ monitor = 1 }), "Focus monitor 2")
+bind(mainMod .. " + o", hl.dsp.window.move({ monitor = "+1", follow = true }), "Move window to next monitor")
+
+-- === Workspaces ===
+
 for i = 1, 10 do
 	local key = (i == 10) and "0" or tostring(i)
 	if smw_ok then
-		hl.bind(mainMod .. " + " .. key, smw.workspace(tostring(i)))
-		hl.bind(mainMod .. " + SHIFT + " .. key, smw.move_to_workspace(tostring(i)))
+		bind(mainMod .. " + " .. key, smw.workspace(tostring(i)), "Workspace " .. i)
+		bind(mainMod .. " + SHIFT + " .. key, smw.move_to_workspace(tostring(i)), "Move window to workspace " .. i)
 	else
-		hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-		hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+		bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }), "Workspace " .. i)
+		bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }), "Move window to workspace " .. i)
 	end
 end
-hl.bind(mainMod .. " + semicolon", smw.workspace("10"))
-hl.bind(mainMod .. " + N", smw.workspace("1"))
 
--- Special workspace (scratchpad)
-hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
-
--- Workspace navigation (next/prev on the current monitor).
--- Replaces hyprnome, which is broken under the Lua config (old-syntax hyprctl dispatch).
+-- Next/prev workspace on the current monitor. Replaces hyprnome, which is broken
+-- under the Lua config (it emits old-syntax `hyprctl dispatch`).
 if smw_ok then
-	hl.bind(mainMod .. " + I", smw.workspace("+1"))
-	hl.bind(mainMod .. " + U", smw.workspace("-1"))
-	hl.bind(mainMod .. " + SHIFT + I", smw.move_to_workspace("+1"))
-	hl.bind(mainMod .. " + SHIFT + U", smw.move_to_workspace("-1"))
+	bind(mainMod .. " + i", smw.workspace("+1"), "Next workspace")
+	bind(mainMod .. " + u", smw.workspace("-1"), "Previous workspace")
+	bind(mainMod .. " + SHIFT + i", smw.move_to_workspace("+1"), "Move window to next workspace")
+	bind(mainMod .. " + SHIFT + u", smw.move_to_workspace("-1"), "Move window to previous workspace")
 else
-	hl.bind(mainMod .. " + I", hl.dsp.focus({ workspace = "e+1" }))
-	hl.bind(mainMod .. " + U", hl.dsp.focus({ workspace = "e-1" }))
-	hl.bind(mainMod .. " + SHIFT + I", hl.dsp.window.move({ workspace = "e+1" }))
-	hl.bind(mainMod .. " + SHIFT + U", hl.dsp.window.move({ workspace = "e-1" }))
+	bind(mainMod .. " + i", hl.dsp.focus({ workspace = "e+1" }), "Next workspace")
+	bind(mainMod .. " + u", hl.dsp.focus({ workspace = "e-1" }), "Previous workspace")
+	bind(mainMod .. " + SHIFT + i", hl.dsp.window.move({ workspace = "e+1" }), "Move window to next workspace")
+	bind(mainMod .. " + SHIFT + u", hl.dsp.window.move({ workspace = "e-1" }), "Move window to previous workspace")
 end
 
--- === SYSTEM CONTROLS ===
+bind(mainMod .. " + grave", hl.dsp.focus({ workspace = "previous" }), "Last workspace")
 
--- Volume control
--- Media keys and their SUPER equivalents both go through noctalia, which changes
--- the level and draws the OSD in one call (so no separate pactl/amixer bind).
+-- Scratchpad
+bind(mainMod .. " + s", hl.dsp.workspace.toggle_special("magic"), "Toggle scratchpad")
+bind(mainMod .. " + SHIFT + s", hl.dsp.window.move({ workspace = "special:magic" }), "Move window to scratchpad")
+
+-- === SUPER+CTRL: system panels ===
+
+bind(mainMod .. " + CTRL + o", hl.dsp.exec_cmd(script .. "bookmarks"), "Bookmarks")
+bind(mainMod .. " + CTRL + l", hl.dsp.exec_cmd(ipc .. "session lock"), "Lock screen")
+bind(mainMod .. " + CTRL + s", hl.dsp.exec_cmd(ipc .. "panel-toggle session"), "Power menu")
+bind(mainMod .. " + CTRL + a", hl.dsp.exec_cmd(script .. "sinkswitch.sh"), "Audio output")
+bind(mainMod .. " + CTRL + b", hl.dsp.exec_cmd(ipc .. "panel-toggle control-center bluetooth"), "Bluetooth")
+bind(mainMod .. " + CTRL + k", hl.dsp.exec_cmd(script .. "dkill"), "Kill process")
+bind(mainMod .. " + CTRL + w", hl.dsp.exec_cmd("networkmanager_dmenu"), "Network")
+bind(mainMod .. " + CTRL + f", hl.dsp.window.float({ action = "toggle" }), "Toggle floating")
+bind(mainMod .. " + CTRL + m", hl.dsp.exec_cmd("udiskie-dmenu"), "Mount device")
+bind(mainMod .. " + CTRL + h", hl.dsp.exec_cmd(script .. "keybinds"), "Show keybindings")
+bind(mainMod .. " + CTRL + p", hl.dsp.exec_cmd(script .. "screenshot"), "Screenshot")
+bind(mainMod .. " + CTRL + q", hl.dsp.exit(), "Exit Hyprland")
+bind(mainMod .. " + CTRL + r", hl.dsp.exec_cmd(script .. "record"), "Screen record")
+
+-- === SUPER+ALT: utility scripts ===
+
+bind(mainMod .. " + ALT + m", hl.dsp.exec_cmd(script .. "man"), "Man pages")
+
+-- Notes
+bind(mainMod .. " + ALT + n", hl.dsp.exec_cmd(script .. "quicknote"), "Quick note")
+bind(mainMod .. " + ALT + v", hl.dsp.exec_cmd(script .. "viewnote"), "View notes")
+bind(mainMod .. " + ALT + SHIFT + n", hl.dsp.exec_cmd(script .. "rmnote"), "Delete note")
+
+-- === Hardware keys ===
+
+-- locked = true keeps these working on the lock screen; repeating = true lets
+-- them fire while held. Both follow /usr/share/hypr/hyprland.lua.
+-- noctalia changes the level and draws the OSD in one call.
 for _, m in ipairs({
-	{ "volume-up", "XF86AudioRaiseVolume", mainMod .. " + bracketright" },
-	{ "volume-down", "XF86AudioLowerVolume", mainMod .. " + bracketleft" },
-	{ "volume-mute", "XF86AudioMute", mainMod .. " + backslash" },
-	{ "mic-mute", "XF86AudioMicMute" },
-	{ "brightness-up", "XF86MonBrightnessUp" },
-	{ "brightness-down", "XF86MonBrightnessDown" },
+	{ cmd = "volume-up", desc = "Volume up", keys = { "XF86AudioRaiseVolume", mainMod .. " + bracketright" } },
+	{ cmd = "volume-down", desc = "Volume down", keys = { "XF86AudioLowerVolume", mainMod .. " + bracketleft" } },
+	{ cmd = "volume-mute", desc = "Mute", keys = { "XF86AudioMute", mainMod .. " + backslash" } },
+	{ cmd = "mic-mute", desc = "Mute microphone", keys = { "XF86AudioMicMute" } },
+	{ cmd = "brightness-up", desc = "Brightness up", keys = { "XF86MonBrightnessUp" } },
+	{ cmd = "brightness-down", desc = "Brightness down", keys = { "XF86MonBrightnessDown" } },
 }) do
-	for i = 2, #m do
-		hl.bind(m[i], hl.dsp.exec_cmd(ipc .. m[1]))
+	for _, key in ipairs(m.keys) do
+		bind(key, hl.dsp.exec_cmd(ipc .. m.cmd), m.desc, { locked = true, repeating = true })
 	end
 end
 
--- System functions
-hl.bind(mainMod .. " + CTRL + Q", hl.dsp.exit())
--- hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("hyprlock"))
-hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd(ipc .. "session lock"))
+bind("XF86Messenger", runOrRaise("Slack", "slack"), "Slack")
+bind("XF86Display", hl.dsp.window.move({ monitor = "+1", follow = true }), "Move window to next monitor")
 
--- === SPECIAL FEATURES & TOOLS ===
+-- === Mouse ===
 
--- Clipboard and utilities
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | bemenu -l10 | cliphist decode | wl-copy"))
-
--- Scripts and tools
-hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("~/.config/hypr/scripts/config-edit"))
-hl.bind(mainMod .. " + equal", hl.dsp.exec_cmd("~/.config/hypr/scripts/menu-calc"))
-hl.bind(mainMod .. " + CTRL + K", hl.dsp.exec_cmd("~/.config/hypr/scripts/dkill"))
-hl.bind(mainMod .. " + CTRL + M", hl.dsp.exec_cmd("~/.config/hypr/scripts/man"))
-hl.bind(mainMod .. " + CTRL + SEMICOLON", hl.dsp.exec_cmd("~/.config/hypr/scripts/record"))
-hl.bind(mainMod .. " + ALT + P", hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot"))
-hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("~/.config/hypr/scripts/translate"))
-
--- Notes system
-hl.bind(mainMod .. " + CTRL + N", hl.dsp.exec_cmd("~/.config/hypr/scripts/quicknote"))
-hl.bind(mainMod .. " + ALT + CTRL + N", hl.dsp.exec_cmd("~/.config/hypr/scripts/rmnote"))
-hl.bind(mainMod .. " + ALT + N", hl.dsp.exec_cmd("~/.config/hypr/scripts/viewnote"))
-
--- Device management
-hl.bind(mainMod .. " + ALT + M", hl.dsp.exec_cmd("udiskie-dmenu"))
-hl.bind(mainMod .. " + ALT + b", hl.dsp.exec_cmd("dmenu-bluetooth"))
-hl.bind(mainMod .. " + CTRL + i", hl.dsp.exec_cmd("networkmanager_dmenu"))
-
--- Hardware keys
-hl.bind("XF86Messenger", runOrRaise("Slack", "slack"))
-hl.bind("XF86Display", hl.dsp.exec_cmd("bash ~/.config/hypr/scripts/togglewindow"))
-
--- === MOUSE & CURSOR CONTROLS ===
-
-hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
-hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
-hl.bind(mainMod .. " + CTRL + mouse:272", hl.dsp.window.resize(), { mouse = true }) -- was SUPER_CTRL
+bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), "Drag window", { mouse = true })
+bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), "Resize window", { mouse = true })
 
 ---------------------
 ---- SUBMAPS --------
 ---------------------
 
--- Power menu
-hl.bind(mainMod .. " + CTRL + S", hl.dsp.submap("power"))
-hl.define_submap("power", function()
-	hl.bind("S", hl.dsp.exec_cmd("systemctl poweroff"))
-	hl.bind("R", hl.dsp.exec_cmd("systemctl reboot"))
-	hl.bind("L", hl.dsp.exec_cmd("pkill -KILL -u $USER"))
+-- Resize mode: SUPER+R, then hjkl/arrows, escape to leave.
+hl.define_submap("resize", function()
+	for _, d in ipairs({
+		{ letter = "h", arrow = "left", x = -40, y = 0 },
+		{ letter = "j", arrow = "down", x = 0, y = 40 },
+		{ letter = "k", arrow = "up", x = 0, y = -40 },
+		{ letter = "l", arrow = "right", x = 40, y = 0 },
+	}) do
+		for _, key in ipairs({ d.letter, d.arrow }) do
+			hl.bind(key, hl.dsp.window.resize({ x = d.x, y = d.y, relative = true }), { repeating = true })
+		end
+	end
+	hl.bind("o", hl.dsp.layout("orientationcycle left top"))
 	hl.bind("escape", hl.dsp.submap("reset"))
+	hl.bind("return", hl.dsp.submap("reset"))
 end)
 
 --------------------------------

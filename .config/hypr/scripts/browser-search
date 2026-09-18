@@ -1,7 +1,33 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Web search through `s`. A leading prefix routes the search — "yt lofi" goes to
+# YouTube, "arch pipewire" to the Arch wiki. Anything else goes to DuckDuckGo.
 
-text=$(echo "" | bemenu --fn monospace 16 -i -p "Search:")
+set -uo pipefail
 
-if [[ "$text" ]]; then
-  s -p duckduckgo $text
+# BEMENU_OPTS supplies font and height, same as every other menu.
+input=$(bemenu -i -p "Search:" </dev/null) || exit 0
+[ -n "$input" ] || exit 0
+
+provider=""
+query=$input
+
+if [[ $input == *" "* ]]; then
+	case ${input%% *} in
+	yt) provider=youtube ;;
+	gh) provider=github ;;
+	red) provider=reddit ;;
+	lib) provider=libgen ;;
+	im) provider=imdb ;;
+	gmail) provider=gmail ;;
+	gd) provider=goodreads ;;
+	amazon) provider=amazon ;;
+	ali) provider=aliexpress ;;
+	arch) provider=archwiki ;;
+	esac
+
+	# Only strip the prefix when it actually named a provider, so a search that
+	# merely starts with one of these words still searches for the whole phrase.
+	[ -n "$provider" ] && query=${input#* }
 fi
+
+exec s -p "${provider:-duckduckgo}" "$query"
