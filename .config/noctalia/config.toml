@@ -1,3 +1,12 @@
+[plugins]
+enabled = ["k4n4t4/hypr-submap"]
+
+[widget.submap]
+type = "k4n4t4/hypr-submap:hypr-submap"
+hide_when_default = true
+prefix = ""
+glyph = "keyboard"
+
 [bar.top]
 thickness = 40
 background_opacity = 0.6
@@ -7,7 +16,7 @@ capsule = true
 capsule_thickness = 0.8
 capsule_radius = 20
 
-start = ["launcher", "workspaces"]
+start = ["launcher", "workspaces", "submap"]
 center = ["media"]
 end = ["weather","battery", "volume", "bluetooth","network","clock", "tray", "session","notifications"]
 
@@ -55,3 +64,4 @@ shortcut = "r"
 action = "shutdown"
 shortcut = "s"
 variant = "destructive"
+
