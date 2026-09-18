@@ -24,7 +24,7 @@ left = "exec vicinae toggle"
 hide_when_no_media = true
 
 [widget.clock]
-format = "{:%a  %-I:%M %p}"
+format = "{:%d %b , %a %-I:%M %p}"
 
 [widget.bluetooth]
 show_label = true
