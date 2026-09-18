@@ -74,6 +74,8 @@ hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("QT_QPA_PLATFORMTHEME", "qt5ct") -- change to qt6ct if you have that
 -- Match bemenu's line height to the noctalia bar height (40px).
 hl.env("BEMENU_OPTS", "--fn 'JetBrainsMono 14' -H40")
+hl.env("DMENU_BLUETOOTH_LAUNCHER", "bemenu")
+hl.env("UDISKIE_DMENU_LAUNCHER", "bemenu")
 
 ---------------
 ---- INPUT ----
@@ -346,7 +348,7 @@ bind(mainMod .. " + CTRL + o", hl.dsp.exec_cmd(script .. "bookmarks"), "Bookmark
 bind(mainMod .. " + CTRL + l", hl.dsp.exec_cmd(ipc .. "session lock"), "Lock screen")
 bind(mainMod .. " + CTRL + s", hl.dsp.exec_cmd(ipc .. "panel-toggle session"), "Power menu")
 bind(mainMod .. " + CTRL + a", hl.dsp.exec_cmd(script .. "sinkswitch.sh"), "Audio output")
-bind(mainMod .. " + CTRL + b", hl.dsp.exec_cmd(ipc .. "panel-toggle control-center bluetooth"), "Bluetooth")
+bind(mainMod .. " + CTRL + b", hl.dsp.exec_cmd("dmenu-bluetooth"), "Bluetooth")
 bind(mainMod .. " + CTRL + k", hl.dsp.exec_cmd(script .. "dkill"), "Kill process")
 bind(mainMod .. " + CTRL + w", hl.dsp.exec_cmd("networkmanager_dmenu"), "Network")
 bind(mainMod .. " + CTRL + f", hl.dsp.window.float({ action = "toggle" }), "Toggle floating")

@@ -48,6 +48,7 @@ while IFS= read -r line; do
     if [[ $line =~ \**[[:space:]]*([0-9]+)\.\ ([^[]+) ]]; then
         id="${BASH_REMATCH[1]}"
         name="${BASH_REMATCH[2]}"
+        name="${name%"${name##*[![:space:]]}"}"  # strip the run of spaces before [vol:
         sinks["$id"]="$name"
         # Check for * somewhere before the number in the line
         if [[ $line =~ \* ]]; then
@@ -67,8 +68,11 @@ sed -n '
   }
 ')
 
-# Builds the fzf selection
-fzf_input=()
+# Builds the menu. bemenu returns the chosen line verbatim — it has no
+# equivalent of fzf's --with-nth, which let the old version hide an ID column.
+# So the label is mapped back to its sink ID here instead.
+declare -A id_of
+menu=()
 for id in $(for i in "${!sinks[@]}"; do
               printf "%s\t%s\n" "$i" "${sinks[$i]}"
            done | sort -k2 | cut -f1); do
@@ -77,22 +81,22 @@ for id in $(for i in "${!sinks[@]}"; do
     flag=" "
     [[ "$id" == "$default_sink" ]] && flag="▶"
 
-    fzf_input+=("$id|$flag | ${sinks[$id]}")
+    label="$flag | ${sinks[$id]}"
+    # Two identical device names would collide in the map, so disambiguate.
+    [[ -v id_of["$label"] ]] && label="$label ($id)"
+
+    id_of["$label"]="$id"
+    menu+=("$label")
 done
 
-# Displays the fzf menu
-selected=$(printf '%s\n' "${fzf_input[@]}" | fzf \
-  --delimiter='|' \
-  --with-nth=2.. \
-  --color="header:green,prompt:green,fg+:magenta:bold" \
-  --prompt="  (✿◠‿◠) Select Your Audio Output (◕‿◕✿)" \
-  --no-preview --disabled --layout=reverse --border=none --no-info \
-  --bind "change:clear-query")
+# Displays the menu. BEMENU_OPTS supplies font and height, as with every other menu.
+selected=$(printf '%s\n' "${menu[@]}" | bemenu -i -l 10 -p "Audio output:")
 
 [[ -z "$selected" ]] && exit 0  # user cancelled
 
-# Extract the selected and new default sink ID
-new_default="${selected%%|*}"
+# Map the chosen label back to its sink ID
+new_default="${id_of["$selected"]}"
+[[ -z "$new_default" ]] && exit 0
 
 # Set new default sink
 wpctl set-default "$new_default"
