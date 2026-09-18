@@ -1,12 +1,6 @@
 [plugins]
 enabled = ["k4n4t4/hypr-submap"]
 
-[widget.submap]
-type = "k4n4t4/hypr-submap:hypr-submap"
-hide_when_default = true
-prefix = ""
-glyph = "keyboard"
-
 [bar.top]
 thickness = 40
 background_opacity = 0.6
@@ -40,6 +34,12 @@ show_label = true
 
 [widget.weather]
 show_condition = false
+
+[widget.submap]
+type = "k4n4t4/hypr-submap:hypr-submap"
+hide_when_default = true
+prefix = ""
+glyph = "keyboard"
 
 # Session panel: letter shortcuts instead of the default 1-5.
 # An array of tables replaces the built-in list wholesale, so all five
