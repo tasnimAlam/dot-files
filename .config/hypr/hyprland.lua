@@ -294,14 +294,7 @@ bind(mainMod .. " + v", hl.dsp.exec_cmd("cliphist list | bemenu -l10 | cliphist 
 bind(mainMod .. " + equal", hl.dsp.exec_cmd(script .. "menu-calc"), "Calculator")
 bind(mainMod .. " + p", hl.dsp.exec_cmd("bemenu-run -i"), "Run command")
 bind(mainMod .. " + t", hl.dsp.exec_cmd(script .. "translate"), "Translate")
-bind(
-	mainMod .. " +  f",
-	hl.dsp.exec_cmd(
-		[[hyprctl clients -j | jq -e 'any(.[]; .class | test("brave-browser"))' >/dev/null 2>&1 && hyprctl dispatch "hl.dsp.focus({ window = \"class:brave-browser\" })"; ~/.config/hypr/scripts/browser-search]]
-	),
-	"Search in browser"
-)
-
+bind(mainMod .. " + f", hl.dsp.exec_cmd(script .. "browser-search"), "Search in browser")
 
 -- === Monitors ===
 
@@ -439,6 +432,12 @@ hl.window_rule({ name = "crank-window", match = { class = "^(crankshaft)$" }, wo
 hl.window_rule({ name = "key-window", match = { class = "showmethekey-gtk" }, pin = true, float = true })
 hl.window_rule({ name = "bemenu-window", match = { class = "^(bemenu)$" }, pin = true })
 hl.window_rule({ name = "emulator-window", match = { class = "^(Emulator)$" }, float = true })
+hl.window_rule({
+	name = "noctalia-settings",
+	match = { class = [[^(dev\.noctalia\.Noctalia)$]] },
+	workspace = "9",
+	float = false,
+})
 
 -- Vicinae blur
 hl.layer_rule({ name = "vicinae-blur", match = { namespace = "vicinae" }, blur = true, ignore_alpha = 0 })

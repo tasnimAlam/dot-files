@@ -15,19 +15,29 @@ if [[ $input == *" "* ]]; then
 	case ${input%% *} in
 	yt) provider=youtube ;;
 	gh) provider=github ;;
-	red) provider=reddit ;;
-	lib) provider=libgen ;;
+	rd) provider=reddit ;;
+	lg) provider=libgen ;;
+	aa) provider=annas_archive ;;
 	im) provider=imdb ;;
-	gmail) provider=gmail ;;
-	gd) provider=goodreads ;;
-	amazon) provider=amazon ;;
-	ali) provider=aliexpress ;;
-	arch) provider=archwiki ;;
+	gm) provider=gmail ;;
+	gr) provider=goodreads ;;
+	az) provider=amazon ;;
+	ae) provider=aliexpress ;;
+	aw) provider=archwiki ;;
+	wk) provider=wikipedia ;;
 	esac
 
 	# Only strip the prefix when it actually named a provider, so a search that
 	# merely starts with one of these words still searches for the whole phrase.
 	[ -n "$provider" ] && query=${input#* }
+fi
+
+# Focus happens here rather than in the keybind, so the prompt appears over
+# whatever you were already looking at and the browser only comes forward once
+# there is actually something to show. Skipped when no window is open yet —
+# `s` launches the browser itself in that case.
+if hyprctl clients -j | jq -e 'any(.[]; .class | test("brave-browser"))' >/dev/null 2>&1; then
+	hyprctl dispatch 'hl.dsp.focus({ window = "class:brave-browser" })' >/dev/null
 fi
 
 exec s -p "${provider:-duckduckgo}" "$query"
