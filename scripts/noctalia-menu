@@ -1,0 +1,16 @@
+#!/usr/bin/env fish
+
+set -l section (printf '%s\n' \
+    bar \
+    shell \
+    launcher \
+    control_center \
+    theming \
+    plugins \
+    services \
+    wallpaper \
+    | bemenu -i -l 12 -p "settings:")
+
+test -z "$section"; and exit 0
+
+noctalia msg settings-open $section
