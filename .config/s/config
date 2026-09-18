@@ -1,0 +1,7 @@
+customProviders [
+  {
+    name: annas_archive
+    url: "https://annas-archive.gd/search?q=%s"
+    tags: []
+  }
+]
