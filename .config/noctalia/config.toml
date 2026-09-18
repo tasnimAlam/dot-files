@@ -24,10 +24,34 @@ left = "exec vicinae toggle"
 hide_when_no_media = true
 
 [widget.clock]
-format = "{:%d %b , %a %-I:%M %p}"
+format = "{:%d %b · %a %-I:%M %p}"
 
 [widget.bluetooth]
 show_label = true
 
 [widget.weather]
 show_condition = false
+
+# Session panel: letter shortcuts instead of the default 1-5.
+# An array of tables replaces the built-in list wholesale, so all five
+# actions are repeated here even though only `shortcut` differs.
+[[shell.session.actions]]
+action = "lock"
+shortcut = "l"
+
+[[shell.session.actions]]
+action = "logout"
+shortcut = "o"
+
+[[shell.session.actions]]
+action = "lock_and_suspend"
+shortcut = "u"
+
+[[shell.session.actions]]
+action = "reboot"
+shortcut = "r"
+
+[[shell.session.actions]]
+action = "shutdown"
+shortcut = "s"
+variant = "destructive"
