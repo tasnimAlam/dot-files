@@ -4,12 +4,21 @@ background_opacity = 0.6
 scale = 1.15  
 margin_ends = 2
 capsule = true
+capsule_thickness = 0.8
+capsule_radius = 20
+
 start = ["launcher", "workspaces"]
 center = ["media"]
 end = ["weather","battery", "volume", "bluetooth","network","clock", "tray", "session","notifications"]
 
 [widget.launcher]
-glyph = "apps"
+type = "custom_button"
+glyph = ""
+capsule_padding = 8.0
+label = "󰣇"
+
+[widget.launcher.actions]
+left = "exec vicinae toggle"
 
 [widget.media]
 hide_when_no_media = true
