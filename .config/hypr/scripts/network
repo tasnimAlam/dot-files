@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# networkmanager_dmenu closes its menu the instant you pick a network, then goes
+# quiet for the several seconds NetworkManager needs — which reads as "nothing
+# happened". This fills that gap with exactly one "Connecting…" toast.
+#
+# The confirmation itself ("Activated <name>" / "Problem activating <name>")
+# comes from networkmanager_dmenu, so nothing is emitted here for the result.
+
+networkmanager_dmenu "$@"
+
+# `nmcli device monitor` prints nothing until a device changes state, so a
+# cancelled menu produces no output and the timeout ends this quietly. It emits
+# a line per connecting sub-state (prepare, config, ip-config, ip-check…), so
+# only the first is announced — otherwise one connect is five notifications.
+timeout 25 nmcli device monitor 2>/dev/null | while IFS= read -r line; do
+	case $line in
+	*disconnected* | *unavailable*) continue ;;  # transient while leaving the old network
+	*connecting*)
+		notify-send -a network -u low -t 6000 "Network" "Connecting…"
+		break
+		;;
+	esac
+done

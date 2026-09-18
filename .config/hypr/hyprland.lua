@@ -350,7 +350,7 @@ bind(mainMod .. " + CTRL + s", hl.dsp.exec_cmd(ipc .. "panel-toggle session"), "
 bind(mainMod .. " + CTRL + a", hl.dsp.exec_cmd(script .. "sinkswitch.sh"), "Audio output")
 bind(mainMod .. " + CTRL + b", hl.dsp.exec_cmd("dmenu-bluetooth"), "Bluetooth")
 bind(mainMod .. " + CTRL + k", hl.dsp.exec_cmd(script .. "dkill"), "Kill process")
-bind(mainMod .. " + CTRL + w", hl.dsp.exec_cmd("networkmanager_dmenu"), "Network")
+bind(mainMod .. " + CTRL + w", hl.dsp.exec_cmd(script .. "network"), "Network")
 bind(mainMod .. " + CTRL + f", hl.dsp.window.float({ action = "toggle" }), "Toggle floating")
 bind(mainMod .. " + CTRL + m", hl.dsp.exec_cmd("udiskie-dmenu"), "Mount device")
 bind(mainMod .. " + CTRL + h", hl.dsp.exec_cmd(script .. "keybinds"), "Show keybindings")
