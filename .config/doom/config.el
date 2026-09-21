@@ -39,6 +39,10 @@
 ;; Org capture templates: everything goes into ~/Documents/org/todo.org
 (after! org
   (setq org-reverse-note-order nil)
+  ;; org-babel python execution
+  (org-babel-do-load-languages 'org-babel-load-languages '((python . t)))
+  (setq org-babel-python-command "python3")
+  (setq org-confirm-babel-evaluate nil) ; don't prompt before running src blocks
   (setq org-capture-templates
         '(("t" "Task" entry (file "~/Documents/org/todo.org")
            "* TODO %?\n  %U\n  %a"
@@ -131,3 +135,27 @@
 ;; Use fish as default shell
 (setq-default vterm-shell (executable-find "fish"))
 (setq-default explicit-shell-file-name (executable-find "fish"))
+
+
+(after! markdown-mode
+  (setq markdown-fontify-code-blocks-natively t)
+  (add-to-list 'markdown-code-lang-modes '("mermaid" . mermaid-mode)))
+
+;; Org mode table toggle
+(defun +org-table-toggle-row ()
+  (interactive)
+  (save-excursion
+    (org-table-goto-column 1)
+    (let ((v (string-trim (org-table-get nil 1))))
+      (org-table-blank-field)
+      (insert (if (equal v "1") "0" "1"))))
+  (org-table-align)
+  (org-table-recalculate t))
+
+(map! :after org :map org-mode-map
+      :localleader "b t" #'+org-table-toggle-row)
+
+(after! org
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (add-hook 'before-save-hook #'org-table-recalculate-buffer-tables nil t))))
