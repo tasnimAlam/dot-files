@@ -1,0 +1,50 @@
+#!/usr/bin/env fish
+# switch — pick any window from all monitors with bemenu, then focus it.
+# Hyprland >= 0.52: hyprctl dispatch takes Lua, so listing and focusing both go through repl.
+
+set -l rows (hyprctl repl '
+local out = {}
+for _, w in ipairs(hl.get_windows()) do
+  if w.mapped then
+    local class = tostring(w.class)
+    out[#out+1] = table.concat({
+      tostring(w.address),
+      class:match("[^.]+$") or class,
+      (tostring(w.title):gsub("%s+", " ")),
+    }, "\t")
+  end
+end
+return table.concat(out, "\n")
+')
+
+test (count $rows) -gt 0; or exit 0
+
+set -l names
+for r in $rows
+    set -a names (string split \t -- $r)[2]
+end
+
+# Bare app name, except where two windows share one — then the title tells them apart.
+set -l labels
+for i in (seq (count $rows))
+    if test (count (string match -- $names[$i] $names)) -gt 1
+        set -a labels (printf '%s — %s' $names[$i] (string split \t -- $rows[$i])[3])
+    else
+        set -a labels $names[$i]
+    end
+end
+
+set -l choice (printf '%s\n' $labels | bemenu -i -l 9 -p window)
+test -n "$choice"; or exit 0
+
+set -l i (contains -i -- $choice $labels); or exit 1
+set -l addr (string split \t -- $rows[$i])[1]
+
+hyprctl repl "
+local w = hl.get_window([==[address:$addr]==])
+if w then
+  hl.dispatch(hl.dsp.focus({ window = w }))
+  return 'focused'
+end
+return 'gone'
+"

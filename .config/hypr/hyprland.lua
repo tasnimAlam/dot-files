@@ -295,6 +295,7 @@ bind(mainMod .. " + equal", hl.dsp.exec_cmd(script .. "menu-calc"), "Calculator"
 bind(mainMod .. " + p", hl.dsp.exec_cmd("bemenu-run -i"), "Run command")
 bind(mainMod .. " + t", hl.dsp.exec_cmd(script .. "translate"), "Translate")
 bind(mainMod .. " + f", hl.dsp.exec_cmd(script .. "browser-search"), "Search in browser")
+bind(mainMod .. " + semicolon", hl.dsp.exec_cmd(script .. "switch"), "Switch window ")
 
 -- === Monitors ===
 
