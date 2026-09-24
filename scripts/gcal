@@ -23,7 +23,9 @@ data=$(awk -F'\t' -v today="$(date +%F)" -v now="$(date '+%F %H:%M')" '
 		h = substr($2,1,2) + 0
 		ampm = (h < 12 ? "AM" : "PM")
 		h = h % 12; if (h == 0) h = 12
-		printf "%s %d:%s%s  %s\t%s\n", ($1==today ? "today" : substr($1,6)), h, substr($2,4,2), ampm, $7, $6
+		m = (substr($4,1,2)*60 + substr($4,4,2)) - (substr($2,1,2)*60 + substr($2,4,2)) + ($3 != $1 ? 1440 : 0)
+		dur = (m >= 60 ? int(m/60) "h" : "") (m % 60 || m < 60 ? m % 60 "m" : "")
+		printf "%-5s %7s %-5s %s\t%s\n", ($1==today ? "today" : substr($1,6)), h ":" substr($2,4,2) ampm, dur, $7, $6
 	}' "$cache")
 
 [ -n "$data" ] || { printf '%s\n' "no upcoming meetings" | bemenu -p gcal >/dev/null; exit 0; }
