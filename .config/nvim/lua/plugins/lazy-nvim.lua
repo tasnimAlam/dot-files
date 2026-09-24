@@ -511,7 +511,7 @@ require("lazy").setup({
 		opts = { useDefaults = true },
 	},
 	{
-    "https://forge.barrettruth.com/barrettruth/preview.nvim",
+		"https://forge.barrettruth.com/barrettruth/preview.nvim",
 		init = function()
 			vim.g.preview = {
 				github = {
@@ -537,8 +537,8 @@ require("lazy").setup({
 		---@type snacks.Config
 		opts = {
 			image = {
-				enabled = true,
-				doc = { enabled = true, inline = true },
+				enabled = false,
+				doc = { enabled = false, inline = false },
 			},
 			bigfile = { enabled = true },
 			picker = {
@@ -1107,21 +1107,18 @@ require("lazy").setup({
 		config = true,
 	},
 	{
-		"iamcco/markdown-preview.nvim",
-		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		build = "cd app && yarn install",
-		init = function()
-			vim.g.mkdp_filetypes = { "markdown" }
-		end,
-		ft = { "markdown" },
-	},
-	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
-		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
-		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-		---@module 'render-markdown'
-		---@type render.md.UserConfig
+		"blackhat-7/vellum.nvim",
+		ft = "markdown",
+		keys = {
+			{ "<leader>mp", "<cmd>Vellum<cr>", desc = "Markdown preview" },
+			{
+				"<leader>mz",
+				function()
+					require("vellum").zoom()
+				end,
+				desc = "Vellum zoom",
+			},
+		},
 		opts = {},
 	},
 	{
@@ -1134,5 +1131,22 @@ require("lazy").setup({
 		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
 		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
 		lazy = false,
+	},
+	{
+		"2giosangmitom/sqmeow.nvim",
+		dependencies = { "MunifTanjim/nui.nvim" },
+		version = "*",
+		build = function()
+			-- Downloads the matching release binary; pass 'curl', 'wget', 'powershell' or 'cargo' to choose.
+			require("sqmeow").install()
+		end,
+		opts = {},
+		cmd = "Sqmeow",
+		keys = {
+			{ "<leader>Dd", "<cmd>Sqmeow toggle<cr>", desc = "Toggle" },
+			{ "<leader>Dc", "<cmd>Sqmeow cancel<cr>", desc = "Cancel" },
+			{ "<leader>Da", "<cmd>Sqmeow add<cr>", desc = "Add Connection" },
+			{ "<leader>Ds", "<cmd>Sqmeow scratch<cr>", desc = "New Scratchpad" },
+		},
 	},
 })
