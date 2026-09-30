@@ -6,7 +6,12 @@ show_permissions = true
 
 [opener]
 epub = [
-	{ run = 'foliate "$@"', orphan = true, desc = "Foliate" },
+	{ run = "foliate %s1", desc = "Foliate", for = "linux", orphan = true },
+]
+# Override the default `open`, which lacks `orphan` on linux and so keeps
+# xdg-open as a tracked task ("unfinished tasks, quit anyway?").
+open = [
+	{ run = "xdg-open %s1", desc = "Open", for = "linux", orphan = true },
 ]
 
 [open]
