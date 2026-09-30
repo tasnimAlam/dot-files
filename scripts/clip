@@ -1,0 +1,3 @@
+#!/usr/bin/env fish
+
+kdeconnect-cli --send-clipboard -n "Galaxy S24 Ultra"
