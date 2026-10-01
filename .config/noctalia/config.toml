@@ -10,8 +10,8 @@ capsule = true
 capsule_thickness = 0.8
 capsule_radius = 20
 
-start = ["launcher", "workspaces", "submap"]
-center = ["media"]
+start = ["launcher", "workspaces", "submap", "media"]
+center = []
 end = ["weather","battery", "volume", "bluetooth","network","clock", "tray", "session","notifications"]
 
 [widget.launcher]
