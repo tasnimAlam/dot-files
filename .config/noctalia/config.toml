@@ -1,5 +1,5 @@
 [plugins]
-enabled = ["k4n4t4/hypr-submap"]
+enabled = ["k4n4t4/hypr-submap", "thepunkoff/pomodoro"]
 
 [bar.top]
 thickness = 40
@@ -10,9 +10,9 @@ capsule = true
 capsule_thickness = 0.8
 capsule_radius = 20
 
-start = ["launcher", "workspaces", "submap", "media"]
+start = ["launcher", "workspaces", "submap", "media", "pomodoro"]
 center = []
-end = ["weather","battery", "volume", "bluetooth","network","clock", "tray", "session","notifications"]
+end = ["weather", "battery", "volume", "bluetooth", "network", "clock", "tray", "session", "notifications"]
 
 [widget.launcher]
 type = "custom_button"
@@ -34,6 +34,9 @@ show_label = true
 
 [widget.weather]
 show_condition = false
+
+[widget.pomodoro]
+type = "thepunkoff/pomodoro:widget"
 
 [widget.submap]
 type = "k4n4t4/hypr-submap:hypr-submap"
