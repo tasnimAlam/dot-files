@@ -159,3 +159,8 @@
   (add-hook 'org-mode-hook
             (lambda ()
               (add-hook 'before-save-hook #'org-table-recalculate-buffer-tables nil t))))
+
+(after! org
+     (when (fboundp 'tsx-ts-mode)
+       (add-to-list 'org-src-lang-modes '("typescript" . tsx-ts))
+       (add-to-list 'org-src-lang-modes '("tsx" . tsx-ts))))
