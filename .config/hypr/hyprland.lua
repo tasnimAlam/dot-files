@@ -1,7 +1,5 @@
 -- ~/.config/hypr/hyprland.lua
--- Faithful 1:1 port of hyprland.conf to the Hyprland 0.55 Lua config format.
--- hyprland.conf is kept on disk as a rollback backup. Hyprland prefers this
--- .lua file over the .conf when both exist.
+-- Hyprland Lua config (0.56).
 -- API reference: https://wiki.hypr.land/Configuring/Start/
 
 -- Allow require()-ing the split-monitor-workspaces Lua package.
@@ -113,7 +111,7 @@ hl.config({
 			inactive_border = "rgba(595959aa)",
 		},
 
-		layout = "master", -- master / dwindle / scrolling / monocle
+		layout = "dwindle", -- master / dwindle / scrolling / monocle
 
 		allow_tearing = false,
 	},
@@ -218,7 +216,7 @@ hl.gesture({
 -- block and the manual `workspace = N, monitor:X` rules (the package owns
 -- workspace<->monitor mapping). Install with:
 --   mkdir -p ~/.config/hypr/plugins
---   git clone -b release/0.55.x https://github.com/zjeffer/split-monitor-workspaces \
+--   git clone -b release/0.56.x https://github.com/zjeffer/split-monitor-workspaces \
 --       ~/.config/hypr/plugins/split-monitor-workspaces
 -- Guarded so the config still loads (with vanilla workspace behavior) if absent.
 
@@ -277,7 +275,12 @@ end
 
 -- === SUPER: window verbs ===
 
-bind(mainMod .. " + tab", hl.dsp.focus({ last = true }), "Focus last window")
+-- bind(mainMod .. " + tab", hl.dsp.focus({ last = true }), "Focus last window")
+bind(
+	mainMod .. " + tab",
+	hl.dsp.exec_cmd("/home/shourov/.local/share/noctalia/plugins/easy-windows/easy_windows.py"),
+	"Switch application"
+)
 bind(mainMod .. " + w", hl.dsp.window.close(), "Close window")
 bind(mainMod .. " + m", hl.dsp.window.fullscreen(), "Fullscreen")
 bind(mainMod .. " + r", hl.dsp.submap("resize"), "Resize mode")
