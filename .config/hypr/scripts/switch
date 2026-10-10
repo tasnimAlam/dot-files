@@ -1,4 +1,4 @@
-#!/usr/bin/env fish
+#!/usr/bin/fish --no-config
 # switch — pick any window from all monitors with bemenu, then focus it.
 # Hyprland >= 0.52: hyprctl dispatch takes Lua, so listing and focusing both go through repl.
 
