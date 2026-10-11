@@ -6,7 +6,7 @@ set -l rows (hyprctl repl '
 local out = {}
 for _, w in ipairs(hl.get_windows()) do
   if w.mapped then
-    local class = tostring(w.class)
+    local class = (tostring(w.class):gsub("%-[%d.]+$", ""))
     out[#out+1] = table.concat({
       tostring(w.address),
       class:match("[^.]+$") or class,
@@ -34,7 +34,26 @@ for i in (seq (count $rows))
     end
 end
 
-set -l choice (printf '%s\n' $labels | bemenu -i -l 9 -p window)
+# Hint key per window: first letter of the app name not already taken, then any free letter.
+set -l hints
+for n in $names
+    set -l h ''
+    for c in (string split '' -- (string lower -- $n)) (string split '' abcdefghijklmnopqrstuvwxyz)
+        if string match -qr '^[a-z]$' -- $c; and not contains -- $c $hints
+            set h $c
+            break
+        end
+    end
+    set -a hints $h
+end
+
+# Uppercase the rest so a lowercase key can only match its hint; --auto-select then picks it at once.
+# shortcut: windows past 26 get no hint (arrow keys only), upgrade to two-letter hints if that happens.
+for i in (seq (count $labels))
+    set labels[$i] (printf '%s  %s' $hints[$i] (string upper -- $labels[$i]))
+end
+
+set -l choice (printf '%s\n' $labels | bemenu --auto-select -l 9 -p window)
 test -n "$choice"; or exit 0
 
 set -l i (contains -i -- $choice $labels); or exit 1
