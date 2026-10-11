@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+# agent-radar's glance row, trimmed to fit inside the existing status line:
+# drops the row tint, the "📡 Agent Radar │" label and the "no agent panes"
+# placeholder. $1 = session name, $2 = width budget for the entries.
+~/.tmux/plugins/agent-radar/scripts/agent-radar-glance "$1" "$(( ${2:-60} + 17 ))" |
+    sed -e 's/^#\[bg=[^]]*\]#\[push-default\]📡 Agent Radar │ //' \
+        -e 's/#\[pop-default\]$//' \
+        -e 's/^no agent panes$//'
