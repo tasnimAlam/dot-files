@@ -275,12 +275,7 @@ end
 
 -- === SUPER: window verbs ===
 
--- bind(mainMod .. " + tab", hl.dsp.focus({ last = true }), "Focus last window")
-bind(
-	mainMod .. " + tab",
-	hl.dsp.exec_cmd("/home/shourov/.local/share/noctalia/plugins/easy-windows/easy_windows.py"),
-	"Switch application"
-)
+bind(mainMod .. " + tab", hl.dsp.focus({ last = true }), "Focus last window")
 bind(mainMod .. " + w", hl.dsp.window.close(), "Close window")
 bind(mainMod .. " + m", hl.dsp.window.fullscreen(), "Fullscreen")
 bind(mainMod .. " + r", hl.dsp.submap("resize"), "Resize mode")
