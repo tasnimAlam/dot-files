@@ -28,9 +28,11 @@
 (setq doom-theme 'doom-one)
 ;; (setq doom-theme 'doom-one-light)
 ;; (setq doom-theme 'doom-gruvbox)
+;; (setq doom-theme 'catppuccin)
 
 (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
 (doom-themes-treemacs-config)
+
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -133,8 +135,11 @@
 (setq evil-ex-search-case 'sensitive)
 
 ;; Use fish as default shell
-(setq-default vterm-shell (executable-find "fish"))
-(setq-default explicit-shell-file-name (executable-find "fish"))
+;; (setq-default vterm-shell (executable-find "fish"))
+;; (setq-default explicit-shell-file-name (executable-find "fish"))
+(setq shell-file-name (executable-find "bash"))
+(setq-default vterm-shell "/usr/bin/fish")
+(setq-default explicit-shell-file-name "/usr/bin/fish")
 
 
 (after! markdown-mode
@@ -161,6 +166,31 @@
               (add-hook 'before-save-hook #'org-table-recalculate-buffer-tables nil t))))
 
 (after! org
-     (when (fboundp 'tsx-ts-mode)
-       (add-to-list 'org-src-lang-modes '("typescript" . tsx-ts))
-       (add-to-list 'org-src-lang-modes '("tsx" . tsx-ts))))
+  (when (fboundp 'tsx-ts-mode)
+    (add-to-list 'org-src-lang-modes '("typescript" . tsx-ts))
+    (add-to-list 'org-src-lang-modes '("tsx" . tsx-ts))))
+
+(after! org
+  (setq ob-mermaid-cli-path (executable-find "mmdc")))
+
+(setq org-roam-directory (file-truename "~/Documents/org/roam"))
+
+(use-package! websocket
+  :after org-roam)
+
+(use-package! org-roam-ui
+  :after org-roam
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
+
+;; fnm's per-shell PATH entries (/run/user/*/fnm_multishells/*) die with the
+;; shell, so point Emacs at the stable default-version bin for prettier & co.
+(let ((fnm-bin (expand-file-name "~/.local/share/fnm/aliases/default/bin")))
+  (add-to-list 'exec-path fnm-bin)
+  (setenv "PATH" (concat fnm-bin path-separator (getenv "PATH"))))
+
+(after! org
+  (setq org-startup-folded 'overview))

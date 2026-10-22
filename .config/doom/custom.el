@@ -6,7 +6,9 @@
  '(initial-frame-alist '((fullscreen . maximized)))
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(org-agenda-files
-   '("/home/shourov/Documents/org/office.org" "/home/shourov/Documents/org/todo.org"))
+   '("/home/shourov/Documents/org/sql-exercises.org"
+     "/home/shourov/Documents/org/office.org"
+     "/home/shourov/Documents/org/todo.org"))
  '(package-selected-packages '(slack alert tide)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

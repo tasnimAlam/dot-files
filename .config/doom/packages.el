@@ -49,3 +49,7 @@
 ;;(package! company-tabnine)
 ;; (package! exec-path-from-shell)
 ;; (package! yaml-mode)
+(package! catppuccin-theme)
+(package! ob-mermaid)
+(unpin! org-roam)
+(package! org-roam-ui)
