@@ -4,6 +4,11 @@ sort_dir_first = true
 sort_reverse = true
 show_permissions = true
 
+[tasks]
+# Hide background preloader tasks (e.g. video thumbnails) from the task list,
+# so they don't trigger "unfinished tasks, quit anyway?".
+suppress_preload = true
+
 [opener]
 epub = [
 	{ run = "foliate %s1", desc = "Foliate", for = "linux", orphan = true },
@@ -14,10 +19,17 @@ open = [
 	{ run = "xdg-open %s1", desc = "Open", for = "linux", orphan = true },
 ]
 
+play = [
+  { run = 'open-return mpv %s', orphan = true, desc = "Play & return", for = "unix" },
+]
+
 [open]
 prepend_rules = [
 	{ mime = "application/epub+zip", use = "epub" },
+  { mime = "video/*", use = "play" },
+  { mime = "audio/*", use = "play" },
 ]
+
 
 [plugin]
 prepend_previewers = [
