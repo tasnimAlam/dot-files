@@ -1,0 +1,27 @@
+#!/usr/bin/env fish
+# Window we came from (yazi's terminal)
+set origin (hyprctl activewindow -j | jq -r .address)
+# All windows that exist before launching
+set before (hyprctl clients -j | jq -c '[.[].address]')
+
+# Launch the app in the background
+$argv &
+disown
+
+# Wait up to 10s for a new window to appear
+set new ""
+for i in (seq 100)
+    set new (hyprctl clients -j | jq -r --argjson b $before \
+        '[.[] | select(.address as $a | $b | index($a) | not)][0].address // empty')
+    test -n "$new"; and break
+    sleep 0.1
+end
+test -z "$new"; and exit 0
+
+# Wait until that window is closed
+while hyprctl clients -j | jq -e --arg a $new 'any(.[]; .address == $a)' >/dev/null
+    sleep 0.3
+end
+
+# Go back to yazi
+hyprctl dispatch "hl.dsp.focus({ window = \"address:$origin\" })"
