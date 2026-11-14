@@ -24,21 +24,17 @@ set -Ux PATH /usr/lib/uutils-coreutils:$PATH
 
 # Fzf config
 
-set -Ux fifc_editor nvim
 set fish_key_bindings fish_user_key_bindings
 fzf_configure_bindings --variables=\e\cv
 bind -M insert \cp up-or-search
 bind -M insert \cn down-or-search
 
-set fzf_preview_file_cmd cat
-set fzf_preview_dir_cmd exa --all --color=always
+set fzf_preview_dir_cmd eza --all --color=always
 set fzf_fd_opts --hidden --exclude=.git
 set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
 
 set -x FZF_DEFAULT_OPTS "--reverse --bind 'ctrl-y:execute-silent(printf {} | cut -f 2- | wl-copy --trim-newline),ctrl-k:preview-half-page-up,ctrl-j:preview-half-page-down'"
 set -gx FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix"
-set -gx FZF_CTRL_T_OPTS " --walker-skip .git,node_modules,target --preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
-set -gx FZF_ALT_C_OPTS " --walker-skip .git,node_modules,target --preview 'tree -C {}'"
 
 set -gx ATAC_KEY_BINDINGS "~/.config/atac/vim_key_bindings.toml"
 set -gx ATAC_THEME "~/.config/atac/catppuccin_mocha.toml"
@@ -63,7 +59,6 @@ fish_add_path ~/.composer/vendor/bin
 fish_add_path ~/.deno/bin/
 fish_add_path ~/go/bin/
 fish_add_path ~/Downloads/adb-fastboot/
-fish_add_path /opt/flutter/bin/
 
 if test "$os" = Darwin
     fish_add_path /opt/homebrew/bin /opt/homebrew/sbin
@@ -104,7 +99,7 @@ if test "$os" = Darwin
 end
 
 # Bemenu 
-set -gx BEMENU_OPTS "--fn 'monospace 12' -H30"
+set -gx BEMENU_OPTS "--fn 'monospace 12' -H46"
 
 
 #  Abbreviations
@@ -119,13 +114,17 @@ abbr --add --global sgg "s -p google"
 abbr --add --global sdd "s -p duckduckgo"
 
 # Zoxide init
-# zoxide init fish | source
+zoxide init fish | source
 
 # Starship init
 starship init fish | source
 
-# set -gx PNPM_HOME "/home/shourov/.local/share/pnpm"
-# set -gx PATH "$PNPM_HOME" $PATH
+# pnpm
+set -gx PNPM_HOME "/home/shourov/.local/share/pnpm"
+if not string match -q -- "$PNPM_HOME/bin" $PATH
+    set -gx PATH "$PNPM_HOME/bin" $PATH
+end
+# pnpm end
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
@@ -139,4 +138,32 @@ fish_add_path $HOME/.tmux/plugins/tmux-session-wizard/bin
 # opencode
 fish_add_path /home/shourov/.opencode/bin
 
+# fzf complete
+bind -M insert \t __fzf_complete
 
+if status is-interactive
+    atuin init fish | source
+end
+
+# Activate a project's .venv on cd, deactivate on leaving it.
+# Walks up from $PWD so subdirectories of a project count as inside it.
+# Lives here, not conf.d, because fisher sweeps conf.d on plugin sync.
+function __auto_venv --on-variable PWD --description "Auto-activate project virtualenvs"
+    set -l dir $PWD
+    while test -n "$dir"
+        if test -f "$dir/.venv/bin/activate.fish"
+            if test "$VIRTUAL_ENV" != "$dir/.venv"
+                functions -q deactivate && deactivate
+                source "$dir/.venv/bin/activate.fish"
+            end
+            return
+        end
+        test "$dir" = / && break
+        set dir (path dirname $dir)
+    end
+    if functions -q deactivate
+        deactivate
+    end
+end
+
+__auto_venv
