@@ -10,3 +10,14 @@ tags
 !.config/yazi/plugins/folder-rules.yazi/
 !.config/yazi/plugins/smart-tab/
 .config/yazi/flavors/
+
+# ~/.config dirs are symlinked here by install.sh; keep secrets and app state out.
+.config/aerc/accounts.conf
+.config/fish/conf.d/ai-keys.fish
+.config/fish/fishd.tmp.*
+.config/fish/fish_variables.*
+.config/nnn/.lastd
+.config/nnn/bookmarks
+.config/nnn/finderbms
+.config/nnn/mounts
+.config/doom/.claude/

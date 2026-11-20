@@ -1,0 +1,30 @@
+# Installed with paru (official repos + AUR). One package per line, # for comments.
+git
+base-devel
+# shell
+fish
+starship
+zoxide
+fzf
+atuin
+fnm
+# terminal / tui
+ghostty
+tmux
+neovim
+lazygit
+yazi-nightly-bin
+nnn-nerd
+s
+# desktop
+hyprland
+noctalia
+keyd
+networkmanager-dmenu-git
+swayimg
+mpv
+zathura
+zathura-pdf-mupdf
+# mail / editor
+aerc
+emacs-wayland
