@@ -25,9 +25,12 @@ set -Ux PATH /usr/lib/uutils-coreutils:$PATH
 # Fzf config
 
 set fish_key_bindings fish_user_key_bindings
-fzf_configure_bindings --variables=\e\cv
+fzf_configure_bindings --directory=\ct --variables=\e\cv
 bind -M insert \cp up-or-search
 bind -M insert \cn down-or-search
+# alt-c: fzf cd (fzf.fish has no cd widget; reuse fcd)
+bind alt-c 'fcd .; commandline -f repaint'
+bind -M insert alt-c 'fcd .; commandline -f repaint'
 
 set fzf_preview_dir_cmd eza --all --color=always
 set fzf_fd_opts --hidden --exclude=.git
@@ -139,10 +142,12 @@ fish_add_path $HOME/.tmux/plugins/tmux-session-wizard/bin
 fish_add_path /home/shourov/.opencode/bin
 
 # fzf complete
-bind -M insert \t __fzf_complete
+# Tab: accept grey autosuggestion if shown, else fzf token completion
+bind -M insert \t 'if commandline --showing-suggestion; commandline -f accept-autosuggestion; else; __fzf_complete; end'
 
 if status is-interactive
-    atuin init fish | source
+    # no atuin keys: fzf.fish owns history search; atuin only records history
+    atuin init fish --disable-ctrl-r --disable-up-arrow | source
 end
 
 # Activate a project's .venv on cd, deactivate on leaving it.

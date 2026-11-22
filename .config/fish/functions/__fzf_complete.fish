@@ -23,7 +23,8 @@ function __fzf_complete
 
     set -l preview '
 fish -c "
-    set f {}
+    set f {1}
+    set f (string replace -r '^~' \$HOME -- \$f)
 
     if test -d \$f
         '"$dir"' \$f
@@ -44,10 +45,12 @@ fish -c "
         --height=~40% \
         --layout=reverse \
         --ansi \
+        --delimiter=\t \
         --preview="$preview" \
         --preview-window=down:50%:wrap 
 
     set -l matches (complete --do-complete "$trimmed")
+    test (count $matches) -eq 0; and return
 
     set -l selected
 
@@ -63,7 +66,8 @@ fish -c "
     set -l completion (string split \t -- "$selected")[1]
 
     if test -n "$completion"
-        commandline -t -- (string replace -a ' ' '\ ' -- "$completion")
+        # escape like fish does, but keep leading ~ / $ so home and variable completion still expand
+        commandline -t -- (string escape -n -- "$completion" | string replace -r '^\\\\([~$])' '$1')
     end
 
     commandline -f repaint
