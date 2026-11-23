@@ -12,7 +12,7 @@ capsule_radius = 20
 
 start = ["launcher", "workspaces", "submap", "media", "pomodoro"]
 center = []
-end = ["weather", "battery", "volume", "bluetooth", "network", "clock", "tray", "session", "notifications"]
+end = ["sysmon","weather", "battery", "volume", "bluetooth", "network", "clock", "tray", "session", "notifications"]
 
 [widget.launcher]
 type = "custom_button"
