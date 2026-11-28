@@ -205,3 +205,9 @@ desc = "Split-tabs: toggle preview pane"
 on = ["<C-l>"]
 run = "plugin localsend"
 desc = "Send files via LocalSend"
+
+[[mgr.prepend_keymap]]
+on   = ["<A-v>"]
+run  = "plugin video-duration"
+desc = "Show total video duration"
+
