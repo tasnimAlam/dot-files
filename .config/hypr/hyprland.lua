@@ -415,7 +415,7 @@ hl.window_rule({ name = "maximize-window", match = { class = ".*" }, suppress_ev
 hl.window_rule({ name = "browser-window", match = { class = "^(brave-browser)$" }, workspace = "2" })
 hl.window_rule({ name = "slack-window", match = { class = "^(slack)$" }, workspace = "3" })
 hl.window_rule({ name = "discord-window", match = { class = "^(discord)$" }, workspace = "3", float = true })
-hl.window_rule({ name = "emacs-window", match = { class = "^(Emacs)$" }, workspace = "4" })
+hl.window_rule({ name = "emacs-window", match = { class = "^(emacs)$" }, workspace = "4" })
 hl.window_rule({ name = "vlc-window", match = { class = "^(vlc)$" }, workspace = "5" })
 hl.window_rule({ name = "mpv-window", match = { class = "^(mpv)$" }, workspace = "5" })
 hl.window_rule({ name = "office-window", match = { class = "^(libreoffice-calc)$" }, workspace = "5" })
